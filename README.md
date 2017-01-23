@@ -4,6 +4,6 @@
 * jordanequincy@gmail.com
 * duriez.jeanbaptiste@gmail.com
 * morggandu59@live.fr
-* jordan.canonne@gmail.com
+* jordan.canonne@icloud.com
 * samir.moutawakil59@gmail.com
 * maximegrassart@gmail.com
