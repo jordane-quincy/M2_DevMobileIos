@@ -1,5 +1,8 @@
 # M2_DevMobileIos
 
+## Pré-requis :
+* Swift 3
+
 ## Adresses pour compte ios :
 * jordanequincy@gmail.com
 * duriez.jeanbaptiste@gmail.com
