@@ -4,3 +4,4 @@
 * jordanequincy@gmail.com
 * duriez.jeanbaptiste@gmail.com
 * morggan.basset@gmail.com
+* jordan.canonne@gmail.com
