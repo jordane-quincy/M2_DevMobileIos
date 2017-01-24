@@ -12,8 +12,14 @@
 * maximegrassart@gmail.com
 
 ## Formation de 45min :
+
+### Intro :
 * Historique d'Objective-C
 * Historique et évolutions de Swift
-* Sources : Différences entre Objective-C et Swift : http://codewithchris.developpez.com/tutoriels/swift/debuter/apprendre-swift-a-partir-objective-c/devriez-vous-continuer-apprendre-objective-c/#LIV (Comparatif obj-c et swift)
+* Sources : Différences entre Objective-C et Swift : http://codewithchris.developpez.com/tutoriels/swift/debuter/apprendre-swift-a-partir-objective-c/devriez-vous-continuer-apprendre-objective-c/#LIV
+
+
+### Main partie :
 * Présentation IDE
+* Partie swift : petite demo, différence swift 1/2/3
 
