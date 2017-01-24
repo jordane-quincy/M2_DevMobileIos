@@ -20,10 +20,10 @@
 
 
 ### Main parties :
-* Expliquer structure d'une appli (comment ça marche en terme de scène etc, cycle de vie des scnènes...)
+* Expliquer structure d'une appli (comment ça marche en terme de scène etc, cycle de vie des scnènes..., services en background)
 * Présentation IDE (Outil graphique pour les vues, pas de manifest => ihm depuis xcode)
 * Partie swift : 
-  * Demo : Création hello world de A à Z, montrer certaines structures, montrer comment fonctionne les formulaires, montrer potentiellement utilisation des trucs natifs (passer d'une scène à une autre, appareil photo, giroscope, accelerometre...), montrer le cycle de vie (genre afficher un truc à chaque début de cycle)
+  * Demo : Création hello world de A à Z, montrer certaines structures, montrer comment fonctionne les formulaires, montrer potentiellement utilisation des trucs natifs (passer d'une scène à une autre, appareil photo, giroscope, accelerometre...), montrer le cycle de vie (genre afficher un truc à chaque début de cycle), notification push
   
 ### Seconde main parties :
 * Vers la fin, montrer comment mettre un application sur le store
