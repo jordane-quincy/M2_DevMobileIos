@@ -23,7 +23,7 @@
 * Expliquer structure d'une appli (comment ça marche en terme de vue etc, cycle de vie des vues...)
 * Présentation IDE (Outil graphique pour les vues, pas de manifest => ihm depuis xcode)
 * Partie swift : 
-  * Demo : Création hello world de A à Z, Montrer potentiellement utilisation des trucs natifs (appareil photo, giroscope, accelerometre...)
+  * Demo : Création hello world de A à Z, montrer certaines structures, montrer comment fonctionne les formulaires Montrer potentiellement utilisation des trucs natifs (appareil photo, giroscope, accelerometre...)
   
 ### Seconde main parties :
 * Vers la fin, montrer comment mettre un application sur le store
