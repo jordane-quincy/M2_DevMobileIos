@@ -10,3 +10,8 @@
 * jordan.canonne@icloud.com
 * samir.moutawakil59@gmail.com
 * maximegrassart@gmail.com
+
+## Formation de 45min :
+* Historique d'Objective-C
+* Historique et évolutions de Swift
+* 
