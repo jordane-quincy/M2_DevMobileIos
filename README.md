@@ -20,6 +20,7 @@
 
 
 ### Main partie :
-* Présentation IDE
-* Partie swift : petite demo, différence swift 1/2/3
+* Présentation IDE (Outil graphique pour les vues, pas de manifest => ihm depuis xcode)
+* Partie swift : demo, différence swift 1/2/3
+
 
