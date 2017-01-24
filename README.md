@@ -29,5 +29,7 @@
 * Vers la fin, montrer comment mettre un application sur le store
 * Enregistrement des données
   
+### Aspect de conclusion
+* Diff android/IOS
 
 
