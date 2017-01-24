@@ -15,12 +15,14 @@
 
 ### Intro :
 * Historique d'Objective-C
-* Historique et évolutions de Swift
+* Historique et évolutions de Swift (diff swift 1/2/3)
 * Sources : Différences entre Objective-C et Swift : http://codewithchris.developpez.com/tutoriels/swift/debuter/apprendre-swift-a-partir-objective-c/devriez-vous-continuer-apprendre-objective-c/#LIV
 
 
 ### Main partie :
 * Présentation IDE (Outil graphique pour les vues, pas de manifest => ihm depuis xcode)
-* Partie swift : demo, différence swift 1/2/3
+* Partie swift : 
+  * Demo : Création hello world de A à Z, Montrer potentiellement utilisation des trucs natifs (appareil photo, giroscope, accelerometre...)
+  
 
 
