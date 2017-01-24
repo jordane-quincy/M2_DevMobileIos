@@ -27,10 +27,8 @@
   * Partie service (service apple ( de pub, de notif...))
   
 ### Seconde main parties :
-* Vers la fin, montrer comment mettre un application sur le store
 * Enregistrement des données
-  
-### Aspect de conclusion
-* Diff android/IOS
+* Vers la fin, montrer comment mettre un application sur le store
+
 
 
