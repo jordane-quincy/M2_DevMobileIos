@@ -24,6 +24,7 @@
 * Installation IDE, Présentation IDE (Outil graphique pour les vues, pas de manifest => ihm depuis xcode)
 * Partie swift : 
   * Demo : Création hello world de A à Z, montrer certaines structures, montrer comment fonctionne les formulaires, montrer potentiellement utilisation des trucs natifs (passer d'une scène à une autre, appareil photo, giroscope, accelerometre...), montrer le cycle de vie (genre afficher un truc à chaque début de cycle), notification push
+  * Partie service (service apple ( de pub, de notif...))
   
 ### Seconde main parties :
 * Vers la fin, montrer comment mettre un application sur le store
