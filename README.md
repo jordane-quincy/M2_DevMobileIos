@@ -30,4 +30,6 @@
 * Vers la fin, montrer comment mettre un application sur le store
 
 
+Cycle de vie Ios : https://developer.apple.com/library/content/documentation/iPhone/Conceptual/iPhoneOSProgrammingGuide/TheAppLifeCycle/TheAppLifeCycle.html#//apple_ref/doc/uid/TP40007072-CH2-SW3
+
 
