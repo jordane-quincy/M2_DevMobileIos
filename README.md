@@ -32,4 +32,5 @@
 
 Cycle de vie Ios : https://developer.apple.com/library/content/documentation/iPhone/Conceptual/iPhoneOSProgrammingGuide/TheAppLifeCycle/TheAppLifeCycle.html#//apple_ref/doc/uid/TP40007072-CH2-SW3
 
-
+Parsing Json :
+https://developer.apple.com/swift/blog/?id=37
