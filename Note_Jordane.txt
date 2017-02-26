@@ -1,0 +1,82 @@
+
+# https://developer.apple.com/library/content/documentation/iPhone/Conceptual/iPhoneOSProgrammingGuide/TheAppLifeCycle/TheAppLifeCycle.html
+
+#Structure application
+	Slide 4
+Scène : représente une vue utilisateur
+	Slide 5
+Storyboard : ensemble des scènes et leurs connexions
+
+	Slide 6
+Cycle de vie :
+	Not running : C'est l'état dans lequel sont les applications au redémarrage de l'iphone.
+					Elles n'utilisent pas de mémoire ni de cpu.
+	Inactive : État transitoire qui ne dure que quelques instants dans la majorité des cas.
+	Active : État lorsque l'application est en fonctionnement au premier plan, c'est l'état le plus courant, 
+				c'est dans ce mode que l'on peut réagir à l'utilisateur.
+				Si l'utilisateur reçoit un événement système comme un appel, l'application retourne au statut inactif jusqu'à ce qu'il raccroche, 
+					c'est le seul cas où le statut inactif dure dans le temps.
+	Background : L'application fonctionne toujours mais n'est plus visible.
+					Pour la majorité des applications c'est un état transitoire avant d'être suspendue.
+	Suspended : Lorsqu'une application est suspendue, elle est complétement bloquée (mémoire et cpu).
+					À ce stade, soit l'utilisateur rouvre l'application et son état est exactement le même
+					Soit le système a besoin de plus de ram disponible et termine complétement l'application (qui retourne au state Not running)
+
+	Slide 7
+Gestion des changements d'états
+
+Active -> Inactive : applicationWillResignActive()
+	Cette méthode est appelée lorque votre application est au premier plan et que le bouton Home est pressé ou lors qu'il y a un appel et qu'un décroche.
+	C'est ici qu'il faut désactiver tout ce qui est lié à la partie présentation comme les animations, les sons spécifiquent à votre application ou activer le mode "pause" si c'est un jeu.	
+Inactive -> Background : applicationDidEnterBackground()
+	Ici, on libère un maximum de ressources facilement rechargeable comme les images afin d'avoir une empreinte mémoire la plus petite possible
+		et ainsi avoir plus de chance de rester suspendue en cas de ram faible.
+	On en profite également pour sauvegarder les préférences saisies par l'utilisateur (taille de la police par exemple).
+	
+Background -> Inactive : applicationWillEnterForeground()
+	On fait le contraire de ce qu'on a fait à l'étape précédente (on recharge les images, les préférences, etc.)
+	
+Inactive -> Active : applicationDidBecomeActive()
+	C'est l'opposé du passage Active -> Inactive.
+	Elle est appelée lorque l'on repasse au premier plan, lorsque l'application est ouverte pour la première fois ou si l'utilisateur choisi de ne pas décrocher.
+	Donc si votre application est un jeu qui vous avez mis en pause, c'est là que vous aller demander à l'utilisateur s'il souhaite reprendre le jeu.
+	
+
+Nous avons vu comment gérer les changements d'états pour les applications courantes.
+
+
+	Slide 8
+Exécution en arrière plan
+	Soit vous avez une application qui ne travaille que lorsqu'elle est au premier plan
+	Soit elle effectue des tâches qui dure dans le temps mais sans avoir besoin d'interagir directement avec l'utilisateur
+	
+	Seuls certains types d'application peuvent être exécuté en arrière plan  :
+	Gestion par l'application :
+		Lecture et/ou Enregistrement audio 
+			(ex: lecture de musique, dictaphone)
+			Dans le mode, l'application ne sera pas suspendue tant qu'elle continue de faire lire de la musique.
+		Position GPS 
+			(ex: navigation)
+			Le copilote recherche un restaurant à l'arrivée.
+		Voip 
+			(ex: whatsapp)
+			Plutôt que de laisser tourner les applications de voip, ios va les suspendre 
+				mais garde les connections réseaux actives et les surveille afin de réactiver, en arrière plan, lors d'un appel entrant.
+				NB: les applications de voip doivent également déclarer qu'elles utilisent l'audio en arrière plan.
+		Mise à jour opportuniste 
+			(ex: runtastic)
+			Utiliser ce mode si votre application a besoin de parfois aller récupérer quelques informations depuis un serveur distant mais que ce n'est pas critique
+				car il n'y a aucune garantie de la fréquence ni des ressources allouer pour traiter ces données (car ios donne la priorité à l'application au premier plan).
+		Notification distante 
+			(ex: monitoring résultat de match )
+			Si vous avez un serveur qui lance des notifications push à votre application, activez ce mode vous permettra de lancer le téléchargement 
+				du contenu juste dès la réception de la notification.
+		Cas particuliers : journaux et accessoires
+			Ios fournit des facilitations pour traiter ces cas mais ce sont des besoins très particuliers.
+		
+	Gestion par le système 
+		Téléchargement : NSURLSession
+			En utilisant ce type d'objet, c'est le système qui prend en charge le téléchargement 
+				puis redonne la main à l'application lorsque le contenu est disponible (ou qu'une erreur est survenue).
+		
+Je laisse maintenant mon collègue vous expliquer les pré-requis du développement Ios
