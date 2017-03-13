@@ -18,6 +18,9 @@
 		B52CE2281E3756BA00EC68E5 /* DemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52CE2271E3756BA00EC68E5 /* DemoTests.swift */; };
 		B52CE2331E3756BA00EC68E5 /* DemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52CE2321E3756BA00EC68E5 /* DemoUITests.swift */; };
 		B52CE2411E49C66C00EC68E5 /* StructTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52CE2401E49C66C00EC68E5 /* StructTest.swift */; };
+		B58540221E76D24A00C7A698 /* ICloudService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58540211E76D24A00C7A698 /* ICloudService.swift */; };
+		B5BC81B31E66C035006AF92F /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = B5BC81B21E66C035006AF92F /* Cartfile */; };
+		B5BC81B61E66C2F5006AF92F /* FileBrowser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5BC81B51E66C2F4006AF92F /* FileBrowser.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +40,19 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		B5BC80E81E65F35A006AF92F /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		B51EFB811E65673200C3CC90 /* testFile.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = testFile.json; path = Demo/testFile.json; sourceTree = "<group>"; };
 		B51EFB831E6569A800C3CC90 /* exampleJSON1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = exampleJSON1.json; path = Demo/exampleJSON1.json; sourceTree = "<group>"; };
@@ -55,6 +71,10 @@
 		B52CE2321E3756BA00EC68E5 /* DemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoUITests.swift; sourceTree = "<group>"; };
 		B52CE2341E3756BA00EC68E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B52CE2401E49C66C00EC68E5 /* StructTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StructTest.swift; sourceTree = "<group>"; };
+		B5326A101E76C5A500B57076 /* Demo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Demo.entitlements; sourceTree = "<group>"; };
+		B58540211E76D24A00C7A698 /* ICloudService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ICloudService.swift; sourceTree = "<group>"; };
+		B5BC81B21E66C035006AF92F /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Cartfile; path = ../Cartfile; sourceTree = "<group>"; };
+		B5BC81B51E66C2F4006AF92F /* FileBrowser.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FileBrowser.framework; path = Carthage/Build/iOS/FileBrowser.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5BC81B61E66C2F5006AF92F /* FileBrowser.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,6 +129,7 @@
 				B52CE2261E3756BA00EC68E5 /* DemoTests */,
 				B52CE2311E3756BA00EC68E5 /* DemoUITests */,
 				B52CE2101E3756B900EC68E5 /* Products */,
+				B5BC81B41E66C2F4006AF92F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -124,6 +146,8 @@
 		B52CE2111E3756B900EC68E5 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
+				B5326A101E76C5A500B57076 /* Demo.entitlements */,
+				B5BC81B21E66C035006AF92F /* Cartfile */,
 				B52CE2121E3756B900EC68E5 /* AppDelegate.swift */,
 				B52CE2141E3756B900EC68E5 /* ViewController.swift */,
 				B52CE2161E3756B900EC68E5 /* Main.storyboard */,
@@ -131,6 +155,7 @@
 				B52CE21B1E3756B900EC68E5 /* LaunchScreen.storyboard */,
 				B52CE2401E49C66C00EC68E5 /* StructTest.swift */,
 				B52CE21E1E3756B900EC68E5 /* Info.plist */,
+				B58540211E76D24A00C7A698 /* ICloudService.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -153,6 +178,14 @@
 			path = DemoUITests;
 			sourceTree = "<group>";
 		};
+		B5BC81B41E66C2F4006AF92F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B5BC81B51E66C2F4006AF92F /* FileBrowser.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -163,6 +196,8 @@
 				B52CE20B1E3756B900EC68E5 /* Sources */,
 				B52CE20C1E3756B900EC68E5 /* Frameworks */,
 				B52CE20D1E3756B900EC68E5 /* Resources */,
+				B5BC80E81E65F35A006AF92F /* Embed Frameworks */,
+				B5BC81B71E66C312006AF92F /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -223,6 +258,11 @@
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = K3K2528V5W;
 						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 					B52CE2221E3756BA00EC68E5 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -263,6 +303,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5BC81B31E66C035006AF92F /* Cartfile in Resources */,
 				B52CE21D1E3756B900EC68E5 /* LaunchScreen.storyboard in Resources */,
 				B51EFB841E6569A800C3CC90 /* exampleJSON1.json in Resources */,
 				B51EFB821E65673200C3CC90 /* testFile.json in Resources */,
@@ -287,11 +328,29 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		B5BC81B71E66C312006AF92F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/FileBrowser.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		B52CE20B1E3756B900EC68E5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B58540221E76D24A00C7A698 /* ICloudService.swift in Sources */,
 				B52CE2151E3756B900EC68E5 /* ViewController.swift in Sources */,
 				B51EFB871E65874600C3CC90 /* JSONUtils.swift in Sources */,
 				B52CE2131E3756B900EC68E5 /* AppDelegate.swift in Sources */,
@@ -444,13 +503,19 @@
 		B52CE2381E3756BA00EC68E5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Demo/Demo.entitlements;
 				DEVELOPMENT_TEAM = K3K2528V5W;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Demo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = demoFA;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "26b1cdf3-fb09-4d7f-943e-dac836a15f37";
+				PROVISIONING_PROFILE = "66fd1297-d2ca-48ee-b964-5a021af4c8b5";
 				PROVISIONING_PROFILE_SPECIFIER = demoFA;
 				SWIFT_VERSION = 3.0;
 			};
@@ -459,13 +524,19 @@
 		B52CE2391E3756BA00EC68E5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Demo/Demo.entitlements;
 				DEVELOPMENT_TEAM = K3K2528V5W;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Demo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = demoFA;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "26b1cdf3-fb09-4d7f-943e-dac836a15f37";
+				PROVISIONING_PROFILE = "771bf53b-40aa-4b09-9180-885e8d6e8f12";
 				PROVISIONING_PROFILE_SPECIFIER = demoFA;
 				SWIFT_VERSION = 3.0;
 			};

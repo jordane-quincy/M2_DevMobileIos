@@ -50,10 +50,28 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7VF-cf-RMt">
+                                <rect key="frame" x="89" y="357" width="97" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IBL-pP-FbR">
+                                <rect key="frame" x="195" y="357" width="66" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="selectFile"/>
+                                <connections>
+                                    <action selector="selectFile:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FrV-dh-LPf"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="fileName" destination="7VF-cf-RMt" id="OyM-JM-nH4"/>
                         <outlet property="helloLabel" destination="yNf-7g-YWT" id="3W6-C5-yz7"/>
                         <outlet property="nameField" destination="wGg-FT-Ykg" id="PML-TA-s8U"/>
                         <outlet property="welcomeLabel" destination="1Uc-8e-mFg" id="uGt-IF-1aL"/>

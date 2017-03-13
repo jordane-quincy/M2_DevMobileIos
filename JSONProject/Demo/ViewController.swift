@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import FileBrowser
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UIDocumentMenuDelegate, UIDocumentPickerDelegate, UINavigationControllerDelegate {
     //MARK: Properties
 
     @IBOutlet weak var welcomeLabel: UILabel!
@@ -16,6 +17,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var nameField: UITextField!
     
     @IBOutlet weak var helloLabel: UILabel!
+    
+    @IBOutlet weak var fileName: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +46,38 @@ class ViewController: UIViewController {
         else {
             print("erreur lecture json")
         }
+    }
+    
+    @available(iOS 8.0, *)
+    public func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL) {
+        let cico = url as URL
+        print("The Url is : /(cico)")
+        //optional, case PDF -> render
+        //displayPDFweb.loadRequest(NSURLRequest(url: cico) as URLRequest)
+    }
+    
+    @available(iOS 8.0, *)
+    public func documentMenu(_ documentMenu:     UIDocumentMenuViewController, didPickDocumentPicker documentPicker: UIDocumentPickerViewController) {
+        documentPicker.delegate = self
+        present(documentPicker, animated: true, completion: nil)
+    }
+    
+    func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
+        print("we cancelled")
+        dismiss(animated: true, completion: nil)
+        
+    }
+    
+    
+    @IBAction func selectFile(_ sender: UIButton) {
+        // Code pour récupérer file depuis iCloud
+        let importMenu = UIDocumentMenuViewController(documentTypes: ["public.text"], in: .import)
+        importMenu.delegate = self
+        present(importMenu, animated: true, completion: nil)
+        
+        // code pour le browser sur le repo de l'app
+        //let fileBrowser = FileBrowser();
+        //present(fileBrowser, animated: true, completion: nil)
     }
     
     
