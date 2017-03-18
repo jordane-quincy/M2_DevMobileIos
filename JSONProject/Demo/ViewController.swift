@@ -49,11 +49,17 @@ class ViewController: UIViewController, UIDocumentMenuDelegate, UIDocumentPicker
     }
     
     @available(iOS 8.0, *)
-    public func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL) {
-        let cico = url as URL
-        print("The Url is : /(cico)")
-        //optional, case PDF -> render
-        //displayPDFweb.loadRequest(NSURLRequest(url: cico) as URLRequest)
+    public func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt urlDocument: URL) {
+        print("The Url is : \(urlDocument)")
+        
+        do {
+            let contentDocument = try String(contentsOf: urlDocument)
+            print("The document content : \(contentDocument)")
+        }
+        catch let error {
+            // Error handling
+            print("Error during file reading : \(error)")
+        }
     }
     
     @available(iOS 8.0, *)
@@ -74,6 +80,8 @@ class ViewController: UIViewController, UIDocumentMenuDelegate, UIDocumentPicker
         let importMenu = UIDocumentMenuViewController(documentTypes: ["public.text"], in: .import)
         importMenu.delegate = self
         present(importMenu, animated: true, completion: nil)
+        
+        
         
         // code pour le browser sur le repo de l'app
         //let fileBrowser = FileBrowser();
