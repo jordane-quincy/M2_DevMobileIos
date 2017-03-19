@@ -53,8 +53,31 @@ class ViewController: UIViewController, UIDocumentMenuDelegate, UIDocumentPicker
         print("The Url is : \(urlDocument)")
         
         do {
+            //FIXME : juste pour debug
             let contentDocument = try String(contentsOf: urlDocument)
             print("The document content : \(contentDocument)")
+            
+            URLSession.shared.dataTask(with:urlDocument) { (data, response, error) in
+                let json = try? JSONSerialization.jsonObject(with: data!, options: [])
+                
+                if let dictionary = json as? [String: Any] {
+                    //if let number = dictionary["someKey"] as? Double {
+                    //    // access individual value in dictionary
+                    //}
+                    
+                    for (key, value) in dictionary {
+                        // access all key / value pairs in dictionary
+                        
+                        print("key : \(key) , value : \(value)")
+                    }
+                    
+                    //if let nestedDictionary = dictionary["anotherKey"] as? [String: Any] {
+                    //    // access nested dictionary values by key
+                    //}
+                }
+                
+            }.resume()
+            
         }
         catch let error {
             // Error handling
