@@ -8,16 +8,78 @@
 
 import Foundation
 
+enum FieldType: String {
+    case name, date, other
+}
+enum InputType: String {
+    case text, radio, date, select
+}
+class CommonField: Hashable {
+    let required: Bool
+    let fieldType: FieldType
+    let fieldId: String
+    let label: String
+    let input: InputType
+    
+    
+    init?(jsonContent: [String: Any]) throws {
+        guard let required = jsonContent["required"] as? Bool else {
+            throw SerializationError.missing("required")
+        }
+        
+        // Extract and validate fieldType
+        guard let fieldTypeJson = jsonContent["fieldType"] as? String else {
+            throw SerializationError.missing("fieldType")
+        }
+        guard let fieldType = FieldType(rawValue: fieldTypeJson) else {
+            throw SerializationError.invalid("fieldType", fieldTypeJson)
+        }
+        
+        guard let fieldId = jsonContent["fieldId"] as? String else {
+            throw SerializationError.missing("fieldId")
+        }
+        guard let label = jsonContent["label"] as? String else {
+            throw SerializationError.missing("label")
+        }
+        
+        // Extract and validate input
+        guard let inputJson = jsonContent["input"] as? String else {
+            throw SerializationError.missing("input")
+        }
+        guard let input = InputType(rawValue: inputJson) else {
+            throw SerializationError.invalid("input", inputJson)
+        }
+        
+        //assignation
+        self.required = required
+        self.fieldType = fieldType
+        self.fieldId = fieldId
+        self.label = label
+        self.input = input
+    }
+    
+    //Hashable
+    var hashValue: Int {
+        return fieldId.hashValue ^ fieldId.hashValue
+    }
+    static func == (cf1: CommonField, cf2: CommonField) -> Bool {
+        return cf1.fieldId == cf2.fieldId
+    }
+    
+    //toString()
+    public var description: String { return "commonField(required:\(required), fieldType:\(fieldType), fieldId:\(fieldId), label:\(label), input:\(input)s)" }
+    
+}
+
 enum Payment: String {
     case creditCard, bankTransfer
 }
 struct JsonModel {
     let title: String
     let description: String
-    //let commonFields:
+    let commonFields: Set<CommonField>
     let paymentWays: Set<Payment>
 }
-
 
 enum SerializationError: Error {
     case missing(String)
@@ -35,7 +97,7 @@ extension JsonModel {
         
         // Extract and validate payments
         guard let paymentWaysJSON = jsonContent["paymentWays"] as? [String] else {
-            throw SerializationError.missing("meals")
+            throw SerializationError.missing("paymentWays")
         }
         var paymentWays: Set<Payment> = []
         for paymentString in paymentWaysJSON {
@@ -44,11 +106,34 @@ extension JsonModel {
             }
             paymentWays.insert(payment)
         }
+        
+        // Extract and validate commonFields
+        guard let commonFieldsJsonArray = jsonContent["commonFields"] as? [[String: Any]] else {
+            throw SerializationError.missing("commonFields")
+        }
+        print("commonFieldsJsonArray : \(commonFieldsJsonArray)")//FIXME: pour debug uniquement
+        var commonFields: Set<CommonField> = []
+        for commonFieldJsonElement in commonFieldsJsonArray {
+            print("commonFieldJsonElement : \(commonFieldJsonElement)")//FIXME: pour debug uniquement
+            
+            do {
+                guard let commonField = try CommonField(jsonContent: commonFieldJsonElement) else {
+                    throw SerializationError.invalid("commonField", commonFieldJsonElement)
+                }
+                commonFields.insert(commonField)
+                
+            } catch let serializationError {
+                print(serializationError)
+            }
+            
+            
+        }
 
         
         //assignation
         self.title = title
         self.description = description
+        self.commonFields = commonFields
         self.paymentWays = paymentWays
     }
 }
