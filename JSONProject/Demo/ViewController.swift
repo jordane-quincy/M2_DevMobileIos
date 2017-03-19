@@ -76,8 +76,13 @@ class ViewController: UIViewController, UIDocumentMenuDelegate, UIDocumentPicker
                     //}
                 }
                 
-                let jsonModel = JsonModel(jsonContent: json as! [String: Any])
-                print("jsonModel : \(jsonModel)")
+                do {
+                    let jsonModel = try JsonModel(jsonContent: json as! [String: Any])
+                    print("jsonModel : \(jsonModel)")
+                } catch let serializationError {
+                    print(serializationError)
+                }
+                
                 
             }.resume()
             
