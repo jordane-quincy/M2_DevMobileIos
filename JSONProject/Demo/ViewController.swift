@@ -76,6 +76,9 @@ class ViewController: UIViewController, UIDocumentMenuDelegate, UIDocumentPicker
                     //}
                 }
                 
+                let jsonModel = JsonModel(jsonContent: json as! [String: Any])
+                print("jsonModel : \(jsonModel)")
+                
             }.resume()
             
         }
