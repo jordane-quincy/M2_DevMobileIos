@@ -76,10 +76,10 @@ class Params: CustomStringConvertible {
             guard let choicesJsonArray = jsonContent["choices"] as? [[String: Any]] else {
                 throw SerializationError.missing("choices")
             }
-            print("choicesJsonArray : \(choicesJsonArray)")//FIXME: pour debug uniquement
+            //print("choicesJsonArray : \(choicesJsonArray)")//FIXME: pour debug uniquement
             var choices: Set<Choice> = []
             for choicesJsonElement in choicesJsonArray {
-                print("choicesJsonElement : \(choicesJsonElement)")//FIXME: pour debug uniquement
+                //print("choicesJsonElement : \(choicesJsonElement)")//FIXME: pour debug uniquement
                 
                 do {
                     guard let choice = try Choice(jsonContent: choicesJsonElement) else {

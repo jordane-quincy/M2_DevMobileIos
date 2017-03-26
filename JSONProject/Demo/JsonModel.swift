@@ -8,6 +8,10 @@
 
 import Foundation
 
+enum SerializationError: Error {
+    case missing(String)
+    case invalid(String, Any)
+}
 enum Payment: String {
     case creditCard, bankTransfer
 }
@@ -16,13 +20,7 @@ struct JsonModel {
     let description: String
     let commonFields: Set<CommonField>
     let paymentWays: Set<Payment>
-}
-
-enum SerializationError: Error {
-    case missing(String)
-    case invalid(String, Any)
-}
-extension JsonModel {
+    
     init?(jsonContent: [String: Any]) throws {
         guard let title = jsonContent["title"] as? String else {
             throw SerializationError.missing("title")
