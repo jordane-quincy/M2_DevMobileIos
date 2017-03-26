@@ -8,10 +8,43 @@
 
 import Foundation
 
+class Choice: Hashable, CustomStringConvertible {
+    let value: String
+    let label: String
+    
+    init?(jsonContent: [String: Any]) throws {
+        guard let value = jsonContent["value"] as? String else {
+            throw SerializationError.missing("value")
+        }
+        guard let label = jsonContent["label"] as? String else {
+            throw SerializationError.missing("label")
+        }
+
+        //assignation
+        self.value = value
+        self.label = label
+    }
+    
+    //Hashable
+    var hashValue: Int {
+        return value.hashValue ^ value.hashValue
+    }
+    static func == (c1: Choice, c2: Choice) -> Bool {
+        return c1.value == c2.value
+    }
+    
+    //toString()
+    public var description: String { return "choice(value:'\(value)', label:'\(label)' )" }
+    
+}
+
+
 class Params: CustomStringConvertible {
-    let minLength: Int
-    let maxLenght: Int
-    let placeholder: String
+    let minLength: Int?
+    let maxLenght: Int?
+    let placeholder: String?
+    
+    let choices: Set<Choice>?
 
 
     init?(jsonContent: [String: Any], inputType: InputType) throws {
@@ -33,6 +66,37 @@ class Params: CustomStringConvertible {
             self.maxLenght = maxLenght
             self.placeholder = placeholder
             
+            self.choices = nil
+            
+        case .radio:
+            // Extract and validate commonFields
+            guard let choicesJsonArray = jsonContent["choices"] as? [[String: Any]] else {
+                throw SerializationError.missing("choices")
+            }
+            print("choicesJsonArray : \(choicesJsonArray)")//FIXME: pour debug uniquement
+            var choices: Set<Choice> = []
+            for choicesJsonElement in choicesJsonArray {
+                print("choicesJsonElement : \(choicesJsonElement)")//FIXME: pour debug uniquement
+                
+                do {
+                    guard let choice = try Choice(jsonContent: choicesJsonElement) else {
+                        throw SerializationError.invalid("choices", choicesJsonElement)
+                    }
+                    choices.insert(choice)
+                    
+                } catch let serializationError {
+                    print(serializationError)
+                }
+                
+            }
+            
+            //assignation
+            self.choices = choices
+            
+            self.minLength = nil
+            self.maxLenght = nil
+            self.placeholder = nil
+            
         default:
             // Input type not supported
             throw SerializationError.invalid("inputType", inputType)
@@ -40,6 +104,6 @@ class Params: CustomStringConvertible {
     }
     
     //toString()
-    public var description: String { return "Params(minLength:\(minLength), maxLenght:\(maxLenght), placeholder:\(placeholder) )" }
+    public var description: String { return "Params(minLength:\(minLength), maxLenght:\(maxLenght), placeholder:'\(placeholder)', choices:\(choices) )" }
     
 }

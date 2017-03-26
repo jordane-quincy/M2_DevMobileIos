@@ -121,10 +121,10 @@ extension JsonModel {
         guard let commonFieldsJsonArray = jsonContent["commonFields"] as? [[String: Any]] else {
             throw SerializationError.missing("commonFields")
         }
-        print("commonFieldsJsonArray : \(commonFieldsJsonArray)")//FIXME: pour debug uniquement
+        //print("commonFieldsJsonArray : \(commonFieldsJsonArray)")//FIXME: pour debug uniquement
         var commonFields: Set<CommonField> = []
         for commonFieldJsonElement in commonFieldsJsonArray {
-            print("commonFieldJsonElement : \(commonFieldJsonElement)")//FIXME: pour debug uniquement
+            //print("commonFieldJsonElement : \(commonFieldJsonElement)")//FIXME: pour debug uniquement
             
             do {
                 guard let commonField = try CommonField(jsonContent: commonFieldJsonElement) else {
