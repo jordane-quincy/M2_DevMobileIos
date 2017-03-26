@@ -72,7 +72,7 @@ class Params: CustomStringConvertible {
             self.choices = nil
             
         case .radio, .select:
-            // Extract and validate commonFields
+            // Extract and validate choices
             guard let choicesJsonArray = jsonContent["choices"] as? [[String: Any]] else {
                 throw SerializationError.missing("choices")
             }
