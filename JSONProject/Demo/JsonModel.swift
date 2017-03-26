@@ -14,7 +14,7 @@ enum FieldType: String {
 enum InputType: String {
     case text, radio, date, select
 }
-class CommonField: Hashable {
+class CommonField: Hashable, CustomStringConvertible {
     let required: Bool
     let fieldType: FieldType
     let fieldId: String
