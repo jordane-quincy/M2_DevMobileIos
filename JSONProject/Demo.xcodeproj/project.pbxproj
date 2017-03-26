@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		42AFEF1E1E7EA003001587DA /* JsonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AFEF1D1E7EA003001587DA /* JsonModel.swift */; };
+		42AFEF201E87C617001587DA /* JsonModel_params.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AFEF1F1E87C617001587DA /* JsonModel_params.swift */; };
 		B51EFB821E65673200C3CC90 /* testFile.json in Resources */ = {isa = PBXBuildFile; fileRef = B51EFB811E65673200C3CC90 /* testFile.json */; };
 		B51EFB841E6569A800C3CC90 /* exampleJSON1.json in Resources */ = {isa = PBXBuildFile; fileRef = B51EFB831E6569A800C3CC90 /* exampleJSON1.json */; };
 		B51EFB871E65874600C3CC90 /* JSONUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51EFB861E65874600C3CC90 /* JSONUtils.swift */; };
@@ -56,6 +57,7 @@
 
 /* Begin PBXFileReference section */
 		42AFEF1D1E7EA003001587DA /* JsonModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonModel.swift; sourceTree = "<group>"; };
+		42AFEF1F1E87C617001587DA /* JsonModel_params.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonModel_params.swift; sourceTree = "<group>"; };
 		B51EFB811E65673200C3CC90 /* testFile.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = testFile.json; path = Demo/testFile.json; sourceTree = "<group>"; };
 		B51EFB831E6569A800C3CC90 /* exampleJSON1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = exampleJSON1.json; path = Demo/exampleJSON1.json; sourceTree = "<group>"; };
 		B51EFB861E65874600C3CC90 /* JSONUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONUtils.swift; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 				B52CE21E1E3756B900EC68E5 /* Info.plist */,
 				B58540211E76D24A00C7A698 /* ICloudService.swift */,
 				42AFEF1D1E7EA003001587DA /* JsonModel.swift */,
+				42AFEF1F1E87C617001587DA /* JsonModel_params.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -357,6 +360,7 @@
 				B52CE2151E3756B900EC68E5 /* ViewController.swift in Sources */,
 				B51EFB871E65874600C3CC90 /* JSONUtils.swift in Sources */,
 				42AFEF1E1E7EA003001587DA /* JsonModel.swift in Sources */,
+				42AFEF201E87C617001587DA /* JsonModel_params.swift in Sources */,
 				B52CE2131E3756B900EC68E5 /* AppDelegate.swift in Sources */,
 				B52CE2411E49C66C00EC68E5 /* StructTest.swift in Sources */,
 			);

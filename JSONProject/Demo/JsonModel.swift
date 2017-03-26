@@ -20,6 +20,7 @@ class CommonField: Hashable, CustomStringConvertible {
     let fieldId: String
     let label: String
     let input: InputType
+    let params: Params
     
     
     init?(jsonContent: [String: Any]) throws {
@@ -50,12 +51,21 @@ class CommonField: Hashable, CustomStringConvertible {
             throw SerializationError.invalid("input", inputJson)
         }
         
+        // Extract and validate input
+        guard let paramsJson = jsonContent["params"] as? [String: Any] else {
+            throw SerializationError.missing("params")
+        }
+        guard let params = try Params(jsonContent: paramsJson, inputType: input) else {
+            throw SerializationError.invalid("params", paramsJson)
+        }
+        
         //assignation
         self.required = required
         self.fieldType = fieldType
         self.fieldId = fieldId
         self.label = label
         self.input = input
+        self.params = params
     }
     
     //Hashable
@@ -67,7 +77,7 @@ class CommonField: Hashable, CustomStringConvertible {
     }
     
     //toString()
-    public var description: String { return "commonField(required:\(required), fieldType:\(fieldType), fieldId:\(fieldId), label:\(label), input:\(input)s)" }
+    public var description: String { return "commonField(required:\(required), fieldType:\(fieldType), fieldId:\(fieldId), label:\(label), input:\(input), params:\(params) )" }
     
 }
 
