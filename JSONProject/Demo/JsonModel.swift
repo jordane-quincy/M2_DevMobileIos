@@ -20,7 +20,7 @@ class CommonField: Hashable, CustomStringConvertible {
     let fieldId: String
     let label: String
     let input: InputType
-    let params: Params
+    let params: Params?
     
     
     init?(jsonContent: [String: Any]) throws {
@@ -51,12 +51,19 @@ class CommonField: Hashable, CustomStringConvertible {
             throw SerializationError.invalid("input", inputJson)
         }
         
-        // Extract and validate input
-        guard let paramsJson = jsonContent["params"] as? [String: Any] else {
-            throw SerializationError.missing("params")
-        }
-        guard let params = try Params(jsonContent: paramsJson, inputType: input) else {
-            throw SerializationError.invalid("params", paramsJson)
+        if(InputType.date == input){
+            // c'est ça aussi de ne pas mettre de champ params pour les dates... (ex : mettre le format de la date en params)
+            self.params = nil
+        }else{
+            // Extract and validate input
+            guard let paramsJson = jsonContent["params"] as? [String: Any] else {
+                throw SerializationError.missing("params")
+            }
+            guard let params = try Params(jsonContent: paramsJson, inputType: input) else {
+                throw SerializationError.invalid("params", paramsJson)
+            }
+            
+            self.params = params
         }
         
         //assignation
@@ -65,7 +72,7 @@ class CommonField: Hashable, CustomStringConvertible {
         self.fieldId = fieldId
         self.label = label
         self.input = input
-        self.params = params
+        //self.params = params
     }
     
     //Hashable

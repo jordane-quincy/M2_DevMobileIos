@@ -97,6 +97,13 @@ class Params: CustomStringConvertible {
             self.maxLenght = nil
             self.placeholder = nil
             
+        case .date:
+            // FIXME: nothing more than initialize to do here because executable line(s) is mandatory
+            self.minLength = nil
+            self.maxLenght = nil
+            self.placeholder = nil
+            self.choices = nil
+
         default:
             // Input type not supported
             throw SerializationError.invalid("inputType", inputType)
