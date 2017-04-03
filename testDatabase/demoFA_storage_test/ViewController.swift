@@ -28,18 +28,34 @@ class ViewController: UIViewController {
     }
 
     @IBAction func save(_ sender: Any) {
-        
-        let person = Person()
-        person.name = self.name.text!
-        person.mail = self.mail.text!
-        
-        
         let realm = try! Realm()
+        try! realm.write {
+            realm.deleteAll()
+        }
         
+        //Init du service
+        let businessService = BusinessService(_title: "Le titre", _serviceDescription: "Description du service", _brand: "La marque")
+        
+        try! realm.write {
+            realm.add(businessService)
+            print("\(businessService)")
+        }
+        
+        
+        //Ajout d'une personne
+        let person = Person(_name: name.text!, _email: mail.text!)
         try! realm.write {
             realm.add(person)
             print("\(person)")
         }
+        
+        let services = Services()
+        services.addSubscriberToService(title: "Le titre", subscriber: person)
+        
+        //businessService.addPersonToService(person: person)
+        
+        
+        
         
         let myTest = realm.objects(Person.self)
         

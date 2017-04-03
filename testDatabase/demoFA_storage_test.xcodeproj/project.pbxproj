@@ -19,6 +19,7 @@
 		9D53B65F1E9241730075C782 /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9D53B65B1E9241730075C782 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9D53B6621E9241890075C782 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D53B6611E9241890075C782 /* Person.swift */; };
 		9DF2BBB71E926A3300E5F0B7 /* BusinessService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF2BBB61E926A3300E5F0B7 /* BusinessService.swift */; };
+		9DF2BBB91E92825300E5F0B7 /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF2BBB81E92825300E5F0B7 /* Services.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 		9D53B65B1E9241730075C782 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
 		9D53B6611E9241890075C782 /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		9DF2BBB61E926A3300E5F0B7 /* BusinessService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessService.swift; sourceTree = "<group>"; };
+		9DF2BBB81E92825300E5F0B7 /* Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +133,7 @@
 				9D53B6301E9240D20075C782 /* Main.storyboard */,
 				9D53B6331E9240D20075C782 /* Assets.xcassets */,
 				9D53B6381E9240D20075C782 /* Info.plist */,
+				9DF2BBB81E92825300E5F0B7 /* Services.swift */,
 			);
 			path = demoFA_storage_test;
 			sourceTree = "<group>";
@@ -290,6 +293,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9DF2BBB91E92825300E5F0B7 /* Services.swift in Sources */,
 				9D53B6621E9241890075C782 /* Person.swift in Sources */,
 				9DF2BBB71E926A3300E5F0B7 /* BusinessService.swift in Sources */,
 				9D53B62F1E9240D20075C782 /* ViewController.swift in Sources */,

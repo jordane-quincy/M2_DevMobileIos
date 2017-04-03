@@ -10,6 +10,18 @@ import Foundation
 import RealmSwift
 
 class Person: Object {
+    
     dynamic var name: String = ""
-    dynamic var mail: String = ""
+    dynamic var email: String = ""
+    let owner = LinkingObjects(fromType: BusinessService.self, property: "subscribers")
+    
+    override class func primaryKey() -> String? {
+        return "email"
+    }
+    
+    convenience public init(_name: String, _email: String) {
+        self.init();
+        name = _name
+        email = _email
+    }
 }
