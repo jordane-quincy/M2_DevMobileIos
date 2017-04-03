@@ -9,15 +9,13 @@
 import Foundation
 
 
-class Offers: CustomStringConvertible {
+class Offer: Hashable, CustomStringConvertible {
     let title: String
     let description: String
     let price: Int
     
     let specificFields: Set<SpecificField>
-    
     let features: Set<Feature>
-
 
     init?(jsonContent: [String: Any]) throws {
         
@@ -56,10 +54,10 @@ class Offers: CustomStringConvertible {
         guard let featuresJsonArray = jsonContent["features"] as? [[String: Any]] else {
             throw SerializationError.missing("features")
         }
-        print("featuresJsonArray : \(featuresJsonArray)")//FIXME: pour debug uniquement
+        //print("featuresJsonArray : \(featuresJsonArray)")//FIXME: pour debug uniquement
         var features: Set<Feature> = []
         for featureJsonElement in featuresJsonArray {
-            print("featureJsonElement : \(featureJsonElement)")//FIXME: pour debug uniquement
+            //print("featureJsonElement : \(featureJsonElement)")//FIXME: pour debug uniquement
             
             do {
                 guard let feature = try Feature(jsonContent: featureJsonElement) else {
@@ -80,6 +78,15 @@ class Offers: CustomStringConvertible {
         self.specificFields = specificFields
         self.features = features
     }
+    
+    //Hashable
+    var hashValue: Int {
+        return title.hashValue ^ title.hashValue
+    }
+    static func == (o1: Offer, o2: Offer) -> Bool {
+        return o1.title == o2.title
+    }
+
     
     //toString()
     //public var description: String { return "Offers(title:'\(title)', description:'\(description)', price:'\(price)', specificFields:\(specificFields), features:\(features) )" }

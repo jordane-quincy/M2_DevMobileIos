@@ -20,6 +20,7 @@ struct JsonModel {
     let description: String
     let commonFields: Set<CommonField>
     let paymentWays: Set<Payment>
+    let offers: Set<Offer>
     
     init?(jsonContent: [String: Any]) throws {
         guard let title = jsonContent["title"] as? String else {
@@ -63,6 +64,27 @@ struct JsonModel {
             
             
         }
+        
+        // Extract and validate commonFields
+        guard let offersJsonArray = jsonContent["offers"] as? [[String: Any]] else {
+            throw SerializationError.missing("offers")
+        }
+        //print("offersJsonArray : \(offersJsonArray)")//FIXME: pour debug uniquement
+        var offers: Set<Offer> = []
+        for offerJsonElement in offersJsonArray {
+            //print("commonFieldJsonElement : \(commonFieldJsonElement)")//FIXME: pour debug uniquement
+            
+            do {
+                guard let offer = try Offer(jsonContent: offerJsonElement) else {
+                    throw SerializationError.invalid("offer", offerJsonElement)
+                }
+                offers.insert(offer)
+                
+            } catch let serializationError {
+                print(serializationError)
+            }
+            
+        }
 
         
         //assignation
@@ -70,5 +92,6 @@ struct JsonModel {
         self.description = description
         self.commonFields = commonFields
         self.paymentWays = paymentWays
+        self.offers = offers
     }
 }
