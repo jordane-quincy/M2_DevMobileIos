@@ -55,18 +55,7 @@ class ViewController: UIViewController, UIDocumentMenuDelegate, UIDocumentPicker
         let json = person.toJson();
         print(json);
         
-        
-//        let output = OutputStream(toFileAtPath: "testOutput.json", append: false)!
-//        output.open()
-//        defer { output.close() }
-//        
-//        var error : NSError? = nil
-//        
-//        JSONSerialization.writeJSONObject(person, to: output, options: .prettyPrinted, error: &error)
-
-        person.toJsonFile();
-        
-        
+        person.toJsonFile(pathJsonFile: "testOutput.json");
     }
     
     @available(iOS 8.0, *)
