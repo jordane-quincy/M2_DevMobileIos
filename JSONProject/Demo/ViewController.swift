@@ -34,55 +34,71 @@ class ViewController: UIViewController, UIDocumentMenuDelegate, UIDocumentPicker
     
     @IBAction func sayHello(_ sender: UIButton) {
         
-        helloLabel.text = "Bonjoue " + nameField.text! + " !"
-        let nameFile = "exampleJSON1"
-        let jsonUtils = JSONUtils()
-        let jsonObject = jsonUtils.readJson(fileName: nameFile)
-        if (jsonObject != nil) {
-            let commonFields = jsonObject?["commonFields"] as! NSArray
-            let commonFieldsZero = commonFields[0] as! [String: Any]
-            print(commonFieldsZero["label"]!)
-        }
-        else {
-            print("erreur lecture json")
-        }
+        helloLabel.text = "Bonjour " + nameField.text! + " !"
+//        let nameFile = "exampleJSON1"
+//        let jsonUtils = JSONUtils()
+//        let jsonObject = jsonUtils.readJson(fileName: nameFile)
+//        if (jsonObject != nil) {
+//            let commonFields = jsonObject?["commonFields"] as! NSArray
+//            let commonFieldsZero = commonFields[0] as! [String: Any]
+//            print(commonFieldsZero["label"]!)
+//        }
+//        else {
+//            print("erreur lecture json")
+//        }
+        
+        
+        let person = Person(name: "jordane", mail: "john@doe.com");
+        
+        print("person : \(person)");
+        
+        let json = person.toJson();
+        print(json);
+        
+        
+//        let output = OutputStream(toFileAtPath: "testOutput.json", append: false)!
+//        output.open()
+//        defer { output.close() }
+//        
+//        var error : NSError? = nil
+//        
+//        JSONSerialization.writeJSONObject(person, to: output, options: .prettyPrinted, error: &error)
+
+        person.toJsonFile();
+        
+        
     }
     
     @available(iOS 8.0, *)
     public func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt urlDocument: URL) {
         //print("The Url is : \(urlDocument)")
         
-        do {
-            //let contentDocument = try String(contentsOf: urlDocument)
-            //print("The document content : \(contentDocument)")
+        //let contentDocument = try String(contentsOf: urlDocument)
+        //print("The document content : \(contentDocument)")
+        
+        URLSession.shared.dataTask(with:urlDocument) { (data, response, error) in
+            let json = try? JSONSerialization.jsonObject(with: data!, options: [])
             
-            URLSession.shared.dataTask(with:urlDocument) { (data, response, error) in
-                let json = try? JSONSerialization.jsonObject(with: data!, options: [])
-                
-                //if let dictionary = json as? [String: Any] {
-                //    for (key, value) in dictionary {
-                //        // access all key / value pairs in dictionary
-                //
-                //        //print("key : \(key) , value : \(value)")
-                //    }
-                //}
-                
-                do {
-                    let jsonModel = try JsonModel(jsonContent: json as! [String: Any])
-                    print("jsonModel : \(jsonModel)")
-                } catch let serializationError {
-                    //in case of unsuccessful deserialization
-                    print(serializationError)
-                }
-                
-                
+            //if let dictionary = json as? [String: Any] {
+            //    for (key, value) in dictionary {
+            //        // access all key / value pairs in dictionary
+            //
+            //        //print("key : \(key) , value : \(value)")
+            //    }
+            //}
+            
+            do {
+                let jsonModel = try JsonModel(jsonContent: json as! [String: Any])
+                print("jsonModel : \(jsonModel)")
+            } catch let serializationError {
+                //in case of unsuccessful deserialization
+                print(serializationError)
+            }
+            
+            
             }.resume()
-            
-        }
-        catch let error {
-            // Error handling
-            print("Error during file reading : \(error)")
-        }
+        
+    
     }
     
     @available(iOS 8.0, *)
