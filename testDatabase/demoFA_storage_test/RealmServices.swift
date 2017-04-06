@@ -17,7 +17,7 @@ class RealmServices {
 
         let businessService = self.realm.object(ofType: BusinessService.self, forPrimaryKey: title as AnyObject)
 //        print(businessService!)
-        try! realm.write {
+        try! self.realm.write {
             // Try to add the MediClass Object to the IndiClass Object:
             businessService!.addPersonToService(person: subscriber)
         }

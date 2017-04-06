@@ -28,36 +28,27 @@ class ViewController: UIViewController {
     @IBAction func save(_ sender: Any) {
         
         let realmServices = RealmServices()
+        let jsonServices = JsonServices()
         let realm = try! Realm()
         
         realmServices.resetDataBase()
         
         //Init du service
-        let businessService = BusinessService(_title: "Le titre", _serviceDescription: "Description du service", _brand: "La marque")
-        
-        realmServices.createBusinessService(businessService: businessService)
-        
+        let businessService = BusinessService(_title: "CanalPlay", _serviceDescription: "Service de vidéo à la demande",_brand: "Canal Sattelite")
         
         //Ajout d'une personne
         let person = Person(_email: email.text!)
-       
-        realmServices.createPerson(person: person)
         
         //Ajout d'un attribut à la personne
-        let attribute = Attribute(_label: "Le label", _fieldName: "Nom du champ", _value: name.text!)
-        
-        //realmServices.createAttribute(_attribute: attribute)
+        let attribute = Attribute(_label: "Nom", _fieldName: "name", _value: name.text!)
         
         //Ajout d'un attribut à la personne
-        let attribute2 = Attribute(_label: "Le label 2", _fieldName: "Nom du champ 2", _value: email.text!)
+        let attribute2 = Attribute(_label: "Email", _fieldName: "email", _value: email.text!)
         
-        //realmServices.createAttribute(_attribute: attribute2)
-        
-        realmServices.addSubscriberToService(title: "Le titre", subscriber: person)
+        realmServices.createBusinessService(businessService: businessService)
+        realmServices.addSubscriberToService(title: businessService.title, subscriber: person)
         realmServices.addAttributeToPerson(email: person.email, attribute: attribute)
         realmServices.addAttributeToPerson(email: person.email, attribute: attribute2)
-        
-        //businessService.addPersonToService(person: person)
         
         
         
@@ -66,7 +57,9 @@ class ViewController: UIViewController {
         
         print("My test name : \(myTest)")
         
-        realmServices.resetService(title: "Le titre")
+        print(jsonServices.getSubscribersJSON(_businessServiceTitle: "CanalPlay"))
+        
+        realmServices.resetService(title: "CanalPlay")
         
         let myTest2 = realm.objects(BusinessService.self)
         

@@ -17,10 +17,6 @@ class Attribute: Object {
 
     let owner = LinkingObjects(fromType: Person.self, property: "attributes")
     
-//    override class func primaryKey() -> String? {
-//        return "label"
-//    }
-    
     convenience public init(_label: String, _fieldName: String, _value: String) {
         self.init();
         label = _label
