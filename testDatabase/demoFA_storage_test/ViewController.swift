@@ -11,10 +11,8 @@ import RealmSwift
 
 class ViewController: UIViewController {
     
-    
+    @IBOutlet weak var email: UITextField!
     @IBOutlet weak var name: UITextField!
-
-    @IBOutlet weak var mail: UITextField!
     
     
     override func viewDidLoad() {
@@ -28,29 +26,36 @@ class ViewController: UIViewController {
     }
 
     @IBAction func save(_ sender: Any) {
+        
+        let realmServices = RealmServices()
         let realm = try! Realm()
-        try! realm.write {
-            realm.deleteAll()
-        }
+        
+        realmServices.resetDataBase()
         
         //Init du service
         let businessService = BusinessService(_title: "Le titre", _serviceDescription: "Description du service", _brand: "La marque")
         
-        try! realm.write {
-            realm.add(businessService)
-            print("\(businessService)")
-        }
+        realmServices.createBusinessService(businessService: businessService)
         
         
         //Ajout d'une personne
-        let person = Person(_name: name.text!, _email: mail.text!)
-        try! realm.write {
-            realm.add(person)
-            print("\(person)")
-        }
+        let person = Person(_email: email.text!)
+       
+        realmServices.createPerson(person: person)
         
-        let services = Services()
-        services.addSubscriberToService(title: "Le titre", subscriber: person)
+        //Ajout d'un attribut à la personne
+        let attribute = Attribute(_label: "Le label", _fieldName: "Nom du champ", _value: name.text!)
+        
+        //realmServices.createAttribute(_attribute: attribute)
+        
+        //Ajout d'un attribut à la personne
+        let attribute2 = Attribute(_label: "Le label 2", _fieldName: "Nom du champ 2", _value: email.text!)
+        
+        //realmServices.createAttribute(_attribute: attribute2)
+        
+        realmServices.addSubscriberToService(title: "Le titre", subscriber: person)
+        realmServices.addAttributeToPerson(email: person.email, attribute: attribute)
+        realmServices.addAttributeToPerson(email: person.email, attribute: attribute2)
         
         //businessService.addPersonToService(person: person)
         
@@ -60,6 +65,14 @@ class ViewController: UIViewController {
         let myTest = realm.objects(Person.self)
         
         print("My test name : \(myTest)")
+        
+        realmServices.resetService(title: "Le titre")
+        
+        let myTest2 = realm.objects(BusinessService.self)
+        
+        print("My test after Reset = \(myTest2)")
+        
+        
     }
 
 }

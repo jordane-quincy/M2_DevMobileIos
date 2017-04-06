@@ -11,17 +11,26 @@ import RealmSwift
 
 class Person: Object {
     
-    dynamic var name: String = ""
     dynamic var email: String = ""
+    var attributes: List<Attribute> = List<Attribute>()
     let owner = LinkingObjects(fromType: BusinessService.self, property: "subscribers")
     
     override class func primaryKey() -> String? {
         return "email"
     }
     
-    convenience public init(_name: String, _email: String) {
+    convenience public init(_email: String) {
         self.init();
-        name = _name
         email = _email
+    }
+    
+    convenience public init(_email: String, _attributes: List<Attribute>){
+        self.init();
+        email = _email
+        attributes = _attributes
+    }
+    
+    public func addAttributeToPerson(attribute: Attribute) {
+        attributes.append(attribute)
     }
 }

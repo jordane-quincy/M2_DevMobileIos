@@ -18,8 +18,10 @@
 		9D53B65E1E9241730075C782 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D53B65B1E9241730075C782 /* RealmSwift.framework */; };
 		9D53B65F1E9241730075C782 /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9D53B65B1E9241730075C782 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9D53B6621E9241890075C782 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D53B6611E9241890075C782 /* Person.swift */; };
+		9D92E1011E9612800024A1C8 /* JsonServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D92E1001E9612800024A1C8 /* JsonServices.swift */; };
+		9DD324911E94C44B00F35522 /* Attribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD324901E94C44B00F35522 /* Attribute.swift */; };
 		9DF2BBB71E926A3300E5F0B7 /* BusinessService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF2BBB61E926A3300E5F0B7 /* BusinessService.swift */; };
-		9DF2BBB91E92825300E5F0B7 /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF2BBB81E92825300E5F0B7 /* Services.swift */; };
+		9DF2BBB91E92825300E5F0B7 /* RealmServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF2BBB81E92825300E5F0B7 /* RealmServices.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,8 +72,10 @@
 		9D53B65A1E9241730075C782 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
 		9D53B65B1E9241730075C782 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
 		9D53B6611E9241890075C782 /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		9D92E1001E9612800024A1C8 /* JsonServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonServices.swift; sourceTree = "<group>"; };
+		9DD324901E94C44B00F35522 /* Attribute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Attribute.swift; sourceTree = "<group>"; };
 		9DF2BBB61E926A3300E5F0B7 /* BusinessService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessService.swift; sourceTree = "<group>"; };
-		9DF2BBB81E92825300E5F0B7 /* Services.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
+		9DF2BBB81E92825300E5F0B7 /* RealmServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmServices.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,11 +133,13 @@
 				9D53B62C1E9240D20075C782 /* AppDelegate.swift */,
 				9D53B62E1E9240D20075C782 /* ViewController.swift */,
 				9D53B6611E9241890075C782 /* Person.swift */,
+				9DD324901E94C44B00F35522 /* Attribute.swift */,
 				9DF2BBB61E926A3300E5F0B7 /* BusinessService.swift */,
 				9D53B6301E9240D20075C782 /* Main.storyboard */,
 				9D53B6331E9240D20075C782 /* Assets.xcassets */,
 				9D53B6381E9240D20075C782 /* Info.plist */,
-				9DF2BBB81E92825300E5F0B7 /* Services.swift */,
+				9DF2BBB81E92825300E5F0B7 /* RealmServices.swift */,
+				9D92E1001E9612800024A1C8 /* JsonServices.swift */,
 			);
 			path = demoFA_storage_test;
 			sourceTree = "<group>";
@@ -293,9 +299,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9DF2BBB91E92825300E5F0B7 /* Services.swift in Sources */,
+				9DD324911E94C44B00F35522 /* Attribute.swift in Sources */,
+				9DF2BBB91E92825300E5F0B7 /* RealmServices.swift in Sources */,
 				9D53B6621E9241890075C782 /* Person.swift in Sources */,
 				9DF2BBB71E926A3300E5F0B7 /* BusinessService.swift in Sources */,
+				9D92E1011E9612800024A1C8 /* JsonServices.swift in Sources */,
 				9D53B62F1E9240D20075C782 /* ViewController.swift in Sources */,
 				9D53B62D1E9240D20075C782 /* AppDelegate.swift in Sources */,
 			);

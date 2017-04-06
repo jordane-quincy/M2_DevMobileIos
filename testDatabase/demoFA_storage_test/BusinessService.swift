@@ -30,4 +30,8 @@ class BusinessService: Object {
     public func addPersonToService(person: Person) {
         subscribers.append(person)
     }
+    
+//    public func resetSubscribers() {
+//        subscribers.removeAll()
+//    }
 }
