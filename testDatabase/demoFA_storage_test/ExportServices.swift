@@ -31,7 +31,6 @@ class ExportServices {
     }
     
     public func getSubscribersCSV(_businessServiceTitle: String) -> String {
-<<<<<<< HEAD:testDatabase/demoFA_storage_test/ExportServices.swift
         let realmServices = RealmServices()
         let businessService = realmServices.getBusinessService(_title: _businessServiceTitle)
         
@@ -45,16 +44,5 @@ class ExportServices {
             result = result + "\n"
         }
         return result
-=======
-        var result = "sep=,\n"
-        let realmServices = RealmServices()
-        let businessService = realmServices.getBusinessService(_title: _businessServiceTitle)
-        
-        for subscriber in businessService.subscribers {
-            
-        }
-        
-        return result;
->>>>>>> 4c42a4be66bcb4c5b7ae8e6cd7a6c986e35dbc1e:testDatabase/demoFA_storage_test/ExportServices.swift
     }
 }
