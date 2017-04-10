@@ -11,10 +11,10 @@ import RealmSwift
 
 class BusinessService: Object {
     
-    var title: String = ""
-    var serviceDescription: String = ""
+    dynamic var title: String = ""
+    dynamic var serviceDescription: String = ""
     var subscribers: List<Person> = List<Person>()
-    var brand: String = ""
+    dynamic var brand: String = ""
     
     override class func primaryKey() -> String? {
         return "title"
@@ -31,7 +31,4 @@ class BusinessService: Object {
         subscribers.append(person)
     }
     
-//    public func resetSubscribers() {
-//        subscribers.removeAll()
-//    }
 }

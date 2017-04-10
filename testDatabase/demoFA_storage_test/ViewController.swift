@@ -34,7 +34,7 @@ class ViewController: UIViewController {
         realmServices.resetDataBase()
         
         //Init du service
-        let businessService = BusinessService(_title: "CanalPlay", _serviceDescription: "Service de vidéo à la demande",_brand: "Canal Sattelite")
+        let businessService = BusinessService(_title: "CanalPlay", _serviceDescription: "Service de vidéo à la demande",_brand: "Canal Satellite")
         
         //Ajout d'une personne
         let person = Person(_email: email.text!)
@@ -47,8 +47,8 @@ class ViewController: UIViewController {
         
         realmServices.createBusinessService(businessService: businessService)
         realmServices.addSubscriberToService(title: businessService.title, subscriber: person)
-        realmServices.addAttributeToPerson(email: person.email, attribute: attribute)
-        realmServices.addAttributeToPerson(email: person.email, attribute: attribute2)
+        realmServices.addAttributeToPerson(_email: person.email, attribute: attribute)
+        realmServices.addAttributeToPerson(_email: person.email, attribute: attribute2)
         
         
         
@@ -58,11 +58,8 @@ class ViewController: UIViewController {
         print("My test name : \(myTest)")
         
         print(exportServices.getSubscribersJSON(_businessServiceTitle: "CanalPlay"))
-<<<<<<< HEAD
         
         print(exportServices.getSubscribersCSV(_businessServiceTitle: "CanalPlay"))
-=======
->>>>>>> 4c42a4be66bcb4c5b7ae8e6cd7a6c986e35dbc1e
         
         realmServices.resetService(title: "CanalPlay")
         

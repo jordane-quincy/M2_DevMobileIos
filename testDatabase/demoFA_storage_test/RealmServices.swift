@@ -23,12 +23,12 @@ class RealmServices {
         }
     }
     
-    public func addAttributeToPerson(email: String, attribute: Attribute) {
+    public func addAttributeToPerson(_email: String, attribute: Attribute) {
         
-        let person = self.realm.object(ofType: Person.self, forPrimaryKey: email as AnyObject)
+        let person = self.realm.object(ofType: Person.self, forPrimaryKey: _email as AnyObject)
 //        print(person!)
         try! self.realm.write {
-            person!.addAttributeToPerson(attribute: attribute)
+            person!.addAttributeToPerson(_attribute: attribute)
         }
     }
     
@@ -86,8 +86,7 @@ class RealmServices {
     }
     
     public func getBusinessService(_title:String) -> BusinessService{
-        let businessService = self.realm.object(ofType: BusinessService.self, forPrimaryKey: _title as AnyObject)
-        return businessService!
+        return self.realm.object(ofType: BusinessService.self, forPrimaryKey: _title as AnyObject)!
     }
     
 }

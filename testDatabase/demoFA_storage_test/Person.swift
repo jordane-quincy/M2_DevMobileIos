@@ -30,7 +30,7 @@ class Person: Object {
         attributes = _attributes
     }
     
-    public func addAttributeToPerson(attribute: Attribute) {
-        attributes.append(attribute)
+    public func addAttributeToPerson(_attribute: Attribute) {
+        attributes.append(_attribute)
     }
 }
