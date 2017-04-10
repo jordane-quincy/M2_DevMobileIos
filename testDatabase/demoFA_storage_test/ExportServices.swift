@@ -1,5 +1,5 @@
 //
-//  JsonServices.swift
+//  ExportServices.swift
 //  demoFA_storage_test
 //
 //  Created by DeptInfo on 06/04/2017.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class JsonServices {
+class ExportServices {
     
     public func  getSubscribersJSON(_businessServiceTitle: String) -> String{
         let realmServices = RealmServices()
@@ -27,6 +27,22 @@ class JsonServices {
         result = result.substring(to: result.index(before: result.endIndex))
         result = result + "\n\t]"
         result = result + "\n}"
+        return result
+    }
+    
+    public func getSubscribersCSV(_businessServiceTitle: String) -> String {
+        let realmServices = RealmServices()
+        let businessService = realmServices.getBusinessService(_title: _businessServiceTitle)
+        
+        var result = "sep=;\n"
+        for subscriber in businessService.subscribers {
+            result = result + "\n"
+            for attribute in subscriber.attributes {
+                result = result + "\(attribute.value);"
+            }
+            result = result.substring(to: result.index(before: result.endIndex))
+            result = result + "\n"
+        }
         return result
     }
 }
