@@ -28,7 +28,7 @@ class ViewController: UIViewController {
     @IBAction func save(_ sender: Any) {
         
         let realmServices = RealmServices()
-        let jsonServices = JsonServices()
+        let exportServices = ExportServices()
         let realm = try! Realm()
         
         realmServices.resetDataBase()
@@ -57,7 +57,7 @@ class ViewController: UIViewController {
         
         print("My test name : \(myTest)")
         
-        print(jsonServices.getSubscribersJSON(_businessServiceTitle: "CanalPlay"))
+        print(exportServices.getSubscribersJSON(_businessServiceTitle: "CanalPlay"))
         
         realmServices.resetService(title: "CanalPlay")
         

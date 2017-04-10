@@ -8,9 +8,9 @@
 
 import Foundation
 
-class JsonServices {
+class ExportServices {
     
-    public func  getSubscribersJSON(_businessServiceTitle: String) -> String{
+    public func getSubscribersJSON(_businessServiceTitle: String) -> String{
         let realmServices = RealmServices()
         let businessService = realmServices.getBusinessService(_title: _businessServiceTitle)
         
@@ -28,5 +28,17 @@ class JsonServices {
         result = result + "\n\t]"
         result = result + "\n}"
         return result
+    }
+    
+    public func getSubscribersCSV(_businessServiceTitle: String) -> String {
+        var result = "sep=,\n"
+        let realmServices = RealmServices()
+        let businessService = realmServices.getBusinessService(_title: _businessServiceTitle)
+        
+        for subscriber in businessService.subscribers {
+            
+        }
+        
+        return result;
     }
 }
