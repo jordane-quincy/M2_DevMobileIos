@@ -58,8 +58,11 @@ class ViewController: UIViewController {
         print("My test name : \(myTest)")
         
         print(exportServices.getSubscribersJSON(_businessServiceTitle: "CanalPlay"))
+<<<<<<< HEAD
         
         print(exportServices.getSubscribersCSV(_businessServiceTitle: "CanalPlay"))
+=======
+>>>>>>> 4c42a4be66bcb4c5b7ae8e6cd7a6c986e35dbc1e
         
         realmServices.resetService(title: "CanalPlay")
         
