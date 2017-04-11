@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		42BB834C1E9CFA990046A096 /* FileServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BB834B1E9CFA990046A096 /* FileServices.swift */; };
 		9D53B62D1E9240D20075C782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D53B62C1E9240D20075C782 /* AppDelegate.swift */; };
 		9D53B62F1E9240D20075C782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D53B62E1E9240D20075C782 /* ViewController.swift */; };
 		9D53B6321E9240D20075C782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D53B6301E9240D20075C782 /* Main.storyboard */; };
@@ -57,6 +58,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		42BB834B1E9CFA990046A096 /* FileServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileServices.swift; sourceTree = "<group>"; };
 		9D53B6291E9240D20075C782 /* demoFA_storage_test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = demoFA_storage_test.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D53B62C1E9240D20075C782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9D53B62E1E9240D20075C782 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 				9D53B6381E9240D20075C782 /* Info.plist */,
 				9DF2BBB81E92825300E5F0B7 /* RealmServices.swift */,
 				9D92E1001E9612800024A1C8 /* ExportServices.swift */,
+				42BB834B1E9CFA990046A096 /* FileServices.swift */,
 			);
 			path = demoFA_storage_test;
 			sourceTree = "<group>";
@@ -300,6 +303,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9DD324911E94C44B00F35522 /* Attribute.swift in Sources */,
+				42BB834C1E9CFA990046A096 /* FileServices.swift in Sources */,
 				9DF2BBB91E92825300E5F0B7 /* RealmServices.swift in Sources */,
 				9D53B6621E9241890075C782 /* Person.swift in Sources */,
 				9DF2BBB71E926A3300E5F0B7 /* BusinessService.swift in Sources */,
