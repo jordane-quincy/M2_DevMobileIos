@@ -15,7 +15,7 @@ class ExportServices {
         let businessService = realmServices.getBusinessService(_title: _businessServiceTitle)
         
         var result = "{"
-        result = result + "\n\t\"serviceName\" : \"\(businessService.title)\"\n\t\"subscribers\" : ["
+        result = result + "\n\t\"serviceName\" : \"\(businessService.title)\",\n\t\"serviceDescription\" : \"\(businessService.serviceDescription)\",\n\t\"brand\" : \"\(businessService.brand)\",\n\t\"subscribers\" : ["
         for subscriber in businessService.subscribers {
             result = result + "\n\t\t{"
             for attribute in subscriber.attributes {
@@ -34,7 +34,7 @@ class ExportServices {
         let realmServices = RealmServices()
         let businessService = realmServices.getBusinessService(_title: _businessServiceTitle) as BusinessService
         
-        var header = "sep=,\nserviceName,"
+        var header = "sep=,\nserviceName,serviceDescription,brand,"
         var result = ""
         
         
@@ -45,7 +45,7 @@ class ExportServices {
         header = header + "\n"
         
         for subscriber in businessService.subscribers {
-            result = result + "\(businessService.title),"
+            result = result + "\(businessService.title),\(businessService.serviceDescription),\(businessService.brand),"
             for attribute in subscriber.attributes {
                 result = result + "\(attribute.value),"
             }
