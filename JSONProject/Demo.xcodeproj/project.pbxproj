@@ -36,8 +36,6 @@
 		B52CE2331E3756BA00EC68E5 /* DemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52CE2321E3756BA00EC68E5 /* DemoUITests.swift */; };
 		B52CE2411E49C66C00EC68E5 /* StructTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52CE2401E49C66C00EC68E5 /* StructTest.swift */; };
 		B58540221E76D24A00C7A698 /* ICloudService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58540211E76D24A00C7A698 /* ICloudService.swift */; };
-		B5BC81B31E66C035006AF92F /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = B5BC81B21E66C035006AF92F /* Cartfile */; };
-		B5BC81B61E66C2F5006AF92F /* FileBrowser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5BC81B51E66C2F4006AF92F /* FileBrowser.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,8 +105,6 @@
 		B52CE2401E49C66C00EC68E5 /* StructTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StructTest.swift; sourceTree = "<group>"; };
 		B5326A101E76C5A500B57076 /* Demo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Demo.entitlements; sourceTree = "<group>"; };
 		B58540211E76D24A00C7A698 /* ICloudService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ICloudService.swift; sourceTree = "<group>"; };
-		B5BC81B21E66C035006AF92F /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Cartfile; path = ../Cartfile; sourceTree = "<group>"; };
-		B5BC81B51E66C2F4006AF92F /* FileBrowser.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FileBrowser.framework; path = Carthage/Build/iOS/FileBrowser.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,7 +113,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4297F6041EABC412004204CD /* Realm.framework in Frameworks */,
-				B5BC81B61E66C2F5006AF92F /* FileBrowser.framework in Frameworks */,
 				4297F6061EABC412004204CD /* RealmSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -207,7 +202,6 @@
 			isa = PBXGroup;
 			children = (
 				B5326A101E76C5A500B57076 /* Demo.entitlements */,
-				B5BC81B21E66C035006AF92F /* Cartfile */,
 				B52CE2121E3756B900EC68E5 /* AppDelegate.swift */,
 				B52CE2141E3756B900EC68E5 /* ViewController.swift */,
 				B52CE2161E3756B900EC68E5 /* Main.storyboard */,
@@ -248,7 +242,6 @@
 		B5BC81B41E66C2F4006AF92F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				B5BC81B51E66C2F4006AF92F /* FileBrowser.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -264,7 +257,6 @@
 				B52CE20C1E3756B900EC68E5 /* Frameworks */,
 				B52CE20D1E3756B900EC68E5 /* Resources */,
 				B5BC80E81E65F35A006AF92F /* Embed Frameworks */,
-				B5BC81B71E66C312006AF92F /* ShellScript */,
 				4297F5FF1EABC3C2004204CD /* ShellScript */,
 			);
 			buildRules = (
@@ -371,7 +363,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B5BC81B31E66C035006AF92F /* Cartfile in Resources */,
 				B52CE21D1E3756B900EC68E5 /* LaunchScreen.storyboard in Resources */,
 				B51EFB841E6569A800C3CC90 /* exampleJSON1.json in Resources */,
 				B51EFB821E65673200C3CC90 /* testFile.json in Resources */,
@@ -409,20 +400,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "bash \"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework/strip-frameworks.sh\"";
-		};
-		B5BC81B71E66C312006AF92F /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/FileBrowser.framework",
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
 		};
 /* End PBXShellScriptBuildPhase section */
 
