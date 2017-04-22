@@ -58,8 +58,9 @@ class FileServices: UIViewController, UIDocumentMenuDelegate, UIDocumentPickerDe
 
     
     public func createJSONFileFromString(JSONStringified: String, businessServiceTitle: String, viewController: ViewController) {
-        
-        let file = "exportJSON.json"
+        let now = Date()
+        let dateUtils = DateUtils()
+        let file = "exportJSON_" + businessServiceTitle + "_" + dateUtils.formatDate(date: now) + ".json"
         //let data = JSONStringify.data(using: .utf8)!
         
         if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {

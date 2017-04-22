@@ -152,11 +152,14 @@ class ViewController: UIViewController, UIDocumentMenuDelegate, UIDocumentPicker
         
         print("My test name : \(myTest)")
         
+        
         print("DEBUT -----  Test save file in application directory")
         let exportJSONServices = exportServices.getSubscribersJSON(_businessServiceTitle: "CanalPlay")
         let fileService = FileServices()
         fileService.createJSONFileFromString(JSONStringified: exportJSONServices, businessServiceTitle: "CanalPlay", viewController: self)
         print("FIN ----- Test save file in application directory")
+ 
+        
         print(exportServices.getSubscribersJSON(_businessServiceTitle: "CanalPlay"))
         
         

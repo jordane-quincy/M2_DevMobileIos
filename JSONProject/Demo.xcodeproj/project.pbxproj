@@ -19,6 +19,7 @@
 		4297F6051EABC412004204CD /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4297F6001EABC405004204CD /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4297F6061EABC412004204CD /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4297F6011EABC405004204CD /* RealmSwift.framework */; };
 		4297F6071EABC412004204CD /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4297F6011EABC405004204CD /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		42AD2D2D1EABE8F200F2C00A /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AD2D2C1EABE8F200F2C00A /* DateUtils.swift */; };
 		42AFEF1E1E7EA003001587DA /* JsonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AFEF1D1E7EA003001587DA /* JsonModel.swift */; };
 		42AFEF201E87C617001587DA /* JsonModel_params.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AFEF1F1E87C617001587DA /* JsonModel_params.swift */; };
 		42AFEF221E87F7FD001587DA /* JsonModel_offers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AFEF211E87F7FD001587DA /* JsonModel_offers.swift */; };
@@ -81,6 +82,7 @@
 		4297F5FC1EABC386004204CD /* Attribute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Attribute.swift; sourceTree = "<group>"; };
 		4297F6001EABC405004204CD /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
 		4297F6011EABC405004204CD /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
+		42AD2D2C1EABE8F200F2C00A /* DateUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateUtils.swift; sourceTree = "<group>"; };
 		42AFEF1D1E7EA003001587DA /* JsonModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonModel.swift; sourceTree = "<group>"; };
 		42AFEF1F1E87C617001587DA /* JsonModel_params.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonModel_params.swift; sourceTree = "<group>"; };
 		42AFEF211E87F7FD001587DA /* JsonModel_offers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonModel_offers.swift; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				B51EFB861E65874600C3CC90 /* JSONUtils.swift */,
+				42AD2D2C1EABE8F200F2C00A /* DateUtils.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -421,6 +424,7 @@
 				B51EFB871E65874600C3CC90 /* JSONUtils.swift in Sources */,
 				42AFEF1E1E7EA003001587DA /* JsonModel.swift in Sources */,
 				42AFEF201E87C617001587DA /* JsonModel_params.swift in Sources */,
+				42AD2D2D1EABE8F200F2C00A /* DateUtils.swift in Sources */,
 				B52CE2131E3756B900EC68E5 /* AppDelegate.swift in Sources */,
 				4297F5FD1EABC386004204CD /* Person.swift in Sources */,
 				4297F5FE1EABC386004204CD /* Attribute.swift in Sources */,
