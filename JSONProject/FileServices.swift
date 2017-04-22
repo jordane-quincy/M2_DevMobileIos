@@ -10,10 +10,55 @@ import Foundation
 import UIKit
 
 // Class that manage files
-class FileServices: UIViewController {
+class FileServices: UIViewController, UIDocumentMenuDelegate, UIDocumentPickerDelegate, UINavigationControllerDelegate {
     
+    @available(iOS 8.0, *)
+    public func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt urlDocument: URL) {
+        //print("The Url is : \(urlDocument)")
+        
+        //let contentDocument = try String(contentsOf: urlDocument)
+        //print("The document content : \(contentDocument)")
+        
+        URLSession.shared.dataTask(with:urlDocument) { (data, response, error) in
+            let json = try? JSONSerialization.jsonObject(with: data!, options: [])
+            
+            //if let dictionary = json as? [String: Any] {
+            //    for (key, value) in dictionary {
+            //        // access all key / value pairs in dictionary
+            //
+            //        //print("key : \(key) , value : \(value)")
+            //    }
+            //}
+            
+            do {
+                let jsonModel = try JsonModel(jsonContent: json as! [String: Any])
+                print("jsonModel : \(jsonModel)")
+            } catch let serializationError {
+                //in case of unsuccessful deserialization
+                print(serializationError)
+            }
+            
+            
+            }.resume()
+        
+        
+    }
     
-    public func createJSONFileFromString(JSONStringified: String) {
+    @available(iOS 8.0, *)
+    public func documentMenu(_ documentMenu:     UIDocumentMenuViewController, didPickDocumentPicker documentPicker: UIDocumentPickerViewController) {
+        documentPicker.delegate = self
+        present(documentPicker, animated: true, completion: nil)
+    }
+    
+    func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
+        print("we cancelled")
+        dismiss(animated: true, completion: nil)
+        
+    }
+
+    
+    public func createJSONFileFromString(JSONStringified: String, businessServiceTitle: String, viewController: ViewController) {
+        
         let file = "exportJSON.json"
         //let data = JSONStringify.data(using: .utf8)!
         
@@ -32,11 +77,11 @@ class FileServices: UIViewController {
                 let text2 = try String(contentsOf: path, encoding: String.Encoding.utf8)
                 print(text2);
                 
-                // Trying to move the file in the app directory to iCloud using Document Picker
+                // Move the file in the app directory to iCloud using Document Picker
                 let documentPicker: UIDocumentPickerViewController = UIDocumentPickerViewController(url: path, in: UIDocumentPickerMode.moveToService)
-                
+                documentPicker.delegate = viewController
                 documentPicker.modalPresentationStyle = UIModalPresentationStyle.fullScreen
-                self.present(documentPicker, animated: true, completion: nil)
+                viewController.present(documentPicker, animated: true, completion: nil)
             }
             catch {/* error handling here */}
         }
