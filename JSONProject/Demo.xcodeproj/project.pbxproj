@@ -8,7 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		42214FFF1E88158F0011C565 /* JsonModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42214FFE1E88158F0011C565 /* JsonModelTest.swift */; };
-		422150031E9274510011C565 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422150021E9274510011C565 /* Person.swift */; };
+		422150031E9274510011C565 /* PersonTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422150021E9274510011C565 /* PersonTest.swift */; };
+		4297F5F71EABC37D004204CD /* BusinessService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4297F5F31EABC37D004204CD /* BusinessService.swift */; };
+		4297F5F81EABC37D004204CD /* RealmServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4297F5F41EABC37D004204CD /* RealmServices.swift */; };
+		4297F5F91EABC37D004204CD /* ExportServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4297F5F51EABC37D004204CD /* ExportServices.swift */; };
+		4297F5FA1EABC37D004204CD /* FileServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4297F5F61EABC37D004204CD /* FileServices.swift */; };
+		4297F5FD1EABC386004204CD /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4297F5FB1EABC386004204CD /* Person.swift */; };
+		4297F5FE1EABC386004204CD /* Attribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4297F5FC1EABC386004204CD /* Attribute.swift */; };
+		4297F6041EABC412004204CD /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4297F6001EABC405004204CD /* Realm.framework */; };
+		4297F6051EABC412004204CD /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4297F6001EABC405004204CD /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4297F6061EABC412004204CD /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4297F6011EABC405004204CD /* RealmSwift.framework */; };
+		4297F6071EABC412004204CD /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4297F6011EABC405004204CD /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		42AFEF1E1E7EA003001587DA /* JsonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AFEF1D1E7EA003001587DA /* JsonModel.swift */; };
 		42AFEF201E87C617001587DA /* JsonModel_params.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AFEF1F1E87C617001587DA /* JsonModel_params.swift */; };
 		42AFEF221E87F7FD001587DA /* JsonModel_offers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AFEF211E87F7FD001587DA /* JsonModel_offers.swift */; };
@@ -54,6 +64,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				4297F6071EABC412004204CD /* RealmSwift.framework in Embed Frameworks */,
+				4297F6051EABC412004204CD /* Realm.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -62,7 +74,15 @@
 
 /* Begin PBXFileReference section */
 		42214FFE1E88158F0011C565 /* JsonModelTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonModelTest.swift; sourceTree = "<group>"; };
-		422150021E9274510011C565 /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		422150021E9274510011C565 /* PersonTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonTest.swift; sourceTree = "<group>"; };
+		4297F5F31EABC37D004204CD /* BusinessService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessService.swift; sourceTree = "<group>"; };
+		4297F5F41EABC37D004204CD /* RealmServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmServices.swift; sourceTree = "<group>"; };
+		4297F5F51EABC37D004204CD /* ExportServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExportServices.swift; sourceTree = "<group>"; };
+		4297F5F61EABC37D004204CD /* FileServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileServices.swift; sourceTree = "<group>"; };
+		4297F5FB1EABC386004204CD /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		4297F5FC1EABC386004204CD /* Attribute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Attribute.swift; sourceTree = "<group>"; };
+		4297F6001EABC405004204CD /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
+		4297F6011EABC405004204CD /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
 		42AFEF1D1E7EA003001587DA /* JsonModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonModel.swift; sourceTree = "<group>"; };
 		42AFEF1F1E87C617001587DA /* JsonModel_params.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonModel_params.swift; sourceTree = "<group>"; };
 		42AFEF211E87F7FD001587DA /* JsonModel_offers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonModel_offers.swift; sourceTree = "<group>"; };
@@ -96,7 +116,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4297F6041EABC412004204CD /* Realm.framework in Frameworks */,
 				B5BC81B61E66C2F5006AF92F /* FileBrowser.framework in Frameworks */,
+				4297F6061EABC412004204CD /* RealmSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -117,6 +139,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4297F5F11EABC358004204CD /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				4297F5F31EABC37D004204CD /* BusinessService.swift */,
+				4297F5F41EABC37D004204CD /* RealmServices.swift */,
+				4297F5F51EABC37D004204CD /* ExportServices.swift */,
+				4297F5F61EABC37D004204CD /* FileServices.swift */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
+		4297F5F21EABC361004204CD /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				4297F5FB1EABC386004204CD /* Person.swift */,
+				4297F5FC1EABC386004204CD /* Attribute.swift */,
+			);
+			name = Entities;
+			sourceTree = "<group>";
+		};
 		B51EFB801E65660A00C3CC90 /* JSON files */ = {
 			isa = PBXGroup;
 			children = (
@@ -137,6 +179,10 @@
 		B52CE2061E3756B900EC68E5 = {
 			isa = PBXGroup;
 			children = (
+				4297F6001EABC405004204CD /* Realm.framework */,
+				4297F6011EABC405004204CD /* RealmSwift.framework */,
+				4297F5F21EABC361004204CD /* Entities */,
+				4297F5F11EABC358004204CD /* Services */,
 				B51EFB851E6586E000C3CC90 /* Utils */,
 				B51EFB801E65660A00C3CC90 /* JSON files */,
 				B52CE2111E3756B900EC68E5 /* Demo */,
@@ -175,7 +221,7 @@
 				42AFEF251E880004001587DA /* JsonModel_features.swift */,
 				42AFEF1F1E87C617001587DA /* JsonModel_params.swift */,
 				42AFEF211E87F7FD001587DA /* JsonModel_offers.swift */,
-				422150021E9274510011C565 /* Person.swift */,
+				422150021E9274510011C565 /* PersonTest.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -219,6 +265,7 @@
 				B52CE20D1E3756B900EC68E5 /* Resources */,
 				B5BC80E81E65F35A006AF92F /* Embed Frameworks */,
 				B5BC81B71E66C312006AF92F /* ShellScript */,
+				4297F5FF1EABC3C2004204CD /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -278,7 +325,7 @@
 					B52CE20E1E3756B900EC68E5 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = K3K2528V5W;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.iCloud = {
 								enabled = 1;
@@ -350,6 +397,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		4297F5FF1EABC3C2004204CD /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "bash \"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework/strip-frameworks.sh\"";
+		};
 		B5BC81B71E66C312006AF92F /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -372,15 +432,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				42AFEF221E87F7FD001587DA /* JsonModel_offers.swift in Sources */,
+				4297F5F71EABC37D004204CD /* BusinessService.swift in Sources */,
+				4297F5FA1EABC37D004204CD /* FileServices.swift in Sources */,
 				42AFEF241E87FA65001587DA /* JsonModel_fields.swift in Sources */,
+				4297F5F91EABC37D004204CD /* ExportServices.swift in Sources */,
 				B58540221E76D24A00C7A698 /* ICloudService.swift in Sources */,
+				4297F5F81EABC37D004204CD /* RealmServices.swift in Sources */,
 				B52CE2151E3756B900EC68E5 /* ViewController.swift in Sources */,
-				422150031E9274510011C565 /* Person.swift in Sources */,
+				422150031E9274510011C565 /* PersonTest.swift in Sources */,
 				42AFEF261E880004001587DA /* JsonModel_features.swift in Sources */,
 				B51EFB871E65874600C3CC90 /* JSONUtils.swift in Sources */,
 				42AFEF1E1E7EA003001587DA /* JsonModel.swift in Sources */,
 				42AFEF201E87C617001587DA /* JsonModel_params.swift in Sources */,
 				B52CE2131E3756B900EC68E5 /* AppDelegate.swift in Sources */,
+				4297F5FD1EABC386004204CD /* Person.swift in Sources */,
+				4297F5FE1EABC386004204CD /* Attribute.swift in Sources */,
 				B52CE2411E49C66C00EC68E5 /* StructTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -534,17 +600,20 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Demo/Demo.entitlements;
-				DEVELOPMENT_TEAM = K3K2528V5W;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					RealmSwift.framework,
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Demo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = demoFA;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a92d62ec-5302-4c83-858a-f14fd3e85570";
-				PROVISIONING_PROFILE_SPECIFIER = demoFA;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -555,17 +624,20 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Demo/Demo.entitlements;
-				DEVELOPMENT_TEAM = K3K2528V5W;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					RealmSwift.framework,
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Demo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = demoFA;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a92d62ec-5302-4c83-858a-f14fd3e85570";
-				PROVISIONING_PROFILE_SPECIFIER = demoFA;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

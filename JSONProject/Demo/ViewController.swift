@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import FileBrowser
+import RealmSwift
 
 class ViewController: UIViewController, UIDocumentMenuDelegate, UIDocumentPickerDelegate, UINavigationControllerDelegate {
     //MARK: Properties
@@ -48,7 +48,7 @@ class ViewController: UIViewController, UIDocumentMenuDelegate, UIDocumentPicker
 //        }
         
         
-        let person = Person(name: "jordane", mail: "john@doe.com");
+        let person = PersonTest(name: "jordane", mail: "john@doe.com");
         
         print("person : \(person)");
         
@@ -110,7 +110,7 @@ class ViewController: UIViewController, UIDocumentMenuDelegate, UIDocumentPicker
         present(importMenu, animated: true, completion: nil)
         
         
-        var dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
+        let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
         let path = dir?.appendingPathComponent("test.json")
         let documentPicker: UIDocumentPickerViewController = UIDocumentPickerViewController(url: path!, in: UIDocumentPickerMode.moveToService)
         
