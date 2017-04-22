@@ -20,6 +20,11 @@ class ViewController: UIViewController, UIDocumentMenuDelegate, UIDocumentPicker
     
     @IBOutlet weak var fileName: UITextField!
     
+    @IBOutlet weak var name: UITextField!
+    
+    
+    @IBOutlet weak var email: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -110,18 +115,61 @@ class ViewController: UIViewController, UIDocumentMenuDelegate, UIDocumentPicker
         present(importMenu, animated: true, completion: nil)
         
         
-        let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
-        let path = dir?.appendingPathComponent("test.json")
-        let documentPicker: UIDocumentPickerViewController = UIDocumentPickerViewController(url: path!, in: UIDocumentPickerMode.moveToService)
-        
-        documentPicker.modalPresentationStyle = UIModalPresentationStyle.fullScreen
-        self.present(documentPicker, animated: true, completion: nil)
-        
         // code pour le browser sur le repo de l'app
         //let fileBrowser = FileBrowser();
         //present(fileBrowser, animated: true, completion: nil)
     }
     
+    @IBAction func testRealm(_ sender: UIButton) {
+        print("DEBUT ------ test realm!!!!")
+        let realmServices = RealmServices()
+        let exportServices = ExportServices()
+        let realm = try! Realm()
+        
+        realmServices.resetDataBase()
+        
+        //Init du service
+        let businessService = BusinessService(_title: "CanalPlay", _serviceDescription: "Service de vidéo à la demande",_brand: "Canal Satellite")
+        
+        //Ajout d'une personne
+        let person = Person(_email: email.text!)
+        
+        //Ajout d'un attribut à la personne
+        let attribute = Attribute(_label: "Nom", _fieldName: "name", _value: name.text!)
+        
+        //Ajout d'un attribut à la personne
+        let attribute2 = Attribute(_label: "Email", _fieldName: "email", _value: email.text!)
+        
+        realmServices.createBusinessService(businessService: businessService)
+        realmServices.addSubscriberToService(title: businessService.title, subscriber: person)
+        realmServices.addAttributeToPerson(_email: person.email, attribute: attribute)
+        realmServices.addAttributeToPerson(_email: person.email, attribute: attribute2)
+        
+        
+        
+        
+        let myTest = realm.objects(Person.self)
+        
+        print("My test name : \(myTest)")
+        
+        print("DEBUT -----  Test save file in application directory")
+        let exportJSONServices = exportServices.getSubscribersJSON(_businessServiceTitle: "CanalPlay")
+        let fileService = FileServices()
+        fileService.createJSONFileFromString(JSONStringified: exportJSONServices)
+        print("FIN ----- Test save file in application directory")
+        print(exportServices.getSubscribersJSON(_businessServiceTitle: "CanalPlay"))
+        
+        
+        
+        print(exportServices.getSubscribersCSV(_businessServiceTitle: "CanalPlay"))
+        
+        realmServices.resetService(title: "CanalPlay")
+        
+        let myTest2 = realm.objects(BusinessService.self)
+        
+        print("My test after Reset = \(myTest2)")
+        print("FIN ---- test realm!!!!")
+    }
     
 }
 
