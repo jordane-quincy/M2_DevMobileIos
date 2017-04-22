@@ -57,7 +57,14 @@ class ViewController: UIViewController {
         
         print("My test name : \(myTest)")
         
+        print("DEBUT -----  Test save file in application directory")
+        let exportJSONServices = exportServices.getSubscribersJSON(_businessServiceTitle: "CanalPlay")
+        let fileService = FileServices()
+        fileService.createJSONFileFromString(JSONStringified: exportJSONServices)
+        print("FIN ----- Test save file in application directory")
         print(exportServices.getSubscribersJSON(_businessServiceTitle: "CanalPlay"))
+        
+        
         
         print(exportServices.getSubscribersCSV(_businessServiceTitle: "CanalPlay"))
         

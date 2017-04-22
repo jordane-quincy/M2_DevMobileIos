@@ -58,6 +58,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4297F5D41EABAAAE004204CD /* demoFA_storage_test.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = demoFA_storage_test.entitlements; sourceTree = "<group>"; };
 		42BB834B1E9CFA990046A096 /* FileServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileServices.swift; sourceTree = "<group>"; };
 		9D53B6291E9240D20075C782 /* demoFA_storage_test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = demoFA_storage_test.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D53B62C1E9240D20075C782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -132,6 +133,7 @@
 		9D53B62B1E9240D20075C782 /* demoFA_storage_test */ = {
 			isa = PBXGroup;
 			children = (
+				4297F5D41EABAAAE004204CD /* demoFA_storage_test.entitlements */,
 				9D53B62C1E9240D20075C782 /* AppDelegate.swift */,
 				9D53B62E1E9240D20075C782 /* ViewController.swift */,
 				9D53B6611E9241890075C782 /* Person.swift */,
@@ -235,7 +237,12 @@
 					9D53B6281E9240D20075C782 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = K3K2528V5W;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.iCloud = {
+								enabled = 0;
+							};
+						};
 					};
 					9D53B63C1E9240D30075C782 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -453,6 +460,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = K3K2528V5W;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -460,8 +468,10 @@
 				);
 				INFOPLIST_FILE = demoFA_storage_test/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "ISTV.demoFA-storage-test";
+				PRODUCT_BUNDLE_IDENTIFIER = demoFA;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "a92d62ec-5302-4c83-858a-f14fd3e85570";
+				PROVISIONING_PROFILE_SPECIFIER = demoFA;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -470,6 +480,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = K3K2528V5W;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -477,8 +488,10 @@
 				);
 				INFOPLIST_FILE = demoFA_storage_test/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "ISTV.demoFA-storage-test";
+				PRODUCT_BUNDLE_IDENTIFIER = demoFA;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "a92d62ec-5302-4c83-858a-f14fd3e85570";
+				PROVISIONING_PROFILE_SPECIFIER = demoFA;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

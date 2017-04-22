@@ -110,6 +110,12 @@ class ViewController: UIViewController, UIDocumentMenuDelegate, UIDocumentPicker
         present(importMenu, animated: true, completion: nil)
         
         
+        var dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
+        let path = dir?.appendingPathComponent("test.json")
+        let documentPicker: UIDocumentPickerViewController = UIDocumentPickerViewController(url: path!, in: UIDocumentPickerMode.moveToService)
+        
+        documentPicker.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+        self.present(documentPicker, animated: true, completion: nil)
         
         // code pour le browser sur le repo de l'app
         //let fileBrowser = FileBrowser();

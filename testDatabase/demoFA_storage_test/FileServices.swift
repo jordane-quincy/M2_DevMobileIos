@@ -7,12 +7,13 @@
 //
 
 import Foundation
+import UIKit
 
 // Class that manage files
-class FileServices {
+class FileServices: UIViewController {
     
     
-    public func createJSONFileFromString(JSONStringify: String) {
+    public func createJSONFileFromString(JSONStringified: String) {
         let file = "exportJSON.json"
         //let data = JSONStringify.data(using: .utf8)!
         
@@ -20,15 +21,22 @@ class FileServices {
             
             let path = dir.appendingPathComponent(file)
             
-            //writing
+            //writing the file in the app directory
             do {
-                try JSONStringify.write(to: path, atomically: false, encoding: String.Encoding.utf8)
+                try JSONStringified.write(to: path, atomically: false, encoding: String.Encoding.utf8)
             }
             catch {/* error handling here */}
             
             //reading
             do {
                 let text2 = try String(contentsOf: path, encoding: String.Encoding.utf8)
+                print(text2);
+                
+                // Trying to move the file in the app directory to iCloud using Document Picker
+                let documentPicker: UIDocumentPickerViewController = UIDocumentPickerViewController(url: path, in: UIDocumentPickerMode.moveToService)
+                
+                documentPicker.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+                self.present(documentPicker, animated: true, completion: nil)
             }
             catch {/* error handling here */}
         }
