@@ -585,7 +585,6 @@
 				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
 					RealmSwift.framework,
 					"$(PROJECT_DIR)",
 				);
@@ -609,7 +608,6 @@
 				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
 					RealmSwift.framework,
 					"$(PROJECT_DIR)",
 				);

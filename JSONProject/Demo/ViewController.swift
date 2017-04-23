@@ -22,8 +22,9 @@ class ViewController: UIViewController, UIDocumentMenuDelegate, UIDocumentPicker
     
     @IBOutlet weak var name: UITextField!
     
-    
     @IBOutlet weak var email: UITextField!
+    
+    var path : URL? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -102,7 +103,26 @@ class ViewController: UIViewController, UIDocumentMenuDelegate, UIDocumentPicker
     }
     
     func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
-        print("we cancelled")
+        print("we cancelled main view controller")
+        // We have to delete the file from the local repo if it exists
+        // path is different of nil if we are creating a file
+        // If we cancel the document picker during the selection of a file
+        // We have to do nothing and so path will be equal to nil
+        if (path != nil) {
+            do {
+                try String(contentsOf: path!, encoding: String.Encoding.utf8)
+                do {
+                    try FileManager.default.removeItem(at: path!)
+                    path = nil;
+                } catch {
+                    print("error deleting file at path : " + (path?.absoluteString)!)
+                }
+            }
+            catch {
+                path = nil
+            }
+        }
+        
         dismiss(animated: true, completion: nil)
         
     }
@@ -156,7 +176,7 @@ class ViewController: UIViewController, UIDocumentMenuDelegate, UIDocumentPicker
         print("DEBUT -----  Test save file in application directory")
         let exportJSONServices = exportServices.getSubscribersJSON(_businessServiceTitle: "CanalPlay")
         let fileService = FileServices()
-        fileService.createJSONFileFromString(JSONStringified: exportJSONServices, businessServiceTitle: "CanalPlay", viewController: self)
+        path = fileService.createJSONFileFromString(JSONStringified: exportJSONServices, businessServiceTitle: "CanalPlay", viewController: self)
         print("FIN ----- Test save file in application directory")
  
         

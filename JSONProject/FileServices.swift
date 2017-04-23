@@ -56,13 +56,7 @@ class FileServices: UIViewController, UIDocumentMenuDelegate, UIDocumentPickerDe
         
     }
 
-    
-    public func createJSONFileFromString(JSONStringified: String, businessServiceTitle: String, viewController: ViewController) {
-        let now = Date()
-        let dateUtils = DateUtils()
-        let file = "exportJSON_" + businessServiceTitle + "_" + dateUtils.formatDate(date: now) + ".json"
-        //let data = JSONStringify.data(using: .utf8)!
-        
+    public func createAndMoveFileiCloud (file: String, JSONStringified: String, viewController: ViewController) -> URL? {
         if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
             
             let path = dir.appendingPathComponent(file)
@@ -73,19 +67,23 @@ class FileServices: UIViewController, UIDocumentMenuDelegate, UIDocumentPickerDe
             }
             catch {/* error handling here */}
             
-            //reading
-            do {
-                let text2 = try String(contentsOf: path, encoding: String.Encoding.utf8)
-                print(text2);
-                
-                // Move the file in the app directory to iCloud using Document Picker
-                let documentPicker: UIDocumentPickerViewController = UIDocumentPickerViewController(url: path, in: UIDocumentPickerMode.moveToService)
-                documentPicker.delegate = viewController
-                documentPicker.modalPresentationStyle = UIModalPresentationStyle.fullScreen
-                viewController.present(documentPicker, animated: true, completion: nil)
-            }
-            catch {/* error handling here */}
+            // Move the file in the app directory to iCloud using Document Picker
+            
+            let documentPicker: UIDocumentPickerViewController = UIDocumentPickerViewController(url: path, in: UIDocumentPickerMode.moveToService)
+            documentPicker.delegate = viewController
+            documentPicker.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+            viewController.present(documentPicker, animated: true, completion: nil)
+            return path
         }
-        
+        else {
+            return nil
+        }
+    }
+    
+    public func createJSONFileFromString(JSONStringified: String, businessServiceTitle: String, viewController: ViewController) -> URL? {
+        let now = Date()
+        let dateUtils = DateUtils()
+        let file = "exportJSON_" + businessServiceTitle + "_" + dateUtils.formatDate(date: now) + ".json"
+        return createAndMoveFileiCloud(file: file, JSONStringified: JSONStringified, viewController: viewController)
     }
 }
