@@ -26,6 +26,8 @@ class ViewController: UIViewController, UIDocumentMenuDelegate, UIDocumentPicker
     
     var path : URL? = nil
     
+    var isImportingFile = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -70,30 +72,28 @@ class ViewController: UIViewController, UIDocumentMenuDelegate, UIDocumentPicker
         
         //let contentDocument = try String(contentsOf: urlDocument)
         //print("The document content : \(contentDocument)")
-        
-        URLSession.shared.dataTask(with:urlDocument) { (data, response, error) in
-            let json = try? JSONSerialization.jsonObject(with: data!, options: [])
-            
-            //if let dictionary = json as? [String: Any] {
-            //    for (key, value) in dictionary {
-            //        // access all key / value pairs in dictionary
-            //
-            //        //print("key : \(key) , value : \(value)")
-            //    }
-            //}
-            
-            do {
-                let jsonModel = try JsonModel(jsonContent: json as! [String: Any])
-                print("jsonModel : \(jsonModel)")
-            } catch let serializationError {
-                //in case of unsuccessful deserialization
-                print(serializationError)
-            }
-            
-            
-            }.resume()
-        
-    
+        if (isImportingFile) {
+            isImportingFile = false
+            URLSession.shared.dataTask(with:urlDocument) { (data, response, error) in
+                let json = try? JSONSerialization.jsonObject(with: data!, options: [])
+                
+                //if let dictionary = json as? [String: Any] {
+                //    for (key, value) in dictionary {
+                //        // access all key / value pairs in dictionary
+                //
+                //        //print("key : \(key) , value : \(value)")
+                //    }
+                //}
+                
+                do {
+                    let jsonModel = try JsonModel(jsonContent: json as! [String: Any])
+                    print("jsonModel : \(jsonModel)")
+                } catch let serializationError {
+                    //in case of unsuccessful deserialization
+                    print(serializationError)
+                }
+                }.resume()
+        }
     }
     
     @available(iOS 8.0, *)
@@ -153,6 +153,7 @@ class ViewController: UIViewController, UIDocumentMenuDelegate, UIDocumentPicker
     
     @IBAction func selectFile(_ sender: UIButton) {
         // Code pour récupérer file depuis iCloud
+        isImportingFile = true
         let importMenu = UIDocumentMenuViewController(documentTypes: ["public.text"], in: .import)
         importMenu.delegate = self
         present(importMenu, animated: true, completion: nil)
@@ -195,12 +196,20 @@ class ViewController: UIViewController, UIDocumentMenuDelegate, UIDocumentPicker
         
         print("My test name : \(myTest)")
         
-        
-        print("DEBUT -----  Test save file in application directory")
-        let exportJSONServices = exportServices.getSubscribersJSON(_businessServiceTitle: "CanalPlay")
         let fileService = FileServices()
+        /*
+        print("DEBUT -----  Test save fileJSON in application directory")
+        let exportJSONServices = exportServices.getSubscribersJSON(_businessServiceTitle: "CanalPlay")
         path = fileService.createJSONFileFromString(JSONStringified: exportJSONServices, businessServiceTitle: "CanalPlay", viewController: self)
-        print("FIN ----- Test save file in application directory")
+        print("FIN ----- Test save fileJSON in application directory")
+        */
+        
+        
+        print("DEBUT -----  Test save fileCSV in application directory")
+        let exportCSVServices = exportServices.getSubscribersCSV(_businessServiceTitle: "CanalPlay")
+        path = fileService.createCSVFileFromString(CSVStringified: exportCSVServices, businessServiceTitle: "CanalPlay", viewController: self)
+        print("FIN ----- Test save fileCSV in application directory")
+        
         
         let importMenu = UIDocumentMenuViewController(url: path!, in: UIDocumentPickerMode.moveToService)
         importMenu.delegate = self

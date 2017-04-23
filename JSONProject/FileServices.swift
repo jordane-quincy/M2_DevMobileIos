@@ -12,14 +12,14 @@ import UIKit
 // Class that manage files
 class FileServices: UIViewController {
     
-    public func createAndMoveFileiCloud (file: String, JSONStringified: String, viewController: ViewController) -> URL? {
+    public func createAndMoveFileiCloud (file: String, fileStringified: String, viewController: ViewController) -> URL? {
         if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
             
             let path = dir.appendingPathComponent(file)
             
             //writing the file in the app directory
             do {
-                try JSONStringified.write(to: path, atomically: false, encoding: String.Encoding.utf8)
+                try fileStringified.write(to: path, atomically: false, encoding: String.Encoding.utf8)
             }
             catch {/* error handling here */}
             
@@ -44,6 +44,13 @@ class FileServices: UIViewController {
         let now = Date()
         let dateUtils = DateUtils()
         let file = "exportJSON_" + businessServiceTitle + "_" + dateUtils.formatDate(date: now) + ".json"
-        return createAndMoveFileiCloud(file: file, JSONStringified: JSONStringified, viewController: viewController)
+        return createAndMoveFileiCloud(file: file, fileStringified: JSONStringified, viewController: viewController)
+    }
+    
+    public func createCSVFileFromString(CSVStringified: String, businessServiceTitle: String, viewController: ViewController) -> URL? {
+        let now = Date()
+        let dateUtils = DateUtils()
+        let file = "exportCSV_" + businessServiceTitle + "_" + dateUtils.formatDate(date: now) + ".csv"
+        return createAndMoveFileiCloud(file: file, fileStringified: CSVStringified, viewController: viewController)
     }
 }
