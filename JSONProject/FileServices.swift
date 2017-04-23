@@ -10,52 +10,8 @@ import Foundation
 import UIKit
 
 // Class that manage files
-class FileServices: UIViewController, UIDocumentMenuDelegate, UIDocumentPickerDelegate, UINavigationControllerDelegate {
+class FileServices: UIViewController {
     
-    @available(iOS 8.0, *)
-    public func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt urlDocument: URL) {
-        //print("The Url is : \(urlDocument)")
-        
-        //let contentDocument = try String(contentsOf: urlDocument)
-        //print("The document content : \(contentDocument)")
-        
-        URLSession.shared.dataTask(with:urlDocument) { (data, response, error) in
-            let json = try? JSONSerialization.jsonObject(with: data!, options: [])
-            
-            //if let dictionary = json as? [String: Any] {
-            //    for (key, value) in dictionary {
-            //        // access all key / value pairs in dictionary
-            //
-            //        //print("key : \(key) , value : \(value)")
-            //    }
-            //}
-            
-            do {
-                let jsonModel = try JsonModel(jsonContent: json as! [String: Any])
-                print("jsonModel : \(jsonModel)")
-            } catch let serializationError {
-                //in case of unsuccessful deserialization
-                print(serializationError)
-            }
-            
-            
-            }.resume()
-        
-        
-    }
-    
-    @available(iOS 8.0, *)
-    public func documentMenu(_ documentMenu:     UIDocumentMenuViewController, didPickDocumentPicker documentPicker: UIDocumentPickerViewController) {
-        documentPicker.delegate = self
-        present(documentPicker, animated: true, completion: nil)
-    }
-    
-    func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
-        print("we cancelled")
-        dismiss(animated: true, completion: nil)
-        
-    }
-
     public func createAndMoveFileiCloud (file: String, JSONStringified: String, viewController: ViewController) -> URL? {
         if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
             
@@ -69,10 +25,14 @@ class FileServices: UIViewController, UIDocumentMenuDelegate, UIDocumentPickerDe
             
             // Move the file in the app directory to iCloud using Document Picker
             
-            let documentPicker: UIDocumentPickerViewController = UIDocumentPickerViewController(url: path, in: UIDocumentPickerMode.moveToService)
+            let importMenu = UIDocumentMenuViewController(url: path, in: UIDocumentPickerMode.moveToService)
+            importMenu.delegate = viewController
+            viewController.present(importMenu, animated: true, completion: nil)
+            
+            /*let documentPicker: UIDocumentPickerViewController = UIDocumentPickerViewController(url: path, in: UIDocumentPickerMode.moveToService)
             documentPicker.delegate = viewController
             documentPicker.modalPresentationStyle = UIModalPresentationStyle.fullScreen
-            viewController.present(documentPicker, animated: true, completion: nil)
+            viewController.present(documentPicker, animated: true, completion: nil)*/
             return path
         }
         else {

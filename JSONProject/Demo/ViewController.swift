@@ -97,20 +97,20 @@ class ViewController: UIViewController, UIDocumentMenuDelegate, UIDocumentPicker
     }
     
     @available(iOS 8.0, *)
-    public func documentMenu(_ documentMenu:     UIDocumentMenuViewController, didPickDocumentPicker documentPicker: UIDocumentPickerViewController) {
+    public func documentMenu(_ documentMenu: UIDocumentMenuViewController, didPickDocumentPicker documentPicker: UIDocumentPickerViewController) {
         documentPicker.delegate = self
         present(documentPicker, animated: true, completion: nil)
     }
     
     func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
-        print("we cancelled main view controller")
+        print("we cancelled document picker")
         // We have to delete the file from the local repo if it exists
         // path is different of nil if we are creating a file
         // If we cancel the document picker during the selection of a file
         // We have to do nothing and so path will be equal to nil
         if (path != nil) {
             do {
-                try String(contentsOf: path!, encoding: String.Encoding.utf8)
+                _ = try String(contentsOf: path!, encoding: String.Encoding.utf8)
                 do {
                     try FileManager.default.removeItem(at: path!)
                     path = nil;
@@ -126,6 +126,29 @@ class ViewController: UIViewController, UIDocumentMenuDelegate, UIDocumentPicker
         dismiss(animated: true, completion: nil)
         
     }
+    
+    func documentMenuWasCancelled(_ documentMenu: UIDocumentMenuViewController) {
+        print("we cancelled document menu")
+        // We have to delete the file from the local repo if it exists
+        // path is different of nil if we are creating a file
+        // If we cancel the document picker during the selection of a file
+        // We have to do nothing and so path will be equal to nil
+        if (path != nil) {
+            do {
+                _ = try String(contentsOf: path!, encoding: String.Encoding.utf8)
+                do {
+                    try FileManager.default.removeItem(at: path!)
+                    path = nil;
+                } catch {
+                    print("error deleting file at path : " + (path?.absoluteString)!)
+                }
+            }
+            catch {
+                path = nil
+            }
+        }
+    }
+
     
     
     @IBAction func selectFile(_ sender: UIButton) {
@@ -178,7 +201,12 @@ class ViewController: UIViewController, UIDocumentMenuDelegate, UIDocumentPicker
         let fileService = FileServices()
         path = fileService.createJSONFileFromString(JSONStringified: exportJSONServices, businessServiceTitle: "CanalPlay", viewController: self)
         print("FIN ----- Test save file in application directory")
- 
+        
+        let importMenu = UIDocumentMenuViewController(url: path!, in: UIDocumentPickerMode.moveToService)
+        importMenu.delegate = self
+        self.present(importMenu, animated: true, completion: nil)
+        
+
         
         print(exportServices.getSubscribersJSON(_businessServiceTitle: "CanalPlay"))
         
