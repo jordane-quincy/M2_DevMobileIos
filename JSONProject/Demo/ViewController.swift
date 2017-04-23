@@ -104,6 +104,7 @@ class ViewController: UIViewController, UIDocumentMenuDelegate, UIDocumentPicker
     
     func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
         print("we cancelled document picker")
+        isImportingFile = false
         // We have to delete the file from the local repo if it exists
         // path is different of nil if we are creating a file
         // If we cancel the document picker during the selection of a file
@@ -129,6 +130,7 @@ class ViewController: UIViewController, UIDocumentMenuDelegate, UIDocumentPicker
     
     func documentMenuWasCancelled(_ documentMenu: UIDocumentMenuViewController) {
         print("we cancelled document menu")
+        isImportingFile = false
         // We have to delete the file from the local repo if it exists
         // path is different of nil if we are creating a file
         // If we cancel the document picker during the selection of a file
