@@ -34,3 +34,8 @@ Cycle de vie Ios : https://developer.apple.com/library/content/documentation/iPh
 
 Parsing Json :
 https://developer.apple.com/swift/blog/?id=37
+
+
+### Informations système
+## RAM :
+http://stackoverflow.com/questions/5012886/determining-the-available-amount-of-ram-on-an-ios-device#8540665
