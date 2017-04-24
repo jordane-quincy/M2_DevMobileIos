@@ -38,3 +38,5 @@ https://developer.apple.com/swift/blog/?id=37
 
 ### Informations système
 http://stackoverflow.com/questions/33855998/how-to-get-hardware-details-in-swift
+
+https://github.com/beltex/SystemKit/pull/24/commits/60dcaf3683bcc9ba472d318e9560a7f5203b3e60?diff=split
