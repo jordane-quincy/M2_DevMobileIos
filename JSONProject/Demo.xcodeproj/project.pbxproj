@@ -20,6 +20,8 @@
 		4297F6061EABC412004204CD /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4297F6011EABC405004204CD /* RealmSwift.framework */; };
 		4297F6071EABC412004204CD /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4297F6011EABC405004204CD /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		42AD2D2D1EABE8F200F2C00A /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AD2D2C1EABE8F200F2C00A /* DateUtils.swift */; };
+		42AD2D2F1EAE0C6900F2C00A /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AD2D2E1EAE0C6900F2C00A /* TableViewController.swift */; };
+		42AD2D311EAE0D3900F2C00A /* MenuItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AD2D301EAE0D3900F2C00A /* MenuItems.swift */; };
 		42AFEF1E1E7EA003001587DA /* JsonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AFEF1D1E7EA003001587DA /* JsonModel.swift */; };
 		42AFEF201E87C617001587DA /* JsonModel_params.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AFEF1F1E87C617001587DA /* JsonModel_params.swift */; };
 		42AFEF221E87F7FD001587DA /* JsonModel_offers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AFEF211E87F7FD001587DA /* JsonModel_offers.swift */; };
@@ -83,6 +85,8 @@
 		4297F6001EABC405004204CD /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
 		4297F6011EABC405004204CD /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
 		42AD2D2C1EABE8F200F2C00A /* DateUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateUtils.swift; sourceTree = "<group>"; };
+		42AD2D2E1EAE0C6900F2C00A /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		42AD2D301EAE0D3900F2C00A /* MenuItems.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuItems.swift; sourceTree = "<group>"; };
 		42AFEF1D1E7EA003001587DA /* JsonModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonModel.swift; sourceTree = "<group>"; };
 		42AFEF1F1E87C617001587DA /* JsonModel_params.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonModel_params.swift; sourceTree = "<group>"; };
 		42AFEF211E87F7FD001587DA /* JsonModel_offers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonModel_offers.swift; sourceTree = "<group>"; };
@@ -140,7 +144,6 @@
 			isa = PBXGroup;
 			children = (
 				4297F5F31EABC37D004204CD /* BusinessService.swift */,
-				4297F5F41EABC37D004204CD /* RealmServices.swift */,
 				4297F5F51EABC37D004204CD /* ExportServices.swift */,
 				4297F5F61EABC37D004204CD /* FileServices.swift */,
 			);
@@ -150,6 +153,7 @@
 		4297F5F21EABC361004204CD /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				4297F5F41EABC37D004204CD /* RealmServices.swift */,
 				4297F5FB1EABC386004204CD /* Person.swift */,
 				4297F5FC1EABC386004204CD /* Attribute.swift */,
 			);
@@ -219,6 +223,8 @@
 				42AFEF1F1E87C617001587DA /* JsonModel_params.swift */,
 				42AFEF211E87F7FD001587DA /* JsonModel_offers.swift */,
 				422150021E9274510011C565 /* PersonTest.swift */,
+				42AD2D2E1EAE0C6900F2C00A /* TableViewController.swift */,
+				42AD2D301EAE0D3900F2C00A /* MenuItems.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -424,9 +430,11 @@
 				B51EFB871E65874600C3CC90 /* JSONUtils.swift in Sources */,
 				42AFEF1E1E7EA003001587DA /* JsonModel.swift in Sources */,
 				42AFEF201E87C617001587DA /* JsonModel_params.swift in Sources */,
+				42AD2D2F1EAE0C6900F2C00A /* TableViewController.swift in Sources */,
 				42AD2D2D1EABE8F200F2C00A /* DateUtils.swift in Sources */,
 				B52CE2131E3756B900EC68E5 /* AppDelegate.swift in Sources */,
 				4297F5FD1EABC386004204CD /* Person.swift in Sources */,
+				42AD2D311EAE0D3900F2C00A /* MenuItems.swift in Sources */,
 				4297F5FE1EABC386004204CD /* Attribute.swift in Sources */,
 				B52CE2411E49C66C00EC68E5 /* StructTest.swift in Sources */,
 			);
