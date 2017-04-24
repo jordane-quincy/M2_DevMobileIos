@@ -37,5 +37,4 @@ https://developer.apple.com/swift/blog/?id=37
 
 
 ### Informations système
-## RAM :
-http://stackoverflow.com/questions/5012886/determining-the-available-amount-of-ram-on-an-ios-device#8540665
+http://stackoverflow.com/questions/33855998/how-to-get-hardware-details-in-swift
