@@ -143,7 +143,7 @@
 		4297F5F11EABC358004204CD /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				4297F5F31EABC37D004204CD /* BusinessService.swift */,
+				4297F5F41EABC37D004204CD /* RealmServices.swift */,
 				4297F5F51EABC37D004204CD /* ExportServices.swift */,
 				4297F5F61EABC37D004204CD /* FileServices.swift */,
 			);
@@ -153,7 +153,7 @@
 		4297F5F21EABC361004204CD /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				4297F5F41EABC37D004204CD /* RealmServices.swift */,
+				4297F5F31EABC37D004204CD /* BusinessService.swift */,
 				4297F5FB1EABC386004204CD /* Person.swift */,
 				4297F5FC1EABC386004204CD /* Attribute.swift */,
 			);
