@@ -9,6 +9,9 @@
 import UIKit
 import RealmSwift
 
+import Darwin
+import Foundation
+
 class ViewController: UIViewController, UIDocumentMenuDelegate, UIDocumentPickerDelegate, UINavigationControllerDelegate {
     //MARK: Properties
 
@@ -166,6 +169,13 @@ class ViewController: UIViewController, UIDocumentMenuDelegate, UIDocumentPicker
         //present(fileBrowser, animated: true, completion: nil)
     }
     
+//    @IBAction func deviceGuru(_ sender: UIButton) {
+//        
+//        let deviceName = DeviceGuru.hardware()
+//        let deviceCode = DeviceGuru.hardwareString()
+//        print("\(deviceName) - \(deviceCode)") //Ex: iphone_7_PLUS - iPhone9,2
+//    }
+    
     @IBAction func testRealm(_ sender: UIButton) {
         print("DEBUT ------ test realm!!!!")
         let realmServices = RealmServices()
@@ -233,5 +243,29 @@ class ViewController: UIViewController, UIDocumentMenuDelegate, UIDocumentPicker
         print("FIN ---- test realm!!!!")
     }
     
+    @IBAction func testDevice(_ sender: UIButton) {
+        var sys = System()
+        let cpuUsage = sys.usageCPU()
+        print("\tSYSTEM:          \(Int(cpuUsage.system))%")
+        print("\tUSER:            \(Int(cpuUsage.user))%")
+        print("\tIDLE:            \(Int(cpuUsage.idle))%")
+        print("\tNICE:            \(Int(cpuUsage.nice))%")
+        
+        
+        print("\n-- MEMORY --")
+        print("\tPHYSICAL SIZE:   \(System.physicalMemory())GB")
+        
+        let memoryUsage = System.memoryUsage()
+        func memoryUnit(_ value: Double) -> String {
+            if value < 1.0 { return String(Int(value * 1000.0))    + "MB" }
+            else           { return NSString(format:"%.2f", value) as String + "GB" }
+        }
+        
+        print("\tFREE:            \(memoryUnit(memoryUsage.free))")
+        print("\tWIRED:           \(memoryUnit(memoryUsage.wired))")
+        print("\tACTIVE:          \(memoryUnit(memoryUsage.active))")
+        print("\tINACTIVE:        \(memoryUnit(memoryUsage.inactive))")
+        print("\tCOMPRESSED:      \(memoryUnit(memoryUsage.compressed))")
+    }
 }
 
