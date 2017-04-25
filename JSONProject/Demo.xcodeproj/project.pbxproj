@@ -100,9 +100,6 @@
 		42AFEF211E87F7FD001587DA /* JsonModel_offers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonModel_offers.swift; sourceTree = "<group>"; };
 		42AFEF231E87FA65001587DA /* JsonModel_fields.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonModel_fields.swift; sourceTree = "<group>"; };
 		42AFEF251E880004001587DA /* JsonModel_features.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonModel_features.swift; sourceTree = "<group>"; };
-<<<<<<< HEAD
-		42E1D8A81EAE223B00817BA4 /* System.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = System.swift; sourceTree = "<group>"; };
-=======
 		906274801EAE3A6900E09E57 /* ResultatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultatViewController.swift; sourceTree = "<group>"; };
 		906274811EAE3A6900E09E57 /* ResultatViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResultatViewController.xib; sourceTree = "<group>"; };
 		906274821EAE3A6900E09E57 /* SetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupViewController.swift; sourceTree = "<group>"; };
@@ -111,7 +108,6 @@
 		906274891EAE3A7100E09E57 /* AccueilViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccueilViewController.xib; sourceTree = "<group>"; };
 		9062748A1EAE3A7100E09E57 /* AideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AideViewController.swift; sourceTree = "<group>"; };
 		9062748B1EAE3A7100E09E57 /* AideViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AideViewController.xib; sourceTree = "<group>"; };
->>>>>>> ba5755b5e9092982e129fd246809390f7532d21f
 		B51EFB811E65673200C3CC90 /* testFile.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = testFile.json; path = Demo/testFile.json; sourceTree = "<group>"; };
 		B51EFB831E6569A800C3CC90 /* exampleJSON1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = exampleJSON1.json; path = Demo/exampleJSON1.json; sourceTree = "<group>"; };
 		B51EFB861E65874600C3CC90 /* JSONUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONUtils.swift; sourceTree = "<group>"; };
@@ -228,9 +224,6 @@
 		B52CE2111E3756B900EC68E5 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
-<<<<<<< HEAD
-				42E1D8A81EAE223B00817BA4 /* System.swift */,
-=======
 				906274881EAE3A7100E09E57 /* AccueilViewController.swift */,
 				906274891EAE3A7100E09E57 /* AccueilViewController.xib */,
 				9062748A1EAE3A7100E09E57 /* AideViewController.swift */,
@@ -239,7 +232,6 @@
 				906274811EAE3A6900E09E57 /* ResultatViewController.xib */,
 				906274821EAE3A6900E09E57 /* SetupViewController.swift */,
 				906274831EAE3A6900E09E57 /* SetupViewController.xib */,
->>>>>>> ba5755b5e9092982e129fd246809390f7532d21f
 				B5326A101E76C5A500B57076 /* Demo.entitlements */,
 				B52CE2121E3756B900EC68E5 /* AppDelegate.swift */,
 				B52CE2141E3756B900EC68E5 /* ViewController.swift */,
