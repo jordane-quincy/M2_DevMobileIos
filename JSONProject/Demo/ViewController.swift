@@ -244,7 +244,7 @@ class ViewController: UIViewController, UIDocumentMenuDelegate, UIDocumentPicker
     }
     
     @IBAction func testDevice(_ sender: UIButton) {
-        var sys = System()
+        /*var sys = System()
         let cpuUsage = sys.usageCPU()
         print("\tSYSTEM:          \(Int(cpuUsage.system))%")
         print("\tUSER:            \(Int(cpuUsage.user))%")
@@ -265,7 +265,7 @@ class ViewController: UIViewController, UIDocumentMenuDelegate, UIDocumentPicker
         print("\tWIRED:           \(memoryUnit(memoryUsage.wired))")
         print("\tACTIVE:          \(memoryUnit(memoryUsage.active))")
         print("\tINACTIVE:        \(memoryUnit(memoryUsage.inactive))")
-        print("\tCOMPRESSED:      \(memoryUnit(memoryUsage.compressed))")
+        print("\tCOMPRESSED:      \(memoryUnit(memoryUsage.compressed))")*/
     }
 }
 
