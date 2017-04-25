@@ -65,6 +65,9 @@
                     <rect key="frame" x="188" y="334" width="66" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" title="selectFile"/>
+                    <connections>
+                        <action selector="selectFile:" destination="-1" eventType="touchUpInside" id="fTH-di-Jyu"/>
+                    </connections>
                 </button>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bgo-ow-KBd">
                     <rect key="frame" x="198" y="426" width="97" height="30"/>
@@ -98,6 +101,9 @@
                     <rect key="frame" x="65" y="562" width="69" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" title="testRealm"/>
+                    <connections>
+                        <action selector="testRealm:" destination="-1" eventType="touchUpInside" id="6Fd-ki-9dU"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IrP-Iz-OlW">
                     <rect key="frame" x="208" y="562" width="96" height="30"/>
@@ -108,6 +114,9 @@
                     <rect key="frame" x="151" y="49" width="73" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" title="testDevice"/>
+                    <connections>
+                        <action selector="testDevice:" destination="-1" eventType="touchUpInside" id="Daw-2T-Cev"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

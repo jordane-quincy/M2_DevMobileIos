@@ -208,7 +208,7 @@ class ViewController: UIViewController, UIDocumentMenuDelegate, UIDocumentPicker
         
         print("My test name : \(myTest)")
         
-        let fileService = FileServices()
+        //let fileService = FileServices()
         /*
         print("DEBUT -----  Test save fileJSON in application directory")
         let exportJSONServices = exportServices.getSubscribersJSON(_businessServiceTitle: "CanalPlay")
@@ -218,8 +218,8 @@ class ViewController: UIViewController, UIDocumentMenuDelegate, UIDocumentPicker
         
         
         print("DEBUT -----  Test save fileCSV in application directory")
-        let exportCSVServices = exportServices.getSubscribersCSV(_businessServiceTitle: "CanalPlay")
-        path = fileService.createCSVFileFromString(CSVStringified: exportCSVServices, businessServiceTitle: "CanalPlay", viewController: self)
+        //let exportCSVServices = exportServices.getSubscribersCSV(_businessServiceTitle: "CanalPlay")
+        //path = fileService.createCSVFileFromString(CSVStringified: exportCSVServices, businessServiceTitle: "CanalPlay", viewController: self)
         print("FIN ----- Test save fileCSV in application directory")
         
         

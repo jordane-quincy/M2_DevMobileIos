@@ -12,7 +12,7 @@ import UIKit
 // Class that manage files
 class FileServices: UIViewController {
     
-    public func createAndMoveFileiCloud (file: String, fileStringified: String, viewController: ViewController) -> URL? {
+    public func createAndMoveFileiCloud (file: String, fileStringified: String, viewController: ResultatViewController) -> URL? {
         if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
             
             let path = dir.appendingPathComponent(file)
@@ -40,14 +40,14 @@ class FileServices: UIViewController {
         }
     }
     
-    public func createJSONFileFromString(JSONStringified: String, businessServiceTitle: String, viewController: ViewController) -> URL? {
+    public func createJSONFileFromString(JSONStringified: String, businessServiceTitle: String, viewController: ResultatViewController) -> URL? {
         let now = Date()
         let dateUtils = DateUtils()
         let file = "exportJSON_" + businessServiceTitle + "_" + dateUtils.formatDate(date: now) + ".json"
         return createAndMoveFileiCloud(file: file, fileStringified: JSONStringified, viewController: viewController)
     }
     
-    public func createCSVFileFromString(CSVStringified: String, businessServiceTitle: String, viewController: ViewController) -> URL? {
+    public func createCSVFileFromString(CSVStringified: String, businessServiceTitle: String, viewController: ResultatViewController) -> URL? {
         let now = Date()
         let dateUtils = DateUtils()
         let file = "exportCSV_" + businessServiceTitle + "_" + dateUtils.formatDate(date: now) + ".csv"

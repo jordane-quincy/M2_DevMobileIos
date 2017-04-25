@@ -46,6 +46,7 @@ class ResultatViewController: UIViewController, UIDocumentMenuDelegate, UIDocume
     
     @available(iOS 8.0, *)
     public func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt urlDocument: URL) {
+        
         //print("The Url is : \(urlDocument)")
         
         //let contentDocument = try String(contentsOf: urlDocument)
@@ -144,4 +145,107 @@ class ResultatViewController: UIViewController, UIDocumentMenuDelegate, UIDocume
         person.toJsonFile(pathJsonFile: "testOutput.json");
         
     }
+    
+    @IBAction func selectFile(_ sender: UIButton) {
+        // Code pour récupérer file depuis iCloud
+        isImportingFile = true
+        let importMenu = UIDocumentMenuViewController(documentTypes: ["public.text"], in: .import)
+        importMenu.delegate = self
+        present(importMenu, animated: true, completion: nil)
+    }
+    
+    @IBAction func testRealm(_ sender: UIButton) {
+        print("DEBUT ------ test realm!!!!")
+        let realmServices = RealmServices()
+        let exportServices = ExportServices()
+        let realm = try! Realm()
+        
+        realmServices.resetDataBase()
+        
+        //Init du service
+        let businessService = BusinessService(_title: "CanalPlay", _serviceDescription: "Service de vidéo à la demande",_brand: "Canal Satellite")
+        
+        //Ajout d'une personne
+        let person = Person(_email: email.text!)
+        
+        //Ajout d'un attribut à la personne
+        let attribute = Attribute(_label: "Nom", _fieldName: "name", _value: name.text!)
+        
+        //Ajout d'un attribut à la personne
+        let attribute2 = Attribute(_label: "Email", _fieldName: "email", _value: email.text!)
+        
+        realmServices.createBusinessService(businessService: businessService)
+        realmServices.addSubscriberToService(title: businessService.title, subscriber: person)
+        realmServices.addAttributeToPerson(_email: person.email, attribute: attribute)
+        realmServices.addAttributeToPerson(_email: person.email, attribute: attribute2)
+        
+        
+        
+        
+        let myTest = realm.objects(Person.self)
+        
+        print("My test name : \(myTest)")
+        
+        let fileService = FileServices()
+        
+        print("DEBUT -----  Test save fileJSON in application directory")
+        let exportJSONServices = exportServices.getSubscribersJSON(_businessServiceTitle: "CanalPlay")
+        path = fileService.createJSONFileFromString(JSONStringified: exportJSONServices, businessServiceTitle: "CanalPlay", viewController: self)
+        print("FIN ----- Test save fileJSON in application directory")
+ 
+        
+        /*
+        print("DEBUT -----  Test save fileCSV in application directory")
+        let exportCSVServices = exportServices.getSubscribersCSV(_businessServiceTitle: "CanalPlay")
+        path = fileService.createCSVFileFromString(CSVStringified: exportCSVServices, businessServiceTitle: "CanalPlay", viewController: self)
+        print("FIN ----- Test save fileCSV in application directory")
+        */
+        
+        let importMenu = UIDocumentMenuViewController(url: path!, in: UIDocumentPickerMode.moveToService)
+        importMenu.delegate = self
+        self.present(importMenu, animated: true, completion: nil)
+        
+        
+        
+        print(exportServices.getSubscribersJSON(_businessServiceTitle: "CanalPlay"))
+        
+        
+        
+        print(exportServices.getSubscribersCSV(_businessServiceTitle: "CanalPlay"))
+        
+        realmServices.resetService(title: "CanalPlay")
+        
+        let myTest2 = realm.objects(BusinessService.self)
+        
+        print("My test after Reset = \(myTest2)")
+        print("FIN ---- test realm!!!!")
+    }
+    @IBAction func testDevice(_ sender: UIButton) {
+        /*var sys = System()
+         let cpuUsage = sys.usageCPU()
+         print("\tSYSTEM:          \(Int(cpuUsage.system))%")
+         print("\tUSER:            \(Int(cpuUsage.user))%")
+         print("\tIDLE:            \(Int(cpuUsage.idle))%")
+         print("\tNICE:            \(Int(cpuUsage.nice))%")
+         
+         
+         print("\n-- MEMORY --")
+         print("\tPHYSICAL SIZE:   \(System.physicalMemory())GB")
+         
+         let memoryUsage = System.memoryUsage()
+         func memoryUnit(_ value: Double) -> String {
+         if value < 1.0 { return String(Int(value * 1000.0))    + "MB" }
+         else           { return NSString(format:"%.2f", value) as String + "GB" }
+         }
+         
+         print("\tFREE:            \(memoryUnit(memoryUsage.free))")
+         print("\tWIRED:           \(memoryUnit(memoryUsage.wired))")
+         print("\tACTIVE:          \(memoryUnit(memoryUsage.active))")
+         print("\tINACTIVE:        \(memoryUnit(memoryUsage.inactive))")
+         print("\tCOMPRESSED:      \(memoryUnit(memoryUsage.compressed))")*/
+    }
+    
+    
+    
+    
 }
