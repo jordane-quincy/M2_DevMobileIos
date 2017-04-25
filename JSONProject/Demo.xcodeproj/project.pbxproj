@@ -27,6 +27,7 @@
 		42AFEF221E87F7FD001587DA /* JsonModel_offers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AFEF211E87F7FD001587DA /* JsonModel_offers.swift */; };
 		42AFEF241E87FA65001587DA /* JsonModel_fields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AFEF231E87FA65001587DA /* JsonModel_fields.swift */; };
 		42AFEF261E880004001587DA /* JsonModel_features.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AFEF251E880004001587DA /* JsonModel_features.swift */; };
+		42B57DB01EAF87C0009EB0F1 /* TestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42B57DAF1EAF87C0009EB0F1 /* TestView.xib */; };
 		906274841EAE3A6900E09E57 /* ResultatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906274801EAE3A6900E09E57 /* ResultatViewController.swift */; };
 		906274851EAE3A6900E09E57 /* ResultatViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 906274811EAE3A6900E09E57 /* ResultatViewController.xib */; };
 		906274861EAE3A6900E09E57 /* SetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906274821EAE3A6900E09E57 /* SetupViewController.swift */; };
@@ -100,6 +101,7 @@
 		42AFEF211E87F7FD001587DA /* JsonModel_offers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonModel_offers.swift; sourceTree = "<group>"; };
 		42AFEF231E87FA65001587DA /* JsonModel_fields.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonModel_fields.swift; sourceTree = "<group>"; };
 		42AFEF251E880004001587DA /* JsonModel_features.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonModel_features.swift; sourceTree = "<group>"; };
+		42B57DAF1EAF87C0009EB0F1 /* TestView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestView.xib; sourceTree = "<group>"; };
 		906274801EAE3A6900E09E57 /* ResultatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultatViewController.swift; sourceTree = "<group>"; };
 		906274811EAE3A6900E09E57 /* ResultatViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResultatViewController.xib; sourceTree = "<group>"; };
 		906274821EAE3A6900E09E57 /* SetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupViewController.swift; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 				422150021E9274510011C565 /* PersonTest.swift */,
 				42AD2D2E1EAE0C6900F2C00A /* TableViewController.swift */,
 				42AD2D301EAE0D3900F2C00A /* MenuItems.swift */,
+				42B57DAF1EAF87C0009EB0F1 /* TestView.xib */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -404,6 +407,7 @@
 				906274871EAE3A6900E09E57 /* SetupViewController.xib in Resources */,
 				9062748F1EAE3A7100E09E57 /* AideViewController.xib in Resources */,
 				B52CE2181E3756B900EC68E5 /* Main.storyboard in Resources */,
+				42B57DB01EAF87C0009EB0F1 /* TestView.xib in Resources */,
 				9062748D1EAE3A7100E09E57 /* AccueilViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -446,7 +450,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				42AFEF221E87F7FD001587DA /* JsonModel_offers.swift in Sources */,
-				42E1D8A91EAE223B00817BA4 /* System.swift in Sources */,
 				4297F5F71EABC37D004204CD /* BusinessService.swift in Sources */,
 				4297F5FA1EABC37D004204CD /* FileServices.swift in Sources */,
 				906274841EAE3A6900E09E57 /* ResultatViewController.swift in Sources */,

@@ -8,61 +8,82 @@
 
 import UIKit
 
-class AccueilViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource  {
+class AccueilViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UIScrollViewDelegate  {
     
     var pickerData : [(value: String, key: String)] = []
+    
+    var scrollView = UIScrollView()
+    var containerView = UIView()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+
+    }
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        scrollView.frame = view.bounds
+        containerView.frame = CGRect(x: 0, y: 0, width: scrollView.contentSize.width, height: scrollView.contentSize.height)
     }
     
     
     func createViewFromJson(json: JsonModel?){
         print(json as Any)
         
-        let realmServices = RealmServices()
         
-        
-        let title: UILabel = UILabel(frame: CGRect(x: 20, y: 20, width: 350.00, height: 30.00));
-        title.text = json?.title
-        
-        self.view.addSubview(title)
-        let description: UILabel = UILabel(frame: CGRect(x: 20, y: 50, width: 350.00, height: 100.00));
-        
+        // Setup scrollview
+        scrollView = UIScrollView()
+        scrollView.delegate = self
+        scrollView.contentSize = CGSize(width: 375, height: 2000)
+        view.addSubview(scrollView)
+        containerView = UIView()
+        scrollView.addSubview(containerView)
+        self.view.addSubview(scrollView)
         
         
         //Init du service
-        /* 
-        TO DO
-        CHECK IF SERVICE NOT ALREADY EXIST
-        */
+        /*
+         TO DO
+         CHECK IF SERVICE NOT ALREADY EXIST
+         */
+        let realmServices = RealmServices()
+        
         realmServices.resetDataBase()
         let businessService = BusinessService(_title: (json?.title)!, _serviceDescription: (json?.description)!,_brand: "")
         
         realmServices.createBusinessService(businessService: businessService)
         
-        description.numberOfLines = 0
+        
+        
+        
+        // Setup interface
+        
+        let title: UILabel = UILabel(frame: CGRect(x: 20, y: 20, width: 350.00, height: 30.00));
+        title.text = json?.title
+        
+        containerView.addSubview(title)
+        let description: UILabel = UILabel(frame: CGRect(x: 20, y: 50, width: 350.00, height: 100.00));
+                description.numberOfLines = 0
         description.text = json?.description
-        self.view.addSubview(description)
+        containerView.addSubview(description)
         var pX = 170
         for field in (json?.commonFields)! {
             let title: UILabel = UILabel(frame: CGRect(x: 20, y: CGFloat(pX), width: 350.00, height: 30.00));
             title.text = field.label
-            self.view.addSubview(title)
+            containerView.addSubview(title)
             pX += 30
             if(field.input == InputType.date){
                 let datepicker: UIDatePicker = UIDatePicker(frame: CGRect(x: 20, y: CGFloat(pX), width: 350.00, height: 100.00));
                 
                 datepicker.date = Date()
                 datepicker.datePickerMode = UIDatePickerMode.date
-                self.view.addSubview(datepicker)
+                containerView.addSubview(datepicker)
                 pX += 100
             } else if(field.input == InputType.text){
                 let txtField: UITextField = UITextField(frame: CGRect(x: 20, y: CGFloat(pX), width: 350.00, height: 30.00));
                 txtField.placeholder = field.params?.placeholder
-                self.view.addSubview(txtField)
+                containerView.addSubview(txtField)
                 pX += 100
             } else if(field.input == InputType.select){
                 for choice in (field.params?.choices)! {
@@ -73,7 +94,7 @@ class AccueilViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
                 
                 picker.delegate = self
                 picker.dataSource = self
-                self.view.addSubview(picker)
+                containerView.addSubview(picker)
                 pX += 100
             } else if(field.input == InputType.radio){
                 var items : [String] = []
@@ -84,12 +105,12 @@ class AccueilViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
                 let segmentedControl: UISegmentedControl = UISegmentedControl(items: items);
                 segmentedControl.frame = CGRect(x: 20, y: CGFloat(pX), width: 350.00, height: 30.00);
                 segmentedControl.selectedSegmentIndex = 0
-                self.view.addSubview(segmentedControl)
+                containerView.addSubview(segmentedControl)
                 pX += 30
             }
             
         }
-        self.view.frame.size.height = 10000
+        //self.view.frame.size.height = 10000
     }
     
     override func didReceiveMemoryWarning() {
