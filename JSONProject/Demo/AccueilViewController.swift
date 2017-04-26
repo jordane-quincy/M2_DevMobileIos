@@ -35,7 +35,6 @@ class AccueilViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         // Setup scrollview
         scrollView = UIScrollView()
         scrollView.delegate = self
-        scrollView.contentSize = CGSize(width: 375, height: 2000)
         view.addSubview(scrollView)
         containerView = UIView()
         scrollView.addSubview(containerView)
@@ -110,6 +109,8 @@ class AccueilViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
             }
             
         }
+        scrollView.contentSize = CGSize(width: 375, height: pX)
+
         //self.view.frame.size.height = 10000
     }
     
