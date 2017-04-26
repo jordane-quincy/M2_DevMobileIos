@@ -85,6 +85,12 @@ class RealmServices {
         }
     }
     
+    public func getBusinessServicesArray() -> Array<BusinessService> {
+        let results: Results<BusinessService> = self.realm.objects(BusinessService.self)
+        let allServices = Array(results)
+        return allServices
+    }
+    
     public func getBusinessService(_title:String) -> BusinessService{
         return self.realm.object(ofType: BusinessService.self, forPrimaryKey: _title as AnyObject)!
     }
