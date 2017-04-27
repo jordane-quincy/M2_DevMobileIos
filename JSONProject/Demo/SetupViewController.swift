@@ -51,13 +51,13 @@ class SetupViewController: UIViewController, UIDocumentMenuDelegate, UIDocumentP
                     myVC1.createViewFromJson(json: jsonModel)
                     
                     // create the service in dataBase
-                    /*
-                     TO DO
-                     CHECK IF SERVICE NOT ALREADY EXIST
-                     */
                     let realmServices = RealmServices()
                     let businessService = BusinessService(_title: (jsonModel?.title)!, _serviceDescription: (jsonModel?.description)!, _brand: "")
-                    realmServices.createBusinessService(businessService: businessService)
+                    // On vérifie si le service n'existe pas déjà en database
+                    if (realmServices.serviceFree(title: businessService.title)) {
+                        realmServices.createBusinessService(businessService: businessService)
+                    }
+                    
                     
                     
                 } catch let serializationError {

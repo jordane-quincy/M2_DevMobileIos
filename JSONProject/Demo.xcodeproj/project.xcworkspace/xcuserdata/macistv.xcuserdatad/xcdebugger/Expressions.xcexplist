@@ -3,18 +3,18 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "RealmServices.getBusinessServicesArray() -&gt; [BusinessService]:RealmServices.swift">
+         contextName = "RealmServices.serviceFree(title : String) -&gt; Bool:RealmServices.swift">
          <PersistentStrings>
             <PersistentString
-               value = "self.realm">
+               value = "self.realm.object(ofType: BusinessService.self, forPrimaryKey: title as AnyObject)">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "FileServices.createJSONFileFromString(JSONStringified : String) -&gt; ():FileServices.swift">
+         contextName = "RealmServices.getBusinessServicesArray() -&gt; [BusinessService]:RealmServices.swift">
          <PersistentStrings>
             <PersistentString
-               value = "path">
+               value = "self.realm">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -26,6 +26,14 @@
             </PersistentString>
             <PersistentString
                value = "controller._title">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "FileServices.createJSONFileFromString(JSONStringified : String) -&gt; ():FileServices.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "path">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

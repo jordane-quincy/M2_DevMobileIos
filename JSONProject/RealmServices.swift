@@ -107,4 +107,13 @@ class RealmServices {
         return self.realm.object(ofType: BusinessService.self, forPrimaryKey: _title as AnyObject)!
     }
     
+    public func serviceFree(title: String) -> Bool {
+        if (self.realm.object(ofType: BusinessService.self, forPrimaryKey: title as AnyObject) != nil) {
+            return false
+        }
+        else {
+            return true
+        }
+    }
+    
 }
