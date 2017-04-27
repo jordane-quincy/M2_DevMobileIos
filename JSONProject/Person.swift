@@ -10,24 +10,22 @@ import Foundation
 import RealmSwift
 
 class Person: Object {
-    
-    dynamic var email: String = ""
+    dynamic var id: Int = 0
     var attributes: List<Attribute> = List<Attribute>()
     let owner = LinkingObjects(fromType: BusinessService.self, property: "subscribers")
     
-    override class func primaryKey() -> String? {
-        return "email"
+    override static func primaryKey() -> String? {
+        return "id"
     }
     
-    convenience public init(_email: String) {
-        self.init();
-        email = _email
+    public func incrementID() -> Int {
+        let realm = try! Realm()
+        return (realm.objects(Person.self).max(ofProperty: "id") as Int? ?? 0) + 1
     }
     
-    convenience public init(_email: String, _attributes: List<Attribute>){
+    convenience public init(id: Int) {
         self.init();
-        email = _email
-        attributes = _attributes
+        self.id = id
     }
     
     public func addAttributeToPerson(_attribute: Attribute) {

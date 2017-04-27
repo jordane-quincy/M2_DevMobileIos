@@ -32,7 +32,8 @@ class AccueilViewController: UIViewController, UIPickerViewDelegate, UIScrollVie
         // get data from UI for the Person Object
         // Test if all requiredField are completed
         let subViews = self.containerView.subviews
-        let person = Person(_email: "1")
+        let person = Person()
+        person.id = person.incrementID()
         for view in subViews {
             var attributeFieldName = ""
             var attributeLabel = ""
