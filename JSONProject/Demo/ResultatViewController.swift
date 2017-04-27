@@ -116,11 +116,7 @@ class ResultatViewController: UITableViewController, UIDocumentMenuDelegate, UID
     }
     
     func refreshServicesArray(){
-        //DispatchQueue.global().async {
-           // autoreleasepool {
-                self.services = self.realmServices.getBusinessServicesArray()
-           // }
-        //}
+        self.services = self.realmServices.getBusinessServicesArray()
     }
    
     override func viewDidAppear(_ animated: Bool) {

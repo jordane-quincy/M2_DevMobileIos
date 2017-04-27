@@ -13,6 +13,8 @@ class AccueilViewController: UIViewController, UIPickerViewDelegate, UIScrollVie
     
     var scrollView = UIScrollView()
     var containerView = UIView()
+    let realmServices = RealmServices()
+    var serviceTitle: String = ""
     
     
     override func viewDidLoad() {
@@ -27,33 +29,48 @@ class AccueilViewController: UIViewController, UIPickerViewDelegate, UIScrollVie
     }
     
     func savePerson(_ sender: UIButton) {
-        print("bouton good")
-        // On récupère les informations de la personne
+        // get data from UI for the Person Object
+        // Test if all requiredField are completed
         let subViews = self.containerView.subviews
-
+        let person = Person(_email: "1")
         for view in subViews {
+            var attributeFieldName = ""
+            var attributeLabel = ""
+            var attributeValue = ""
             if let textField = view as? CustomTextField {
-                print(textField.label)
-                print(textField.fieldName)
-                print(textField.text ?? "")
+                attributeFieldName = textField.fieldName
+                attributeLabel = textField.label
+                attributeValue = textField.text ?? ""
             }
             if let datePickerField = view as? CustomDatePicker {
-                print(datePickerField.label)
-                print(datePickerField.fieldName)
-                print(datePickerField.date)
+                attributeFieldName = datePickerField.fieldName
+                attributeLabel = datePickerField.label
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "dd/MM/yyyy"
+                attributeValue = dateFormatter.string(from: datePickerField.date)
             }
             if let pickerField = view as? CustomPickerView {
-                print(pickerField.label)
-                print(pickerField.fieldName)
-                print(pickerField.pickerData[pickerField.selectedRow(inComponent: 0)])
-                
+                attributeFieldName = pickerField.fieldName
+                attributeLabel = pickerField.label
+                attributeValue = pickerField.pickerData[pickerField.selectedRow(inComponent: 0)].value
             }
             if let segmentedControlField = view as? CustomSegmentedControl {
-                print(segmentedControlField.label)
-                print(segmentedControlField.fieldName)
-                print(segmentedControlField.titleForSegment(at: segmentedControlField.selectedSegmentIndex) ?? "")
+                attributeFieldName = segmentedControlField.fieldName
+                attributeLabel = segmentedControlField.label
+                attributeValue = segmentedControlField.titleForSegment(at: segmentedControlField.selectedSegmentIndex) ?? ""
             }
+            // Set the attribute only if we have the attribute fieldName and Label
+            // We can have empty attributeValue because the field can be not required
+            if (attributeLabel != "" && attributeFieldName != "") {
+                let attribute = Attribute(_label: attributeLabel, _fieldName: attributeFieldName, _value: attributeValue)
+                person.addAttributeToPerson(_attribute: attribute)
+            }
+            
         }
+        print(person)
+        // Save the person in realm database
+        realmServices.createPerson(person: person)
+        realmServices.addSubscriberToService(title: self.serviceTitle, subscriber: person)
     }
     
     
@@ -73,6 +90,7 @@ class AccueilViewController: UIViewController, UIPickerViewDelegate, UIScrollVie
             
             let title: UILabel = UILabel(frame: CGRect(x: 20, y: 20, width: 350.00, height: 30.00));
             title.text = json?.title
+            self.serviceTitle = (json?.title)!
         
             self.containerView.addSubview(title)
             let description: UILabel = UILabel(frame: CGRect(x: 20, y: 50, width: 350.00, height: 100.00));
