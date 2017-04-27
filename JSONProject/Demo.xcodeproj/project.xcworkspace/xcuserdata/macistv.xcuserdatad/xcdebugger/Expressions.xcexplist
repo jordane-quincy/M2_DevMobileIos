@@ -30,10 +30,26 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "AccueilViewController.savePerson(UIButton) -&gt; ():AccueilViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "subViews[7].fieldName">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "FileServices.createJSONFileFromString(JSONStringified : String) -&gt; ():FileServices.swift">
          <PersistentStrings>
             <PersistentString
                value = "path">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "AccueilViewController.(savePerson(UIButton) -&gt; ()).(closure #1):AccueilViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "textFieldSubViews">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

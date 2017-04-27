@@ -27,6 +27,20 @@ class AccueilViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         containerView.frame = CGRect(x: 0, y: 0, width: scrollView.contentSize.width, height: scrollView.contentSize.height)
     }
     
+    func savePerson(_ sender: UIButton) {
+        print("bouton good")
+        // On récupère les informations de la personne
+        let subViews = self.containerView.subviews
+
+        for view in subViews {
+            if let textField = view as? CustomTextField {
+                print(textField.label)
+                print(textField.fieldName)
+                print(textField.text ?? "")
+            }
+        }
+    }
+    
     
     func createViewFromJson(json: JsonModel?){
         print(json as Any)
@@ -50,29 +64,31 @@ class AccueilViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
                 description.numberOfLines = 0
             description.text = json?.description
             self.containerView.addSubview(description)
-            var pX = 170
+            var pX = 140
             for field in (json?.commonFields)! {
                 let title: UILabel = UILabel(frame: CGRect(x: 20, y: CGFloat(pX), width: 350.00, height: 30.00));
                 title.text = field.label
                 self.containerView.addSubview(title)
                 pX += 30
                 if(field.input == InputType.date){
-                    let datepicker: UIDatePicker = UIDatePicker(frame: CGRect(x: 20, y: CGFloat(pX), width: 350.00, height: 100.00));
+                    let datepicker: CustomDatePicker = CustomDatePicker(frame: CGRect(x: 20, y: CGFloat(pX), width: 350.00, height: 100.00));
                 
                     datepicker.date = Date()
                     datepicker.datePickerMode = UIDatePickerMode.date
                     self.containerView.addSubview(datepicker)
                     pX += 100
                 } else if(field.input == InputType.text){
-                    let txtField: UITextField = UITextField(frame: CGRect(x: 20, y: CGFloat(pX), width: 350.00, height: 30.00));
+                    let txtField: CustomTextField = CustomTextField(frame: CGRect(x: 20, y: CGFloat(pX), width: 350.00, height: 30.00));
+                    txtField.fieldName = field.fieldId
+                    txtField.label = field.label
                     txtField.placeholder = field.params?.placeholder
                     self.containerView.addSubview(txtField)
-                    pX += 100
+                    pX += 60
                 } else if(field.input == InputType.select){
                     for choice in (field.params?.choices)! {
                         self.pickerData.append((choice.label, choice.value))
                     }
-                    let picker: UIPickerView = UIPickerView(frame: CGRect(x: 20, y: CGFloat(pX), width: 350.00, height: 100.00));
+                    let picker: CustomPickerView = CustomPickerView(frame: CGRect(x: 20, y: CGFloat(pX), width: 350.00, height: 100.00));
                 
                 
                     picker.delegate = self
@@ -91,12 +107,21 @@ class AccueilViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
                     self.containerView.addSubview(segmentedControl)
                     pX += 30
                 }
-            
             }
-            self.scrollView.contentSize = CGSize(width: 375, height: pX)
+            pX += 30
+            // Ajout du bouton
+            let saveButton = UIButton(frame: CGRect(x: 20, y: CGFloat(pX), width: 350.00, height: 30.00))
+            saveButton.setTitle("title", for: .normal)
+            saveButton.addTarget(self, action: #selector(self.savePerson(_:)), for: .touchUpInside)
+            saveButton.backgroundColor = UIColor.blue
+            
+            self.containerView.addSubview(saveButton)
+            self.scrollView.contentSize = CGSize(width: 375, height: pX + 100)
         }
         //self.view.frame.size.height = 10000
     }
+    
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
