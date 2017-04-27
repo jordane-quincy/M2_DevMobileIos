@@ -1,5 +1,5 @@
 //
-//  CustomPickerView.swift
+//  CustomSegmentedControl.swift
 //  Demo
 //
 //  Created by MAC ISTV on 27/04/2017.
@@ -9,9 +9,7 @@
 import Foundation
 import UIKit
 
-class CustomPickerView: UIPickerView {
+class CustomSegmentedControl: UISegmentedControl {
     var fieldName: String = ""
     var label: String = ""
-    var pickerData : [(value: String, key: String)] = []
-
 }

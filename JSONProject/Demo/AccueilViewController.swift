@@ -8,9 +8,8 @@
 
 import UIKit
 
-class AccueilViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UIScrollViewDelegate  {
+class AccueilViewController: UIViewController, UIPickerViewDelegate, UIScrollViewDelegate  {
     
-    var pickerData : [(value: String, key: String)] = []
     
     var scrollView = UIScrollView()
     var containerView = UIView()
@@ -37,6 +36,22 @@ class AccueilViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
                 print(textField.label)
                 print(textField.fieldName)
                 print(textField.text ?? "")
+            }
+            if let datePickerField = view as? CustomDatePicker {
+                print(datePickerField.label)
+                print(datePickerField.fieldName)
+                print(datePickerField.date)
+            }
+            if let pickerField = view as? CustomPickerView {
+                print(pickerField.label)
+                print(pickerField.fieldName)
+                print(pickerField.pickerData[pickerField.selectedRow(inComponent: 0)])
+                
+            }
+            if let segmentedControlField = view as? CustomSegmentedControl {
+                print(segmentedControlField.label)
+                print(segmentedControlField.fieldName)
+                print(segmentedControlField.titleForSegment(at: segmentedControlField.selectedSegmentIndex) ?? "")
             }
         }
     }
@@ -72,7 +87,8 @@ class AccueilViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
                 pX += 30
                 if(field.input == InputType.date){
                     let datepicker: CustomDatePicker = CustomDatePicker(frame: CGRect(x: 20, y: CGFloat(pX), width: 350.00, height: 100.00));
-                
+                    datepicker.fieldName = field.fieldId
+                    datepicker.label = field.label
                     datepicker.date = Date()
                     datepicker.datePickerMode = UIDatePickerMode.date
                     self.containerView.addSubview(datepicker)
@@ -85,14 +101,23 @@ class AccueilViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
                     self.containerView.addSubview(txtField)
                     pX += 60
                 } else if(field.input == InputType.select){
+                    // Prepare data for the picker
+                    var pickerData : [(value: String, key: String)] = []
                     for choice in (field.params?.choices)! {
-                        self.pickerData.append((choice.label, choice.value))
+                        pickerData.append((choice.label, choice.value))
                     }
+                    // Create the dateSource object
+                    let dataSource = CustomPickerViewDataSource()
+                    // Set data to the dataSource object
+                    dataSource.pickerData = pickerData
+                    // Create the picker
                     let picker: CustomPickerView = CustomPickerView(frame: CGRect(x: 20, y: CGFloat(pX), width: 350.00, height: 100.00));
-                
-                
+                    picker.fieldName = field.fieldId
+                    picker.label = field.label
+                    picker.pickerData = pickerData
+                    // Set up picker with dataSource object  and pickerViewDelegate (self)
                     picker.delegate = self
-                    picker.dataSource = self
+                    picker.dataSource = dataSource
                     self.containerView.addSubview(picker)
                     pX += 100
                 } else if(field.input == InputType.radio){
@@ -100,8 +125,10 @@ class AccueilViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
                     for choice in (field.params?.choices)! {
                         items.append(choice.value)
                     }
-                
-                    let segmentedControl: UISegmentedControl = UISegmentedControl(items: items);
+                    
+                    let segmentedControl: CustomSegmentedControl = CustomSegmentedControl(items: items);
+                    segmentedControl.fieldName = field.fieldId
+                    segmentedControl.label = field.label
                     segmentedControl.frame = CGRect(x: 20, y: CGFloat(pX), width: 350.00, height: 30.00);
                     segmentedControl.selectedSegmentIndex = 0
                     self.containerView.addSubview(segmentedControl)
@@ -128,16 +155,14 @@ class AccueilViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         // Dispose of any resources that can be recreated.
     }
     
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return pickerData.count
+        let customPickerView = pickerView as? CustomPickerView
+        return customPickerView!.pickerData.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return pickerData[row].value
+        let customPickerView = pickerView as? CustomPickerView
+        return customPickerView?.pickerData[row].value
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {

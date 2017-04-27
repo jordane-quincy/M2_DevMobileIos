@@ -33,6 +33,8 @@
 		42B57DCC1EB23A76009EB0F1 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B57DCB1EB23A76009EB0F1 /* CustomTextField.swift */; };
 		42B57DCE1EB23B32009EB0F1 /* CustomPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B57DCD1EB23B32009EB0F1 /* CustomPickerView.swift */; };
 		42B57DD01EB23BD6009EB0F1 /* CustomDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B57DCF1EB23BD6009EB0F1 /* CustomDatePicker.swift */; };
+		42B57DD21EB2445D009EB0F1 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B57DD11EB2445D009EB0F1 /* CustomSegmentedControl.swift */; };
+		42B57DD61EB24FC2009EB0F1 /* CustomPickerViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B57DD51EB24FC2009EB0F1 /* CustomPickerViewDataSource.swift */; };
 		906274861EAE3A6900E09E57 /* SetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906274821EAE3A6900E09E57 /* SetupViewController.swift */; };
 		906274871EAE3A6900E09E57 /* SetupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 906274831EAE3A6900E09E57 /* SetupViewController.xib */; };
 		9062748C1EAE3A7100E09E57 /* AccueilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906274881EAE3A7100E09E57 /* AccueilViewController.swift */; };
@@ -110,6 +112,8 @@
 		42B57DCB1EB23A76009EB0F1 /* CustomTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		42B57DCD1EB23B32009EB0F1 /* CustomPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPickerView.swift; sourceTree = "<group>"; };
 		42B57DCF1EB23BD6009EB0F1 /* CustomDatePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomDatePicker.swift; sourceTree = "<group>"; };
+		42B57DD11EB2445D009EB0F1 /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
+		42B57DD51EB24FC2009EB0F1 /* CustomPickerViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPickerViewDataSource.swift; sourceTree = "<group>"; };
 		906274821EAE3A6900E09E57 /* SetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupViewController.swift; sourceTree = "<group>"; };
 		906274831EAE3A6900E09E57 /* SetupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SetupViewController.xib; sourceTree = "<group>"; };
 		906274881EAE3A7100E09E57 /* AccueilViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccueilViewController.swift; sourceTree = "<group>"; };
@@ -261,6 +265,8 @@
 				42B57DCB1EB23A76009EB0F1 /* CustomTextField.swift */,
 				42B57DCD1EB23B32009EB0F1 /* CustomPickerView.swift */,
 				42B57DCF1EB23BD6009EB0F1 /* CustomDatePicker.swift */,
+				42B57DD11EB2445D009EB0F1 /* CustomSegmentedControl.swift */,
+				42B57DD51EB24FC2009EB0F1 /* CustomPickerViewDataSource.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -465,11 +471,13 @@
 				9062748E1EAE3A7100E09E57 /* AideViewController.swift in Sources */,
 				4297F5F91EABC37D004204CD /* ExportServices.swift in Sources */,
 				906274861EAE3A6900E09E57 /* SetupViewController.swift in Sources */,
+				42B57DD21EB2445D009EB0F1 /* CustomSegmentedControl.swift in Sources */,
 				B58540221E76D24A00C7A698 /* ICloudService.swift in Sources */,
 				4297F5F81EABC37D004204CD /* RealmServices.swift in Sources */,
 				42B57DCC1EB23A76009EB0F1 /* CustomTextField.swift in Sources */,
 				B52CE2151E3756B900EC68E5 /* ViewController.swift in Sources */,
 				422150031E9274510011C565 /* PersonTest.swift in Sources */,
+				42B57DD61EB24FC2009EB0F1 /* CustomPickerViewDataSource.swift in Sources */,
 				42AFEF261E880004001587DA /* JsonModel_features.swift in Sources */,
 				42B57DC31EB0ADF0009EB0F1 /* ResultatViewController.swift in Sources */,
 				9062748C1EAE3A7100E09E57 /* AccueilViewController.swift in Sources */,

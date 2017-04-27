@@ -68,11 +68,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Demo/AccueilViewController.swift"
-            timestampString = "514997743.14786"
+            timestampString = "515000956.252008"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
             landmarkName = "savePerson(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -91,38 +91,6 @@
             endingLineNumber = "37"
             landmarkName = "savePerson(_:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Demo.AccueilViewController.savePerson (__ObjC.UIButton) -&gt; ()"
-                  moduleName = "Demo"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/macistv/Documents/M2_DevMobileIos/JSONProject/Demo/AccueilViewController.swift"
-                  timestampString = "514996412.413814"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "38"
-                  endingLineNumber = "38"
-                  offsetFromSymbolStart = "941">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Demo.AccueilViewController.savePerson (__ObjC.UIButton) -&gt; ()"
-                  moduleName = "Demo"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/macistv/Documents/M2_DevMobileIos/JSONProject/Demo/AccueilViewController.swift"
-                  timestampString = "514996412.415333"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "38"
-                  endingLineNumber = "38"
-                  offsetFromSymbolStart = "1162">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
