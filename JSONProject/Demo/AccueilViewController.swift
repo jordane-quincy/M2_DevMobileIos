@@ -33,7 +33,8 @@ class AccueilViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         
         // Setup interface
         DispatchQueue.main.async() {
-            
+            // Reset the view
+            self.view.subviews.forEach({ $0.removeFromSuperview() })
             // Setup scrollview
             self.scrollView = UIScrollView()
             self.scrollView.delegate = self
