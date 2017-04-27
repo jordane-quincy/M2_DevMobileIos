@@ -3,6 +3,14 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "RealmServices.getBusinessServicesArray() -&gt; [BusinessService]:RealmServices.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.realm">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "FileServices.createJSONFileFromString(JSONStringified : String) -&gt; ():FileServices.swift">
          <PersistentStrings>
             <PersistentString

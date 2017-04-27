@@ -11,10 +11,22 @@ import RealmSwift
 
 class RealmServices {
     
-    var realm = try! Realm()
+    var realm = try! Realm();
+    
+    
+    convenience public init(uselessThing: String) {
+        self.init()
+        if (self.realm == nil) {
+            DispatchQueue.global().async {
+                autoreleasepool {
+                    let realmObject = try! Realm()
+                    self.realm = realmObject
+                }
+            }
+        }
+    }
     
     public func addSubscriberToService(title: String, subscriber: Person) {
-
         let businessService = self.realm.object(ofType: BusinessService.self, forPrimaryKey: title as AnyObject)
 //        print(businessService!)
         try! self.realm.write {

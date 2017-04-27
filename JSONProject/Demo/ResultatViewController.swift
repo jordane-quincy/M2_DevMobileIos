@@ -108,7 +108,7 @@ class ResultatViewController: UITableViewController, UIDocumentMenuDelegate, UID
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.refreshServicesArray()
+       // self.refreshServicesArray()
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -116,9 +116,18 @@ class ResultatViewController: UITableViewController, UIDocumentMenuDelegate, UID
     }
     
     func refreshServicesArray(){
-        self.services = self.realmServices.getBusinessServicesArray()
+        //DispatchQueue.global().async {
+           // autoreleasepool {
+                self.services = self.realmServices.getBusinessServicesArray()
+           // }
+        //}
     }
-    
+   
+    override func viewDidAppear(_ animated: Bool) {
+        print("test");
+        self.refreshServicesArray()
+        self.tableView.reloadData()
+    }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return services.count

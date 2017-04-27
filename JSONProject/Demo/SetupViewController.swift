@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class SetupViewController: UIViewController, UIDocumentMenuDelegate, UIDocumentPickerDelegate, UINavigationControllerDelegate {
     
@@ -46,9 +47,18 @@ class SetupViewController: UIViewController, UIDocumentMenuDelegate, UIDocumentP
                     let jsonModel = try JsonModel(jsonContent: json as! [String: Any])
                     self.tabBarController?.selectedIndex = 1
                     let myVC1 = self.tabBarController?.viewControllers![0] as! AccueilViewController
-                    DispatchQueue.main.async() {
-                        myVC1.createViewFromJson(json: jsonModel)
-                    }
+                    // create interface
+                    myVC1.createViewFromJson(json: jsonModel)
+                    
+                    // create the service in dataBase
+                    /*
+                     TO DO
+                     CHECK IF SERVICE NOT ALREADY EXIST
+                     */
+                    let realmServices = RealmServices()
+                    let businessService = BusinessService(_title: (jsonModel?.title)!, _serviceDescription: (jsonModel?.description)!, _brand: "")
+                    realmServices.createBusinessService(businessService: businessService)
+                    
                     
                 } catch let serializationError {
                     //in case of unsuccessful deserialization
