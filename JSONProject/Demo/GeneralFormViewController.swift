@@ -17,6 +17,7 @@ class GeneralFormViewController: UIViewController, UIPickerViewDelegate, UIScrol
     var jsonModel: JsonModel? = nil
     var customNavigationController: UINavigationController? = nil
     var indexOfSelectedOffer: Int = 0
+    var person: Person? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,8 +47,10 @@ class GeneralFormViewController: UIViewController, UIPickerViewDelegate, UIScrol
         // get data from UI for the Person Object
         // Test if all requiredField are completed
         let subViews = self.containerView.subviews
-        let person = Person()
-        person.id = person.incrementID()
+        if (self.person == nil) {
+            self.person = Person()
+            self.person.id = self.person.incrementID()
+        }
         for view in subViews {
             var attributeFieldName = ""
             var attributeLabel = ""
@@ -78,14 +81,14 @@ class GeneralFormViewController: UIViewController, UIPickerViewDelegate, UIScrol
             // We can have empty attributeValue because the field can be not required
             if (attributeLabel != "" && attributeFieldName != "") {
                 let attribute = Attribute(_label: attributeLabel, _fieldName: attributeFieldName, _value: attributeValue)
-                person.addAttributeToPerson(_attribute: attribute)
+                self.person.addAttributeToPerson(_attribute: attribute)
             }
             
         }
-        print(person)
+        print(self.person)
         // Save the person in realm database
-        realmServices.createPerson(person: person)
-        realmServices.addSubscriberToService(title: (self.jsonModel?.title)!, subscriber: person)
+        realmServices.createPerson(person: self.person)
+        realmServices.addSubscriberToService(title: (self.jsonModel?.title)!, subscriber: self.person)
     }
     
     
@@ -103,22 +106,13 @@ class GeneralFormViewController: UIViewController, UIPickerViewDelegate, UIScrol
             self.containerView = UIView()
             self.scrollView.addSubview(self.containerView)
             
-            // Ajout titre service
-            let title: UILabel = UILabel(frame: CGRect(x: 20, y: 70, width: 350.00, height: 30.00));
-            title.text = "Bonjour bienvenue sur le service : " + (json?.title)!
-            self.containerView.addSubview(title)
+            // Ajout message
+            let message: UILabel = UILabel(frame: CGRect(x: 20, y: 50, width: 350.00, height: 100.00));
+            message.numberOfLines = 0
+            message.text = "Informations générales :"
+            self.containerView.addSubview(message)
             
-            
-            
-            // Ajout description du service
-            let description: UILabel = UILabel(frame: CGRect(x: 20, y: 100, width: 350.00, height: 100.00));
-            description.numberOfLines = 0
-            description.text = "Voici la description de ce service : \n" + (json?.description)!
-            self.containerView.addSubview(description)
-            
-            
-            
-            var pX = 190
+            var pX = 150
             for field in (json?.commonFields)! {
                 let title: UILabel = UILabel(frame: CGRect(x: 20, y: CGFloat(pX), width: 350.00, height: 30.00));
                 title.text = field.label
