@@ -1,0 +1,140 @@
+{
+	"title": "Schema pour les services",
+	"type": "object",
+	"properties": {
+		"title": {
+			"type": "string"
+		},
+		"description": {
+			"type": "string"
+		},
+		"icon": {
+			"description": "Age in years",
+			"type": "string"
+		},
+        "commonFields": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/field"
+            }
+        },
+        "paymentWays": {
+            "type": "array",
+            "items": {
+                "type": "string",
+                "enum": ["creditCard", "paypal", "bankTransfer"],
+            }
+        },
+
+        "offers": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "title": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "price": {
+                        "type": "number"
+                    },
+                    "specificFields": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/definitions/field"
+                        }
+                    },
+                    "features": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "price": {
+                                    "type": "number"
+                                },
+                                "title": {
+                                    "type": "string"
+                                },
+                                "description": {
+                                    "type": "string"
+                                }
+                            },
+                            "required": ["price", "title", "description"]
+                        }
+                    }
+                },
+                "required": ["price", "title", "description"]
+            }
+        }
+	},
+	"required": ["title", "description", "commonFields", "offers", "paymentWays"],
+    "definitions": {
+        "field": {
+            "type": "object",
+            "properties": {
+                "required": {
+                    "type": "boolean"
+                },
+                "fieldType": {
+                    "type": "string",
+                    "enum": ["phone", "email", "name", "date", "other"]
+                },
+                "fieldId": {
+                    "type": "string",
+                    "uniqueValue": true
+                },
+                "label": {
+                    "type": "string"
+                },
+                "input": {
+                    "type": "string",
+                    "enum": ["text", "date", "number", "check", "radio", "select"]
+                },
+                "params": {
+                    "type": "object",
+                    "properties": {
+                        "minLength": {
+                            "type": "number"
+                        },
+                        "maxLength": {
+                            "type": "number"
+                        },
+                        "regex": {
+                            "type": "string"
+                        },
+                        "placeholder": {
+                            "type": "string"
+                        },
+                        "minDate": {
+                            "type": "string"
+                        },
+                        "maxDate": {
+                            "type": "string"
+                        },
+                        "choices": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "value": {
+                                        "type" : "string"
+                                    },
+                                    "label": {
+                                        "type": "string"
+                                    },
+                                    "selected": {
+                                        "type": "boolean"
+                                    }
+                                },
+                                "required": ["value", "label"]
+                            }
+                        }
+                    }
+                }
+            },
+            "required": ["fieldId", "fieldType", "label", "input"]
+        }
+    }
+}
