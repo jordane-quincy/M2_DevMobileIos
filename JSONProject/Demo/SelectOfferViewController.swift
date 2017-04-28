@@ -1,5 +1,5 @@
 //
-//  GeneralFormViewController.swift
+//  SelectOfferViewController.swift
 //  Demo
 //
 //  Created by MAC ISTV on 28/04/2017.
@@ -8,23 +8,37 @@
 
 import UIKit
 
-class GeneralFormViewController: UIViewController, UIPickerViewDelegate, UIScrollViewDelegate  {
-    
-    
+class SelectOfferViewController: UIViewController, UIPickerViewDelegate, UIScrollViewDelegate {
+
     var scrollView = UIScrollView()
     var containerView = UIView()
     let realmServices = RealmServices()
     var jsonModel: JsonModel? = nil
+    var serviceTitle: String = ""
     var customNavigationController: UINavigationController? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        // Do any additional setup after loading the view.
     }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
         scrollView.frame = view.bounds
         containerView.frame = CGRect(x: 0, y: 0, width: scrollView.contentSize.width, height: scrollView.contentSize.height)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        // Hide the navigation bar
+        self.customNavigationController?.setNavigationBarHidden(true, animated: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -35,52 +49,16 @@ class GeneralFormViewController: UIViewController, UIPickerViewDelegate, UIScrol
         self.customNavigationController = navigationController
     }
     
-    func savePerson(_ sender: UIButton) {
-        // get data from UI for the Person Object
-        // Test if all requiredField are completed
-        let subViews = self.containerView.subviews
-        let person = Person()
-        person.id = person.incrementID()
-        for view in subViews {
-            var attributeFieldName = ""
-            var attributeLabel = ""
-            var attributeValue = ""
-            if let textField = view as? CustomTextField {
-                attributeFieldName = textField.fieldName
-                attributeLabel = textField.label
-                attributeValue = textField.text ?? ""
-            }
-            if let datePickerField = view as? CustomDatePicker {
-                attributeFieldName = datePickerField.fieldName
-                attributeLabel = datePickerField.label
-                let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "dd/MM/yyyy"
-                attributeValue = dateFormatter.string(from: datePickerField.date)
-            }
-            if let pickerField = view as? CustomPickerView {
-                attributeFieldName = pickerField.fieldName
-                attributeLabel = pickerField.label
-                attributeValue = pickerField.pickerData[pickerField.selectedRow(inComponent: 0)].value
-            }
-            if let segmentedControlField = view as? CustomSegmentedControl {
-                attributeFieldName = segmentedControlField.fieldName
-                attributeLabel = segmentedControlField.label
-                attributeValue = segmentedControlField.titleForSegment(at: segmentedControlField.selectedSegmentIndex) ?? ""
-            }
-            // Set the attribute only if we have the attribute fieldName and Label
-            // We can have empty attributeValue because the field can be not required
-            if (attributeLabel != "" && attributeFieldName != "") {
-                let attribute = Attribute(_label: attributeLabel, _fieldName: attributeFieldName, _value: attributeValue)
-                person.addAttributeToPerson(_attribute: attribute)
-            }
-            
-        }
-        print(person)
-        // Save the person in realm database
-        realmServices.createPerson(person: person)
-        realmServices.addSubscriberToService(title: (self.jsonModel?.title)!, subscriber: person)
+    func goToGeneralFormView(_ sender: UIButton) {
+        // Redirect To Next Step
+        //let navigationController = UINavigationController(rootViewController: self)
+        
+        // TODO verifier que la vue n'existe pas deja
+        let generalFormView = GeneralFormViewController(nibName: "GeneralFormViewController", bundle: nil)
+        generalFormView.setupNavigationController(navigationController: self.customNavigationController!)
+        generalFormView.createViewFromJson(json: self.jsonModel)
+        self.customNavigationController?.pushViewController(generalFormView, animated: true)
     }
-    
     
     func createViewFromJson(json: JsonModel?){
         print(json as Any)
@@ -96,24 +74,16 @@ class GeneralFormViewController: UIViewController, UIPickerViewDelegate, UIScrol
             self.containerView = UIView()
             self.scrollView.addSubview(self.containerView)
             
-            // Ajout titre service
+            // Ajout select offer label
             let title: UILabel = UILabel(frame: CGRect(x: 20, y: 70, width: 350.00, height: 30.00));
-            title.text = "Bonjour bienvenue sur le service : " + (json?.title)!
+            title.text = "Choisissez votre offre parmis les suivantes : "
             self.containerView.addSubview(title)
             
             
-            
-            // Ajout description du service
-            let description: UILabel = UILabel(frame: CGRect(x: 20, y: 100, width: 350.00, height: 100.00));
-            description.numberOfLines = 0
-            description.text = "Voici la description de ce service : \n" + (json?.description)!
-            self.containerView.addSubview(description)
-            
-            
-            
-            var pX = 190
-            for field in (json?.commonFields)! {
-                let title: UILabel = UILabel(frame: CGRect(x: 20, y: CGFloat(pX), width: 350.00, height: 30.00));
+            var pX = 90
+            for field in (json?.offers)! {
+                /*let title: UILabel = UILabel(frame: CGRect(x: 20, y: CGFloat(pX), width: 350.00, height: 30.00));
+                
                 title.text = field.label
                 self.containerView.addSubview(title)
                 pX += 30
@@ -165,28 +135,20 @@ class GeneralFormViewController: UIViewController, UIPickerViewDelegate, UIScrol
                     segmentedControl.selectedSegmentIndex = 0
                     self.containerView.addSubview(segmentedControl)
                     pX += 30
-                }
+                }*/
             }
             pX += 30
-            // Ajout du bouton
-            let saveButton = UIButton(frame: CGRect(x: 20, y: CGFloat(pX), width: 350.00, height: 30.00))
-            saveButton.setTitle("title", for: .normal)
-            saveButton.addTarget(self, action: #selector(self.savePerson(_:)), for: .touchUpInside)
-            saveButton.backgroundColor = UIColor.blue
-            
-            self.containerView.addSubview(saveButton)
+            // Ajout du next bouton
+            let nextButton = UIButton(frame: CGRect(x: 20, y: CGFloat(pX), width: 350.00, height: 30.00))
+            nextButton.setTitle("Suivant", for: .normal)
+            nextButton.addTarget(self, action: #selector(self.goToGeneralFormView(_:)), for: .touchUpInside)
+            nextButton.backgroundColor = UIColor.blue
+            self.containerView.addSubview(nextButton)
             self.scrollView.contentSize = CGSize(width: 375, height: pX + 100)
         }
         //self.view.frame.size.height = 10000
     }
-    
-    
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
+
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         let customPickerView = pickerView as? CustomPickerView
         return customPickerView!.pickerData.count
@@ -200,15 +162,8 @@ class GeneralFormViewController: UIViewController, UIPickerViewDelegate, UIScrol
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
     }
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
     
-}
 
+    
+
+}
