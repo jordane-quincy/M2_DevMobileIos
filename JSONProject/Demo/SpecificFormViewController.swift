@@ -19,6 +19,7 @@ class SpecificFormViewController: UIViewController, UIPickerViewDelegate, UIScro
     var indexOfSelectedOffer: Int = -1
     var person: Person? = nil
     var customParent: GeneralFormViewController? = nil
+    var choosenOffer: Offer? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,10 +56,6 @@ class SpecificFormViewController: UIViewController, UIPickerViewDelegate, UIScro
     {
         if (toParentViewController == nil) {
             let subViews = self.containerView.subviews
-            if (self.person == nil) {
-                self.person = Person()
-                self.person?.id = (self.person?.incrementID())!
-            }
             for view in subViews {
                 var attributeFieldName = ""
                 var attributeLabel = ""
@@ -110,10 +107,6 @@ class SpecificFormViewController: UIViewController, UIPickerViewDelegate, UIScro
         // get data from UI for the Person Object
         // Test if all requiredField are completed
         let subViews = self.containerView.subviews
-        if (self.person == nil) {
-            self.person = Person()
-            self.person?.id = (self.person?.incrementID())!
-        }
         for view in subViews {
             var attributeFieldName = ""
             var attributeLabel = ""
@@ -158,9 +151,28 @@ class SpecificFormViewController: UIViewController, UIPickerViewDelegate, UIScro
         }
         print(self.person ?? "")
         // Go to next Screen
+        // Redirect To Next Step
+        // Check if there is option
+        if ((self.choosenOffer?.features.count)! > 0) {
+            // Go to select offer view
+            let selectOptionView = SelectOptionViewController(nibName: "SelectOptionViewController", bundle: nil)
+            
+            if (self.person != nil) {
+                selectOptionView.setupPerson(person: self.person!)
+            }
+            selectOptionView.setupNavigationController(navigationController: self.customNavigationController!)
+            selectOptionView.setIndexOfSelectedOffer(index: indexOfSelectedOffer)
+            selectOptionView.setupCustomParent(customParent: self)
+            selectOptionView.setupChoosenOffer(choosenOffer: self.choosenOffer!)
+            selectOptionView.createViewFromJson(json: self.jsonModel)
+            self.customNavigationController?.pushViewController(selectOptionView, animated: true)
+        }
+        else {
+            // Go to recap/payment view
+        }
         
         
-        
+
         // Save the person in realm database
         //realmServices.createPerson(person: self.person!)
         //realmServices.addSubscriberToService(title: (self.jsonModel?.title)!, subscriber: self.person!)
@@ -194,6 +206,7 @@ class SpecificFormViewController: UIViewController, UIPickerViewDelegate, UIScro
             for offer in (json?.offers)! {
                 if (cpt == self.indexOfSelectedOffer) {
                     offerUsed = offer
+                    self.choosenOffer = offerUsed
                 }
                 cpt += 1
             }

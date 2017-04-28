@@ -141,5 +141,16 @@
             </PersistentString>
          </PersistentStrings>
       </ContextState>
+      <ContextState
+         contextName = "SelectOptionViewController.next(UIButton) -&gt; ():SelectOptionViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.person.serviceOptions[0]">
+            </PersistentString>
+            <PersistentString
+               value = "self.person.serviceOptions[1].description">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
    </ContextStates>
 </VariablesViewState>

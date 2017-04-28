@@ -12,6 +12,7 @@ import RealmSwift
 class Person: Object {
     dynamic var id: Int = 0
     var attributes: List<Attribute> = List<Attribute>()
+    var serviceOptions: List<ServiceOption> = List<ServiceOption>()
     let owner = LinkingObjects(fromType: BusinessService.self, property: "subscribers")
     
     override static func primaryKey() -> String? {
@@ -39,6 +40,14 @@ class Person: Object {
             }
         }
         return nil
+    }
+    
+    public func addServiceOptionToPerson(serviceOption: ServiceOption) {
+        self.serviceOptions.append(serviceOption);
+    }
+    
+    public func removeAllOptions() {
+        self.serviceOptions = List<ServiceOption>()
     }
     
     public func getAttributeIndex(fieldName: String) -> Int {
