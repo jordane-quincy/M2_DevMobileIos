@@ -67,7 +67,7 @@ class Field: Hashable, CustomStringConvertible {
 }
 
 class CommonField: Field {
-    var required: Bool
+    var required: Bool?
     var params: Params?
 
     override init?(jsonContent: [String: Any]) throws {
@@ -78,9 +78,7 @@ class CommonField: Field {
         // parent method
         try super.init(jsonContent: jsonContent)
         
-        guard let required = jsonContent["required"] as? Bool else {
-            throw SerializationError.missing("required")
-        }
+        let required = jsonContent["required"] as? Bool
         //assignation
         self.required = required
         
@@ -89,14 +87,12 @@ class CommonField: Field {
             self.params = nil
         }else{
             // Extract and validate input
-            guard let paramsJson = jsonContent["params"] as? [String: Any] else {
-                throw SerializationError.missing("params")
+            if let paramsJson = jsonContent["params"] as? [String: Any] {
+                guard let params = try Params(jsonContent: paramsJson, inputType: self.input) else {
+                    throw SerializationError.invalid("params", paramsJson)
+                }
+                self.params = params
             }
-            guard let params = try Params(jsonContent: paramsJson, inputType: self.input) else {
-                throw SerializationError.invalid("params", paramsJson)
-            }
-            
-            self.params = params
         }
         
         

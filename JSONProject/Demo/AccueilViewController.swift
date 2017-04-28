@@ -16,10 +16,15 @@ class AccueilViewController: UIViewController, UIScrollViewDelegate  {
     let realmServices = RealmServices()
     var jsonModel: JsonModel? = nil
     var customNavigationController: UINavigationController? = nil
+    var person: Person? = nil
     
     
     public func setupNavigationController (navigationController: UINavigationController){
         self.customNavigationController = navigationController
+    }
+    
+    public func setupPerson(person: Person) {
+        self.person = person
     }
     
     override func viewDidLoad() {
@@ -39,9 +44,11 @@ class AccueilViewController: UIViewController, UIScrollViewDelegate  {
         // TODO verifier que la vue n'existe pas deja
         let selectOfferView = SelectOfferViewController(nibName: "SelectOfferViewController", bundle: nil)
         selectOfferView.setupNavigationController(navigationController: self.customNavigationController!)
+        selectOfferView.setupCustomParent(customParent: self)
         selectOfferView.createViewFromJson(json: self.jsonModel)
         self.customNavigationController?.title = self.jsonModel?.title
         self.customNavigationController?.pushViewController(selectOfferView, animated: true)
+        self.customNavigationController?.setNavigationBarHidden(false, animated: true)
     }
     
     

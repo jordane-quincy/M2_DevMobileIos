@@ -31,4 +31,24 @@ class Person: Object {
     public func addAttributeToPerson(_attribute: Attribute) {
         attributes.append(_attribute)
     }
+    
+    public func getAttributeValue(fieldName: String) -> String? {
+        for attribute in self.attributes {
+            if (attribute.fieldName == fieldName && attribute.value != "") {
+                return attribute.value
+            }
+        }
+        return nil
+    }
+    
+    public func getAttributeIndex(fieldName: String) -> Int {
+        var cpt = 0
+        for attribute in self.attributes {
+            if (attribute.fieldName == fieldName) {
+                return cpt
+            }
+            cpt += 1
+        }
+        return -1
+    }
 }

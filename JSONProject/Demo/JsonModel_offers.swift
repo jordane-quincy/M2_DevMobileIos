@@ -14,7 +14,7 @@ class Offer: Hashable, CustomStringConvertible {
     let description: String
     let price: Int
     
-    let specificFields: Set<SpecificField>
+    let specificFields: Set<CommonField>
     let features: Set<Feature>
 
     init?(jsonContent: [String: Any]) throws {
@@ -34,12 +34,12 @@ class Offer: Hashable, CustomStringConvertible {
             throw SerializationError.missing("specificFields")
         }
         print("specificFieldsJsonArray : \(specificFieldsJsonArray)")//FIXME: pour debug uniquement
-        var specificFields: Set<SpecificField> = []
+        var specificFields: Set<CommonField> = []
         for specificFieldJsonElement in specificFieldsJsonArray {
             print("specificFieldJsonElement : \(specificFieldJsonElement)")//FIXME: pour debug uniquement
             
             do {
-                guard let specificField = try SpecificField(jsonContent: specificFieldJsonElement) else {
+                guard let specificField = try CommonField(jsonContent: specificFieldJsonElement) else {
                     throw SerializationError.invalid("specificFields", specificFieldJsonElement)
                 }
                 specificFields.insert(specificField)

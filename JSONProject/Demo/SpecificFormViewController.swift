@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GeneralFormViewController: UIViewController, UIPickerViewDelegate, UIScrollViewDelegate  {
+class SpecificFormViewController: UIViewController, UIPickerViewDelegate, UIScrollViewDelegate  {
     
     
     var scrollView = UIScrollView()
@@ -18,12 +18,12 @@ class GeneralFormViewController: UIViewController, UIPickerViewDelegate, UIScrol
     var customNavigationController: UINavigationController? = nil
     var indexOfSelectedOffer: Int = -1
     var person: Person? = nil
-    var customParent: SelectOfferViewController? = nil
+    var customParent: GeneralFormViewController? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // set up title of view
-        self.title = "Form 1"
+        self.title = "Form 2"
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -40,7 +40,7 @@ class GeneralFormViewController: UIViewController, UIPickerViewDelegate, UIScrol
         self.person = person
     }
     
-    public func setupCustomParent(customParent: SelectOfferViewController) {
+    public func setupCustomParent(customParent: GeneralFormViewController) {
         self.customParent = customParent
     }
     
@@ -158,17 +158,7 @@ class GeneralFormViewController: UIViewController, UIPickerViewDelegate, UIScrol
         }
         print(self.person ?? "")
         // Go to next Screen
-        // Redirect To Next Step
-        let specificFormView = SpecificFormViewController(nibName: "SpecificFormViewController", bundle: nil)
         
-        if (self.person != nil) {
-            specificFormView.setupPerson(person: self.person!)
-        }
-        specificFormView.setupNavigationController(navigationController: self.customNavigationController!)
-        specificFormView.setIndexOfSelectedOffer(index: indexOfSelectedOffer)
-        specificFormView.setupCustomParent(customParent: self)
-        specificFormView.createViewFromJson(json: self.jsonModel)
-        self.customNavigationController?.pushViewController(specificFormView, animated: true)
         
         
         // Save the person in realm database
@@ -194,11 +184,21 @@ class GeneralFormViewController: UIViewController, UIPickerViewDelegate, UIScrol
             // Ajout message
             let message: UILabel = UILabel(frame: CGRect(x: 20, y: 50, width: 350.00, height: 100.00));
             message.numberOfLines = 0
-            message.text = "Informations générales :"
+            message.text = "Informations spécifiques à l'offre :"
             self.containerView.addSubview(message)
             
             var pX = 150
-            for field in (json?.commonFields)! {
+            
+            var cpt = 0
+            var offerUsed: Offer? = nil
+            for offer in (json?.offers)! {
+                if (cpt == self.indexOfSelectedOffer) {
+                    offerUsed = offer
+                }
+                cpt += 1
+            }
+            
+            for field in (offerUsed?.specificFields)! {
                 let title: UILabel = UILabel(frame: CGRect(x: 20, y: CGFloat(pX), width: 350.00, height: 30.00));
                 title.text = field.label
                 self.containerView.addSubview(title)
@@ -223,7 +223,7 @@ class GeneralFormViewController: UIViewController, UIPickerViewDelegate, UIScrol
                     datepicker.datePickerMode = UIDatePickerMode.date
                     self.containerView.addSubview(datepicker)
                     pX += 100
-                } else if(field.input == InputType.text){
+                } else if(field.input == InputType.text || field.input == InputType.string){
                     let txtField: CustomTextField = CustomTextField(frame: CGRect(x: 20, y: CGFloat(pX), width: 350.00, height: 30.00));
                     txtField.fieldName = field.fieldId
                     txtField.label = field.label
@@ -235,7 +235,7 @@ class GeneralFormViewController: UIViewController, UIPickerViewDelegate, UIScrol
                         txtField.text = attributeValue
                     }
                     else {
-                        txtField.placeholder = field.params?.placeholder
+                        txtField.placeholder = field.params?.placeholder ?? "Completer"
                     }
                     
                     self.containerView.addSubview(txtField)
