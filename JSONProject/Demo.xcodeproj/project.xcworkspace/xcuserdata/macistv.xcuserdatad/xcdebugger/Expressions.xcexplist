@@ -67,5 +67,13 @@
       <ContextState
          contextName = "AccueilViewController.pickerView(UIPickerView, titleForRow : Int, forComponent : Int) -&gt; String?:AccueilViewController.swift">
       </ContextState>
+      <ContextState
+         contextName = "SelectOfferViewController.(createViewFromJson(json : JsonModel?) -&gt; ()).(closure #1):SelectOfferViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "offerButton.tag">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
    </ContextStates>
 </VariablesViewState>

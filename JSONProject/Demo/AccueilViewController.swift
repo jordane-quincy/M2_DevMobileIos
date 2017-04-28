@@ -79,11 +79,11 @@ class AccueilViewController: UIViewController, UIScrollViewDelegate  {
             self.containerView.addSubview(startMessage)
 
             // Ajout du bouton commencer
-            let saveButton = UIButton(frame: CGRect(x: 20, y: 230, width: 350.00, height: 30.00))
-            saveButton.setTitle("Commencer !", for: .normal)
-            saveButton.addTarget(self, action: #selector(self.goToSelectOfferView(_:)), for: .touchUpInside)
-            saveButton.backgroundColor = UIColor.blue
-            self.containerView.addSubview(saveButton)
+            let statButton = UIButton(frame: CGRect(x: 20, y: 230, width: 350.00, height: 30.00))
+            statButton.setTitle("Commencer !", for: .normal)
+            statButton.addTarget(self, action: #selector(self.goToSelectOfferView(_:)), for: .touchUpInside)
+            statButton.backgroundColor = UIColor.blue
+            self.containerView.addSubview(statButton)
             
             // Set size fo scrollView
             self.scrollView.contentSize = CGSize(width: 375, height: 250)

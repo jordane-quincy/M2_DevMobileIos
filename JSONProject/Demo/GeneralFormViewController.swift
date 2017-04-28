@@ -16,9 +16,12 @@ class GeneralFormViewController: UIViewController, UIPickerViewDelegate, UIScrol
     let realmServices = RealmServices()
     var jsonModel: JsonModel? = nil
     var customNavigationController: UINavigationController? = nil
+    var indexOfSelectedOffer: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // set up title of view
+        self.title = "Form 1"
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -33,6 +36,10 @@ class GeneralFormViewController: UIViewController, UIPickerViewDelegate, UIScrol
     
     public func setupNavigationController (navigationController: UINavigationController){
         self.customNavigationController = navigationController
+    }
+    
+    public func setIndexOfSelectedOffer(index: Int) {
+        self.indexOfSelectedOffer = index
     }
     
     func savePerson(_ sender: UIButton) {

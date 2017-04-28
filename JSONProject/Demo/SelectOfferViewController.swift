@@ -19,7 +19,7 @@ class SelectOfferViewController: UIViewController, UIPickerViewDelegate, UIScrol
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.title = "Choix offres"
         // Do any additional setup after loading the view.
     }
 
@@ -50,6 +50,8 @@ class SelectOfferViewController: UIViewController, UIPickerViewDelegate, UIScrol
     }
     
     func goToGeneralFormView(_ sender: UIButton) {
+        let indexOfSelectedOffer = sender.tag
+        print(String(indexOfSelectedOffer))
         // Redirect To Next Step
         //let navigationController = UINavigationController(rootViewController: self)
         
@@ -57,8 +59,10 @@ class SelectOfferViewController: UIViewController, UIPickerViewDelegate, UIScrol
         let generalFormView = GeneralFormViewController(nibName: "GeneralFormViewController", bundle: nil)
         generalFormView.setupNavigationController(navigationController: self.customNavigationController!)
         generalFormView.createViewFromJson(json: self.jsonModel)
+        generalFormView.setIndexOfSelectedOffer(index: indexOfSelectedOffer)
         self.customNavigationController?.pushViewController(generalFormView, animated: true)
     }
+    
     
     func createViewFromJson(json: JsonModel?){
         print(json as Any)
@@ -80,72 +84,87 @@ class SelectOfferViewController: UIViewController, UIPickerViewDelegate, UIScrol
             self.containerView.addSubview(title)
             
             
-            var pX = 90
-            for field in (json?.offers)! {
-                /*let title: UILabel = UILabel(frame: CGRect(x: 20, y: CGFloat(pX), width: 350.00, height: 30.00));
-                
-                title.text = field.label
-                self.containerView.addSubview(title)
-                pX += 30
-                if(field.input == InputType.date){
-                    let datepicker: CustomDatePicker = CustomDatePicker(frame: CGRect(x: 20, y: CGFloat(pX), width: 350.00, height: 100.00));
-                    datepicker.fieldName = field.fieldId
-                    datepicker.label = field.label
-                    datepicker.date = Date()
-                    datepicker.datePickerMode = UIDatePickerMode.date
-                    self.containerView.addSubview(datepicker)
-                    pX += 100
-                } else if(field.input == InputType.text){
-                    let txtField: CustomTextField = CustomTextField(frame: CGRect(x: 20, y: CGFloat(pX), width: 350.00, height: 30.00));
-                    txtField.fieldName = field.fieldId
-                    txtField.label = field.label
-                    txtField.placeholder = field.params?.placeholder
-                    self.containerView.addSubview(txtField)
-                    pX += 60
-                } else if(field.input == InputType.select){
-                    // Prepare data for the picker
-                    var pickerData : [(value: String, key: String)] = []
-                    for choice in (field.params?.choices)! {
-                        pickerData.append((choice.label, choice.value))
-                    }
-                    // Create the dateSource object
-                    let dataSource = CustomPickerViewDataSource()
-                    // Set data to the dataSource object
-                    dataSource.pickerData = pickerData
-                    // Create the picker
-                    let picker: CustomPickerView = CustomPickerView(frame: CGRect(x: 20, y: CGFloat(pX), width: 350.00, height: 100.00));
-                    picker.fieldName = field.fieldId
-                    picker.label = field.label
-                    picker.pickerData = pickerData
-                    // Set up picker with dataSource object  and pickerViewDelegate (self)
-                    picker.delegate = self
-                    picker.dataSource = dataSource
-                    self.containerView.addSubview(picker)
-                    pX += 100
-                } else if(field.input == InputType.radio){
-                    var items : [String] = []
-                    for choice in (field.params?.choices)! {
-                        items.append(choice.value)
-                    }
-                    
-                    let segmentedControl: CustomSegmentedControl = CustomSegmentedControl(items: items);
-                    segmentedControl.fieldName = field.fieldId
-                    segmentedControl.label = field.label
-                    segmentedControl.frame = CGRect(x: 20, y: CGFloat(pX), width: 350.00, height: 30.00);
-                    segmentedControl.selectedSegmentIndex = 0
-                    self.containerView.addSubview(segmentedControl)
-                    pX += 30
-                }*/
+            var pX = 120
+            var cpt = 1
+            for offer in (json?.offers)! {
+                print(offer)
+                let offerButton = UIButton(frame: CGRect(x: 20, y: CGFloat(pX), width: 350.00, height: 130.00))
+
+                // enable button with multiple lines
+                offerButton.titleLabel?.lineBreakMode = .byWordWrapping
+
+                let title = "Offre " +
+                    String(cpt) +
+                    " : \n" +
+                    offer.title +
+                    "\n" +
+                    offer.description +
+                    "\nA partir de " +
+                    String(offer.price) +
+                    " €"
+                offerButton.setTitle(title , for: .normal)
+                offerButton.backgroundColor = UIColor.blue
+                offerButton.tag = cpt
+                // Setup action on the button
+                offerButton.addTarget(self, action: #selector(self.goToGeneralFormView(_:)), for: .touchUpInside)
+                self.containerView.addSubview(offerButton)
+                cpt += 1
+                pX += 160
             }
-            pX += 30
-            // Ajout du next bouton
-            let nextButton = UIButton(frame: CGRect(x: 20, y: CGFloat(pX), width: 350.00, height: 30.00))
-            nextButton.setTitle("Suivant", for: .normal)
-            nextButton.addTarget(self, action: #selector(self.goToGeneralFormView(_:)), for: .touchUpInside)
-            nextButton.backgroundColor = UIColor.blue
-            self.containerView.addSubview(nextButton)
             self.scrollView.contentSize = CGSize(width: 375, height: pX + 100)
         }
+        
+        // Setup interface
+        /*DispatchQueue.main.async() {
+            // Reset the view
+            self.view.subviews.forEach({ $0.removeFromSuperview() })
+            // Setup scrollview
+            self.scrollView = UIScrollView()
+            self.scrollView.delegate = self
+            self.view.addSubview(self.scrollView)
+            self.containerView = UIView()
+            self.scrollView.addSubview(self.containerView)
+            
+            // Ajout select offer label
+            let title: UILabel = UILabel(frame: CGRect(x: 20, y: 70, width: 350.00, height: 30.00));
+            title.text = "Choisissez votre offre parmis les suivantes : "
+            self.containerView.addSubview(title)
+            
+            
+            var pX = 120
+            var cpt = 1
+            /*for offer in (json?.offers)! {
+                print(offer)
+                let offerButton = UIButton(frame: CGRect(x: 20, y: CGFloat(pX), width: 350.00, height: 130.00))
+                
+                // enable button with multiple lines
+                offerButton.titleLabel?.lineBreakMode = .byWordWrapping
+                
+                let title = "Offre " +
+                    String(cpt) +
+                    " : \n" +
+                    offer.title +
+                    "\n" +
+                    offer.description +
+                    "\nA partir de " +
+                    String(offer.price) +
+                    " €"
+                offerButton.setTitle(title , for: .normal)
+                offerButton.backgroundColor = UIColor.blue
+                offerButton.tag = cpt
+                // Setup action on the button
+                offerButton.addTarget(self, action: #selector(self.goToGeneralFormView(_:)), for: .touchUpInside)
+
+                self.containerView.addSubview(offerButton)
+                cpt += 1
+                pX += 160
+            }*/
+            let statButton = UIButton(frame: CGRect(x: 20, y: CGFloat(pX), width: 350.00, height: 30.00))
+            statButton.setTitle("Commencer !", for: .normal)
+            statButton.addTarget(self, action: #selector(self.goToSelectOfferView(_:)), for: .touchUpInside)
+            statButton.backgroundColor = UIColor.blue
+            self.containerView.addSubview(statButton)
+        }*/
         //self.view.frame.size.height = 10000
     }
 

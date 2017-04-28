@@ -27,6 +27,11 @@ class AideViewController: UIViewController {
     @IBAction func AfficherMenuAdmin(_ sender: Any) {
         
         self.addTabBarItemResultat()
+        // Automatically switch to the import view
+        DispatchQueue.main.async() {
+            self.tabBarController?.selectedIndex = 2
+        }
+        
         
         
         /*let authenticationContext = LAContext()
@@ -50,16 +55,5 @@ class AideViewController: UIViewController {
         self.tabBarController?.tabBar.items?[1].isEnabled = true
         self.tabBarController?.tabBar.items?[2].isEnabled = true
     }
-    
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
     
 }
