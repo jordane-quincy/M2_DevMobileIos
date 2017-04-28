@@ -82,10 +82,25 @@ class AccueilViewController: UIViewController, UIPickerViewDelegate, UIScrollVie
         // Redirect To Next Step
         //let navigationController = UINavigationController(rootViewController: self)
         let generalFormViewController = GeneralFormViewController(nibName: "GeneralFormViewController", bundle: nil)
+        generalFormViewController.setupNavigationController(navigationController: self.customNavigationController!)
         generalFormViewController.createViewFromJson(json: self.jsonModel)
        // self.presentedViewController(generalFormViewController, animated: true, completion: nil)
         //navigationController.pushViewController(generalFormViewController, animated: true)
         self.customNavigationController?.pushViewController(generalFormViewController, animated: true)
+        self.customNavigationController?.setNavigationBarHidden(false, animated: true)
+
+    }
+    
+    func goToGeneralFormView(_ sender: UIButton) {
+        // Redirect To Next Step
+        //let navigationController = UINavigationController(rootViewController: self)
+        let generalFormViewController = GeneralFormViewController(nibName: "GeneralFormViewController", bundle: nil)
+        generalFormViewController.setupNavigationController(navigationController: self.customNavigationController!)
+        generalFormViewController.createViewFromJson(json: self.jsonModel)
+        // self.presentedViewController(generalFormViewController, animated: true, completion: nil)
+        //navigationController.pushViewController(generalFormViewController, animated: true)
+        self.customNavigationController?.pushViewController(generalFormViewController, animated: true)
+        self.customNavigationController?.setNavigationBarHidden(false, animated: true)
     }
     
     
@@ -103,16 +118,37 @@ class AccueilViewController: UIViewController, UIPickerViewDelegate, UIScrollVie
             self.containerView = UIView()
             self.scrollView.addSubview(self.containerView)
             
+
+            // Ajout titre service
             let title: UILabel = UILabel(frame: CGRect(x: 20, y: 20, width: 350.00, height: 30.00));
-            title.text = json?.title
+            title.text = "Bonjour bienvenue sur le service : " + (json?.title)!
             self.serviceTitle = (json?.title)!
-        
             self.containerView.addSubview(title)
-            let description: UILabel = UILabel(frame: CGRect(x: 20, y: 50, width: 350.00, height: 100.00));
-                description.numberOfLines = 0
-            description.text = json?.description
+            
+            
+            // Ajout description du service
+            let description: UILabel = UILabel(frame: CGRect(x: 20, y: 50, width: 400.00, height: 100.00));
+            description.numberOfLines = 0
+            description.text = "Voici la description de ce service : \n" + (json?.description)!
             self.containerView.addSubview(description)
-            var pX = 140
+
+            // Start message
+            let startMessage: UILabel = UILabel(frame: CGRect(x: 20, y: 130, width: 350.00, height: 100.00))
+            startMessage.numberOfLines = 0
+            startMessage.text = "Pour vous inscrire à ce service cliquez sur \"Commencer\""
+            self.containerView.addSubview(startMessage)
+
+            // Ajout du bouton commencer
+            let saveButton = UIButton(frame: CGRect(x: 20, y: 230, width: 350.00, height: 30.00))
+            saveButton.setTitle("Commencer !", for: .normal)
+            saveButton.addTarget(self, action: #selector(self.goToGeneralFormView(_:)), for: .touchUpInside)
+            saveButton.backgroundColor = UIColor.blue
+            self.containerView.addSubview(saveButton)
+            
+            // Set size fo scrollView
+            self.scrollView.contentSize = CGSize(width: 375, height: 250)
+            
+            /*var pX = 220
             for field in (json?.commonFields)! {
                 let title: UILabel = UILabel(frame: CGRect(x: 20, y: CGFloat(pX), width: 350.00, height: 30.00));
                 title.text = field.label
@@ -176,7 +212,7 @@ class AccueilViewController: UIViewController, UIPickerViewDelegate, UIScrollVie
             saveButton.backgroundColor = UIColor.blue
             
             self.containerView.addSubview(saveButton)
-            self.scrollView.contentSize = CGSize(width: 375, height: pX + 100)
+            self.scrollView.contentSize = CGSize(width: 375, height: pX + 100)*/
         }
         //self.view.frame.size.height = 10000
     }

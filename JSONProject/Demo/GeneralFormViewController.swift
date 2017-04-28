@@ -15,17 +15,26 @@ class GeneralFormViewController: UIViewController, UIPickerViewDelegate, UIScrol
     var containerView = UIView()
     let realmServices = RealmServices()
     var serviceTitle: String = ""
-    
+    var customNavigationController: UINavigationController? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
         scrollView.frame = view.bounds
         containerView.frame = CGRect(x: 0, y: 0, width: scrollView.contentSize.width, height: scrollView.contentSize.height)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        // Hide the navigation bar
+        self.customNavigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
+    public func setupNavigationController (navigationController: UINavigationController){
+        self.customNavigationController = navigationController
     }
     
     func savePerson(_ sender: UIButton) {
@@ -89,16 +98,23 @@ class GeneralFormViewController: UIViewController, UIPickerViewDelegate, UIScrol
             self.containerView = UIView()
             self.scrollView.addSubview(self.containerView)
             
-            let title: UILabel = UILabel(frame: CGRect(x: 20, y: 20, width: 350.00, height: 30.00));
-            title.text = json?.title
+            // Ajout titre service
+            let title: UILabel = UILabel(frame: CGRect(x: 20, y: 70, width: 350.00, height: 30.00));
+            title.text = "Bonjour bienvenue sur le service : " + (json?.title)!
             self.serviceTitle = (json?.title)!
-            
             self.containerView.addSubview(title)
-            let description: UILabel = UILabel(frame: CGRect(x: 20, y: 50, width: 350.00, height: 100.00));
+            
+            
+            
+            // Ajout description du service
+            let description: UILabel = UILabel(frame: CGRect(x: 20, y: 100, width: 350.00, height: 100.00));
             description.numberOfLines = 0
-            description.text = json?.description
+            description.text = "Voici la description de ce service : \n" + (json?.description)!
             self.containerView.addSubview(description)
-            var pX = 140
+            
+            
+            
+            var pX = 190
             for field in (json?.commonFields)! {
                 let title: UILabel = UILabel(frame: CGRect(x: 20, y: CGFloat(pX), width: 350.00, height: 30.00));
                 title.text = field.label

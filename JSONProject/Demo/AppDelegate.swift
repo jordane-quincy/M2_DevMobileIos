@@ -31,6 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Add navigationController to tabBarController
         let navigationController = UINavigationController(rootViewController: tabBarController)
         self.window?.rootViewController = navigationController
+        navigationController.setNavigationBarHidden(true, animated: true)
         self.window?.makeKeyAndVisible()
         myVC1.setupNavigationController(navigationController: navigationController)
         
