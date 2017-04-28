@@ -3,22 +3,6 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "RealmServices.serviceFree(title : String) -&gt; Bool:RealmServices.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "self.realm.object(ofType: BusinessService.self, forPrimaryKey: title as AnyObject)">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "RealmServices.getBusinessServicesArray() -&gt; [BusinessService]:RealmServices.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "self.realm">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
          contextName = "ViewController.documentPickerWasCancelled(UIDocumentPickerViewController) -&gt; ():ViewController.swift">
          <PersistentStrings>
             <PersistentString
@@ -26,14 +10,6 @@
             </PersistentString>
             <PersistentString
                value = "controller._title">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "AccueilViewController.savePerson(UIButton) -&gt; ():AccueilViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "subViews[7].fieldName">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -46,12 +22,50 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "RealmServices.getBusinessServicesArray() -&gt; [BusinessService]:RealmServices.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.realm">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "AccueilViewController.savePerson(UIButton) -&gt; ():AccueilViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.navigationController">
+            </PersistentString>
+            <PersistentString
+               value = "subViews[7].fieldName">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "RealmServices.serviceFree(title : String) -&gt; Bool:RealmServices.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.realm.object(ofType: BusinessService.self, forPrimaryKey: title as AnyObject)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "AccueilViewController.(savePerson(UIButton) -&gt; ()).(closure #1):AccueilViewController.swift">
          <PersistentStrings>
             <PersistentString
                value = "textFieldSubViews">
             </PersistentString>
          </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "AppDelegate.application(UIApplication, didFinishLaunchingWithOptions : [UIApplicationLaunchOptionsKey : Any]?) -&gt; Bool:AppDelegate.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "tabBarController.navigationController">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "AccueilViewController.pickerView(UIPickerView, titleForRow : Int, forComponent : Int) -&gt; String?:AccueilViewController.swift">
       </ContextState>
    </ContextStates>
 </VariablesViewState>

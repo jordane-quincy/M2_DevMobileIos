@@ -35,6 +35,8 @@
 		42B57DD01EB23BD6009EB0F1 /* CustomDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B57DCF1EB23BD6009EB0F1 /* CustomDatePicker.swift */; };
 		42B57DD21EB2445D009EB0F1 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B57DD11EB2445D009EB0F1 /* CustomSegmentedControl.swift */; };
 		42B57DD61EB24FC2009EB0F1 /* CustomPickerViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B57DD51EB24FC2009EB0F1 /* CustomPickerViewDataSource.swift */; };
+		42B57DD91EB30EFB009EB0F1 /* GeneralFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B57DD71EB30EFB009EB0F1 /* GeneralFormViewController.swift */; };
+		42B57DDA1EB30EFB009EB0F1 /* GeneralFormViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42B57DD81EB30EFB009EB0F1 /* GeneralFormViewController.xib */; };
 		906274861EAE3A6900E09E57 /* SetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906274821EAE3A6900E09E57 /* SetupViewController.swift */; };
 		906274871EAE3A6900E09E57 /* SetupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 906274831EAE3A6900E09E57 /* SetupViewController.xib */; };
 		9062748C1EAE3A7100E09E57 /* AccueilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906274881EAE3A7100E09E57 /* AccueilViewController.swift */; };
@@ -114,6 +116,8 @@
 		42B57DCF1EB23BD6009EB0F1 /* CustomDatePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomDatePicker.swift; sourceTree = "<group>"; };
 		42B57DD11EB2445D009EB0F1 /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
 		42B57DD51EB24FC2009EB0F1 /* CustomPickerViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPickerViewDataSource.swift; sourceTree = "<group>"; };
+		42B57DD71EB30EFB009EB0F1 /* GeneralFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralFormViewController.swift; sourceTree = "<group>"; };
+		42B57DD81EB30EFB009EB0F1 /* GeneralFormViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GeneralFormViewController.xib; sourceTree = "<group>"; };
 		906274821EAE3A6900E09E57 /* SetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupViewController.swift; sourceTree = "<group>"; };
 		906274831EAE3A6900E09E57 /* SetupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SetupViewController.xib; sourceTree = "<group>"; };
 		906274881EAE3A7100E09E57 /* AccueilViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccueilViewController.swift; sourceTree = "<group>"; };
@@ -238,6 +242,8 @@
 			children = (
 				906274881EAE3A7100E09E57 /* AccueilViewController.swift */,
 				906274891EAE3A7100E09E57 /* AccueilViewController.xib */,
+				42B57DD71EB30EFB009EB0F1 /* GeneralFormViewController.swift */,
+				42B57DD81EB30EFB009EB0F1 /* GeneralFormViewController.xib */,
 				9062748A1EAE3A7100E09E57 /* AideViewController.swift */,
 				9062748B1EAE3A7100E09E57 /* AideViewController.xib */,
 				42B57DC11EB0ADF0009EB0F1 /* ResultatViewController.swift */,
@@ -420,6 +426,7 @@
 				B52CE21A1E3756B900EC68E5 /* Assets.xcassets in Resources */,
 				906274871EAE3A6900E09E57 /* SetupViewController.xib in Resources */,
 				42B57DC41EB0ADF0009EB0F1 /* ResultatViewController.xib in Resources */,
+				42B57DDA1EB30EFB009EB0F1 /* GeneralFormViewController.xib in Resources */,
 				42B57DC81EB0AFDB009EB0F1 /* CustomCell.xib in Resources */,
 				9062748F1EAE3A7100E09E57 /* AideViewController.xib in Resources */,
 				B52CE2181E3756B900EC68E5 /* Main.storyboard in Resources */,
@@ -469,6 +476,7 @@
 				4297F5FA1EABC37D004204CD /* FileServices.swift in Sources */,
 				42AFEF241E87FA65001587DA /* JsonModel_fields.swift in Sources */,
 				9062748E1EAE3A7100E09E57 /* AideViewController.swift in Sources */,
+				42B57DD91EB30EFB009EB0F1 /* GeneralFormViewController.swift in Sources */,
 				4297F5F91EABC37D004204CD /* ExportServices.swift in Sources */,
 				906274861EAE3A6900E09E57 /* SetupViewController.swift in Sources */,
 				42B57DD21EB2445D009EB0F1 /* CustomSegmentedControl.swift in Sources */,

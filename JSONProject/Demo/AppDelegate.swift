@@ -27,6 +27,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let controllers = [myVC1, myVC2, myVC3, myVC4]
         tabBarController.viewControllers = controllers
         window?.rootViewController = tabBarController
+        
+        // Add navigationController to tabBarController
+        let navigationController = UINavigationController(rootViewController: tabBarController)
+        self.window?.rootViewController = navigationController
+        self.window?.makeKeyAndVisible()
+        myVC1.setupNavigationController(navigationController: navigationController)
+        
+        
         let firstImage = UIImage(named: "home")
         myVC1.tabBarItem = UITabBarItem(
             title: "Accueil",

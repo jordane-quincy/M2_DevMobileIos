@@ -1,31 +1,25 @@
 //
-//  AccueilViewController.swift
+//  GeneralFormViewController.swift
 //  Demo
 //
-//  Created by morgan basset on 04/04/2017.
+//  Created by MAC ISTV on 28/04/2017.
 //  Copyright © 2017 UVHC. All rights reserved.
 //
 
 import UIKit
 
-class AccueilViewController: UIViewController, UIPickerViewDelegate, UIScrollViewDelegate  {
+class GeneralFormViewController: UIViewController, UIPickerViewDelegate, UIScrollViewDelegate  {
     
     
     var scrollView = UIScrollView()
     var containerView = UIView()
     let realmServices = RealmServices()
     var serviceTitle: String = ""
-    var jsonModel: JsonModel? = nil
-    var customNavigationController: UINavigationController? = nil
     
-    
-    public func setupNavigationController (navigationController: UINavigationController){
-        self.customNavigationController = navigationController
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -78,20 +72,12 @@ class AccueilViewController: UIViewController, UIPickerViewDelegate, UIScrollVie
         // Save the person in realm database
         realmServices.createPerson(person: person)
         realmServices.addSubscriberToService(title: self.serviceTitle, subscriber: person)
-        
-        // Redirect To Next Step
-        //let navigationController = UINavigationController(rootViewController: self)
-        let generalFormViewController = GeneralFormViewController(nibName: "GeneralFormViewController", bundle: nil)
-        generalFormViewController.createViewFromJson(json: self.jsonModel)
-       // self.presentedViewController(generalFormViewController, animated: true, completion: nil)
-        //navigationController.pushViewController(generalFormViewController, animated: true)
-        self.customNavigationController?.pushViewController(generalFormViewController, animated: true)
     }
     
     
     func createViewFromJson(json: JsonModel?){
         print(json as Any)
-        self.jsonModel = json
+        print("New view")
         // Setup interface
         DispatchQueue.main.async() {
             // Reset the view
@@ -106,10 +92,10 @@ class AccueilViewController: UIViewController, UIPickerViewDelegate, UIScrollVie
             let title: UILabel = UILabel(frame: CGRect(x: 20, y: 20, width: 350.00, height: 30.00));
             title.text = json?.title
             self.serviceTitle = (json?.title)!
-        
+            
             self.containerView.addSubview(title)
             let description: UILabel = UILabel(frame: CGRect(x: 20, y: 50, width: 350.00, height: 100.00));
-                description.numberOfLines = 0
+            description.numberOfLines = 0
             description.text = json?.description
             self.containerView.addSubview(description)
             var pX = 140
@@ -212,3 +198,4 @@ class AccueilViewController: UIViewController, UIPickerViewDelegate, UIScrollVie
      */
     
 }
+
