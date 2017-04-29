@@ -18,6 +18,7 @@ class SelectOfferViewController: UIViewController, UIPickerViewDelegate, UIScrol
     var customNavigationController: UINavigationController? = nil
     var person: Person? = nil
     var customParent: AccueilViewController? = nil
+    var indexOfPreviousSelectedOffer = -1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,6 +53,10 @@ class SelectOfferViewController: UIViewController, UIPickerViewDelegate, UIScrol
         self.customNavigationController = navigationController
     }
     
+    public func setupIndexOfPreviousSelectedOffer(index: Int) {
+        self.indexOfPreviousSelectedOffer = index
+    }
+    
     public func setupPerson(person: Person) {
         self.person = person
     }
@@ -68,6 +73,9 @@ class SelectOfferViewController: UIViewController, UIPickerViewDelegate, UIScrol
         let generalFormView = GeneralFormViewController(nibName: "GeneralFormViewController", bundle: nil)
         
         if (self.person != nil) {
+            if (self.indexOfPreviousSelectedOffer > -1 && indexOfSelectedOffer != self.indexOfPreviousSelectedOffer) {
+                self.person?.removeAllSpecificFields()
+            }
             generalFormView.setupPerson(person: self.person!)
         }
         generalFormView.setupNavigationController(navigationController: self.customNavigationController!)

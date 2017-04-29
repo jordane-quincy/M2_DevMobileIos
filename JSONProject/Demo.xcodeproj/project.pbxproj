@@ -25,6 +25,8 @@
 		42AFEF221E87F7FD001587DA /* JsonModel_offers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AFEF211E87F7FD001587DA /* JsonModel_offers.swift */; };
 		42AFEF241E87FA65001587DA /* JsonModel_fields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AFEF231E87FA65001587DA /* JsonModel_fields.swift */; };
 		42AFEF261E880004001587DA /* JsonModel_features.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AFEF251E880004001587DA /* JsonModel_features.swift */; };
+		42B4DFFF1EB494B8001AC2FD /* PaymentWay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B4DFFE1EB494B8001AC2FD /* PaymentWay.swift */; };
+		42B4E0011EB4951E001AC2FD /* PaymentAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B4E0001EB4951E001AC2FD /* PaymentAttribute.swift */; };
 		42B57DC31EB0ADF0009EB0F1 /* ResultatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B57DC11EB0ADF0009EB0F1 /* ResultatViewController.swift */; };
 		42B57DC41EB0ADF0009EB0F1 /* ResultatViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42B57DC21EB0ADF0009EB0F1 /* ResultatViewController.xib */; };
 		42B57DC71EB0AFDB009EB0F1 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B57DC51EB0AFDB009EB0F1 /* CustomCell.swift */; };
@@ -116,6 +118,8 @@
 		42AFEF211E87F7FD001587DA /* JsonModel_offers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonModel_offers.swift; sourceTree = "<group>"; };
 		42AFEF231E87FA65001587DA /* JsonModel_fields.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonModel_fields.swift; sourceTree = "<group>"; };
 		42AFEF251E880004001587DA /* JsonModel_features.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonModel_features.swift; sourceTree = "<group>"; };
+		42B4DFFE1EB494B8001AC2FD /* PaymentWay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentWay.swift; sourceTree = "<group>"; };
+		42B4E0001EB4951E001AC2FD /* PaymentAttribute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentAttribute.swift; sourceTree = "<group>"; };
 		42B57DC11EB0ADF0009EB0F1 /* ResultatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultatViewController.swift; sourceTree = "<group>"; };
 		42B57DC21EB0ADF0009EB0F1 /* ResultatViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResultatViewController.xib; sourceTree = "<group>"; };
 		42B57DC51EB0AFDB009EB0F1 /* CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
@@ -210,6 +214,8 @@
 				4297F5FC1EABC386004204CD /* Attribute.swift */,
 				42B57DE81EB3C20C009EB0F1 /* ServiceOption.swift */,
 				42B57DEA1EB47377009EB0F1 /* ServiceOffer.swift */,
+				42B4DFFE1EB494B8001AC2FD /* PaymentWay.swift */,
+				42B4E0001EB4951E001AC2FD /* PaymentAttribute.swift */,
 			);
 			name = Entities;
 			sourceTree = "<group>";
@@ -538,11 +544,13 @@
 				42B57DC71EB0AFDB009EB0F1 /* CustomCell.swift in Sources */,
 				B51EFB871E65874600C3CC90 /* JSONUtils.swift in Sources */,
 				42AFEF1E1E7EA003001587DA /* JsonModel.swift in Sources */,
+				42B4E0011EB4951E001AC2FD /* PaymentAttribute.swift in Sources */,
 				42AFEF201E87C617001587DA /* JsonModel_params.swift in Sources */,
 				42AD2D2D1EABE8F200F2C00A /* DateUtils.swift in Sources */,
 				42B57DCA1EB2323D009EB0F1 /* TestInputText.swift in Sources */,
 				42B57DE91EB3C20C009EB0F1 /* ServiceOption.swift in Sources */,
 				42B57DCE1EB23B32009EB0F1 /* CustomPickerView.swift in Sources */,
+				42B4DFFF1EB494B8001AC2FD /* PaymentWay.swift in Sources */,
 				B52CE2131E3756B900EC68E5 /* AppDelegate.swift in Sources */,
 				4297F5FD1EABC386004204CD /* Person.swift in Sources */,
 				42B57DDD1EB33E34009EB0F1 /* SelectOfferViewController.swift in Sources */,

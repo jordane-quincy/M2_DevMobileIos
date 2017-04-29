@@ -45,12 +45,6 @@ class GeneralFormViewController: UIViewController, UIPickerViewDelegate, UIScrol
     }
     
     public func setIndexOfSelectedOffer(index: Int) {
-        if (self.indexOfSelectedOffer > -1 && self.indexOfSelectedOffer != index) {
-            if (self.person != nil) {
-                // remove specific fields from self.person
-                self.person?.removeAllSpecificFields()
-            }
-        }
         self.indexOfSelectedOffer = index
     }
     
@@ -104,6 +98,7 @@ class GeneralFormViewController: UIViewController, UIPickerViewDelegate, UIScrol
             }
             // Pass person to the parent
             self.customParent?.setupPerson(person: self.person!)
+            self.customParent?.setupIndexOfPreviousSelectedOffer(index: self.indexOfSelectedOffer)
             // Reset custom parent
             self.customParent = nil
         }

@@ -66,16 +66,36 @@ class PaymentViewController: UIViewController, UIPickerViewDelegate, UIScrollVie
         }
     }
     
-    func next(_ sender: UIButton) {
+    func validSubscription(_ sender: UIButton) {
         // get data from UI for the Person Object
         // Test if all requiredField are completed
-        
-        
-        
-        
+        print("fin")
+        let paymentWay = PaymentWay(label: self.selectedPaymentWay)
+        var tag = -1
+        if (self.selectedPaymentWay == "Compte Bancaire") {
+            tag = 1
+        }
+        if (self.selectedPaymentWay == "Carte Bancaire") {
+            tag = 2
+        }
+        if (self.selectedPaymentWay == "Paypal") {
+            tag = 3
+        }
+        for view in self.containerView.subviews {
+            if (view.tag == tag) {
+                if let textField = view as? CustomTextField {
+                    let paymentAttribute = PaymentAttribute(_label: textField.label, _fieldName: textField.fieldName, _value: textField.text!)
+                    paymentWay.addPaymentAttribute(paymentAttribute: paymentAttribute)
+                }
+            }
+        }
+        self.person?.setupPaymnetWay(paymentWay: paymentWay)
+        print(self.person)
         // Save the person in realm database
-        //realmServices.createPerson(person: self.person!)
-        //realmServices.addSubscriberToService(title: (self.jsonModel?.title)!, subscriber: self.person!)
+        realmServices.createPerson(person: self.person!)
+        realmServices.addSubscriberToService(title: (self.jsonModel?.title)!, subscriber: self.person!)
+        
+        // Go Back to home view
     }
     
     
@@ -91,6 +111,7 @@ class PaymentViewController: UIViewController, UIPickerViewDelegate, UIScrollVie
         let ibanTextField = CustomTextField(frame: CGRect(x: 20, y: CGFloat(self.pX), width: 350, height: 40))
         ibanTextField.fieldName = "iban"
         ibanTextField.placeholder = "Completer"
+        ibanTextField.label = "IBAN"
         ibanTextField.tag = 1
         self.pX += 60
         self.containerView.addSubview(ibanTextField)
@@ -106,9 +127,19 @@ class PaymentViewController: UIViewController, UIPickerViewDelegate, UIScrollVie
         let bicTextField = CustomTextField(frame: CGRect(x: 20, y: CGFloat(self.pX), width: 350, height: 40))
         bicTextField.fieldName = "bic"
         bicTextField.placeholder = "Completer"
+        bicTextField.label = "BIC"
         bicTextField.tag = 1
         self.pX += 60
         self.containerView.addSubview(bicTextField)
+        
+        // Add Validation button
+        let validationButton = UIButton(frame: CGRect(x: 20, y: CGFloat(pX), width: 350.00, height: 30.00))
+        validationButton.setTitle("Valider l'inscription", for: .normal)
+        validationButton.addTarget(self, action: #selector(self.validSubscription(_:)), for: .touchUpInside)
+        validationButton.tag = 1
+        validationButton.backgroundColor = UIColor.blue
+        self.pX += 40
+        self.containerView.addSubview(validationButton)
     }
     
     func createFormCreditCard() {
@@ -123,6 +154,7 @@ class PaymentViewController: UIViewController, UIPickerViewDelegate, UIScrollVie
         let cardNumberTextField = CustomTextField(frame: CGRect(x: 20, y: CGFloat(self.pX), width: 350, height: 40))
         cardNumberTextField.fieldName = "cardNumber"
         cardNumberTextField.placeholder = "Completer"
+        cardNumberTextField.label = "Numéro de carte"
         cardNumberTextField.tag = 2
         self.pX += 60
         self.containerView.addSubview(cardNumberTextField)
@@ -138,6 +170,7 @@ class PaymentViewController: UIViewController, UIPickerViewDelegate, UIScrollVie
         let expirtationDateTextField = CustomTextField(frame: CGRect(x: 20, y: CGFloat(self.pX), width: 350, height: 40))
         expirtationDateTextField.fieldName = "expirationDate"
         expirtationDateTextField.placeholder = "Completer"
+        expirtationDateTextField.label = "Date d'expiration"
         expirtationDateTextField.tag = 2
         self.pX += 60
         self.containerView.addSubview(expirtationDateTextField)
@@ -153,6 +186,7 @@ class PaymentViewController: UIViewController, UIPickerViewDelegate, UIScrollVie
         let cryptoTextField = CustomTextField(frame: CGRect(x: 20, y: CGFloat(self.pX), width: 350, height: 40))
         cryptoTextField.fieldName = "crypto"
         cryptoTextField.placeholder = "Completer"
+        cryptoTextField.label = "Cryptogramme"
         cryptoTextField.tag = 2
         self.pX += 60
         self.containerView.addSubview(cryptoTextField)
@@ -168,9 +202,18 @@ class PaymentViewController: UIViewController, UIPickerViewDelegate, UIScrollVie
         let ownerTextField = CustomTextField(frame: CGRect(x: 20, y: CGFloat(self.pX), width: 350, height: 40))
         ownerTextField.fieldName = "owner"
         ownerTextField.placeholder = "Completer"
+        ownerTextField.label = "Propriétaire"
         ownerTextField.tag = 2
         self.pX += 60
         self.containerView.addSubview(ownerTextField)
+        // Add Validation button
+        let validationButton = UIButton(frame: CGRect(x: 20, y: CGFloat(pX), width: 350.00, height: 30.00))
+        validationButton.setTitle("Valider l'inscription", for: .normal)
+        validationButton.addTarget(self, action: #selector(self.validSubscription(_:)), for: .touchUpInside)
+        validationButton.tag = 2
+        validationButton.backgroundColor = UIColor.blue
+        self.pX += 40
+        self.containerView.addSubview(validationButton)
     }
     
     func createFormPaypal() {
@@ -185,9 +228,20 @@ class PaymentViewController: UIViewController, UIPickerViewDelegate, UIScrollVie
         let paypalTextField = CustomTextField(frame: CGRect(x: 20, y: CGFloat(self.pX), width: 350, height: 40))
         paypalTextField.fieldName = "paypalAccountNumber"
         paypalTextField.placeholder = "Completer"
+        paypalTextField.label = "Numéro de compte paypal"
         paypalTextField.tag = 3
         self.pX += 60
         self.containerView.addSubview(paypalTextField)
+        
+        // Add Validation button
+        let validationButton = UIButton(frame: CGRect(x: 20, y: CGFloat(pX), width: 350.00, height: 30.00))
+        validationButton.setTitle("Valider l'inscription", for: .normal)
+        validationButton.addTarget(self, action: #selector(self.validSubscription(_:)), for: .touchUpInside)
+        validationButton.tag = 3
+        validationButton.backgroundColor = UIColor.blue
+        self.pX += 40
+        self.containerView.addSubview(validationButton)
+        self.containerView.addSubview(validationButton)
     }
     
     func removeViewWithTag(tag: Int) {
@@ -197,13 +251,13 @@ class PaymentViewController: UIViewController, UIPickerViewDelegate, UIScrollVie
             }
         }
         if (tag == 1) {
-            self.pX -= 160
+            self.pX -= 200
         }
         if (tag == 2) {
-            self.pX -= 320
+            self.pX -= 360
         }
         if (tag == 3) {
-            self.pX -= 80
+            self.pX -= 120
         }
     }
     

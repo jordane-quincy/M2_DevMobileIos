@@ -15,6 +15,7 @@ class Person: Object {
     var serviceOptions: List<ServiceOption> = List<ServiceOption>()
     let owner = LinkingObjects(fromType: BusinessService.self, property: "subscribers")
     var serviceOffer: ServiceOffer? = nil
+    var paymentWay: PaymentWay? = nil
     
     
     override static func primaryKey() -> String? {
@@ -33,6 +34,10 @@ class Person: Object {
     
     public func setupServiceOffer(offer: ServiceOffer) {
         self.serviceOffer = offer
+    }
+    
+    public func setupPaymnetWay(paymentWay: PaymentWay) {
+        self.paymentWay = paymentWay
     }
     
     public func addAttributeToPerson(_attribute: Attribute) {
