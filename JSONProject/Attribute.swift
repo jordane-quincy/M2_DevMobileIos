@@ -14,14 +14,16 @@ class Attribute: Object {
     dynamic var label: String = ""
     dynamic var fieldName: String = ""
     dynamic var value: String = ""
+    dynamic var isSpecificField = false
 
     let owner = LinkingObjects(fromType: Person.self, property: "attributes")
     
-    convenience public init(_label: String, _fieldName: String, _value: String) {
+    convenience public init(_label: String, _fieldName: String, _value: String, isSpecificField: Bool) {
         self.init();
         label = _label
         fieldName = _fieldName
         value = _value
+        self.isSpecificField = isSpecificField
     }
 }
 

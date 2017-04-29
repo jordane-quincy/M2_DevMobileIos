@@ -46,7 +46,10 @@ class GeneralFormViewController: UIViewController, UIPickerViewDelegate, UIScrol
     
     public func setIndexOfSelectedOffer(index: Int) {
         if (self.indexOfSelectedOffer > -1 && self.indexOfSelectedOffer != index) {
-            // TODO remove specific fields from self.person
+            if (self.person != nil) {
+                // remove specific fields from self.person
+                self.person?.removeAllSpecificFields()
+            }
         }
         self.indexOfSelectedOffer = index
     }
@@ -94,7 +97,7 @@ class GeneralFormViewController: UIViewController, UIPickerViewDelegate, UIScrol
                         self.person?.attributes[indexOfAttribute!].value = attributeValue
                     }
                     else {
-                        let attribute = Attribute(_label: attributeLabel, _fieldName: attributeFieldName, _value: attributeValue)
+                        let attribute = Attribute(_label: attributeLabel, _fieldName: attributeFieldName, _value: attributeValue, isSpecificField: false)
                         self.person?.addAttributeToPerson(_attribute: attribute)
                     }
                 }
@@ -150,7 +153,7 @@ class GeneralFormViewController: UIViewController, UIPickerViewDelegate, UIScrol
                     self.person?.attributes[indexOfAttribute!].value = attributeValue
                 }
                 else {
-                    let attribute = Attribute(_label: attributeLabel, _fieldName: attributeFieldName, _value: attributeValue)
+                    let attribute = Attribute(_label: attributeLabel, _fieldName: attributeFieldName, _value: attributeValue, isSpecificField: false)
                     self.person?.addAttributeToPerson(_attribute: attribute)
                 }
             }
@@ -235,7 +238,7 @@ class GeneralFormViewController: UIViewController, UIPickerViewDelegate, UIScrol
                         txtField.text = attributeValue
                     }
                     else {
-                        txtField.placeholder = field.params?.placeholder
+                        txtField.placeholder = field.params?.placeholder ?? "Completer"
                     }
                     
                     self.containerView.addSubview(txtField)

@@ -14,6 +14,8 @@ class Person: Object {
     var attributes: List<Attribute> = List<Attribute>()
     var serviceOptions: List<ServiceOption> = List<ServiceOption>()
     let owner = LinkingObjects(fromType: BusinessService.self, property: "subscribers")
+    var serviceOffer: ServiceOffer? = nil
+    
     
     override static func primaryKey() -> String? {
         return "id"
@@ -27,6 +29,10 @@ class Person: Object {
     convenience public init(id: Int) {
         self.init();
         self.id = id
+    }
+    
+    public func setupServiceOffer(offer: ServiceOffer) {
+        self.serviceOffer = offer
     }
     
     public func addAttributeToPerson(_attribute: Attribute) {
@@ -59,5 +65,19 @@ class Person: Object {
             cpt += 1
         }
         return -1
+    }
+    
+    public func removeAllSpecificFields() {
+        var tableOfIndex = Array<Int>()
+        var cpt = 0
+        for attribute in self.attributes {
+            if (attribute.isSpecificField) {
+                tableOfIndex.append(cpt)
+            }
+            cpt += 1
+        }
+        for index in tableOfIndex {
+            self.attributes.remove(at: index)
+        }
     }
 }

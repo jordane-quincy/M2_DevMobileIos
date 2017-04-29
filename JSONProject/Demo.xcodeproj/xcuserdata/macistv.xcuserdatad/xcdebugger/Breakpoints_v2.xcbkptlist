@@ -67,13 +67,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Demo/SelectOptionViewController.swift"
-            timestampString = "515098700.622168"
+            filePath = "Demo/PaymentViewController.swift"
+            timestampString = "515150444.444507"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
-            landmarkName = "next(_:)"
+            startingLineNumber = "194"
+            endingLineNumber = "194"
+            landmarkName = "removeViewWithTag(tag:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -83,13 +83,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Demo/SelectOptionViewController.swift"
-            timestampString = "515098869.151696"
+            filePath = "Demo/PaymentViewController.swift"
+            timestampString = "515150445.054522"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "82"
-            endingLineNumber = "82"
-            landmarkName = "next(_:)"
+            startingLineNumber = "195"
+            endingLineNumber = "195"
+            landmarkName = "removeViewWithTag(tag:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -99,13 +99,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Demo/SelectOptionViewController.swift"
-            timestampString = "515098870.001735"
+            filePath = "Demo/PaymentViewController.swift"
+            timestampString = "515150445.671882"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "81"
-            endingLineNumber = "81"
-            landmarkName = "next(_:)"
+            startingLineNumber = "196"
+            endingLineNumber = "196"
+            landmarkName = "removeViewWithTag(tag:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Demo/PaymentViewController.swift"
+            timestampString = "515150447.800423"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "199"
+            endingLineNumber = "199"
+            landmarkName = "removeViewWithTag(tag:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

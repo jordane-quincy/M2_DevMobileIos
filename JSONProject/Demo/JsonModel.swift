@@ -13,7 +13,7 @@ enum SerializationError: Error {
     case invalid(String, Any)
 }
 enum Payment: String {
-    case creditCard, bankTransfer
+    case creditCard, bankTransfer, paypal
 }
 struct JsonModel {
     let title: String

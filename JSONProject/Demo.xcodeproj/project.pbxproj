@@ -44,6 +44,9 @@
 		42B57DE61EB3A61A009EB0F1 /* SelectOptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B57DE41EB3A61A009EB0F1 /* SelectOptionViewController.swift */; };
 		42B57DE71EB3A61A009EB0F1 /* SelectOptionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42B57DE51EB3A61A009EB0F1 /* SelectOptionViewController.xib */; };
 		42B57DE91EB3C20C009EB0F1 /* ServiceOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B57DE81EB3C20C009EB0F1 /* ServiceOption.swift */; };
+		42B57DEB1EB47377009EB0F1 /* ServiceOffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B57DEA1EB47377009EB0F1 /* ServiceOffer.swift */; };
+		42B57DEE1EB47A31009EB0F1 /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B57DEC1EB47A31009EB0F1 /* PaymentViewController.swift */; };
+		42B57DEF1EB47A31009EB0F1 /* PaymentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42B57DED1EB47A31009EB0F1 /* PaymentViewController.xib */; };
 		906274861EAE3A6900E09E57 /* SetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906274821EAE3A6900E09E57 /* SetupViewController.swift */; };
 		906274871EAE3A6900E09E57 /* SetupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 906274831EAE3A6900E09E57 /* SetupViewController.xib */; };
 		9062748C1EAE3A7100E09E57 /* AccueilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906274881EAE3A7100E09E57 /* AccueilViewController.swift */; };
@@ -132,6 +135,9 @@
 		42B57DE41EB3A61A009EB0F1 /* SelectOptionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectOptionViewController.swift; sourceTree = "<group>"; };
 		42B57DE51EB3A61A009EB0F1 /* SelectOptionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectOptionViewController.xib; sourceTree = "<group>"; };
 		42B57DE81EB3C20C009EB0F1 /* ServiceOption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceOption.swift; sourceTree = "<group>"; };
+		42B57DEA1EB47377009EB0F1 /* ServiceOffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceOffer.swift; sourceTree = "<group>"; };
+		42B57DEC1EB47A31009EB0F1 /* PaymentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
+		42B57DED1EB47A31009EB0F1 /* PaymentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PaymentViewController.xib; sourceTree = "<group>"; };
 		906274821EAE3A6900E09E57 /* SetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupViewController.swift; sourceTree = "<group>"; };
 		906274831EAE3A6900E09E57 /* SetupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SetupViewController.xib; sourceTree = "<group>"; };
 		906274881EAE3A7100E09E57 /* AccueilViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccueilViewController.swift; sourceTree = "<group>"; };
@@ -203,6 +209,7 @@
 				4297F5FB1EABC386004204CD /* Person.swift */,
 				4297F5FC1EABC386004204CD /* Attribute.swift */,
 				42B57DE81EB3C20C009EB0F1 /* ServiceOption.swift */,
+				42B57DEA1EB47377009EB0F1 /* ServiceOffer.swift */,
 			);
 			name = Entities;
 			sourceTree = "<group>";
@@ -220,6 +227,8 @@
 				42B57DE01EB380D8009EB0F1 /* SpecificFormViewController.xib */,
 				42B57DE41EB3A61A009EB0F1 /* SelectOptionViewController.swift */,
 				42B57DE51EB3A61A009EB0F1 /* SelectOptionViewController.xib */,
+				42B57DEC1EB47A31009EB0F1 /* PaymentViewController.swift */,
+				42B57DED1EB47A31009EB0F1 /* PaymentViewController.xib */,
 			);
 			name = Form;
 			sourceTree = "<group>";
@@ -457,6 +466,7 @@
 				906274871EAE3A6900E09E57 /* SetupViewController.xib in Resources */,
 				42B57DC41EB0ADF0009EB0F1 /* ResultatViewController.xib in Resources */,
 				42B57DDA1EB30EFB009EB0F1 /* GeneralFormViewController.xib in Resources */,
+				42B57DEF1EB47A31009EB0F1 /* PaymentViewController.xib in Resources */,
 				42B57DDE1EB33E34009EB0F1 /* SelectOfferViewController.xib in Resources */,
 				42B57DE71EB3A61A009EB0F1 /* SelectOptionViewController.xib in Resources */,
 				42B57DC81EB0AFDB009EB0F1 /* CustomCell.xib in Resources */,
@@ -510,6 +520,7 @@
 				9062748E1EAE3A7100E09E57 /* AideViewController.swift in Sources */,
 				42B57DD91EB30EFB009EB0F1 /* GeneralFormViewController.swift in Sources */,
 				4297F5F91EABC37D004204CD /* ExportServices.swift in Sources */,
+				42B57DEE1EB47A31009EB0F1 /* PaymentViewController.swift in Sources */,
 				906274861EAE3A6900E09E57 /* SetupViewController.swift in Sources */,
 				42B57DE11EB380D8009EB0F1 /* SpecificFormViewController.swift in Sources */,
 				42B57DD21EB2445D009EB0F1 /* CustomSegmentedControl.swift in Sources */,
@@ -517,6 +528,7 @@
 				4297F5F81EABC37D004204CD /* RealmServices.swift in Sources */,
 				42B57DCC1EB23A76009EB0F1 /* CustomTextField.swift in Sources */,
 				B52CE2151E3756B900EC68E5 /* ViewController.swift in Sources */,
+				42B57DEB1EB47377009EB0F1 /* ServiceOffer.swift in Sources */,
 				422150031E9274510011C565 /* PersonTest.swift in Sources */,
 				42B57DD61EB24FC2009EB0F1 /* CustomPickerViewDataSource.swift in Sources */,
 				42AFEF261E880004001587DA /* JsonModel_features.swift in Sources */,

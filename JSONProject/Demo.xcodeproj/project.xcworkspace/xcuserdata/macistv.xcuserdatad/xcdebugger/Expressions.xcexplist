@@ -3,18 +3,21 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "FileServices.createJSONFileFromString(JSONStringified : String) -&gt; ():FileServices.swift">
+         contextName = "ViewController.documentPickerWasCancelled(UIDocumentPickerViewController) -&gt; ():ViewController.swift">
          <PersistentStrings>
             <PersistentString
                value = "path">
             </PersistentString>
+            <PersistentString
+               value = "controller._title">
+            </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "GeneralFormViewController.createViewFromJson(json : JsonModel?) -&gt; ():GeneralFormViewController.swift">
+         contextName = "SpecificFormViewController.(createViewFromJson(json : JsonModel?) -&gt; ()).(closure #1):SpecificFormViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "self.person">
+               value = "cpt">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -27,49 +30,59 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "AccueilViewController.pickerView(UIPickerView, titleForRow : Int, forComponent : Int) -&gt; String?:AccueilViewController.swift">
-      </ContextState>
-      <ContextState
-         contextName = "RealmServices.getBusinessServicesArray() -&gt; [BusinessService]:RealmServices.swift">
+         contextName = "PaymentViewController.removeViewWithTag(tag : Int) -&gt; ():PaymentViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "self.realm">
+               value = "view.tag">
+            </PersistentString>
+            <PersistentString
+               value = "view.tag == tag">
+            </PersistentString>
+            <PersistentString
+               value = "tag == 2">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "AppDelegate.application(UIApplication, didFinishLaunchingWithOptions : [UIApplicationLaunchOptionsKey : Any]?) -&gt; Bool:AppDelegate.swift">
+         contextName = "PaymentViewController.changePaymentWay(CustomSegmentedControl) -&gt; ():PaymentViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "tabBarController.navigationController">
+               value = "sender.titleForSegment(at: sender.selectedSegmentIndex)">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "GeneralFormViewController.willMove(toParentViewController : UIViewController?) -&gt; ():GeneralFormViewController.swift">
+         contextName = "FileServices.createJSONFileFromString(JSONStringified : String) -&gt; ():FileServices.swift">
          <PersistentStrings>
             <PersistentString
-               value = "self.customParent">
-            </PersistentString>
-            <PersistentString
-               value = "self.person.attributes.count">
-            </PersistentString>
-            <PersistentString
-               value = "self.person.attributes[0]">
-            </PersistentString>
-            <PersistentString
-               value = "toParentViewController">
+               value = "path">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "SelectOfferViewController.viewDidLayoutSubviews() -&gt; ():SelectOfferViewController.swift">
+         contextName = "SelectOfferViewController.(createViewFromJson(json : JsonModel?) -&gt; ()).(closure #1):SelectOfferViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "scrollView.contentSize">
+               value = "offerButton.tag">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "GeneralFormViewController.createViewFromJson(json : JsonModel?) -&gt; ():GeneralFormViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.person">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "SelectOptionViewController.next(UIButton) -&gt; ():SelectOptionViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.person.serviceOptions[0]">
             </PersistentString>
             <PersistentString
-               value = "view.bounds">
+               value = "self.person.serviceOptions[1].description">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -82,32 +95,21 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "PaymentViewController.changePaymentWay(UIButton) -&gt; ():PaymentViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "sender.titleForSegment(at: sender.selectedSegmentIndex)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "SelectOfferViewController.willMove(toParentViewController : UIViewController?) -&gt; ():SelectOfferViewController.swift">
+      </ContextState>
+      <ContextState
          contextName = "RealmServices.serviceFree(title : String) -&gt; Bool:RealmServices.swift">
          <PersistentStrings>
             <PersistentString
                value = "self.realm.object(ofType: BusinessService.self, forPrimaryKey: title as AnyObject)">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "Offer.init(jsonContent : [String : Any]) throws -&gt; Offer?:JsonModel_offers.swift">
-      </ContextState>
-      <ContextState
-         contextName = "ViewController.documentPickerWasCancelled(UIDocumentPickerViewController) -&gt; ():ViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "path">
-            </PersistentString>
-            <PersistentString
-               value = "controller._title">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "SelectOfferViewController.(createViewFromJson(json : JsonModel?) -&gt; ()).(closure #1):SelectOfferViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "offerButton.tag">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -123,32 +125,60 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "SelectOfferViewController.willMove(toParentViewController : UIViewController?) -&gt; ():SelectOfferViewController.swift">
+         contextName = "AccueilViewController.pickerView(UIPickerView, titleForRow : Int, forComponent : Int) -&gt; String?:AccueilViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "SelectOfferViewController.viewDidLayoutSubviews() -&gt; ():SelectOfferViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "scrollView.contentSize">
+            </PersistentString>
+            <PersistentString
+               value = "view.bounds">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "Offer.init(jsonContent : [String : Any]) throws -&gt; Offer?:JsonModel_offers.swift">
+      </ContextState>
+      <ContextState
+         contextName = "AppDelegate.application(UIApplication, didFinishLaunchingWithOptions : [UIApplicationLaunchOptionsKey : Any]?) -&gt; Bool:AppDelegate.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "tabBarController.navigationController">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "GeneralFormViewController.willMove(toParentViewController : UIViewController?) -&gt; ():GeneralFormViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "toParentViewController">
+            </PersistentString>
+            <PersistentString
+               value = "self.person.attributes[0]">
+            </PersistentString>
+            <PersistentString
+               value = "self.person.attributes.count">
+            </PersistentString>
+            <PersistentString
+               value = "self.customParent">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "RealmServices.getBusinessServicesArray() -&gt; [BusinessService]:RealmServices.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.realm">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "SelectOfferViewController.goToGeneralFormView(UIButton) -&gt; ():SelectOfferViewController.swift">
          <PersistentStrings>
             <PersistentString
                value = "self.person">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "SpecificFormViewController.(createViewFromJson(json : JsonModel?) -&gt; ()).(closure #1):SpecificFormViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "cpt">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "SelectOptionViewController.next(UIButton) -&gt; ():SelectOptionViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "self.person.serviceOptions[0]">
-            </PersistentString>
-            <PersistentString
-               value = "self.person.serviceOptions[1].description">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

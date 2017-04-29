@@ -16,7 +16,6 @@ class SelectOptionViewController: UIViewController, UIPickerViewDelegate, UIScro
     let realmServices = RealmServices()
     var jsonModel: JsonModel? = nil
     var customNavigationController: UINavigationController? = nil
-    var indexOfSelectedOffer: Int = -1
     var person: Person? = nil
     var customParent: SpecificFormViewController? = nil
     var choosenOffer: Offer? = nil
@@ -47,13 +46,6 @@ class SelectOptionViewController: UIViewController, UIPickerViewDelegate, UIScro
     
     public func setupChoosenOffer(choosenOffer: Offer) {
         self.choosenOffer = choosenOffer
-    }
-    
-    public func setIndexOfSelectedOffer(index: Int) {
-        if (self.indexOfSelectedOffer > -1 && self.indexOfSelectedOffer != index) {
-            // TODO remove specific fields from self.person
-        }
-        self.indexOfSelectedOffer = index
     }
     
     override func willMove(toParentViewController: UIViewController?)
@@ -91,16 +83,15 @@ class SelectOptionViewController: UIViewController, UIPickerViewDelegate, UIScro
         
         // Go to next Screen
         // Redirect To Next Step
-        /*let specificFormView = SpecificFormViewController(nibName: "SpecificFormViewController", bundle: nil)
+        let paymentView = PaymentViewController(nibName: "PaymentViewController", bundle: nil)
         
         if (self.person != nil) {
-            specificFormView.setupPerson(person: self.person!)
+            paymentView.setupPerson(person: self.person!)
         }
-        specificFormView.setupNavigationController(navigationController: self.customNavigationController!)
-        specificFormView.setIndexOfSelectedOffer(index: indexOfSelectedOffer)
-        specificFormView.setupCustomParent(customParent: self)
-        specificFormView.createViewFromJson(json: self.jsonModel)
-        self.customNavigationController?.pushViewController(specificFormView, animated: true)*/
+        paymentView.setupNavigationController(navigationController: self.customNavigationController!)
+        paymentView.setupCustomParent2(customParent: self)
+        paymentView.createViewFromJson(json: self.jsonModel)
+        self.customNavigationController?.pushViewController(paymentView, animated: true)
         
         
         // Save the person in realm database

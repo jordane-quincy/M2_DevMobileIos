@@ -46,9 +46,6 @@ class SpecificFormViewController: UIViewController, UIPickerViewDelegate, UIScro
     }
     
     public func setIndexOfSelectedOffer(index: Int) {
-        if (self.indexOfSelectedOffer > -1 && self.indexOfSelectedOffer != index) {
-            // TODO remove specific fields from self.person
-        }
         self.indexOfSelectedOffer = index
     }
     
@@ -91,11 +88,13 @@ class SpecificFormViewController: UIViewController, UIPickerViewDelegate, UIScro
                         self.person?.attributes[indexOfAttribute!].value = attributeValue
                     }
                     else {
-                        let attribute = Attribute(_label: attributeLabel, _fieldName: attributeFieldName, _value: attributeValue)
+                        let attribute = Attribute(_label: attributeLabel, _fieldName: attributeFieldName, _value: attributeValue, isSpecificField: true)
                         self.person?.addAttributeToPerson(_attribute: attribute)
                     }
                 }
             }
+            // Setup offer
+            self.person?.setupServiceOffer(offer: ServiceOffer(title: (self.choosenOffer?.title)!, offerDescription: (self.choosenOffer?.description)!, price: (self.choosenOffer?.price)!))
             // Pass person to the parent
             self.customParent?.setupPerson(person: self.person!)
             // Reset custom parent
@@ -143,7 +142,7 @@ class SpecificFormViewController: UIViewController, UIPickerViewDelegate, UIScro
                     self.person?.attributes[indexOfAttribute!].value = attributeValue
                 }
                 else {
-                    let attribute = Attribute(_label: attributeLabel, _fieldName: attributeFieldName, _value: attributeValue)
+                    let attribute = Attribute(_label: attributeLabel, _fieldName: attributeFieldName, _value: attributeValue, isSpecificField: true)
                     self.person?.addAttributeToPerson(_attribute: attribute)
                 }
             }
@@ -161,7 +160,6 @@ class SpecificFormViewController: UIViewController, UIPickerViewDelegate, UIScro
                 selectOptionView.setupPerson(person: self.person!)
             }
             selectOptionView.setupNavigationController(navigationController: self.customNavigationController!)
-            selectOptionView.setIndexOfSelectedOffer(index: indexOfSelectedOffer)
             selectOptionView.setupCustomParent(customParent: self)
             selectOptionView.setupChoosenOffer(choosenOffer: self.choosenOffer!)
             selectOptionView.createViewFromJson(json: self.jsonModel)
@@ -169,6 +167,15 @@ class SpecificFormViewController: UIViewController, UIPickerViewDelegate, UIScro
         }
         else {
             // Go to recap/payment view
+            let paymentView = PaymentViewController(nibName: "PaymentViewController", bundle: nil)
+            
+            if (self.person != nil) {
+                paymentView.setupPerson(person: self.person!)
+            }
+            paymentView.setupNavigationController(navigationController: self.customNavigationController!)
+            paymentView.setupCustomParent1(customParent: self)
+            paymentView.createViewFromJson(json: self.jsonModel)
+            self.customNavigationController?.pushViewController(paymentView, animated: true)
         }
         
         
