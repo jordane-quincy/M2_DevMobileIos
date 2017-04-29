@@ -19,11 +19,11 @@ class AccueilViewController: UIViewController, UIScrollViewDelegate  {
     var person: Person? = nil
     
     
-    public func setupNavigationController (navigationController: UINavigationController){
+    public func setupNavigationController(navigationController: UINavigationController){
         self.customNavigationController = navigationController
     }
     
-    public func setupPerson(person: Person) {
+    public func setupPerson(person: Person?) {
         self.person = person
     }
     

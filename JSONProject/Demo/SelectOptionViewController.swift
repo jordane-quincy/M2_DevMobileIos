@@ -51,12 +51,14 @@ class SelectOptionViewController: UIViewController, UIPickerViewDelegate, UIScro
     override func willMove(toParentViewController: UIViewController?)
     {
         if (toParentViewController == nil) {
-            // remove all options
-            self.person?.removeAllOptions()
-            // Pass person to the parent
-            self.customParent?.setupPerson(person: self.person!)
-            // Reset custom parent
-            self.customParent = nil
+            if (!(self.person?.isSaved)!) {
+                // remove all options
+                self.person?.removeAllOptions()
+                // Pass person to the parent
+                self.customParent?.setupPerson(person: self.person!)
+                // Reset custom parent
+                self.customParent = nil
+            }
         }
     }
     
@@ -75,7 +77,10 @@ class SelectOptionViewController: UIViewController, UIPickerViewDelegate, UIScro
                         }
                         cpt += 1
                     }
-                    self.person?.addServiceOptionToPerson(serviceOption: serviceOptionChoosen!)
+                    // Check if the option is not in the serviceOption of the person
+                    if (self.person?.optionNotAlreadyTaken(serviceOption: serviceOptionChoosen!))! {
+                        self.person?.addServiceOptionToPerson(serviceOption: serviceOptionChoosen!)
+                    }
                 }
             }
         }

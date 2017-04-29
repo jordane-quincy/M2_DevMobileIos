@@ -17,6 +17,8 @@ class Person: Object {
     var serviceOffer: ServiceOffer? = nil
     var paymentWay: PaymentWay? = nil
     
+    var isSaved = false
+    
     
     override static func primaryKey() -> String? {
         return "id"
@@ -40,6 +42,10 @@ class Person: Object {
         self.paymentWay = paymentWay
     }
     
+    public func changeIsSavePerson() {
+        self.isSaved = true
+    }
+    
     public func addAttributeToPerson(_attribute: Attribute) {
         attributes.append(_attribute)
     }
@@ -55,6 +61,15 @@ class Person: Object {
     
     public func addServiceOptionToPerson(serviceOption: ServiceOption) {
         self.serviceOptions.append(serviceOption);
+    }
+    
+    public func optionNotAlreadyTaken(serviceOption: ServiceOption) -> Bool {
+        for option in self.serviceOptions {
+            if (option.title == serviceOption.title) {
+                return false
+            }
+        }
+        return true
     }
     
     public func removeAllOptions() {

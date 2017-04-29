@@ -35,7 +35,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.makeKeyAndVisible()
         myVC1.setupNavigationController(navigationController: navigationController)
         
-        
         let firstImage = UIImage(named: "home")
         myVC1.tabBarItem = UITabBarItem(
             title: "Accueil",

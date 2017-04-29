@@ -52,51 +52,54 @@ class SpecificFormViewController: UIViewController, UIPickerViewDelegate, UIScro
     override func willMove(toParentViewController: UIViewController?)
     {
         if (toParentViewController == nil) {
-            let subViews = self.containerView.subviews
-            for view in subViews {
-                var attributeFieldName = ""
-                var attributeLabel = ""
-                var attributeValue = ""
-                if let textField = view as? CustomTextField {
-                    attributeFieldName = textField.fieldName
-                    attributeLabel = textField.label
-                    attributeValue = textField.text ?? ""
-                }
-                if let datePickerField = view as? CustomDatePicker {
-                    attributeFieldName = datePickerField.fieldName
-                    attributeLabel = datePickerField.label
-                    let dateFormatter = DateFormatter()
-                    dateFormatter.dateFormat = "dd/MM/yyyy"
-                    attributeValue = dateFormatter.string(from: datePickerField.date)
-                }
-                if let pickerField = view as? CustomPickerView {
-                    attributeFieldName = pickerField.fieldName
-                    attributeLabel = pickerField.label
-                    attributeValue = pickerField.pickerData[pickerField.selectedRow(inComponent: 0)].value
-                }
-                if let segmentedControlField = view as? CustomSegmentedControl {
-                    attributeFieldName = segmentedControlField.fieldName
-                    attributeLabel = segmentedControlField.label
-                    attributeValue = segmentedControlField.titleForSegment(at: segmentedControlField.selectedSegmentIndex) ?? ""
-                }
-                // Set the attribute only if we have the attribute fieldName and Label
-                // We can have empty attributeValue because the field can be not required
-                if (attributeLabel != "" && attributeFieldName != "") {
-                    // On doit vérifier si on n'a pas déjà ce champs, si oui il faut juste le mettre a jour
-                    let indexOfAttribute = self.person?.getAttributeIndex(fieldName: attributeFieldName)
-                    if (indexOfAttribute! > -1) {
-                        self.person?.attributes[indexOfAttribute!].value = attributeValue
+            if (self.person != nil && !(self.person?.isSaved)!) {
+                let subViews = self.containerView.subviews
+                for view in subViews {
+                    var attributeFieldName = ""
+                    var attributeLabel = ""
+                    var attributeValue = ""
+                    if let textField = view as? CustomTextField {
+                        attributeFieldName = textField.fieldName
+                        attributeLabel = textField.label
+                        attributeValue = textField.text ?? ""
                     }
-                    else {
-                        let attribute = Attribute(_label: attributeLabel, _fieldName: attributeFieldName, _value: attributeValue, isSpecificField: true)
-                        self.person?.addAttributeToPerson(_attribute: attribute)
+                    if let datePickerField = view as? CustomDatePicker {
+                        attributeFieldName = datePickerField.fieldName
+                        attributeLabel = datePickerField.label
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.dateFormat = "dd/MM/yyyy"
+                        attributeValue = dateFormatter.string(from: datePickerField.date)
+                    }
+                    if let pickerField = view as? CustomPickerView {
+                        attributeFieldName = pickerField.fieldName
+                        attributeLabel = pickerField.label
+                        attributeValue = pickerField.pickerData[pickerField.selectedRow(inComponent: 0)].value
+                    }
+                    if let segmentedControlField = view as? CustomSegmentedControl {
+                        attributeFieldName = segmentedControlField.fieldName
+                        attributeLabel = segmentedControlField.label
+                        attributeValue = segmentedControlField.titleForSegment(at: segmentedControlField.selectedSegmentIndex) ?? ""
+                    }
+                    // Set the attribute only if we have the attribute fieldName and Label
+                    // We can have empty attributeValue because the field can be not required
+                    if (attributeLabel != "" && attributeFieldName != "") {
+                        // On doit vérifier si on n'a pas déjà ce champs, si oui il faut juste le mettre a jour
+                        let indexOfAttribute = self.person?.getAttributeIndex(fieldName: attributeFieldName)
+                        if (indexOfAttribute! > -1) {
+                            self.person?.attributes[indexOfAttribute!].value = attributeValue
+                        }
+                        else {
+                            let attribute = Attribute(_label: attributeLabel, _fieldName: attributeFieldName, _value: attributeValue, isSpecificField: true)
+                            self.person?.addAttributeToPerson(_attribute: attribute)
+                        }
                     }
                 }
+                // Setup offer
+                self.person?.setupServiceOffer(offer: ServiceOffer(title: (self.choosenOffer?.title)!, offerDescription: (self.choosenOffer?.description)!, price: (self.choosenOffer?.price)!))
+                // Pass person to the parent
+                self.customParent?.setupPerson(person: self.person!)
+                
             }
-            // Setup offer
-            self.person?.setupServiceOffer(offer: ServiceOffer(title: (self.choosenOffer?.title)!, offerDescription: (self.choosenOffer?.description)!, price: (self.choosenOffer?.price)!))
-            // Pass person to the parent
-            self.customParent?.setupPerson(person: self.person!)
             // Reset custom parent
             self.customParent = nil
         }
@@ -146,8 +149,9 @@ class SpecificFormViewController: UIViewController, UIPickerViewDelegate, UIScro
                     self.person?.addAttributeToPerson(_attribute: attribute)
                 }
             }
-            
         }
+        // Setup offer
+        self.person?.setupServiceOffer(offer: ServiceOffer(title: (self.choosenOffer?.title)!, offerDescription: (self.choosenOffer?.description)!, price: (self.choosenOffer?.price)!))
         print(self.person ?? "")
         // Go to next Screen
         // Redirect To Next Step

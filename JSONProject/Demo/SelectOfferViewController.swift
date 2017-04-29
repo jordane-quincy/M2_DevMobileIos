@@ -40,13 +40,17 @@ class SelectOfferViewController: UIViewController, UIPickerViewDelegate, UIScrol
     override func willMove(toParentViewController: UIViewController?)
     {
         if (toParentViewController == nil) {
+            if (self.person != nil && !(self.person?.isSaved)!) {
+                // Pass the person object to the parent
+                self.customParent?.setupPerson(person: self.person)
+            }
+
             // Hide the navigation bar
             self.customNavigationController?.setNavigationBarHidden(true, animated: true)
-            // Pass the person object to the parent
-            self.customParent?.setupPerson(person: self.person!)
             // reset customParent
             self.customParent = nil
         }
+        
     }
     
     public func setupNavigationController (navigationController: UINavigationController){

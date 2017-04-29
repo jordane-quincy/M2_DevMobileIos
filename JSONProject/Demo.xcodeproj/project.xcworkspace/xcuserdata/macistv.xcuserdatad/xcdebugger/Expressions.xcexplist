@@ -14,10 +14,16 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "SpecificFormViewController.(createViewFromJson(json : JsonModel?) -&gt; ()).(closure #1):SpecificFormViewController.swift">
+         contextName = "PaymentViewController.removeViewWithTag(tag : Int) -&gt; ():PaymentViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "cpt">
+               value = "view.tag">
+            </PersistentString>
+            <PersistentString
+               value = "view.tag == tag">
+            </PersistentString>
+            <PersistentString
+               value = "tag == 2">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -30,16 +36,10 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "PaymentViewController.removeViewWithTag(tag : Int) -&gt; ():PaymentViewController.swift">
+         contextName = "SpecificFormViewController.(createViewFromJson(json : JsonModel?) -&gt; ()).(closure #1):SpecificFormViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "view.tag">
-            </PersistentString>
-            <PersistentString
-               value = "view.tag == tag">
-            </PersistentString>
-            <PersistentString
-               value = "tag == 2">
+               value = "cpt">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -64,6 +64,26 @@
          <PersistentStrings>
             <PersistentString
                value = "path">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "PaymentViewController.validSubscription(UIButton) -&gt; ():PaymentViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.tabBarController?.viewControllers">
+            </PersistentString>
+            <PersistentString
+               value = "self.customNavigationController.viewControllers">
+            </PersistentString>
+            <PersistentString
+               value = "self.customTabBarController">
+            </PersistentString>
+            <PersistentString
+               value = "customNavigationController?.viewControllers">
+            </PersistentString>
+            <PersistentString
+               value = "self.person">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -112,6 +132,17 @@
       </ContextState>
       <ContextState
          contextName = "SelectOfferViewController.willMove(toParentViewController : UIViewController?) -&gt; ():SelectOfferViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.person">
+            </PersistentString>
+            <PersistentString
+               value = "!(self.person?.isSaved)!">
+            </PersistentString>
+            <PersistentString
+               value = "self.customParent">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "RealmServices.serviceFree(title : String) -&gt; Bool:RealmServices.swift">
@@ -158,10 +189,18 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "PaymentViewController.(validSubscription(UIButton) -&gt; ()).(closure #1):PaymentViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "selectOfferView.customParent">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "GeneralFormViewController.willMove(toParentViewController : UIViewController?) -&gt; ():GeneralFormViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "toParentViewController">
+               value = "self.customParent">
             </PersistentString>
             <PersistentString
                value = "self.person.attributes[0]">
@@ -170,7 +209,7 @@
                value = "self.person.attributes.count">
             </PersistentString>
             <PersistentString
-               value = "self.customParent">
+               value = "toParentViewController">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

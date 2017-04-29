@@ -53,16 +53,11 @@ class PaymentViewController: UIViewController, UIPickerViewDelegate, UIScrollVie
     override func willMove(toParentViewController: UIViewController?)
     {
         if (toParentViewController == nil) {
-            // Pass person to the parent
-            if (self.customParent1 != nil) {
-                self.customParent1?.setupPerson(person: self.person!)
+            if (!(self.person?.isSaved)!) {
+                // Reset custom parent
+                self.customParent1 = nil
+                self.customParent2 = nil
             }
-            else {
-                self.customParent2?.setupPerson(person: self.person!)
-            }
-            // Reset custom parent
-            self.customParent1 = nil
-            self.customParent2 = nil
         }
     }
     
@@ -90,12 +85,22 @@ class PaymentViewController: UIViewController, UIPickerViewDelegate, UIScrollVie
             }
         }
         self.person?.setupPaymnetWay(paymentWay: paymentWay)
-        print(self.person)
+        self.person?.changeIsSavePerson()
         // Save the person in realm database
         realmServices.createPerson(person: self.person!)
         realmServices.addSubscriberToService(title: (self.jsonModel?.title)!, subscriber: self.person!)
-        
         // Go Back to home view
+        /*let selectOfferView = self.customNavigationController?.viewControllers[1] as! SelectOfferViewController
+        self.customNavigationController?.viewControllers = []
+        self.customNavigationController?.pushViewController(selectOfferView.customParent!, animated: true)
+        self.customNavigationController?.setNavigationBarHidden(true, animated: true)*/
+        //self.customNavigationController?.viewControllers = []
+        self.customNavigationController?.popToRootViewController(animated: true)
+        
+        self.realmServices.createPerson(person: self.person!)
+        self.realmServices.addSubscriberToService(title: (self.jsonModel?.title)!, subscriber: self.person!)
+            
+        
     }
     
     
