@@ -40,3 +40,10 @@ https://developer.apple.com/swift/blog/?id=37
 http://stackoverflow.com/questions/33855998/how-to-get-hardware-details-in-swift
 
 https://github.com/beltex/SystemKit/pull/24/commits/60dcaf3683bcc9ba472d318e9560a7f5203b3e60?diff=split
+
+
+Pour image base 64
+
+let dataDecoded : Data = Data(base64Encoded: strBase64, options: .ignoreUnknownCharacters)!  
+let decodedimage = UIImage(data: dataDecoded)  
+yourImageView.image = decodedimage  

@@ -85,14 +85,8 @@ class SetupViewController: UIViewController, UIDocumentMenuDelegate, UIDocumentP
         let importMenu = UIDocumentMenuViewController(documentTypes: ["public.text"], in: .import)
         importMenu.delegate = self
         present(importMenu, animated: true, completion: nil)
-        
-        
-        
         // code pour le browser sur le repo de l'app
         //let fileBrowser = FileBrowser();
         //present(fileBrowser, animated: true, completion: nil)
     }
-
-    
-    
 }
