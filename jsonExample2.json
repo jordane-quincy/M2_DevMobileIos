@@ -1,0 +1,134 @@
+{
+	"title": "Orange",
+	"description": "Abonnez-vous chez nous yaura de la 4g partout",
+	"icon": "base64Icon",
+	"commonFields": [
+		{
+			"required": true,
+			"fieldType": "name",
+			"fieldId": "firstName",
+			"label": "Prénom",
+			"input": "text",
+			"params": {
+				"minLength": 2,
+				"maxLenght": 25,
+				"placeholder": "Entrez votre prénom"
+			}
+		},
+		{
+			"required": true,
+			"fieldType": "name",
+			"fieldId": "lastName",
+			"label": "Name",
+			"input": "text",
+			"params": {
+				"minLength": 2,
+				"maxLenght": 25,
+				"placeholder": "Entrez votre nom"
+			}
+		},
+		{
+			"required": true,
+			"fieldType": "other",
+			"fieldId": "sexe",
+			"label": "Sexe",
+			"input": "radio",
+			"params": {
+				"choices": [
+					{
+						"value": "M",
+						"label": "Homme"
+					},
+					{
+						"value": "F",
+						"label": "Femme"
+					}
+				]
+			}
+		},
+		{
+			"required": true,
+			"fieldType": "date",
+			"fieldId": "birthDate",
+			"label": "Date de naissance",
+			"input": "date"
+		},
+		{
+			"required": true,
+			"fieldType": "other",
+			"fieldId": "country",
+			"label": "Pays",
+			"input": "select",
+			"params": {
+				"choices": [
+					{
+						"value": "FRA",
+						"label": "France",
+						"selected": true
+					},
+					{
+						"value": "BEL",
+						"label": "Belgique"
+					}
+				]
+			}
+		}
+	],
+	"paymentWays": [
+		"creditCard",
+		"bankTransfer"
+	],
+	"offers": [
+		{
+			"title": "Abonnoment petit",
+			"description": "Offre de merde sms illimité mais que 2h d'appel et 500Mo",
+			"price": 2,
+			"specificFields": [
+				{
+					"fieldType": "phone",
+					"fieldId": "phone",
+					"label": "Numéro de téléphone",
+					"input": "string"
+				}
+			],
+			"features": [
+				{
+					"price": 2,
+					"title": "+2 Go",
+					"description": "Profitez de 2 Go en plus pour seulement 2€ par mois"
+				},
+				{
+					"price": 5,
+					"title": "Deezer",
+					"description": "Offrez-vous un abonnement Deezer pour seulement 5€/mois au lieu de 9,99€"
+				}
+			]
+		},
+		{
+			"title": "Abonnoment grand",
+			"description": "Offre tout illimité et 50Go",
+			"price": 20,
+			"specificFields": [
+				{
+					"fieldType": "email",
+					"fieldId": "email",
+					"label": "Email",
+					"input": "string"
+				}
+			],
+			"features": [
+				{
+					"price": 2,
+					"title": "+2 Go",
+					"description": "Profitez de 2 Go en plus pour seulement 2€ par mois"
+				},
+				{
+					"price": 5,
+					"title": "Deezer",
+					"description": "Offrez-vous un abonnement Deezer pour seulement 5€/mois au lieu de 9,99€"
+				}
+			]
+		}
+	]
+
+}

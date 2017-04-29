@@ -71,8 +71,6 @@ class SelectOfferViewController: UIViewController, UIPickerViewDelegate, UIScrol
     
     func goToGeneralFormView(_ sender: UIButton) {
         let indexOfSelectedOffer = sender.tag
-        print(String(indexOfSelectedOffer))
-        
         // Redirect To Next Step
         let generalFormView = GeneralFormViewController(nibName: "GeneralFormViewController", bundle: nil)
         
@@ -91,7 +89,6 @@ class SelectOfferViewController: UIViewController, UIPickerViewDelegate, UIScrol
     
     
     func createViewFromJson(json: JsonModel?){
-        print(json as Any)
         self.jsonModel = json
         // Setup interface
         DispatchQueue.main.async() {
@@ -113,7 +110,6 @@ class SelectOfferViewController: UIViewController, UIPickerViewDelegate, UIScrol
             var pX = 120
             var cpt = 1
             for offer in (json?.offers)! {
-                print(offer)
                 let offerButton = UIButton(frame: CGRect(x: 20, y: CGFloat(pX), width: 350.00, height: 130.00))
 
                 // enable button with multiple lines

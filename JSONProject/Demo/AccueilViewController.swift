@@ -29,7 +29,23 @@ class AccueilViewController: UIViewController, UIScrollViewDelegate  {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        print("didLoad")
+        // We check in database if there are services
+        // If yes, we load the last used
+        let lastUsedServices = realmServices.getLastUsedBusinessServices()
+        if (lastUsedServices != nil) {
+            // Get the jsonModel
+            let jsonData = lastUsedServices?.jsonModelInString.data(using: .utf8)
+            let json = try? JSONSerialization.jsonObject(with: jsonData!, options: [])
+            do {
+                let jsonModel = try JsonModel(jsonContent: json as! [String: Any])
+                self.createViewFromJson(json: jsonModel)
+            } catch let serializationError {
+                //in case of unsuccessful deserialization
+                print(serializationError)
+            }
+        
+        }
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -53,7 +69,6 @@ class AccueilViewController: UIViewController, UIScrollViewDelegate  {
     
     
     func createViewFromJson(json: JsonModel?){
-        print(json as Any)
         self.jsonModel = json
         // Setup interface
         DispatchQueue.main.async() {

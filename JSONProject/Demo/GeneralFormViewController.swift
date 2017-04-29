@@ -158,7 +158,6 @@ class GeneralFormViewController: UIViewController, UIPickerViewDelegate, UIScrol
             }
             
         }
-        print(self.person ?? "")
         // Go to next Screen
         // Redirect To Next Step
         let specificFormView = SpecificFormViewController(nibName: "SpecificFormViewController", bundle: nil)
@@ -180,7 +179,6 @@ class GeneralFormViewController: UIViewController, UIPickerViewDelegate, UIScrol
     
     
     func createViewFromJson(json: JsonModel?){
-        print(json as Any)
         self.jsonModel = json
         // Setup interface
         DispatchQueue.main.async() {

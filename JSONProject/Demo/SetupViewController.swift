@@ -35,14 +35,6 @@ class SetupViewController: UIViewController, UIDocumentMenuDelegate, UIDocumentP
         URLSession.shared.dataTask(with:urlDocument) { (data, response, error) in
             let json = try? JSONSerialization.jsonObject(with: data!, options: [])
             
-            //if let dictionary = json as? [String: Any] {
-            //    for (key, value) in dictionary {
-            //        // access all key / value pairs in dictionary
-            //
-            //        //print("key : \(key) , value : \(value)")
-            //    }
-            //}
-            
             do {
                 let jsonModel = try JsonModel(jsonContent: json as! [String: Any])
                 
@@ -55,14 +47,16 @@ class SetupViewController: UIViewController, UIDocumentMenuDelegate, UIDocumentP
                 
                 // create the service in dataBase
                 let realmServices = RealmServices()
-                let businessService = BusinessService(_title: (jsonModel?.title)!, _serviceDescription: (jsonModel?.description)!, _brand: "")
+                realmServices.resetlastUsedService()
+                let jsonModelInString = String(data: data!, encoding: .utf8)
+                let businessService = BusinessService(_title: (jsonModel?.title)!, _serviceDescription: (jsonModel?.description)!, icon: jsonModel?.icon ?? "", jsonModelInString: jsonModelInString!, isLastUsed: true)
                 // On vérifie si le service n'existe pas déjà en database
                 if (realmServices.serviceFree(title: businessService.title)) {
                     realmServices.createBusinessService(businessService: businessService)
                 }
-                
-                
-                
+                else {
+                    realmServices.setIsLastUsedForService(title: businessService.title)
+                }
             } catch let serializationError {
                 //in case of unsuccessful deserialization
                 print(serializationError)

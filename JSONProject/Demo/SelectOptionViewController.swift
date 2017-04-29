@@ -84,7 +84,6 @@ class SelectOptionViewController: UIViewController, UIPickerViewDelegate, UIScro
                 }
             }
         }
-        print(self.person ?? "")
         
         // Go to next Screen
         // Redirect To Next Step
@@ -106,7 +105,6 @@ class SelectOptionViewController: UIViewController, UIPickerViewDelegate, UIScro
     
     
     func createViewFromJson(json: JsonModel?){
-        print(json as Any)
         self.jsonModel = json
         // Setup interface
         DispatchQueue.main.async() {

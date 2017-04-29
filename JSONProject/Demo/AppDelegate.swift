@@ -15,10 +15,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions:
         [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // reset database
-        let realmServices = RealmServices()
-        realmServices.resetDataBase()
-
         let tabBarController = UITabBarController()
         let myVC1 = AccueilViewController(nibName: "AccueilViewController", bundle: nil)
         let myVC2 = ResultatViewController(nibName: "ResultatViewController", bundle: nil)

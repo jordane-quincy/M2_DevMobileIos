@@ -14,17 +14,21 @@ class BusinessService: Object {
     dynamic var title: String = ""
     dynamic var serviceDescription: String = ""
     var subscribers: List<Person> = List<Person>()
-    dynamic var brand: String = ""
+    dynamic var icon: String = ""
+    dynamic var jsonModelInString: String = ""
+    dynamic var isLastUsed: Bool = false
     
     override class func primaryKey() -> String? {
         return "title"
     }
     
-    convenience public init(_title: String, _serviceDescription: String, _brand: String) {
+    convenience public init(_title: String, _serviceDescription: String, icon: String, jsonModelInString: String, isLastUsed: Bool) {
         self.init();
         title = _title
         serviceDescription = _serviceDescription
-        brand = _brand
+        self.icon = icon
+        self.jsonModelInString = jsonModelInString
+        self.isLastUsed = isLastUsed
     }
     
     public func addPersonToService(person: Person) {

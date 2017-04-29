@@ -182,10 +182,10 @@ class ViewController: UIViewController, UIDocumentMenuDelegate, UIDocumentPicker
         let exportServices = ExportServices()
         let realm = try! Realm()
         
-        realmServices.resetDataBase()
+        //realmServices.resetDataBase()
         
         //Init du service
-        let businessService = BusinessService(_title: "CanalPlay", _serviceDescription: "Service de vidéo à la demande",_brand: "Canal Satellite")
+        let businessService = BusinessService(_title: "CanalPlay", _serviceDescription: "Service de vidéo à la demande",icon: "hiuygyg", jsonModelInString: "", isLastUsed: true)
         
         //Ajout d'une personne
         let person = Person()

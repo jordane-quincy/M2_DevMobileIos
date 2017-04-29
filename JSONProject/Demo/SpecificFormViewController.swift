@@ -152,7 +152,6 @@ class SpecificFormViewController: UIViewController, UIPickerViewDelegate, UIScro
         }
         // Setup offer
         self.person?.setupServiceOffer(offer: ServiceOffer(title: (self.choosenOffer?.title)!, offerDescription: (self.choosenOffer?.description)!, price: (self.choosenOffer?.price)!))
-        print(self.person ?? "")
         // Go to next Screen
         // Redirect To Next Step
         // Check if there is option
@@ -191,7 +190,6 @@ class SpecificFormViewController: UIViewController, UIPickerViewDelegate, UIScro
     
     
     func createViewFromJson(json: JsonModel?){
-        print(json as Any)
         self.jsonModel = json
         // Setup interface
         DispatchQueue.main.async() {

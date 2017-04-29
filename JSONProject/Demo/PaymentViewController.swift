@@ -64,7 +64,6 @@ class PaymentViewController: UIViewController, UIPickerViewDelegate, UIScrollVie
     func validSubscription(_ sender: UIButton) {
         // get data from UI for the Person Object
         // Test if all requiredField are completed
-        print("fin")
         let paymentWay = PaymentWay(label: self.selectedPaymentWay)
         var tag = -1
         if (self.selectedPaymentWay == "Compte Bancaire") {
@@ -282,7 +281,6 @@ class PaymentViewController: UIViewController, UIPickerViewDelegate, UIScrollVie
         if (paymentWay == "Compte Bancaire") {
             // Remove actual form of paymentWay
             self.removeViewWithTag(tag: tagToRemove)
-            print("CompteB")
             // Create new form of the new paymentWay
             self.createFormCreditAccount()
             self.scrollView.contentSize = CGSize(width: 375, height: self.pX + 100)
@@ -290,7 +288,6 @@ class PaymentViewController: UIViewController, UIPickerViewDelegate, UIScrollVie
         else if (paymentWay == "Carte Bancaire") {
             // Remove actual form of paymentWay
             self.removeViewWithTag(tag: tagToRemove)
-            print("CB")
             // Create new form of the new paymentWay
             self.createFormCreditCard()
             self.scrollView.contentSize = CGSize(width: 375, height: self.pX + 100)
@@ -298,7 +295,6 @@ class PaymentViewController: UIViewController, UIPickerViewDelegate, UIScrollVie
         else if (paymentWay == "Paypal") {
             // Remove actual form of paymentWay
             self.removeViewWithTag(tag: tagToRemove)
-            print("paypal")
             // Create new form of the new paymentWay
             self.createFormPaypal()
             self.scrollView.contentSize = CGSize(width: 375, height: self.pX + 100)
@@ -308,7 +304,6 @@ class PaymentViewController: UIViewController, UIPickerViewDelegate, UIScrollVie
 
     
     func createViewFromJson(json: JsonModel?){
-        print(json as Any)
         self.jsonModel = json
         // Setup interface
         DispatchQueue.main.async() {

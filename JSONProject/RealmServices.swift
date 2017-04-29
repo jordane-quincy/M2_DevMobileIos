@@ -94,6 +94,35 @@ class RealmServices {
         return self.realm.object(ofType: BusinessService.self, forPrimaryKey: _title as AnyObject)!
     }
     
+    public func setIsLastUsedForService(title: String) {
+        let businessService = self.getBusinessService(_title: title)
+        try! self.realm.write {
+            businessService.isLastUsed = true
+        }
+    }
+    
+    public func getLastUsedBusinessServices() -> BusinessService? {
+        let allServices = self.getBusinessServicesArray()
+        for service in allServices {
+            if (service.isLastUsed) {
+                return service
+            }
+        }
+        return nil;
+    }
+    
+    public func resetlastUsedService() {
+        let allServices = self.getBusinessServicesArray()
+        for service in allServices {
+            if (service.isLastUsed) {
+                // reset the "isLastUsed"
+                try! self.realm.write {
+                    service.isLastUsed = false
+                }
+            }
+        }
+    }
+    
     public func serviceFree(title: String) -> Bool {
         if (self.realm.object(ofType: BusinessService.self, forPrimaryKey: title as AnyObject) != nil) {
             return false

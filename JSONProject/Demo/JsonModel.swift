@@ -18,6 +18,7 @@ enum Payment: String {
 struct JsonModel {
     let title: String
     let description: String
+    let icon: String
     let commonFields: Set<CommonField>
     let paymentWays: Set<Payment>
     let offers: Set<Offer>
@@ -30,6 +31,8 @@ struct JsonModel {
         guard let description = jsonContent["description"] as? String else {
             throw SerializationError.missing("description")
         }
+        
+        let icon = jsonContent["icon"] as? String
         
         // Extract and validate payments
         guard let paymentWaysJSON = jsonContent["paymentWays"] as? [String] else {
@@ -90,6 +93,7 @@ struct JsonModel {
         //assignation
         self.title = title
         self.description = description
+        self.icon = icon ?? ""
         self.commonFields = commonFields
         self.paymentWays = paymentWays
         self.offers = offers
