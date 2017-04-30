@@ -95,11 +95,6 @@ class PaymentViewController: UIViewController, UIPickerViewDelegate, UIScrollVie
         self.customNavigationController?.setNavigationBarHidden(true, animated: true)*/
         //self.customNavigationController?.viewControllers = []
         self.customNavigationController?.popToRootViewController(animated: true)
-        
-        self.realmServices.createPerson(person: self.person!)
-        self.realmServices.addSubscriberToService(title: (self.jsonModel?.title)!, subscriber: self.person!)
-            
-        
     }
     
     

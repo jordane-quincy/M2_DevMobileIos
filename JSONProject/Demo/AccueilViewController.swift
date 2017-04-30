@@ -47,6 +47,7 @@ class AccueilViewController: UIViewController, UIScrollViewDelegate  {
         
         }
     }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         scrollView.frame = view.bounds

@@ -9,14 +9,120 @@
 import UIKit
 import RealmSwift
 
-class SetupViewController: UIViewController, UIDocumentMenuDelegate, UIDocumentPickerDelegate, UINavigationControllerDelegate {
+class SetupViewController: UIViewController, UIDocumentMenuDelegate, UIDocumentPickerDelegate, UINavigationControllerDelegate, UIScrollViewDelegate {
     
     var controllerArray = [UIViewController]()
+    var pX = 20
+    var scrollView = UIScrollView()
+    var containerView = UIView()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        // Refresh services to select
+        self.resetServicesToSelect()
+        self.addSelectService()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        self.scrollView.frame = view.bounds
+        self.containerView.frame = CGRect(x: 0, y: 0, width: self.scrollView.contentSize.width, height: self.scrollView.contentSize.height)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.scrollView = UIScrollView()
+        self.scrollView.delegate = self
+        self.view.addSubview(self.scrollView)
+        self.containerView = UIView()
+        self.scrollView.addSubview(self.containerView)
+
+        // Import json
+        let importLabel = UILabel(frame: CGRect(x: 20, y: CGFloat(self.pX), width: 350, height: 30.00))
+        self.pX += 40
+        importLabel.text = "Importer un service : "
+        self.containerView.addSubview(importLabel)
+        let importButton = UIButton(frame: CGRect(x: 20, y: CGFloat(self.pX), width: 350, height: 30.00))
+        self.pX += 40
+        importButton.setTitle("Selectionner le fichier", for: .normal)
+        importButton.backgroundColor = UIColor.blue
+        importButton.addTarget(self, action: #selector(self.selectFile(_:)), for: .touchUpInside)
+        self.containerView.addSubview(importButton)
         
-        // Do any additional setup after loading the view.
+        // Select service already created
+        let selectServiceLabel = UILabel(frame: CGRect(x: 20, y: CGFloat(self.pX), width: 350, height: 30.00))
+        selectServiceLabel.text = "Charger un service existant :"
+        self.containerView.addSubview(selectServiceLabel)
+        self.pX += 40
+        addSelectService()
+    }
+    
+    public func addSelectService() {
+        // Affichage des Services qu'on peut charger !!
+        let realmServices = RealmServices()
+        let allServices = realmServices.getBusinessServicesArray()
+        if (allServices.count == 0) {
+            let message = UILabel(frame: CGRect(x: 20, y: CGFloat(self.pX), width: 350, height: 30.00))
+            message.tag = 1
+            message.text = "Aucun service en base"
+            self.pX += 40
+            self.containerView.addSubview(message)
+        }
+        for businessService in allServices {
+            // TODO display all services as button
+            let buttonService = UIButton(frame: CGRect(x: 20, y: CGFloat(self.pX), width: 350, height: 30.00))
+            self.pX += 40
+            buttonService.setTitle(businessService.title, for: .normal)
+            buttonService.tag = 1
+            buttonService.backgroundColor = UIColor.blue
+            buttonService.addTarget(self, action: #selector(self.loadService(_:)), for: .touchUpInside)
+            self.containerView.addSubview(buttonService)
+        }
+        self.scrollView.contentSize = CGSize(width: 375, height: self.pX + 100)
+    }
+    
+    func selectFile(_ sender: UIButton) {
+        // Code pour récupérer file depuis iCloud
+        let importMenu = UIDocumentMenuViewController(documentTypes: ["public.text"], in: .import)
+        importMenu.delegate = self
+        present(importMenu, animated: true, completion: nil)
+        // code pour le browser sur le repo de l'app
+        //let fileBrowser = FileBrowser();
+        //present(fileBrowser, animated: true, completion: nil)
+    }
+    
+    public func resetServicesToSelect() {
+        for view in self.containerView.subviews {
+            if (view.tag == 1) {
+                view.removeFromSuperview()
+                self.pX -= 40
+            }
+        }
+    }
+    
+    public func loadService(_ sender: UIButton) {
+        let title = sender.title(for: .normal)
+        let realmServices = RealmServices()
+        let businessServiceToLoad = realmServices.getBusinessService(_title: title!)
+        let jsonModelData = businessServiceToLoad.jsonModelInString.data(using: .utf8)
+        let json = try? JSONSerialization.jsonObject(with: jsonModelData!, options: [])
+        do {
+            let jsonModel = try JsonModel(jsonContent: json as! [String: Any])
+            
+            DispatchQueue.main.async() {
+                self.tabBarController?.selectedIndex = 0
+            }
+            let myVC1 = self.tabBarController?.viewControllers![0] as! AccueilViewController
+            // create interface
+            myVC1.createViewFromJson(json: jsonModel)
+            
+            // Set up last Used Service
+            realmServices.resetlastUsedService()
+            realmServices.setIsLastUsedForService(title: title!)
+            
+        } catch let serializationError {
+            //in case of unsuccessful deserialization
+            print(serializationError)
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -78,15 +184,5 @@ class SetupViewController: UIViewController, UIDocumentMenuDelegate, UIDocumentP
         print("we cancelled")
         dismiss(animated: true, completion: nil)
         
-    }
-    
-    @IBAction func selectFile(_ sender: Any) {
-        // Code pour récupérer file depuis iCloud
-        let importMenu = UIDocumentMenuViewController(documentTypes: ["public.text"], in: .import)
-        importMenu.delegate = self
-        present(importMenu, animated: true, completion: nil)
-        // code pour le browser sur le repo de l'app
-        //let fileBrowser = FileBrowser();
-        //present(fileBrowser, animated: true, completion: nil)
     }
 }
