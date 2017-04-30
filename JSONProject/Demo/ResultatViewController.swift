@@ -108,6 +108,7 @@ class ResultatViewController: UITableViewController, UIDocumentMenuDelegate, UID
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 49, 0);
        // self.refreshServicesArray()
     }
     
@@ -120,7 +121,6 @@ class ResultatViewController: UITableViewController, UIDocumentMenuDelegate, UID
     }
    
     override func viewDidAppear(_ animated: Bool) {
-        print("test");
         self.refreshServicesArray()
         self.tableView.reloadData()
     }
@@ -149,6 +149,7 @@ class ResultatViewController: UITableViewController, UIDocumentMenuDelegate, UID
         let row = indexPath.row
         
         cell.textLabel?.text = services[row].title
+        cell.detailTextLabel?.text = String(services[row].subscribers.count)
         return cell
     }
     
