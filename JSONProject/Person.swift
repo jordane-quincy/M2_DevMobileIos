@@ -38,7 +38,7 @@ class Person: Object {
         self.serviceOffer = offer
     }
     
-    public func setupPaymnetWay(paymentWay: PaymentWay) {
+    public func setupPaymenttWay(paymentWay: PaymentWay) {
         self.paymentWay = paymentWay
     }
     

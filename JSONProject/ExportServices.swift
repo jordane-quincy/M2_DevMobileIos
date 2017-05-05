@@ -17,12 +17,26 @@ class ExportServices {
         var result = "{"
         result = result + "\n\t\"serviceName\" : \"\(businessService.title)\",\n\t\"serviceDescription\" : \"\(businessService.serviceDescription)\",\n\t\"icon\" : \"\(businessService.icon)\",\n\t\"subscribers\" : ["
         for subscriber in businessService.subscribers {
-            result = result + "\n\t\t{"
+            
+            result = result + "\n\t\t{\n\t\t\t\"serviceOffer\" : {\n\t\t\t\t\"title\" : \"\(subscriber.serviceOffer?.title)\",\n\t\t\t\t\"serviceDescription\" : \"\(subscriber.serviceOffer?.offerDescription)\",\n\t\t\t\t\"price\" : \(subscriber.serviceOffer?.price)\n\t\t\t},\n\t\t\t\"serviceOption(s)\" : ["
+            
+            for option in subscriber.serviceOptions {
+                result = result + "\n\t\t\t\t{\n\t\t\t\t\t\"title\" : \"\(option.title)\",\n\t\t\t\t\t\"optionDescritpion\" : \"\(option.optionDescription)\",\n\t\t\t\t\t\"price\" : \(option.price)\n\t\t\t\t},"
+            }
+            result = result.substring(to: result.index(before: result.endIndex))
+            result = result + "\n\t\t\t],"
+            
             for attribute in subscriber.attributes {
                 result = result + "\n\t\t\t\"\(attribute.fieldName)\" : \"\(attribute.value)\","
             }
+            
+            result = result + "\n\t\t\t\"paymentWay\" : {\n\t\t\t\t \"label\" : \"\(subscriber.paymentWay?.label)\","
+            for attribute in (subscriber.paymentWay?.paymentAttributes)! {
+                result = result + "\n\t\t\t\t\"\(attribute.fieldName)\" : \"\(attribute.value)\","
+            }
+            
             result = result.substring(to: result.index(before: result.endIndex))
-            result = result + "\n\t\t},"
+            result = result + "\n\t\t\t},"
         }
         result = result.substring(to: result.index(before: result.endIndex))
         result = result + "\n\t]"
@@ -30,7 +44,7 @@ class ExportServices {
         return result
     }
     
-    public func getSubscribersCSV(_businessServiceTitle: String) -> String {
+    public  func getSubscribersCSV(_businessServiceTitle: String) -> String {
         let realmServices = RealmServices()
         let businessService = realmServices.getBusinessService(_title: _businessServiceTitle) as BusinessService
         
@@ -57,4 +71,5 @@ class ExportServices {
         
         return result
     }
+    
 }

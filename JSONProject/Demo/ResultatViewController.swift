@@ -18,6 +18,8 @@ class ResultatViewController: UITableViewController, UIDocumentMenuDelegate, UID
     
     var services: Array<BusinessService> = Array<BusinessService>()
     
+    var exportServices = ExportServices()
+    
     var path : URL? = nil
     
     var isImportingFile = false
@@ -129,16 +131,31 @@ class ResultatViewController: UITableViewController, UIDocumentMenuDelegate, UID
         return services.count
     }
     
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if(editingStyle == .delete ) {
-            print(services[indexPath.row])
+    override func tableView(_ tableView: UITableView, editActionsForRowAt: IndexPath) -> [UITableViewRowAction]? {
+        let export = UITableViewRowAction(style: .normal, title: "Export to Drive") { action, index in
+            print("share button tapped")
+            print(self.exportServices.getSubscribersJSON(_businessServiceTitle: self.services[editActionsForRowAt.row].title))
+        }
+        export.backgroundColor = .blue
+        
+        let more = UITableViewRowAction(style: .normal, title: "More") { action, index in
+            print("more button tapped")
+        }
+        more.backgroundColor = .orange
+        
+        let delete = UITableViewRowAction(style: .normal, title: "Delete") { action, index in
+            print("delete button tapped")
+            print(self.services[editActionsForRowAt.row])
             // Delete BusinessService from DataBase
-            self.realmServices.deleteBusinessService(_title: services[indexPath.row].title)
+            self.realmServices.deleteBusinessService(_title: self.services[editActionsForRowAt.row].title)
             // Refresh 'services' variable
             self.refreshServicesArray()
             // Delete Row in TableView
-            tableView.deleteRows(at: [indexPath], with: .automatic)
+            tableView.deleteRows(at: [editActionsForRowAt], with: .automatic)
         }
+        delete.backgroundColor = .red
+        
+        return [delete, more, export]
     }
 
     
@@ -154,12 +171,15 @@ class ResultatViewController: UITableViewController, UIDocumentMenuDelegate, UID
     }
     
     
-    // Function quand on clique sur une cellule
-    /*override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let viewController = storyboard?.instantiateViewController(withIdentifier: "SubscribersTableView") as! SubscribersTableViewController
-        viewController.toPrint = services[indexPath.row].title
-        navigationController?.pushViewController(viewController, animated: true)
-    }*/
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        print("tap on cell \(indexPath.row)")
+        //let viewController = storyboard?.instantiateViewController(withIdentifier: "SubscribersTableView") as! SubscribersTableViewController
+        //viewController.toPrint = services[indexPath.row].title
+        //navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    
     
     
 }
