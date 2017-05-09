@@ -83,7 +83,7 @@ class PaymentViewController: UIViewController, UIPickerViewDelegate, UIScrollVie
                 }
             }
         }
-        self.person?.setupPaymnetWay(paymentWay: paymentWay)
+        self.person?.setupPaymentWay(paymentWay: paymentWay)
         self.person?.changeIsSavePerson()
         // Save the person in realm database
         realmServices.createPerson(person: self.person!)
