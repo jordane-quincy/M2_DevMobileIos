@@ -100,4 +100,27 @@ class Person: Object {
             self.attributes.remove(at: index)
         }
     }
+    
+    public func getDefaultFirstAndLastName() -> String {
+        var result = ""
+        var firstName = ""
+        var lastName = ""
+        for attribute in self.attributes {
+            if (attribute.fieldName == "firstName") {
+                firstName = attribute.value
+            }
+            if (attribute.fieldName == "lastName") {
+                lastName = attribute.value
+            }
+        }
+        if (firstName != "" || lastName != "") {
+            result = firstName + " " + lastName
+        }
+        else {
+            result = "Affilié " + String(self.id)
+        }
+        return result
+    }
+    
+    
 }

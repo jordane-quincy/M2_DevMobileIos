@@ -26,6 +26,12 @@ class ResultatViewController: UITableViewController, UIDocumentMenuDelegate, UID
     
     var isImportingFile = false
     
+    var customNavigationController: UINavigationController? = nil
+    
+    public func setupNavigationController(navigationController: UINavigationController){
+        self.customNavigationController = navigationController
+    }
+    
     @available(iOS 8.0, *)
     public func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt urlDocument: URL) {
         //print("The Url is : \(urlDocument)")
@@ -193,6 +199,13 @@ class ResultatViewController: UITableViewController, UIDocumentMenuDelegate, UID
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         print("tap on cell \(indexPath.row)")
+        // go to person tableview
+        let resultatPersonTableView = ResultatPersonTableView(nibName: "ResultatPersonTableView", bundle: nil)
+        resultatPersonTableView.setupNavigationController(navigationController: self.customNavigationController!)
+        // setup affiliates
+        resultatPersonTableView.setupAffiliates(affiliates: Array(self.services[indexPath.row].subscribers))
+        self.customNavigationController?.pushViewController(resultatPersonTableView, animated: true)
+        self.customNavigationController?.setNavigationBarHidden(false, animated: true)
         //let viewController = storyboard?.instantiateViewController(withIdentifier: "SubscribersTableView") as! SubscribersTableViewController
         //viewController.toPrint = services[indexPath.row].title
         //navigationController?.pushViewController(viewController, animated: true)
