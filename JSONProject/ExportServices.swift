@@ -15,29 +15,114 @@ class ExportServices {
         let businessService = realmServices.getBusinessService(_title: _businessServiceTitle)
         
         var result = "{"
-        result = result + "\n\t\"serviceName\" : \"\(businessService.title)\",\n\t\"serviceDescription\" : \"\(businessService.serviceDescription)\",\n\t\"icon\" : \"\(businessService.icon)\",\n\t\"subscribers\" : ["
+        
+        if (businessService.title == ""){
+            result = result + "\n\t\"serviceName\" : \"Non Renseigné\","
+        } else {
+            result = result + "\n\t\"serviceName\" : \"\(businessService.title)\","
+        }
+        
+        if (businessService.serviceDescription == ""){
+            result = result + "\n\t\"serviceDescription\" : \"\(businessService.serviceDescription)\","
+        } else {
+            result = result + "\n\t\"serviceDescription\" : \"Non Renseigné\","
+        }
+        
+        if (businessService.icon == ""){
+            result = result + "\n\t\"icon\" : \"Non rensiegné\","
+        } else {
+            result = result + "\n\t\"icon\" : \"\(businessService.icon)\","
+        }
+        
+        result = result + "\n\t\"subscribers\" : ["
+        
         for subscriber in businessService.subscribers {
             
-            result = result + "\n\t\t{\n\t\t\t\"serviceOffer\" : {\n\t\t\t\t\"title\" : \"\(subscriber.serviceOffer?.title)\",\n\t\t\t\t\"serviceDescription\" : \"\(subscriber.serviceOffer?.offerDescription)\",\n\t\t\t\t\"price\" : \(subscriber.serviceOffer?.price)\n\t\t\t},\n\t\t\t\"serviceOption(s)\" : ["
+            result = result + "\n\t\t{"
+            
+            if (subscriber.serviceOffer == nil) {
+                result = result + "\n\t\t\t\"serviceOffer\" : \"Non Renseigné\","
+            } else{
+                result = result + "\n\t\t\t\"serviceOffer\" : {"
+                
+                if (subscriber.serviceOffer?.title == ""){
+                    result = result + "\n\t\t\t\t\"title\" : \"Non Renseigné\","
+                } else {
+                    result = result + "\n\t\t\t\t\"title\" : \"\(subscriber.serviceOffer?.title)\","
+                }
+                
+                if (subscriber.serviceOffer?.offerDescription == ""){
+                    result = result + "\n\t\t\t\t\"offerDescription\" : \"\(subscriber.serviceOffer?.offerDescription)\","
+                } else {
+                    result = result + "\n\t\t\t\t\"offerDescription\" : \"\(subscriber.serviceOffer?.offerDescription)\","
+                }
+                
+                //price égal à zero si non reseigné (valeur par défaut)
+                result = result + "\n\t\t\t\t\"price\" : \(subscriber.serviceOffer?.price)\n\t\t\t},"
+            }
+            
+            result = result + "\n\t\t\t\"serviceOption(s)\" : ["
             
             for option in subscriber.serviceOptions {
-                result = result + "\n\t\t\t\t{\n\t\t\t\t\t\"title\" : \"\(option.title)\",\n\t\t\t\t\t\"optionDescritpion\" : \"\(option.optionDescription)\",\n\t\t\t\t\t\"price\" : \(option.price)\n\t\t\t\t},"
+                
+                result = result + "\n\t\t\t\t{"
+                
+                if (option.title == ""){
+                    result = result + "\n\t\t\t\t\t\"title\" : \"Non Renseigné)\","
+                } else {
+                    result = result + "\n\t\t\t\t\t\"title\" : \"\(option.title)\","
+                }
+                
+                if (option.optionDescription == ""){
+                    result = result + "\n\t\t\t\t\t\"optionDescritpion\" : \"Non Renseigné\","
+                } else {
+                    result = result + "\n\t\t\t\t\t\"optionDescritpion\" : \"\(option.optionDescription)\","
+                }
+                
+                //price égal à zero si non reseigné (valeur par défaut)
+                result = result + "\n\t\t\t\t\t\"price\" : \(option.price)"
+                
+                result = result + "\n\t\t\t\t},"
             }
+            
+            //suppression de la dernière virgule
             result = result.substring(to: result.index(before: result.endIndex))
             result = result + "\n\t\t\t],"
             
             for attribute in subscriber.attributes {
-                result = result + "\n\t\t\t\"\(attribute.fieldName)\" : \"\(attribute.value)\","
+                if (attribute.value == ""){
+                    result = result + "\n\t\t\t\"\(attribute.fieldName)\" : \"Non Renseigné\","
+                } else {
+                    result = result + "\n\t\t\t\"\(attribute.fieldName)\" : \"\(attribute.value)\","
+                }
             }
             
-            result = result + "\n\t\t\t\"paymentWay\" : {\n\t\t\t\t \"label\" : \"\(subscriber.paymentWay?.label)\","
-            for attribute in (subscriber.paymentWay?.paymentAttributes)! {
-                result = result + "\n\t\t\t\t\"\(attribute.fieldName)\" : \"\(attribute.value)\","
+            result = result + "\n\t\t\t\"paymentWay\" : {"
+            
+            if (subscriber.paymentWay?.label == ""){
+                result = result + "\n\t\t\t\t \"label\" : \"Non Renseigné\","
+            } else {
+                result = result + "\n\t\t\t\t \"label\" : \"\(subscriber.paymentWay?.label)\","
             }
             
+            let paymentWayVar = subscriber.paymentWay
+            
+            //            print(paymentWayVar)
+            //            for attribute in (subscriber.paymentWay?.paymentAttributes)! {
+            //                if (attribute.value == ""){
+            //                    result = result + "\n\t\t\t\t\"\(attribute.fieldName)\" : \"Non Renseigné\","
+            //                } else {
+            //                    result = result + "\n\t\t\t\t\"\(attribute.fieldName)\" : \"\(attribute.value)\","
+            //                }
+            //
+            //            }
+            
+            //suppression de la dernière virgule
             result = result.substring(to: result.index(before: result.endIndex))
             result = result + "\n\t\t\t},"
         }
+        
+        //suppression de la dernière virgule
         result = result.substring(to: result.index(before: result.endIndex))
         result = result + "\n\t]"
         result = result + "\n}"
@@ -48,7 +133,7 @@ class ExportServices {
         let realmServices = RealmServices()
         let businessService = realmServices.getBusinessService(_title: _businessServiceTitle) as BusinessService
         
-        var header = "sep=,\nserviceName,serviceDescription,brand,"
+        var header = "sep=,\nserviceName,serviceDescription,icon,"
         var result = ""
         
         

@@ -20,6 +20,8 @@ class ResultatViewController: UITableViewController, UIDocumentMenuDelegate, UID
     
     var exportServices = ExportServices()
     
+    var fileServices = FileServices()
+    
     var path : URL? = nil
     
     var isImportingFile = false
@@ -132,18 +134,35 @@ class ResultatViewController: UITableViewController, UIDocumentMenuDelegate, UID
     }
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt: IndexPath) -> [UITableViewRowAction]? {
-        let export = UITableViewRowAction(style: .normal, title: "Export to Drive") { action, index in
+        let export = UITableViewRowAction(style: .normal, title: "Exporter") { action, index in
             print("share button tapped")
-            print(self.exportServices.getSubscribersJSON(_businessServiceTitle: self.services[editActionsForRowAt.row].title))
+            
+            let businessTitle = self.services[editActionsForRowAt.row].title
+            
+            let alert = UIAlertController(title: "Exporter", message: "Selectionner un type de fichier", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "JSON", style: UIAlertActionStyle.default, handler: { action in
+                let fileString = self.exportServices.getSubscribersJSON(_businessServiceTitle: businessTitle)
+                
+                _ = self.fileServices.createJSONFileFromString(JSONStringified: fileString, businessServiceTitle: businessTitle, viewController: self)
+                
+                self.fileServices.createAndMoveFileiCloud(file: "file", fileStringified: fileString, viewController: self)
+            }))
+            alert.addAction(UIAlertAction(title: "CSV", style: UIAlertActionStyle.default, handler: { action in
+                let fileString = self.exportServices.getSubscribersCSV(_businessServiceTitle: businessTitle)
+                
+                let file = self.fileServices.createCSVFileFromString(CSVStringified: fileString, businessServiceTitle: businessTitle, viewController: self)
+                
+                self.fileServices.createAndMoveFileiCloud(file: "file", fileStringified: fileString, viewController: self)
+            }))
+            self.present(alert, animated: true, completion: nil)
+            
+            
+            
+            
         }
         export.backgroundColor = .blue
         
-        let more = UITableViewRowAction(style: .normal, title: "More") { action, index in
-            print("more button tapped")
-        }
-        more.backgroundColor = .orange
-        
-        let delete = UITableViewRowAction(style: .normal, title: "Delete") { action, index in
+        let delete = UITableViewRowAction(style: .normal, title: "Supprimer") { action, index in
             print("delete button tapped")
             print(self.services[editActionsForRowAt.row])
             // Delete BusinessService from DataBase
@@ -155,7 +174,7 @@ class ResultatViewController: UITableViewController, UIDocumentMenuDelegate, UID
         }
         delete.backgroundColor = .red
         
-        return [delete, more, export]
+        return [delete, export]
     }
 
     
