@@ -101,7 +101,7 @@ class Person: Object {
         }
     }
     
-    public func getDefaultFirstAndLastName() -> String {
+    public func getDefaultFirstAndLastName(index: Int) -> String {
         var result = ""
         var firstName = ""
         var lastName = ""
@@ -117,7 +117,7 @@ class Person: Object {
             result = firstName + " " + lastName
         }
         else {
-            result = "Affilié " + String(self.id)
+            result = "Affilié " + String(index + 1)
         }
         return result
     }

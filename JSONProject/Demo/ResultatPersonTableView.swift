@@ -59,7 +59,7 @@ class ResultatPersonTableView: UITableViewController {
         
         let row = indexPath.row
         
-        cell.textLabel?.text = self.affiliates[row].getDefaultFirstAndLastName()
+        cell.textLabel?.text = self.affiliates[row].getDefaultFirstAndLastName(index: row)
         return cell
     }
     
