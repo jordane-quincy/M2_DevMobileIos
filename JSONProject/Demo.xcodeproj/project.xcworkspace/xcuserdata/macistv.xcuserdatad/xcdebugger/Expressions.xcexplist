@@ -88,7 +88,7 @@
                value = "self.tabBarController?.viewControllers">
             </PersistentString>
             <PersistentString
-               value = "self.customNavigationController.viewControllers">
+               value = "self.person">
             </PersistentString>
             <PersistentString
                value = "self.customTabBarController">
@@ -97,7 +97,7 @@
                value = "customNavigationController?.viewControllers">
             </PersistentString>
             <PersistentString
-               value = "self.person">
+               value = "self.customNavigationController.viewControllers">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -133,6 +133,22 @@
          <PersistentStrings>
             <PersistentString
                value = "textFieldSubViews">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "Field.init(jsonContent : [String : Any]) throws -&gt; Field?:JsonModel_fields.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "InputType(rawValue: inputJson)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "SetupViewController.(documentPicker(UIDocumentPickerViewController, didPickDocumentAt : URL) -&gt; ()).(closure #1).(closure #1):SetupViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "jsonModel">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -217,7 +233,7 @@
          contextName = "GeneralFormViewController.willMove(toParentViewController : UIViewController?) -&gt; ():GeneralFormViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "self.customParent">
+               value = "toParentViewController">
             </PersistentString>
             <PersistentString
                value = "self.person.attributes[0]">
@@ -226,7 +242,7 @@
                value = "self.person.attributes.count">
             </PersistentString>
             <PersistentString
-               value = "toParentViewController">
+               value = "self.customParent">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
