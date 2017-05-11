@@ -10,6 +10,8 @@ import UIKit
 
 class ResultatPersonTableView: UITableViewController {
     
+    var realmServices = RealmServices()
+    
     var customNavigationController: UINavigationController? = nil
 
     var affiliates: Array<Person> = Array<Person>()
@@ -60,6 +62,24 @@ class ResultatPersonTableView: UITableViewController {
         cell.textLabel?.text = self.affiliates[row].getDefaultFirstAndLastName()
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, editActionsForRowAt: IndexPath) -> [UITableViewRowAction]? {
+        let delete = UITableViewRowAction(style: .normal, title: "Supprimer") { action, index in
+            print("delete button tapped")
+            print(self.affiliates[editActionsForRowAt.row])
+            // Delete BusinessService from DataBase
+            self.realmServices.deleteSubcriber(id: self.affiliates[editActionsForRowAt.row].id)
+            // Refresh 'services' variable
+            //self.refreshServicesArray()
+            // Delete Row in TableView
+            self.affiliates.remove(at: editActionsForRowAt.row)
+            tableView.deleteRows(at: [editActionsForRowAt], with: .automatic)
+        }
+        delete.backgroundColor = .red
+        
+        return [delete]
+    }
+
     
     
     // method when we tap on a cell

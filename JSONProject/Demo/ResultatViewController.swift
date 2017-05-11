@@ -195,10 +195,8 @@ class ResultatViewController: UITableViewController, UIDocumentMenuDelegate, UID
         return cell
     }
     
-    
+    // method after tap on cell
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        print("tap on cell \(indexPath.row)")
         // go to person tableview
         let resultatPersonTableView = ResultatPersonTableView(nibName: "ResultatPersonTableView", bundle: nil)
         resultatPersonTableView.setupNavigationController(navigationController: self.customNavigationController!)
@@ -206,9 +204,6 @@ class ResultatViewController: UITableViewController, UIDocumentMenuDelegate, UID
         resultatPersonTableView.setupAffiliates(affiliates: Array(self.services[indexPath.row].subscribers))
         self.customNavigationController?.pushViewController(resultatPersonTableView, animated: true)
         self.customNavigationController?.setNavigationBarHidden(false, animated: true)
-        //let viewController = storyboard?.instantiateViewController(withIdentifier: "SubscribersTableView") as! SubscribersTableViewController
-        //viewController.toPrint = services[indexPath.row].title
-        //navigationController?.pushViewController(viewController, animated: true)
     }
     
     
