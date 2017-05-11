@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		42214FFF1E88158F0011C565 /* JsonModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42214FFE1E88158F0011C565 /* JsonModelTest.swift */; };
-		422150031E9274510011C565 /* PersonTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422150021E9274510011C565 /* PersonTest.swift */; };
 		4297F5F71EABC37D004204CD /* BusinessService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4297F5F31EABC37D004204CD /* BusinessService.swift */; };
 		4297F5F81EABC37D004204CD /* RealmServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4297F5F41EABC37D004204CD /* RealmServices.swift */; };
 		4297F5F91EABC37D004204CD /* ExportServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4297F5F51EABC37D004204CD /* ExportServices.swift */; };
@@ -31,7 +30,6 @@
 		42B57DC41EB0ADF0009EB0F1 /* ResultatViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42B57DC21EB0ADF0009EB0F1 /* ResultatViewController.xib */; };
 		42B57DC71EB0AFDB009EB0F1 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B57DC51EB0AFDB009EB0F1 /* CustomCell.swift */; };
 		42B57DC81EB0AFDB009EB0F1 /* CustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42B57DC61EB0AFDB009EB0F1 /* CustomCell.xib */; };
-		42B57DCA1EB2323D009EB0F1 /* TestInputText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B57DC91EB2323D009EB0F1 /* TestInputText.swift */; };
 		42B57DCC1EB23A76009EB0F1 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B57DCB1EB23A76009EB0F1 /* CustomTextField.swift */; };
 		42B57DCE1EB23B32009EB0F1 /* CustomPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B57DCD1EB23B32009EB0F1 /* CustomPickerView.swift */; };
 		42B57DD01EB23BD6009EB0F1 /* CustomDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B57DCF1EB23BD6009EB0F1 /* CustomDatePicker.swift */; };
@@ -55,6 +53,10 @@
 		9062748D1EAE3A7100E09E57 /* AccueilViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 906274891EAE3A7100E09E57 /* AccueilViewController.xib */; };
 		9062748E1EAE3A7100E09E57 /* AideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9062748A1EAE3A7100E09E57 /* AideViewController.swift */; };
 		9062748F1EAE3A7100E09E57 /* AideViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9062748B1EAE3A7100E09E57 /* AideViewController.xib */; };
+		9DE2D1EF1EC4648C000565FF /* ResultatPersonTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE2D1ED1EC4648C000565FF /* ResultatPersonTableView.swift */; };
+		9DE2D1F01EC4648C000565FF /* ResultatPersonTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DE2D1EE1EC4648C000565FF /* ResultatPersonTableView.xib */; };
+		9DE2D1F31EC464FD000565FF /* ResultatPersonDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE2D1F11EC464FD000565FF /* ResultatPersonDetails.swift */; };
+		9DE2D1F41EC464FD000565FF /* ResultatPersonDetails.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DE2D1F21EC464FD000565FF /* ResultatPersonDetails.xib */; };
 		B51EFB821E65673200C3CC90 /* testFile.json in Resources */ = {isa = PBXBuildFile; fileRef = B51EFB811E65673200C3CC90 /* testFile.json */; };
 		B51EFB841E6569A800C3CC90 /* exampleJSON1.json in Resources */ = {isa = PBXBuildFile; fileRef = B51EFB831E6569A800C3CC90 /* exampleJSON1.json */; };
 		B51EFB871E65874600C3CC90 /* JSONUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51EFB861E65874600C3CC90 /* JSONUtils.swift */; };
@@ -65,7 +67,6 @@
 		B52CE21D1E3756B900EC68E5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B52CE21B1E3756B900EC68E5 /* LaunchScreen.storyboard */; };
 		B52CE2281E3756BA00EC68E5 /* DemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52CE2271E3756BA00EC68E5 /* DemoTests.swift */; };
 		B52CE2331E3756BA00EC68E5 /* DemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52CE2321E3756BA00EC68E5 /* DemoUITests.swift */; };
-		B52CE2411E49C66C00EC68E5 /* StructTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52CE2401E49C66C00EC68E5 /* StructTest.swift */; };
 		B58540221E76D24A00C7A698 /* ICloudService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58540211E76D24A00C7A698 /* ICloudService.swift */; };
 /* End PBXBuildFile section */
 
@@ -103,7 +104,6 @@
 
 /* Begin PBXFileReference section */
 		42214FFE1E88158F0011C565 /* JsonModelTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonModelTest.swift; sourceTree = "<group>"; };
-		422150021E9274510011C565 /* PersonTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonTest.swift; sourceTree = "<group>"; };
 		4297F5F31EABC37D004204CD /* BusinessService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessService.swift; sourceTree = "<group>"; };
 		4297F5F41EABC37D004204CD /* RealmServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmServices.swift; sourceTree = "<group>"; };
 		4297F5F51EABC37D004204CD /* ExportServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExportServices.swift; sourceTree = "<group>"; };
@@ -124,7 +124,6 @@
 		42B57DC21EB0ADF0009EB0F1 /* ResultatViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResultatViewController.xib; sourceTree = "<group>"; };
 		42B57DC51EB0AFDB009EB0F1 /* CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		42B57DC61EB0AFDB009EB0F1 /* CustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomCell.xib; sourceTree = "<group>"; };
-		42B57DC91EB2323D009EB0F1 /* TestInputText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestInputText.swift; sourceTree = "<group>"; };
 		42B57DCB1EB23A76009EB0F1 /* CustomTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		42B57DCD1EB23B32009EB0F1 /* CustomPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPickerView.swift; sourceTree = "<group>"; };
 		42B57DCF1EB23BD6009EB0F1 /* CustomDatePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomDatePicker.swift; sourceTree = "<group>"; };
@@ -148,6 +147,10 @@
 		906274891EAE3A7100E09E57 /* AccueilViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccueilViewController.xib; sourceTree = "<group>"; };
 		9062748A1EAE3A7100E09E57 /* AideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AideViewController.swift; sourceTree = "<group>"; };
 		9062748B1EAE3A7100E09E57 /* AideViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AideViewController.xib; sourceTree = "<group>"; };
+		9DE2D1ED1EC4648C000565FF /* ResultatPersonTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultatPersonTableView.swift; sourceTree = "<group>"; };
+		9DE2D1EE1EC4648C000565FF /* ResultatPersonTableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResultatPersonTableView.xib; sourceTree = "<group>"; };
+		9DE2D1F11EC464FD000565FF /* ResultatPersonDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultatPersonDetails.swift; sourceTree = "<group>"; };
+		9DE2D1F21EC464FD000565FF /* ResultatPersonDetails.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResultatPersonDetails.xib; sourceTree = "<group>"; };
 		B51EFB811E65673200C3CC90 /* testFile.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = testFile.json; path = Demo/testFile.json; sourceTree = "<group>"; };
 		B51EFB831E6569A800C3CC90 /* exampleJSON1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = exampleJSON1.json; path = Demo/exampleJSON1.json; sourceTree = "<group>"; };
 		B51EFB861E65874600C3CC90 /* JSONUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONUtils.swift; sourceTree = "<group>"; };
@@ -164,7 +167,6 @@
 		B52CE22E1E3756BA00EC68E5 /* DemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B52CE2321E3756BA00EC68E5 /* DemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoUITests.swift; sourceTree = "<group>"; };
 		B52CE2341E3756BA00EC68E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B52CE2401E49C66C00EC68E5 /* StructTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StructTest.swift; sourceTree = "<group>"; };
 		B5326A101E76C5A500B57076 /* Demo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Demo.entitlements; sourceTree = "<group>"; };
 		B58540211E76D24A00C7A698 /* ICloudService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ICloudService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -289,6 +291,8 @@
 			children = (
 				42B57DE31EB380F5009EB0F1 /* Form */,
 				9062748A1EAE3A7100E09E57 /* AideViewController.swift */,
+				9DE2D1ED1EC4648C000565FF /* ResultatPersonTableView.swift */,
+				9DE2D1EE1EC4648C000565FF /* ResultatPersonTableView.xib */,
 				9062748B1EAE3A7100E09E57 /* AideViewController.xib */,
 				42B57DC11EB0ADF0009EB0F1 /* ResultatViewController.swift */,
 				42B57DC21EB0ADF0009EB0F1 /* ResultatViewController.xib */,
@@ -300,18 +304,17 @@
 				B52CE2161E3756B900EC68E5 /* Main.storyboard */,
 				B52CE2191E3756B900EC68E5 /* Assets.xcassets */,
 				B52CE21B1E3756B900EC68E5 /* LaunchScreen.storyboard */,
-				B52CE2401E49C66C00EC68E5 /* StructTest.swift */,
 				B52CE21E1E3756B900EC68E5 /* Info.plist */,
+				9DE2D1F11EC464FD000565FF /* ResultatPersonDetails.swift */,
+				9DE2D1F21EC464FD000565FF /* ResultatPersonDetails.xib */,
 				B58540211E76D24A00C7A698 /* ICloudService.swift */,
 				42AFEF1D1E7EA003001587DA /* JsonModel.swift */,
 				42AFEF231E87FA65001587DA /* JsonModel_fields.swift */,
 				42AFEF251E880004001587DA /* JsonModel_features.swift */,
 				42AFEF1F1E87C617001587DA /* JsonModel_params.swift */,
 				42AFEF211E87F7FD001587DA /* JsonModel_offers.swift */,
-				422150021E9274510011C565 /* PersonTest.swift */,
 				42B57DC51EB0AFDB009EB0F1 /* CustomCell.swift */,
 				42B57DC61EB0AFDB009EB0F1 /* CustomCell.xib */,
-				42B57DC91EB2323D009EB0F1 /* TestInputText.swift */,
 				42B57DCB1EB23A76009EB0F1 /* CustomTextField.swift */,
 				42B57DCD1EB23B32009EB0F1 /* CustomPickerView.swift */,
 				42B57DCF1EB23BD6009EB0F1 /* CustomDatePicker.swift */,
@@ -474,8 +477,10 @@
 				42B57DDA1EB30EFB009EB0F1 /* GeneralFormViewController.xib in Resources */,
 				42B57DEF1EB47A31009EB0F1 /* PaymentViewController.xib in Resources */,
 				42B57DDE1EB33E34009EB0F1 /* SelectOfferViewController.xib in Resources */,
+				9DE2D1F01EC4648C000565FF /* ResultatPersonTableView.xib in Resources */,
 				42B57DE71EB3A61A009EB0F1 /* SelectOptionViewController.xib in Resources */,
 				42B57DC81EB0AFDB009EB0F1 /* CustomCell.xib in Resources */,
+				9DE2D1F41EC464FD000565FF /* ResultatPersonDetails.xib in Resources */,
 				9062748F1EAE3A7100E09E57 /* AideViewController.xib in Resources */,
 				B52CE2181E3756B900EC68E5 /* Main.storyboard in Resources */,
 				9062748D1EAE3A7100E09E57 /* AccueilViewController.xib in Resources */,
@@ -521,6 +526,7 @@
 			files = (
 				42AFEF221E87F7FD001587DA /* JsonModel_offers.swift in Sources */,
 				4297F5F71EABC37D004204CD /* BusinessService.swift in Sources */,
+				9DE2D1F31EC464FD000565FF /* ResultatPersonDetails.swift in Sources */,
 				4297F5FA1EABC37D004204CD /* FileServices.swift in Sources */,
 				42AFEF241E87FA65001587DA /* JsonModel_fields.swift in Sources */,
 				9062748E1EAE3A7100E09E57 /* AideViewController.swift in Sources */,
@@ -535,11 +541,11 @@
 				42B57DCC1EB23A76009EB0F1 /* CustomTextField.swift in Sources */,
 				B52CE2151E3756B900EC68E5 /* ViewController.swift in Sources */,
 				42B57DEB1EB47377009EB0F1 /* ServiceOffer.swift in Sources */,
-				422150031E9274510011C565 /* PersonTest.swift in Sources */,
 				42B57DD61EB24FC2009EB0F1 /* CustomPickerViewDataSource.swift in Sources */,
 				42AFEF261E880004001587DA /* JsonModel_features.swift in Sources */,
 				42B57DC31EB0ADF0009EB0F1 /* ResultatViewController.swift in Sources */,
 				9062748C1EAE3A7100E09E57 /* AccueilViewController.swift in Sources */,
+				9DE2D1EF1EC4648C000565FF /* ResultatPersonTableView.swift in Sources */,
 				42B57DE61EB3A61A009EB0F1 /* SelectOptionViewController.swift in Sources */,
 				42B57DC71EB0AFDB009EB0F1 /* CustomCell.swift in Sources */,
 				B51EFB871E65874600C3CC90 /* JSONUtils.swift in Sources */,
@@ -547,7 +553,6 @@
 				42B4E0011EB4951E001AC2FD /* PaymentAttribute.swift in Sources */,
 				42AFEF201E87C617001587DA /* JsonModel_params.swift in Sources */,
 				42AD2D2D1EABE8F200F2C00A /* DateUtils.swift in Sources */,
-				42B57DCA1EB2323D009EB0F1 /* TestInputText.swift in Sources */,
 				42B57DE91EB3C20C009EB0F1 /* ServiceOption.swift in Sources */,
 				42B57DCE1EB23B32009EB0F1 /* CustomPickerView.swift in Sources */,
 				42B4DFFF1EB494B8001AC2FD /* PaymentWay.swift in Sources */,
@@ -555,7 +560,6 @@
 				4297F5FD1EABC386004204CD /* Person.swift in Sources */,
 				42B57DDD1EB33E34009EB0F1 /* SelectOfferViewController.swift in Sources */,
 				4297F5FE1EABC386004204CD /* Attribute.swift in Sources */,
-				B52CE2411E49C66C00EC68E5 /* StructTest.swift in Sources */,
 				42B57DD01EB23BD6009EB0F1 /* CustomDatePicker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

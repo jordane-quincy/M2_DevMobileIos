@@ -9,13 +9,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Demo/ResultatViewController.swift"
-            timestampString = "516101788.396936"
+            filePath = "RealmServices.swift"
+            timestampString = "516189149.183475"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "153"
-            endingLineNumber = "153"
-            landmarkName = "tableView(_:editActionsForRowAt:)"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
+            landmarkName = "deleteSubcriber(id:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RealmServices.swift"
+            timestampString = "516190761.87657"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
+            landmarkName = "deleteSubcriber(id:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

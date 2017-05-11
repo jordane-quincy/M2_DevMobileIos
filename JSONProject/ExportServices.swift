@@ -23,9 +23,9 @@ class ExportServices {
         }
         
         if (businessService.serviceDescription == ""){
-            result = result + "\n\t\"serviceDescription\" : \"\(businessService.serviceDescription)\","
-        } else {
             result = result + "\n\t\"serviceDescription\" : \"Non Renseigné\","
+        } else {
+            result = result + "\n\t\"serviceDescription\" : \"\(businessService.serviceDescription)\","
         }
         
         if (businessService.icon == ""){
@@ -52,7 +52,7 @@ class ExportServices {
                 }
                 
                 if (subscriber.serviceOffer?.offerDescription == ""){
-                    result = result + "\n\t\t\t\t\"offerDescription\" : \"\(subscriber.serviceOffer?.offerDescription)\","
+                    result = result + "\n\t\t\t\t\"offerDescription\" : \"Non Renseigné\","
                 } else {
                     result = result + "\n\t\t\t\t\"offerDescription\" : \"\(subscriber.serviceOffer?.offerDescription)\","
                 }
@@ -105,17 +105,14 @@ class ExportServices {
                 result = result + "\n\t\t\t\t \"label\" : \"\(subscriber.paymentWay?.label)\","
             }
             
-            let paymentWayVar = subscriber.paymentWay
+            for attribute in (subscriber.paymentWay?.paymentAttributes)! {
+                if (attribute.value == ""){
+                    result = result + "\n\t\t\t\t\"\(attribute.fieldName)\" : \"Non Renseigné\","
+                } else {
+                    result = result + "\n\t\t\t\t\"\(attribute.fieldName)\" : \"\(attribute.value)\","
+                }
             
-            //            print(paymentWayVar)
-            //            for attribute in (subscriber.paymentWay?.paymentAttributes)! {
-            //                if (attribute.value == ""){
-            //                    result = result + "\n\t\t\t\t\"\(attribute.fieldName)\" : \"Non Renseigné\","
-            //                } else {
-            //                    result = result + "\n\t\t\t\t\"\(attribute.fieldName)\" : \"\(attribute.value)\","
-            //                }
-            //
-            //            }
+            }
             
             //suppression de la dernière virgule
             result = result.substring(to: result.index(before: result.endIndex))

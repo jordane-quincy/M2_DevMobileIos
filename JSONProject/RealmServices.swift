@@ -41,7 +41,7 @@ class RealmServices {
     public func resetService(title: String){
         
         let businessService = self.realm.object(ofType: BusinessService.self, forPrimaryKey: title as AnyObject)
-        print(businessService!)
+//        print(businessService!)
         for subcriber in (businessService!.subscribers) {
             deleteSubcriber(id: subcriber.id)
         }
@@ -69,10 +69,14 @@ class RealmServices {
     }
     
     public func deleteSubcriber(id: Int){
-        let subcriber = self.realm.object(ofType: Person.self, forPrimaryKey: id as AnyObject)
+        let subscriber = self.realm.object(ofType: Person.self, forPrimaryKey: id as AnyObject)
         try! self.realm.write {
-            self.realm.delete((subcriber?.attributes)!)
-            self.realm.delete(subcriber!)
+            self.realm.delete((subscriber?.serviceOffer)!)
+            self.realm.delete((subscriber?.serviceOptions)!)
+            self.realm.delete((subscriber?.paymentWay?.paymentAttributes)!)
+            self.realm.delete((subscriber?.paymentWay)!)
+            self.realm.delete((subscriber?.attributes)!)
+            self.realm.delete(subscriber!)
         }
     }
     

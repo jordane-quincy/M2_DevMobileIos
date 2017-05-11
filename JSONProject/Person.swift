@@ -14,8 +14,8 @@ class Person: Object {
     var attributes: List<Attribute> = List<Attribute>()
     var serviceOptions: List<ServiceOption> = List<ServiceOption>()
     let owner = LinkingObjects(fromType: BusinessService.self, property: "subscribers")
-    var serviceOffer: ServiceOffer? = nil
-    var paymentWay: PaymentWay? = nil
+    dynamic var serviceOffer: ServiceOffer? = nil
+    dynamic var paymentWay: PaymentWay? = nil
     
     var isSaved = false
     
