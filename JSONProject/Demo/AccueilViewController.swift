@@ -48,6 +48,11 @@ class AccueilViewController: UIViewController, UIScrollViewDelegate  {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        // TODO verify if the actual service in jsonModel was not deleted
+        // If it was deleted, delete the UI
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         scrollView.frame = view.bounds

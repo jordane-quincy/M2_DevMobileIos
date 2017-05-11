@@ -1,5 +1,5 @@
 {
-    "title": "Free2",
+    "title": "Free",
     "description": "Abonnez-vous chez nous yaura de la 4g partout",
     "commonFields": [
                      {
@@ -53,12 +53,6 @@
                      "input": "date"
                      },
                      {
-                     "fieldId": "hobbies",
-                     "fieldType": "other",
-                     "label": "Loisirs",
-                     "input": "check"
-                     },
-                     {
                      "required": true,
                      "fieldType": "other",
                      "fieldId": "country",
@@ -68,12 +62,12 @@
                      "choices": [
                                  {
                                  "value": "FRA",
-                                 "label": "France"
+                                 "label": "France",
+                                 "selected": true
                                  },
                                  {
                                  "value": "BEL",
-                                 "label": "Belgique",
-                                 "selected": true
+                                 "label": "Belgique"
                                  }
                                  ]
                      }

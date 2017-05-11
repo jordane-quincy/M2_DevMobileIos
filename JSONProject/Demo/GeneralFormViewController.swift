@@ -246,10 +246,14 @@ class GeneralFormViewController: UIViewController, UIPickerViewDelegate, UIScrol
                     var cpt = 0
                     let attributeValue = self.person?.getAttributeValue(fieldName: field.fieldId)
                     var alreadySelectedIndex = -1
+                    var defaultSelectedIndex = -1
                     for choice in (field.params?.choices)! {
                         pickerData.append((choice.label, choice.value))
                         if (attributeValue != nil && attributeValue == choice.label) {
                             alreadySelectedIndex = cpt
+                        }
+                        if (choice.selected) {
+                            defaultSelectedIndex = cpt
                         }
                         cpt += 1
                     }
@@ -269,6 +273,10 @@ class GeneralFormViewController: UIViewController, UIPickerViewDelegate, UIScrol
                     if (alreadySelectedIndex > -1) {
                         // On a déjà une valeur pour ce champ on le remplidonc directement
                         picker.selectRow(alreadySelectedIndex, inComponent: 0, animated: false)
+                    }
+                    else {
+                        // if we have a selected choice by default, select it
+                        picker.selectRow(defaultSelectedIndex, inComponent: 0, animated: false)
                     }
                     
                     self.containerView.addSubview(picker)
