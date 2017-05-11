@@ -28,6 +28,7 @@ class ResultatPersonDetails: UIViewController {
         super.viewDidLoad()
         self.title = "Détails"
         // TODO Créer l'interface en utlisant self.person
+        createViewFromAffiliate()
     }
     
     func createViewFromAffiliate(){
@@ -42,24 +43,100 @@ class ResultatPersonDetails: UIViewController {
             self.containerView = UIView()
             self.scrollView.addSubview(self.containerView)
             
+            var posY: Double = 20
             
-            // Ajout titre service
-            let title: UILabel = UILabel(frame: CGRect(x: 20, y: 20, width: 350.00, height: 30.00));
-           // title.text = "Nom : " + (json?.title)!
-           // self.containerView.addSubview(title)
+            for attribute in (self.affiliate?.attributes)! {
+                if (attribute.value != ""){
+                    let label: UILabel = UILabel(frame: CGRect(x: 20, y: posY, width: 350.00, height: 30.00));
+                    //Pour les attributs, affichage "label : value"
+                    label.text = attribute.label + " : " + attribute.value
+                    self.containerView.addSubview(label)
+                    
+                    posY += 30
+                }
+            }
+            
+            if (self.affiliate?.serviceOffer != nil) {
+                
+                if (self.affiliate?.serviceOffer?.title != ""){
+                    // Ajout label serviceOffer.title
+                    let title: UILabel = UILabel(frame: CGRect(x: 20, y: posY, width: 350.00, height: 30.00));
+                    title.text = "Service souscrit : " + (self.affiliate?.serviceOffer?.title)!
+                    self.containerView.addSubview(title)
+                    
+                    posY += 30
+                }
+                
+                if (self.affiliate?.serviceOffer?.offerDescription != ""){
+                    // Ajout description du service
+                    let description: UILabel = UILabel(frame: CGRect(x: 20, y: posY, width: 400.00, height: 100.00));
+                    description.numberOfLines = 0
+                    description.text = "Description : \n" + (self.affiliate?.serviceOffer?.offerDescription)!
+                    self.containerView.addSubview(description)
+                    
+                    posY += 50
+                }
+                
+                //Ajout du prix de l'offre
+                let price: UILabel = UILabel(frame: CGRect(x: 20, y: posY, width: 350.00, height: 30.00));
+                price.text = "Prix de l'offre : " + String((self.affiliate?.serviceOffer?.price)!)
+                self.containerView.addSubview(price)
+                
+                posY += 30
+            }
             
             
-            // Ajout description du service
-            let description: UILabel = UILabel(frame: CGRect(x: 20, y: 50, width: 400.00, height: 100.00));
-            description.numberOfLines = 0
-            //description.text = "Voici la description de ce service : \n" + (json?.description)!
-            self.containerView.addSubview(description)
+            for option in (self.affiliate?.serviceOptions)! {
+                
+                if (option.title != ""){
+                    // Ajout label option.title
+                    let title: UILabel = UILabel(frame: CGRect(x: 20, y: posY, width: 350.00, height: 30.00));
+                    title.text = "Option : " + (option.title)
+                    self.containerView.addSubview(title)
+                    
+                    posY += 30
+                }
+                
+                if (option.optionDescription != ""){
+                    // Ajout description de l'option
+                    let description: UILabel = UILabel(frame: CGRect(x: 20, y: posY, width: 400.00, height: 100.00));
+                    description.numberOfLines = 0
+                    description.text = "Description : \n" + (option.optionDescription)
+                    self.containerView.addSubview(description)
+                    
+                    posY += 50
+                }
+                
+                //Ajout du prix de l'option
+                let price: UILabel = UILabel(frame: CGRect(x: 20, y: posY, width: 350.00, height: 30.00));
+                price.text = "Prix de l'option : " + String(option.price)
+                self.containerView.addSubview(price)
+                
+                posY += 30
+            }
             
-            // Start message
-            let startMessage: UILabel = UILabel(frame: CGRect(x: 20, y: 130, width: 350.00, height: 100.00))
-            startMessage.numberOfLines = 0
-            startMessage.text = "Pour vous inscrire à ce service cliquez sur \"Commencer\""
-            self.containerView.addSubview(startMessage)
+            if (self.affiliate?.paymentWay?.label != ""){
+                // Ajout label
+                let label: UILabel = UILabel(frame: CGRect(x: 20, y: posY, width: 350.00, height: 30.00));
+                label.text = "Moyen de paiement : " + (self.affiliate?.paymentWay?.label)!
+                self.containerView.addSubview(label)
+                
+                posY += 30
+            }
+            
+            for attribute in (self.affiliate?.paymentWay?.paymentAttributes)! {
+                if (attribute.value != ""){
+                    let label: UILabel = UILabel(frame: CGRect(x: 20, y: posY, width: 350.00, height: 30.00));
+                    //Pour les attributs, affichage "label : value"
+                    label.text = attribute.label + " : " + attribute.value
+                    self.containerView.addSubview(label)
+                    
+                    posY += 30
+                }
+                
+            }
+            
+            
             
             // Set size fo scrollView
             self.scrollView.contentSize = CGSize(width: 375, height: 250)
