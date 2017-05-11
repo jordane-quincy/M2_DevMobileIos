@@ -10,6 +10,7 @@ import Foundation
 import RealmSwift
 
 class Person: Object {
+    
     dynamic var id: Int = 0
     var attributes: List<Attribute> = List<Attribute>()
     var serviceOptions: List<ServiceOption> = List<ServiceOption>()

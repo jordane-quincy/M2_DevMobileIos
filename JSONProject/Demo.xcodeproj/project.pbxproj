@@ -19,22 +19,10 @@
 		4297F6061EABC412004204CD /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4297F6011EABC405004204CD /* RealmSwift.framework */; };
 		4297F6071EABC412004204CD /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4297F6011EABC405004204CD /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		42AD2D2D1EABE8F200F2C00A /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AD2D2C1EABE8F200F2C00A /* DateUtils.swift */; };
-		42AFEF1E1E7EA003001587DA /* JsonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AFEF1D1E7EA003001587DA /* JsonModel.swift */; };
-		42AFEF201E87C617001587DA /* JsonModel_params.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AFEF1F1E87C617001587DA /* JsonModel_params.swift */; };
-		42AFEF221E87F7FD001587DA /* JsonModel_offers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AFEF211E87F7FD001587DA /* JsonModel_offers.swift */; };
-		42AFEF241E87FA65001587DA /* JsonModel_fields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AFEF231E87FA65001587DA /* JsonModel_fields.swift */; };
-		42AFEF261E880004001587DA /* JsonModel_features.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AFEF251E880004001587DA /* JsonModel_features.swift */; };
 		42B4DFFF1EB494B8001AC2FD /* PaymentWay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B4DFFE1EB494B8001AC2FD /* PaymentWay.swift */; };
 		42B4E0011EB4951E001AC2FD /* PaymentAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B4E0001EB4951E001AC2FD /* PaymentAttribute.swift */; };
 		42B57DC31EB0ADF0009EB0F1 /* ResultatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B57DC11EB0ADF0009EB0F1 /* ResultatViewController.swift */; };
 		42B57DC41EB0ADF0009EB0F1 /* ResultatViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42B57DC21EB0ADF0009EB0F1 /* ResultatViewController.xib */; };
-		42B57DC71EB0AFDB009EB0F1 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B57DC51EB0AFDB009EB0F1 /* CustomCell.swift */; };
-		42B57DC81EB0AFDB009EB0F1 /* CustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42B57DC61EB0AFDB009EB0F1 /* CustomCell.xib */; };
-		42B57DCC1EB23A76009EB0F1 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B57DCB1EB23A76009EB0F1 /* CustomTextField.swift */; };
-		42B57DCE1EB23B32009EB0F1 /* CustomPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B57DCD1EB23B32009EB0F1 /* CustomPickerView.swift */; };
-		42B57DD01EB23BD6009EB0F1 /* CustomDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B57DCF1EB23BD6009EB0F1 /* CustomDatePicker.swift */; };
-		42B57DD21EB2445D009EB0F1 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B57DD11EB2445D009EB0F1 /* CustomSegmentedControl.swift */; };
-		42B57DD61EB24FC2009EB0F1 /* CustomPickerViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B57DD51EB24FC2009EB0F1 /* CustomPickerViewDataSource.swift */; };
 		42B57DD91EB30EFB009EB0F1 /* GeneralFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B57DD71EB30EFB009EB0F1 /* GeneralFormViewController.swift */; };
 		42B57DDA1EB30EFB009EB0F1 /* GeneralFormViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42B57DD81EB30EFB009EB0F1 /* GeneralFormViewController.xib */; };
 		42B57DDD1EB33E34009EB0F1 /* SelectOfferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B57DDB1EB33E34009EB0F1 /* SelectOfferViewController.swift */; };
@@ -55,15 +43,43 @@
 		9062748F1EAE3A7100E09E57 /* AideViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9062748B1EAE3A7100E09E57 /* AideViewController.xib */; };
 		9DE2D1EF1EC4648C000565FF /* ResultatPersonTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE2D1ED1EC4648C000565FF /* ResultatPersonTableView.swift */; };
 		9DE2D1F01EC4648C000565FF /* ResultatPersonTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DE2D1EE1EC4648C000565FF /* ResultatPersonTableView.xib */; };
-		9DE2D1F31EC464FD000565FF /* ResultatPersonDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE2D1F11EC464FD000565FF /* ResultatPersonDetails.swift */; };
-		9DE2D1F41EC464FD000565FF /* ResultatPersonDetails.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DE2D1F21EC464FD000565FF /* ResultatPersonDetails.xib */; };
+		9DE2D1F71EC47A9A000565FF /* AccueilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE2D1F51EC47A9A000565FF /* AccueilViewController.swift */; };
+		9DE2D1F81EC47A9A000565FF /* AccueilViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DE2D1F61EC47A9A000565FF /* AccueilViewController.xib */; };
+		9DE2D2251EC47E24000565FF /* AccueilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE2D1F91EC47E24000565FF /* AccueilViewController.swift */; };
+		9DE2D2261EC47E24000565FF /* AccueilViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DE2D1FA1EC47E24000565FF /* AccueilViewController.xib */; };
+		9DE2D2271EC47E24000565FF /* AideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE2D1FB1EC47E24000565FF /* AideViewController.swift */; };
+		9DE2D2281EC47E24000565FF /* AideViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DE2D1FC1EC47E24000565FF /* AideViewController.xib */; };
+		9DE2D2291EC47E24000565FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE2D1FD1EC47E24000565FF /* AppDelegate.swift */; };
+		9DE2D22A1EC47E24000565FF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9DE2D1FE1EC47E24000565FF /* Assets.xcassets */; };
+		9DE2D22B1EC47E24000565FF /* Base.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 9DE2D1FF1EC47E24000565FF /* Base.lproj */; };
+		9DE2D22C1EC47E24000565FF /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE2D2001EC47E24000565FF /* CustomCell.swift */; };
+		9DE2D22D1EC47E24000565FF /* CustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DE2D2011EC47E24000565FF /* CustomCell.xib */; };
+		9DE2D22E1EC47E24000565FF /* CustomDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE2D2021EC47E24000565FF /* CustomDatePicker.swift */; };
+		9DE2D22F1EC47E24000565FF /* CustomPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE2D2031EC47E24000565FF /* CustomPickerView.swift */; };
+		9DE2D2301EC47E24000565FF /* CustomPickerViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE2D2041EC47E24000565FF /* CustomPickerViewDataSource.swift */; };
+		9DE2D2311EC47E24000565FF /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE2D2051EC47E24000565FF /* CustomSegmentedControl.swift */; };
+		9DE2D2321EC47E24000565FF /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE2D2061EC47E24000565FF /* CustomTextField.swift */; };
+		9DE2D2331EC47E24000565FF /* exampleJSON1.json in Resources */ = {isa = PBXBuildFile; fileRef = 9DE2D2081EC47E24000565FF /* exampleJSON1.json */; };
+		9DE2D2341EC47E24000565FF /* GeneralFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE2D2091EC47E24000565FF /* GeneralFormViewController.swift */; };
+		9DE2D2351EC47E24000565FF /* GeneralFormViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DE2D20A1EC47E24000565FF /* GeneralFormViewController.xib */; };
+		9DE2D2361EC47E24000565FF /* ICloudService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE2D20B1EC47E24000565FF /* ICloudService.swift */; };
+		9DE2D2371EC47E24000565FF /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9DE2D20C1EC47E24000565FF /* Info.plist */; };
+		9DE2D2381EC47E24000565FF /* JsonModel_features.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE2D20D1EC47E24000565FF /* JsonModel_features.swift */; };
+		9DE2D2391EC47E24000565FF /* JsonModel_fields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE2D20E1EC47E24000565FF /* JsonModel_fields.swift */; };
+		9DE2D23A1EC47E24000565FF /* JsonModel_offers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE2D20F1EC47E24000565FF /* JsonModel_offers.swift */; };
+		9DE2D23B1EC47E24000565FF /* JsonModel_params.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE2D2101EC47E24000565FF /* JsonModel_params.swift */; };
+		9DE2D23C1EC47E25000565FF /* JsonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE2D2111EC47E24000565FF /* JsonModel.swift */; };
+		9DE2D23D1EC47E25000565FF /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE2D2121EC47E24000565FF /* PaymentViewController.swift */; };
+		9DE2D23E1EC47E25000565FF /* PaymentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DE2D2131EC47E24000565FF /* PaymentViewController.xib */; };
+		9DE2D23F1EC47E25000565FF /* ResultatPersonDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE2D2141EC47E24000565FF /* ResultatPersonDetails.swift */; };
+		9DE2D24D1EC47E25000565FF /* System.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE2D2221EC47E24000565FF /* System.swift */; };
+		9DE2D24E1EC47E25000565FF /* testFile.json in Resources */ = {isa = PBXBuildFile; fileRef = 9DE2D2231EC47E24000565FF /* testFile.json */; };
+		9DE2D24F1EC47E25000565FF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE2D2241EC47E24000565FF /* ViewController.swift */; };
+		9DE2D2511EC47FA9000565FF /* ResultatPersonDetails.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DE2D2501EC47FA9000565FF /* ResultatPersonDetails.xib */; };
 		B51EFB821E65673200C3CC90 /* testFile.json in Resources */ = {isa = PBXBuildFile; fileRef = B51EFB811E65673200C3CC90 /* testFile.json */; };
 		B51EFB841E6569A800C3CC90 /* exampleJSON1.json in Resources */ = {isa = PBXBuildFile; fileRef = B51EFB831E6569A800C3CC90 /* exampleJSON1.json */; };
 		B51EFB871E65874600C3CC90 /* JSONUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51EFB861E65874600C3CC90 /* JSONUtils.swift */; };
-		B52CE2131E3756B900EC68E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52CE2121E3756B900EC68E5 /* AppDelegate.swift */; };
-		B52CE2151E3756B900EC68E5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52CE2141E3756B900EC68E5 /* ViewController.swift */; };
 		B52CE2181E3756B900EC68E5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B52CE2161E3756B900EC68E5 /* Main.storyboard */; };
-		B52CE21A1E3756B900EC68E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B52CE2191E3756B900EC68E5 /* Assets.xcassets */; };
 		B52CE21D1E3756B900EC68E5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B52CE21B1E3756B900EC68E5 /* LaunchScreen.storyboard */; };
 		B52CE2281E3756BA00EC68E5 /* DemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52CE2271E3756BA00EC68E5 /* DemoTests.swift */; };
 		B52CE2331E3756BA00EC68E5 /* DemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52CE2321E3756BA00EC68E5 /* DemoUITests.swift */; };
@@ -113,22 +129,10 @@
 		4297F6001EABC405004204CD /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
 		4297F6011EABC405004204CD /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
 		42AD2D2C1EABE8F200F2C00A /* DateUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateUtils.swift; sourceTree = "<group>"; };
-		42AFEF1D1E7EA003001587DA /* JsonModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonModel.swift; sourceTree = "<group>"; };
-		42AFEF1F1E87C617001587DA /* JsonModel_params.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonModel_params.swift; sourceTree = "<group>"; };
-		42AFEF211E87F7FD001587DA /* JsonModel_offers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonModel_offers.swift; sourceTree = "<group>"; };
-		42AFEF231E87FA65001587DA /* JsonModel_fields.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonModel_fields.swift; sourceTree = "<group>"; };
-		42AFEF251E880004001587DA /* JsonModel_features.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonModel_features.swift; sourceTree = "<group>"; };
 		42B4DFFE1EB494B8001AC2FD /* PaymentWay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentWay.swift; sourceTree = "<group>"; };
 		42B4E0001EB4951E001AC2FD /* PaymentAttribute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentAttribute.swift; sourceTree = "<group>"; };
 		42B57DC11EB0ADF0009EB0F1 /* ResultatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultatViewController.swift; sourceTree = "<group>"; };
 		42B57DC21EB0ADF0009EB0F1 /* ResultatViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResultatViewController.xib; sourceTree = "<group>"; };
-		42B57DC51EB0AFDB009EB0F1 /* CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
-		42B57DC61EB0AFDB009EB0F1 /* CustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomCell.xib; sourceTree = "<group>"; };
-		42B57DCB1EB23A76009EB0F1 /* CustomTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
-		42B57DCD1EB23B32009EB0F1 /* CustomPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPickerView.swift; sourceTree = "<group>"; };
-		42B57DCF1EB23BD6009EB0F1 /* CustomDatePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomDatePicker.swift; sourceTree = "<group>"; };
-		42B57DD11EB2445D009EB0F1 /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
-		42B57DD51EB24FC2009EB0F1 /* CustomPickerViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPickerViewDataSource.swift; sourceTree = "<group>"; };
 		42B57DD71EB30EFB009EB0F1 /* GeneralFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralFormViewController.swift; sourceTree = "<group>"; };
 		42B57DD81EB30EFB009EB0F1 /* GeneralFormViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GeneralFormViewController.xib; sourceTree = "<group>"; };
 		42B57DDB1EB33E34009EB0F1 /* SelectOfferViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectOfferViewController.swift; sourceTree = "<group>"; };
@@ -149,16 +153,45 @@
 		9062748B1EAE3A7100E09E57 /* AideViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AideViewController.xib; sourceTree = "<group>"; };
 		9DE2D1ED1EC4648C000565FF /* ResultatPersonTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultatPersonTableView.swift; sourceTree = "<group>"; };
 		9DE2D1EE1EC4648C000565FF /* ResultatPersonTableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResultatPersonTableView.xib; sourceTree = "<group>"; };
-		9DE2D1F11EC464FD000565FF /* ResultatPersonDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultatPersonDetails.swift; sourceTree = "<group>"; };
-		9DE2D1F21EC464FD000565FF /* ResultatPersonDetails.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResultatPersonDetails.xib; sourceTree = "<group>"; };
+		9DE2D1F51EC47A9A000565FF /* AccueilViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccueilViewController.swift; sourceTree = "<group>"; };
+		9DE2D1F61EC47A9A000565FF /* AccueilViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccueilViewController.xib; sourceTree = "<group>"; };
+		9DE2D1F91EC47E24000565FF /* AccueilViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccueilViewController.swift; sourceTree = "<group>"; };
+		9DE2D1FA1EC47E24000565FF /* AccueilViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccueilViewController.xib; sourceTree = "<group>"; };
+		9DE2D1FB1EC47E24000565FF /* AideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AideViewController.swift; sourceTree = "<group>"; };
+		9DE2D1FC1EC47E24000565FF /* AideViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AideViewController.xib; sourceTree = "<group>"; };
+		9DE2D1FD1EC47E24000565FF /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		9DE2D1FE1EC47E24000565FF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9DE2D1FF1EC47E24000565FF /* Base.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Base.lproj; sourceTree = "<group>"; };
+		9DE2D2001EC47E24000565FF /* CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
+		9DE2D2011EC47E24000565FF /* CustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomCell.xib; sourceTree = "<group>"; };
+		9DE2D2021EC47E24000565FF /* CustomDatePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomDatePicker.swift; sourceTree = "<group>"; };
+		9DE2D2031EC47E24000565FF /* CustomPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPickerView.swift; sourceTree = "<group>"; };
+		9DE2D2041EC47E24000565FF /* CustomPickerViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPickerViewDataSource.swift; sourceTree = "<group>"; };
+		9DE2D2051EC47E24000565FF /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
+		9DE2D2061EC47E24000565FF /* CustomTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		9DE2D2071EC47E24000565FF /* Demo.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = Demo.entitlements; sourceTree = "<group>"; };
+		9DE2D2081EC47E24000565FF /* exampleJSON1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = exampleJSON1.json; sourceTree = "<group>"; };
+		9DE2D2091EC47E24000565FF /* GeneralFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralFormViewController.swift; sourceTree = "<group>"; };
+		9DE2D20A1EC47E24000565FF /* GeneralFormViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GeneralFormViewController.xib; sourceTree = "<group>"; };
+		9DE2D20B1EC47E24000565FF /* ICloudService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ICloudService.swift; sourceTree = "<group>"; };
+		9DE2D20C1EC47E24000565FF /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9DE2D20D1EC47E24000565FF /* JsonModel_features.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonModel_features.swift; sourceTree = "<group>"; };
+		9DE2D20E1EC47E24000565FF /* JsonModel_fields.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonModel_fields.swift; sourceTree = "<group>"; };
+		9DE2D20F1EC47E24000565FF /* JsonModel_offers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonModel_offers.swift; sourceTree = "<group>"; };
+		9DE2D2101EC47E24000565FF /* JsonModel_params.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonModel_params.swift; sourceTree = "<group>"; };
+		9DE2D2111EC47E24000565FF /* JsonModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonModel.swift; sourceTree = "<group>"; };
+		9DE2D2121EC47E24000565FF /* PaymentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
+		9DE2D2131EC47E24000565FF /* PaymentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PaymentViewController.xib; sourceTree = "<group>"; };
+		9DE2D2141EC47E24000565FF /* ResultatPersonDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultatPersonDetails.swift; sourceTree = "<group>"; };
+		9DE2D2221EC47E24000565FF /* System.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = System.swift; sourceTree = "<group>"; };
+		9DE2D2231EC47E24000565FF /* testFile.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = testFile.json; sourceTree = "<group>"; };
+		9DE2D2241EC47E24000565FF /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		9DE2D2501EC47FA9000565FF /* ResultatPersonDetails.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResultatPersonDetails.xib; sourceTree = "<group>"; };
 		B51EFB811E65673200C3CC90 /* testFile.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = testFile.json; path = Demo/testFile.json; sourceTree = "<group>"; };
 		B51EFB831E6569A800C3CC90 /* exampleJSON1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = exampleJSON1.json; path = Demo/exampleJSON1.json; sourceTree = "<group>"; };
 		B51EFB861E65874600C3CC90 /* JSONUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONUtils.swift; sourceTree = "<group>"; };
 		B52CE20F1E3756B900EC68E5 /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		B52CE2121E3756B900EC68E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B52CE2141E3756B900EC68E5 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B52CE2171E3756B900EC68E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		B52CE2191E3756B900EC68E5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B52CE21C1E3756B900EC68E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B52CE21E1E3756B900EC68E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B52CE2231E3756BA00EC68E5 /* DemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -299,27 +332,44 @@
 				906274821EAE3A6900E09E57 /* SetupViewController.swift */,
 				906274831EAE3A6900E09E57 /* SetupViewController.xib */,
 				B5326A101E76C5A500B57076 /* Demo.entitlements */,
-				B52CE2121E3756B900EC68E5 /* AppDelegate.swift */,
-				B52CE2141E3756B900EC68E5 /* ViewController.swift */,
+				9DE2D1F51EC47A9A000565FF /* AccueilViewController.swift */,
+				9DE2D1F91EC47E24000565FF /* AccueilViewController.swift */,
+				9DE2D1FA1EC47E24000565FF /* AccueilViewController.xib */,
+				9DE2D1FB1EC47E24000565FF /* AideViewController.swift */,
+				9DE2D1FC1EC47E24000565FF /* AideViewController.xib */,
+				9DE2D1FD1EC47E24000565FF /* AppDelegate.swift */,
+				9DE2D1FE1EC47E24000565FF /* Assets.xcassets */,
+				9DE2D1FF1EC47E24000565FF /* Base.lproj */,
+				9DE2D2001EC47E24000565FF /* CustomCell.swift */,
+				9DE2D2011EC47E24000565FF /* CustomCell.xib */,
+				9DE2D2021EC47E24000565FF /* CustomDatePicker.swift */,
+				9DE2D2031EC47E24000565FF /* CustomPickerView.swift */,
+				9DE2D2041EC47E24000565FF /* CustomPickerViewDataSource.swift */,
+				9DE2D2051EC47E24000565FF /* CustomSegmentedControl.swift */,
+				9DE2D2061EC47E24000565FF /* CustomTextField.swift */,
+				9DE2D2071EC47E24000565FF /* Demo.entitlements */,
+				9DE2D2081EC47E24000565FF /* exampleJSON1.json */,
+				9DE2D2091EC47E24000565FF /* GeneralFormViewController.swift */,
+				9DE2D20A1EC47E24000565FF /* GeneralFormViewController.xib */,
+				9DE2D20B1EC47E24000565FF /* ICloudService.swift */,
+				9DE2D20C1EC47E24000565FF /* Info.plist */,
+				9DE2D20D1EC47E24000565FF /* JsonModel_features.swift */,
+				9DE2D20E1EC47E24000565FF /* JsonModel_fields.swift */,
+				9DE2D20F1EC47E24000565FF /* JsonModel_offers.swift */,
+				9DE2D2101EC47E24000565FF /* JsonModel_params.swift */,
+				9DE2D2111EC47E24000565FF /* JsonModel.swift */,
+				9DE2D2121EC47E24000565FF /* PaymentViewController.swift */,
+				9DE2D2131EC47E24000565FF /* PaymentViewController.xib */,
+				9DE2D2141EC47E24000565FF /* ResultatPersonDetails.swift */,
+				9DE2D2501EC47FA9000565FF /* ResultatPersonDetails.xib */,
+				9DE2D2221EC47E24000565FF /* System.swift */,
+				9DE2D2231EC47E24000565FF /* testFile.json */,
+				9DE2D2241EC47E24000565FF /* ViewController.swift */,
+				9DE2D1F61EC47A9A000565FF /* AccueilViewController.xib */,
 				B52CE2161E3756B900EC68E5 /* Main.storyboard */,
-				B52CE2191E3756B900EC68E5 /* Assets.xcassets */,
 				B52CE21B1E3756B900EC68E5 /* LaunchScreen.storyboard */,
 				B52CE21E1E3756B900EC68E5 /* Info.plist */,
-				9DE2D1F11EC464FD000565FF /* ResultatPersonDetails.swift */,
-				9DE2D1F21EC464FD000565FF /* ResultatPersonDetails.xib */,
 				B58540211E76D24A00C7A698 /* ICloudService.swift */,
-				42AFEF1D1E7EA003001587DA /* JsonModel.swift */,
-				42AFEF231E87FA65001587DA /* JsonModel_fields.swift */,
-				42AFEF251E880004001587DA /* JsonModel_features.swift */,
-				42AFEF1F1E87C617001587DA /* JsonModel_params.swift */,
-				42AFEF211E87F7FD001587DA /* JsonModel_offers.swift */,
-				42B57DC51EB0AFDB009EB0F1 /* CustomCell.swift */,
-				42B57DC61EB0AFDB009EB0F1 /* CustomCell.xib */,
-				42B57DCB1EB23A76009EB0F1 /* CustomTextField.swift */,
-				42B57DCD1EB23B32009EB0F1 /* CustomPickerView.swift */,
-				42B57DCF1EB23BD6009EB0F1 /* CustomDatePicker.swift */,
-				42B57DD11EB2445D009EB0F1 /* CustomSegmentedControl.swift */,
-				42B57DD51EB24FC2009EB0F1 /* CustomPickerViewDataSource.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -469,21 +519,30 @@
 			files = (
 				B52CE21D1E3756B900EC68E5 /* LaunchScreen.storyboard in Resources */,
 				B51EFB841E6569A800C3CC90 /* exampleJSON1.json in Resources */,
+				9DE2D2351EC47E24000565FF /* GeneralFormViewController.xib in Resources */,
 				B51EFB821E65673200C3CC90 /* testFile.json in Resources */,
-				B52CE21A1E3756B900EC68E5 /* Assets.xcassets in Resources */,
+				9DE2D2261EC47E24000565FF /* AccueilViewController.xib in Resources */,
+				9DE2D2511EC47FA9000565FF /* ResultatPersonDetails.xib in Resources */,
+				9DE2D23E1EC47E25000565FF /* PaymentViewController.xib in Resources */,
+				9DE2D22A1EC47E24000565FF /* Assets.xcassets in Resources */,
+				9DE2D22D1EC47E24000565FF /* CustomCell.xib in Resources */,
+				9DE2D22B1EC47E24000565FF /* Base.lproj in Resources */,
+				9DE2D2281EC47E24000565FF /* AideViewController.xib in Resources */,
 				42B57DE21EB380D8009EB0F1 /* SpecificFormViewController.xib in Resources */,
 				906274871EAE3A6900E09E57 /* SetupViewController.xib in Resources */,
+				9DE2D2371EC47E24000565FF /* Info.plist in Resources */,
 				42B57DC41EB0ADF0009EB0F1 /* ResultatViewController.xib in Resources */,
 				42B57DDA1EB30EFB009EB0F1 /* GeneralFormViewController.xib in Resources */,
+				9DE2D24E1EC47E25000565FF /* testFile.json in Resources */,
 				42B57DEF1EB47A31009EB0F1 /* PaymentViewController.xib in Resources */,
 				42B57DDE1EB33E34009EB0F1 /* SelectOfferViewController.xib in Resources */,
 				9DE2D1F01EC4648C000565FF /* ResultatPersonTableView.xib in Resources */,
+				9DE2D2331EC47E24000565FF /* exampleJSON1.json in Resources */,
 				42B57DE71EB3A61A009EB0F1 /* SelectOptionViewController.xib in Resources */,
-				42B57DC81EB0AFDB009EB0F1 /* CustomCell.xib in Resources */,
-				9DE2D1F41EC464FD000565FF /* ResultatPersonDetails.xib in Resources */,
 				9062748F1EAE3A7100E09E57 /* AideViewController.xib in Resources */,
 				B52CE2181E3756B900EC68E5 /* Main.storyboard in Resources */,
 				9062748D1EAE3A7100E09E57 /* AccueilViewController.xib in Resources */,
+				9DE2D1F81EC47A9A000565FF /* AccueilViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -524,43 +583,50 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				42AFEF221E87F7FD001587DA /* JsonModel_offers.swift in Sources */,
+				9DE2D2301EC47E24000565FF /* CustomPickerViewDataSource.swift in Sources */,
 				4297F5F71EABC37D004204CD /* BusinessService.swift in Sources */,
-				9DE2D1F31EC464FD000565FF /* ResultatPersonDetails.swift in Sources */,
+				9DE2D2381EC47E24000565FF /* JsonModel_features.swift in Sources */,
 				4297F5FA1EABC37D004204CD /* FileServices.swift in Sources */,
-				42AFEF241E87FA65001587DA /* JsonModel_fields.swift in Sources */,
+				9DE2D2291EC47E24000565FF /* AppDelegate.swift in Sources */,
+				9DE2D23F1EC47E25000565FF /* ResultatPersonDetails.swift in Sources */,
+				9DE2D2271EC47E24000565FF /* AideViewController.swift in Sources */,
 				9062748E1EAE3A7100E09E57 /* AideViewController.swift in Sources */,
+				9DE2D2311EC47E24000565FF /* CustomSegmentedControl.swift in Sources */,
 				42B57DD91EB30EFB009EB0F1 /* GeneralFormViewController.swift in Sources */,
+				9DE2D2341EC47E24000565FF /* GeneralFormViewController.swift in Sources */,
 				4297F5F91EABC37D004204CD /* ExportServices.swift in Sources */,
 				42B57DEE1EB47A31009EB0F1 /* PaymentViewController.swift in Sources */,
 				906274861EAE3A6900E09E57 /* SetupViewController.swift in Sources */,
 				42B57DE11EB380D8009EB0F1 /* SpecificFormViewController.swift in Sources */,
-				42B57DD21EB2445D009EB0F1 /* CustomSegmentedControl.swift in Sources */,
+				9DE2D23D1EC47E25000565FF /* PaymentViewController.swift in Sources */,
 				B58540221E76D24A00C7A698 /* ICloudService.swift in Sources */,
 				4297F5F81EABC37D004204CD /* RealmServices.swift in Sources */,
-				42B57DCC1EB23A76009EB0F1 /* CustomTextField.swift in Sources */,
-				B52CE2151E3756B900EC68E5 /* ViewController.swift in Sources */,
 				42B57DEB1EB47377009EB0F1 /* ServiceOffer.swift in Sources */,
-				42B57DD61EB24FC2009EB0F1 /* CustomPickerViewDataSource.swift in Sources */,
-				42AFEF261E880004001587DA /* JsonModel_features.swift in Sources */,
+				9DE2D2361EC47E24000565FF /* ICloudService.swift in Sources */,
+				9DE2D23A1EC47E24000565FF /* JsonModel_offers.swift in Sources */,
+				9DE2D22E1EC47E24000565FF /* CustomDatePicker.swift in Sources */,
+				9DE2D22F1EC47E24000565FF /* CustomPickerView.swift in Sources */,
 				42B57DC31EB0ADF0009EB0F1 /* ResultatViewController.swift in Sources */,
 				9062748C1EAE3A7100E09E57 /* AccueilViewController.swift in Sources */,
 				9DE2D1EF1EC4648C000565FF /* ResultatPersonTableView.swift in Sources */,
+				9DE2D23B1EC47E24000565FF /* JsonModel_params.swift in Sources */,
 				42B57DE61EB3A61A009EB0F1 /* SelectOptionViewController.swift in Sources */,
-				42B57DC71EB0AFDB009EB0F1 /* CustomCell.swift in Sources */,
 				B51EFB871E65874600C3CC90 /* JSONUtils.swift in Sources */,
-				42AFEF1E1E7EA003001587DA /* JsonModel.swift in Sources */,
+				9DE2D24D1EC47E25000565FF /* System.swift in Sources */,
 				42B4E0011EB4951E001AC2FD /* PaymentAttribute.swift in Sources */,
-				42AFEF201E87C617001587DA /* JsonModel_params.swift in Sources */,
+				9DE2D24F1EC47E25000565FF /* ViewController.swift in Sources */,
+				9DE2D2321EC47E24000565FF /* CustomTextField.swift in Sources */,
+				9DE2D23C1EC47E25000565FF /* JsonModel.swift in Sources */,
 				42AD2D2D1EABE8F200F2C00A /* DateUtils.swift in Sources */,
+				9DE2D1F71EC47A9A000565FF /* AccueilViewController.swift in Sources */,
 				42B57DE91EB3C20C009EB0F1 /* ServiceOption.swift in Sources */,
-				42B57DCE1EB23B32009EB0F1 /* CustomPickerView.swift in Sources */,
 				42B4DFFF1EB494B8001AC2FD /* PaymentWay.swift in Sources */,
-				B52CE2131E3756B900EC68E5 /* AppDelegate.swift in Sources */,
 				4297F5FD1EABC386004204CD /* Person.swift in Sources */,
+				9DE2D2251EC47E24000565FF /* AccueilViewController.swift in Sources */,
+				9DE2D2391EC47E24000565FF /* JsonModel_fields.swift in Sources */,
 				42B57DDD1EB33E34009EB0F1 /* SelectOfferViewController.swift in Sources */,
 				4297F5FE1EABC386004204CD /* Attribute.swift in Sources */,
-				42B57DD01EB23BD6009EB0F1 /* CustomDatePicker.swift in Sources */,
+				9DE2D22C1EC47E24000565FF /* CustomCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
