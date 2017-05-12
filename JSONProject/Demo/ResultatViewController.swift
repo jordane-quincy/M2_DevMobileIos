@@ -156,11 +156,15 @@ class ResultatViewController: UITableViewController, UIDocumentMenuDelegate, UID
             alert.addAction(UIAlertAction(title: "CSV", style: UIAlertActionStyle.default, handler: { action in
                 let fileString = self.exportServices.getSubscribersCSV(_businessServiceTitle: businessTitle)
                 
-                let file = self.fileServices.createCSVFileFromString(CSVStringified: fileString, businessServiceTitle: businessTitle, viewController: self)
+                _ = self.fileServices.createCSVFileFromString(CSVStringified: fileString, businessServiceTitle: businessTitle, viewController: self)
                 
                 self.fileServices.createAndMoveFileiCloud(file: "file", fileStringified: fileString, viewController: self)
             }))
             self.present(alert, animated: true, completion: nil)
+            
+            alert.addAction(UIAlertAction(title: "Annuler", style: UIAlertActionStyle.cancel, handler: { (UIAlertAction) in
+                print("Export cancel")
+            }))
             
             
             

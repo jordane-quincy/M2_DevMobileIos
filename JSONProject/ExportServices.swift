@@ -135,18 +135,16 @@ class ExportServices {
         
         
         for attribute in (businessService.subscribers.first?.attributes)! {
-            header = header + "\(attribute.fieldName),"
+            header += "\(attribute.fieldName),"
         }
-        header = header.substring(to: header.index(before: header.endIndex))
-        header = header + "\n"
+        header += "paymentWay\n"
         
         for subscriber in businessService.subscribers {
             result = result + "\(businessService.title),\(businessService.serviceDescription),\(businessService.icon),"
             for attribute in subscriber.attributes {
                 result = result + "\(attribute.value),"
             }
-            result = result.substring(to: result.index(before: result.endIndex))
-            result = result + "\n"
+            result += "\((subscriber.paymentWay?.label)!)\n"
         }
         
         result = header + result
