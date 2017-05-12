@@ -15,7 +15,6 @@ class RealmServices {
     
     public func addSubscriberToService(title: String, subscriber: Person) {
         let businessService = self.realm.object(ofType: BusinessService.self, forPrimaryKey: title as AnyObject)
-//        print(businessService!)
         try! self.realm.write {
             // Try to add the MediClass Object to the IndiClass Object:
             businessService!.addPersonToService(person: subscriber)
@@ -25,7 +24,6 @@ class RealmServices {
     public func addAttributeToPerson(_email: String, attribute: Attribute) {
         
         let person = self.realm.object(ofType: Person.self, forPrimaryKey: _email as AnyObject)
-//        print(person!)
         try! self.realm.write {
             person!.addAttributeToPerson(_attribute: attribute)
         }
@@ -41,7 +39,6 @@ class RealmServices {
     public func resetService(title: String){
         
         let businessService = self.realm.object(ofType: BusinessService.self, forPrimaryKey: title as AnyObject)
-//        print(businessService!)
         for subcriber in (businessService!.subscribers) {
             deleteSubcriber(id: subcriber.id)
         }
@@ -50,21 +47,18 @@ class RealmServices {
     public func createBusinessService(businessService: BusinessService){
         try! self.realm.write {
             self.realm.add(businessService)
-//            print("\(businessService)")
         }
     }
     
     public func createPerson(person: Person){
         try! self.realm.write {
             self.realm.add(person)
-//            print("\(person)")
         }
     }
     
     public func createAttribute(_attribute: Attribute){
         try! self.realm.write {
             self.realm.add(_attribute)
-//            print("\(_attribute)")
         }
     }
     
