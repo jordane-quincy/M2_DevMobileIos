@@ -141,7 +141,7 @@ class ResultatViewController: UITableViewController, UIDocumentMenuDelegate, UID
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt: IndexPath) -> [UITableViewRowAction]? {
         let export = UITableViewRowAction(style: .normal, title: "Exporter") { action, index in
-            print("share button tapped")
+            print("export button tapped")
             
             let businessTitle = self.services[editActionsForRowAt.row].title
             

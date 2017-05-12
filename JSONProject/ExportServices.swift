@@ -148,7 +148,6 @@ class ExportServices {
             }
             
             var find = false
-            
             for option in businessService.listOfOptions {
                 for optionSubcriber in subscriber.serviceOptions {
                     if (optionSubcriber.title == option.label){
