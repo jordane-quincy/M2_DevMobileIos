@@ -25,6 +25,8 @@ class GeneralFormViewController: UIViewController, UIPickerViewDelegate, UIScrol
         // set up title of view
         self.title = "Form 1"
     }
+    
+    // For displaying scrollView
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         

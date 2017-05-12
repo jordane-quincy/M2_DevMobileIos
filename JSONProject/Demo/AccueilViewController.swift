@@ -44,12 +44,29 @@ class AccueilViewController: UIViewController, UIScrollViewDelegate  {
                 //in case of unsuccessful deserialization
                 print(serializationError)
             }
-        
         }
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        // TODO verify if the actual service in jsonModel was not deleted
+        // verify if the actual service in jsonModel was not deleted
+        if (jsonModel != nil) {
+            if (realmServices.serviceFree(title: (jsonModel?.title)!)) {
+                // Reset the view
+                self.containerView.subviews.forEach({ $0.removeFromSuperview() })
+                // affichage message pas de service chargé
+                let defaultMessage: UILabel = UILabel(frame: CGRect(x: 20, y: 20, width: 350.00, height: 30.00));
+                defaultMessage.text = "Pas de service chargé"
+                self.view.addSubview(containerView)
+                self.containerView.addSubview(defaultMessage)
+            }
+        }
+        else {
+            // affichage message pas de service chargé
+            let defaultMessage: UILabel = UILabel(frame: CGRect(x: 20, y: 20, width: 350.00, height: 30.00));
+            defaultMessage.text = "Pas de service chargé"
+            self.view.addSubview(containerView)
+            self.containerView.addSubview(defaultMessage)
+        }
         // If it was deleted, delete the UI
     }
     
