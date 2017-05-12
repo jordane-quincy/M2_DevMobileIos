@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ResultatPersonDetails: UIViewController {
+class ResultatPersonDetails: UIViewController, UIScrollViewDelegate {
 
     var scrollView = UIScrollView()
     var containerView = UIView()
@@ -31,11 +31,17 @@ class ResultatPersonDetails: UIViewController {
         createViewFromAffiliate()
     }
     
+    // For displaying scrollView
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        scrollView.frame = view.bounds
+        containerView.frame = CGRect(x: 0, y: 0, width: scrollView.contentSize.width, height: scrollView.contentSize.height)
+    }
+    
     func createViewFromAffiliate(){
         // Setup interface
         DispatchQueue.main.async() {
-            // Reset the view
-            self.view.subviews.forEach({ $0.removeFromSuperview() })
             // Setup scrollview
             self.scrollView = UIScrollView()
            // self.scrollView.delegate = self
@@ -43,16 +49,16 @@ class ResultatPersonDetails: UIViewController {
             self.containerView = UIView()
             self.scrollView.addSubview(self.containerView)
             
-            var posY: Double = 20
+            var posY: Double = 70
             
-            for attribute in (self.affiliate?.attributes)! {
+            for (index, attribute) in ((self.affiliate?.attributes)!).enumerated() {
                 if (attribute.value != ""){
                     let label: UILabel = UILabel(frame: CGRect(x: 20, y: posY, width: 350.00, height: 30.00));
                     //Pour les attributs, affichage "label : value"
                     label.text = attribute.label + " : " + attribute.value
                     self.containerView.addSubview(label)
                     
-                    posY += 30
+                    posY += (index < ((self.affiliate?.attributes.count)! - 1) ? 30 : 60)
                 }
             }
             
@@ -64,7 +70,7 @@ class ResultatPersonDetails: UIViewController {
                     title.text = "Service souscrit : " + (self.affiliate?.serviceOffer?.title)!
                     self.containerView.addSubview(title)
                     
-                    posY += 30
+                    posY += 20
                 }
                 
                 if (self.affiliate?.serviceOffer?.offerDescription != ""){
@@ -74,46 +80,53 @@ class ResultatPersonDetails: UIViewController {
                     description.text = "Description : \n" + (self.affiliate?.serviceOffer?.offerDescription)!
                     self.containerView.addSubview(description)
                     
-                    posY += 50
+                    posY += 100
                 }
                 
                 //Ajout du prix de l'offre
                 let price: UILabel = UILabel(frame: CGRect(x: 20, y: posY, width: 350.00, height: 30.00));
-                price.text = "Prix de l'offre : " + String((self.affiliate?.serviceOffer?.price)!)
+                price.text = "Prix de l'offre : " + String((self.affiliate?.serviceOffer?.price)!) + "€"
                 self.containerView.addSubview(price)
                 
-                posY += 30
+                posY += 50
             }
             
+            let numberOfOption = (self.affiliate?.serviceOptions.count)!
+            if (numberOfOption > 0) {
+                let messageOption: UILabel = UILabel(frame: CGRect(x: 20, y: posY, width: 350.00, height: 30.00));
+                messageOption.text = "Option" + (numberOfOption > 1 ? "s " : " ") + "souscrite" + (numberOfOption > 1 ? "s :" : " :")
+                self.containerView.addSubview(messageOption)
+                posY += 30
+            }
             
             for option in (self.affiliate?.serviceOptions)! {
                 
                 if (option.title != ""){
                     // Ajout label option.title
-                    let title: UILabel = UILabel(frame: CGRect(x: 20, y: posY, width: 350.00, height: 30.00));
-                    title.text = "Option : " + (option.title)
+                    let title: UILabel = UILabel(frame: CGRect(x: 50, y: posY, width: 350.00, height: 30.00));
+                    title.text = "• Option : " + (option.title)
                     self.containerView.addSubview(title)
-                    
-                    posY += 30
+                    posY += 20
                 }
                 
                 if (option.optionDescription != ""){
                     // Ajout description de l'option
-                    let description: UILabel = UILabel(frame: CGRect(x: 20, y: posY, width: 400.00, height: 100.00));
+                    let description: UILabel = UILabel(frame: CGRect(x: 65, y: posY, width: 355.00, height: 100.00));
                     description.numberOfLines = 0
                     description.text = "Description : \n" + (option.optionDescription)
                     self.containerView.addSubview(description)
                     
-                    posY += 50
+                    posY += 100
                 }
                 
                 //Ajout du prix de l'option
-                let price: UILabel = UILabel(frame: CGRect(x: 20, y: posY, width: 350.00, height: 30.00));
-                price.text = "Prix de l'option : " + String(option.price)
+                let price: UILabel = UILabel(frame: CGRect(x: 65, y: posY, width: 350.00, height: 30.00));
+                price.text = "Prix de l'option : " + String(option.price) + "€"
                 self.containerView.addSubview(price)
                 
                 posY += 30
             }
+            posY += 20
             
             if (self.affiliate?.paymentWay?.label != ""){
                 // Ajout label
@@ -135,11 +148,8 @@ class ResultatPersonDetails: UIViewController {
                 }
                 
             }
-            
-            
-            
             // Set size fo scrollView
-            self.scrollView.contentSize = CGSize(width: 375, height: 250)
+            self.scrollView.contentSize = CGSize(width: 375, height: posY + 50)
         }
     
     }
