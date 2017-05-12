@@ -130,12 +130,33 @@ class ExportServices {
         for attribute in (businessService.subscribers.first?.attributes)! {
             header += "\(attribute.fieldName),"
         }
+        
+        for option in businessService.listOfOptions {
+            header += "\(option.label),"
+        }
+        
+        
         header += "paymentWay\n"
         
         for subscriber in businessService.subscribers {
             result = result + "\(businessService.title),\(businessService.serviceDescription),\(businessService.icon),"
             for attribute in subscriber.attributes {
                 result = result + "\(attribute.value),"
+            }
+            
+            var find = false
+            
+            for option in businessService.listOfOptions {
+                for optionSubcriber in subscriber.serviceOptions {
+                    if (optionSubcriber.title == option.label){
+                        find = true
+                    }
+                }
+                if (find) {
+                    result += "subscribed,"
+                } else {
+                    result += "not subscribed,"
+                }
             }
             result += "\((subscriber.paymentWay?.label)!)\n"
         }
