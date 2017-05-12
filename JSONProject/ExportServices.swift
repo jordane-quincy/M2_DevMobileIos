@@ -48,17 +48,18 @@ class ExportServices {
                 if (subscriber.serviceOffer?.title == ""){
                     result = result + "\n\t\t\t\t\"title\" : \"Non Renseigné\","
                 } else {
-                    result = result + "\n\t\t\t\t\"title\" : \"\(subscriber.serviceOffer?.title)\","
+                    result = result + "\n\t\t\t\t\"title\" : \"\((subscriber.serviceOffer?.title)!)\","
                 }
                 
                 if (subscriber.serviceOffer?.offerDescription == ""){
                     result = result + "\n\t\t\t\t\"offerDescription\" : \"Non Renseigné\","
                 } else {
-                    result = result + "\n\t\t\t\t\"offerDescription\" : \"\(subscriber.serviceOffer?.offerDescription)\","
+                    result = result + "\n\t\t\t\t\"offerDescription\" : \"\((subscriber.serviceOffer?.offerDescription)!)\","
                 }
                 
                 //price égal à zero si non reseigné (valeur par défaut)
-                result = result + "\n\t\t\t\t\"price\" : \(subscriber.serviceOffer?.price)\n\t\t\t},"
+                let offerPrice = String((subscriber.serviceOffer?.price)!)
+                result = result + "\n\t\t\t\t\"price\" : \(offerPrice)\n\t\t\t},"
             }
             
             result = result + "\n\t\t\t\"serviceOption(s)\" : ["
@@ -99,7 +100,7 @@ class ExportServices {
             if (subscriber.paymentWay?.label == ""){
                 result = result + "\n\t\t\t\t\"label\" : \"Non Renseigné\","
             } else {
-                result = result + "\n\t\t\t\t\"label\" : \"\(subscriber.paymentWay?.label)\","
+                result = result + "\n\t\t\t\t\"label\" : \"\((subscriber.paymentWay?.label)!)\","
             }
             
             for (indexAttribute, attribute) in (subscriber.paymentWay?.paymentAttributes)!.enumerated() {
@@ -110,10 +111,8 @@ class ExportServices {
                 }
             
             }
-            
-            //suppression de la dernière virgule
-            result = result.substring(to: result.index(before: result.endIndex))
-            result = result + "\n\t\t\t}" + (index < (businessService.subscribers.count - 1) ? "," : "")
+            result = result + "\n\t\t\t}"
+            result = result + "\n\t\t}" + (index < (businessService.subscribers.count - 1) ? "," : "")
         }
         result = result + "\n\t]"
         result = result + "\n}"
