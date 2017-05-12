@@ -126,7 +126,7 @@ class ExportServices {
         
 //        var header = "sep=|\nserviceName|serviceDescription|icon|"
 
-        var header = "serviceName|serviceDescription|icon|"
+        var header = "serviceName|"
         var result = ""
         
         
@@ -142,9 +142,14 @@ class ExportServices {
         header += "paymentWay\n"
         
         for subscriber in businessService.subscribers {
-            result = result + "\(businessService.title)|\(businessService.serviceDescription)|\(businessService.icon)|"
+            result = result + "\(businessService.title)|"
             for attribute in subscriber.attributes {
-                result = result + "\(attribute.value)|"
+                if (attribute.value != "") {
+                    result = result + "\(attribute.value)|"
+                }
+                else {
+                    result = result + "Non Renseigné|"
+                }
             }
             
             var find = false
