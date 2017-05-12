@@ -36,7 +36,7 @@ class ExportServices {
         
         result = result + "\n\t\"subscribers\" : ["
         
-        for subscriber in businessService.subscribers {
+        for (index, subscriber) in businessService.subscribers.enumerated() {
             
             result = result + "\n\t\t{"
             
@@ -116,11 +116,8 @@ class ExportServices {
             
             //suppression de la dernière virgule
             result = result.substring(to: result.index(before: result.endIndex))
-            result = result + "\n\t\t\t},"
+            result = result + "\n\t\t\t}" + (index < (businessService.subscribers.count - 1) ? "," : "")
         }
-        
-        //suppression de la dernière virgule
-        result = result.substring(to: result.index(before: result.endIndex))
         result = result + "\n\t]"
         result = result + "\n}"
         return result
