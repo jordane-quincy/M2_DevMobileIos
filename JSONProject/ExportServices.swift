@@ -63,7 +63,7 @@ class ExportServices {
             
             result = result + "\n\t\t\t\"serviceOption(s)\" : ["
             
-            for option in subscriber.serviceOptions {
+            for (indexOption, option) in subscriber.serviceOptions.enumerated() {
                 
                 result = result + "\n\t\t\t\t{"
                 
@@ -82,11 +82,8 @@ class ExportServices {
                 //price égal à zero si non reseigné (valeur par défaut)
                 result = result + "\n\t\t\t\t\t\"price\" : \(option.price)"
                 
-                result = result + "\n\t\t\t\t},"
+                result = result + "\n\t\t\t\t}" + (indexOption < (subscriber.serviceOptions.count - 1) ? "," : "")
             }
-            
-            //suppression de la dernière virgule
-            result = result.substring(to: result.index(before: result.endIndex))
             result = result + "\n\t\t\t],"
             
             for attribute in subscriber.attributes {
@@ -100,16 +97,16 @@ class ExportServices {
             result = result + "\n\t\t\t\"paymentWay\" : {"
             
             if (subscriber.paymentWay?.label == ""){
-                result = result + "\n\t\t\t\t \"label\" : \"Non Renseigné\","
+                result = result + "\n\t\t\t\t\"label\" : \"Non Renseigné\","
             } else {
-                result = result + "\n\t\t\t\t \"label\" : \"\(subscriber.paymentWay?.label)\","
+                result = result + "\n\t\t\t\t\"label\" : \"\(subscriber.paymentWay?.label)\","
             }
             
-            for attribute in (subscriber.paymentWay?.paymentAttributes)! {
+            for (indexAttribute, attribute) in (subscriber.paymentWay?.paymentAttributes)!.enumerated() {
                 if (attribute.value == ""){
-                    result = result + "\n\t\t\t\t\"\(attribute.fieldName)\" : \"Non Renseigné\","
+                    result = result + "\n\t\t\t\t\"\(attribute.fieldName)\" : \"Non Renseigné\"" + (indexAttribute < ((subscriber.paymentWay?.paymentAttributes.count)! - 1) ? "," : "")
                 } else {
-                    result = result + "\n\t\t\t\t\"\(attribute.fieldName)\" : \"\(attribute.value)\","
+                    result = result + "\n\t\t\t\t\"\(attribute.fieldName)\" : \"\(attribute.value)\"" + (indexAttribute < ((subscriber.paymentWay?.paymentAttributes.count)! - 1) ? "," : "")
                 }
             
             }
