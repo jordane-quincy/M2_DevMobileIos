@@ -26,14 +26,25 @@
                         <action selector="AfficherMenuAdmin:" destination="-1" eventType="touchUpInside" id="aVS-Kt-Jmd"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kYY-Xz-GQQ">
+                    <rect key="frame" x="149" y="476" width="77" height="30"/>
+                    <state key="normal" title="InfoSystem"/>
+                    <connections>
+                        <action selector="displaySystemInfo:" destination="-1" eventType="touchUpInside" id="MGj-rH-MZn"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="kYY-Xz-GQQ" secondAttribute="trailing" constant="149" id="EsS-dA-bjC"/>
+                <constraint firstItem="kYY-Xz-GQQ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="149" id="L8P-Ys-aX9"/>
                 <constraint firstItem="NS3-3m-XcY" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="274" id="NTY-hb-8LF"/>
                 <constraint firstItem="NS3-3m-XcY" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="141" id="TmI-st-BbK"/>
+                <constraint firstItem="kYY-Xz-GQQ" firstAttribute="top" secondItem="NS3-3m-XcY" secondAttribute="bottom" constant="210" id="ZZU-0j-Emo"/>
                 <constraint firstAttribute="bottom" secondItem="NS3-3m-XcY" secondAttribute="bottom" constant="363" id="a6I-K2-XKq"/>
                 <constraint firstAttribute="trailing" secondItem="NS3-3m-XcY" secondAttribute="trailing" constant="142" id="qxm-c3-CC8"/>
             </constraints>
+            <point key="canvasLocation" x="57.5" y="86.5"/>
         </view>
     </objects>
 </document>

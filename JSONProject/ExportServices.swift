@@ -123,25 +123,28 @@ class ExportServices {
         let realmServices = RealmServices()
         let businessService = realmServices.getBusinessService(_title: _businessServiceTitle) as BusinessService
         
-        var header = "sep=,\nserviceName,serviceDescription,icon,"
+        
+//        var header = "sep=|\nserviceName|serviceDescription|icon|"
+
+        var header = "serviceName|serviceDescription|icon|"
         var result = ""
         
         
         for attribute in (businessService.subscribers.first?.attributes)! {
-            header += "\(attribute.fieldName),"
+            header += "\(attribute.fieldName)|"
         }
         
         for option in businessService.listOfOptions {
-            header += "\(option.label),"
+            header += "\(option.label)|"
         }
         
         
         header += "paymentWay\n"
         
         for subscriber in businessService.subscribers {
-            result = result + "\(businessService.title),\(businessService.serviceDescription),\(businessService.icon),"
+            result = result + "\(businessService.title)|\(businessService.serviceDescription)|\(businessService.icon)|"
             for attribute in subscriber.attributes {
-                result = result + "\(attribute.value),"
+                result = result + "\(attribute.value)|"
             }
             
             var find = false
@@ -153,9 +156,9 @@ class ExportServices {
                     }
                 }
                 if (find) {
-                    result += "subscribed,"
+                    result += "subscribed|"
                 } else {
-                    result += "not subscribed,"
+                    result += "not subscribed|"
                 }
             }
             result += "\((subscriber.paymentWay?.label)!)\n"
