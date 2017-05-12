@@ -261,6 +261,7 @@ class GeneralFormViewController: UIViewController, UIPickerViewDelegate, UIScrol
             self.containerView = UIView()
             self.scrollView.addSubview(self.containerView)
             
+            
             // Ajout message
             let message: UILabel = UILabel(frame: CGRect(x: 20, y: 50, width: 350.00, height: 100.00));
             message.numberOfLines = 0
@@ -322,8 +323,19 @@ class GeneralFormViewController: UIViewController, UIPickerViewDelegate, UIScrol
                         switchButton.label = field.label
                         switchButton.value = choice.label
                         // check if the button was already checked or not
+                        if (self.person != nil) {
+                            for attribute in (self.person?.attributes)! {
+                                if (attribute.fieldName == field.fieldId) {
+                                    let valueOfAttributeInArray = attribute.value.components(separatedBy: ", ")
+                                    for value in valueOfAttributeInArray {
+                                        if (value == choice.label) {
+                                            switchButton.isOn = true
+                                        }
+                                    }
+                                }
+                            }
+                        }
                         self.containerView.addSubview(switchButton)
-                        
                         // title of the choice
                         let choiceTitle = UILabel(frame: CGRect(x: 60, y: CGFloat(pX) + 5 , width: 350, height: 20))
                         choiceTitle.numberOfLines = 0

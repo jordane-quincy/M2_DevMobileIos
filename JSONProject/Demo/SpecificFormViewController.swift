@@ -54,6 +54,23 @@ class SpecificFormViewController: UIViewController, UIPickerViewDelegate, UIScro
         if (toParentViewController == nil) {
             if (self.person != nil && !(self.person?.isSaved)!) {
                 let subViews = self.containerView.subviews
+                // pour les checkbox on doit préparer les attributs
+                var cpt = 0
+                var offerUsed: Offer? = nil
+                for offer in (self.jsonModel?.offers)! {
+                    if (cpt == self.indexOfSelectedOffer) {
+                        offerUsed = offer
+                        self.choosenOffer = offerUsed
+                    }
+                    cpt += 1
+                }
+                var listAttributesForCheckbox = Array<Attribute>()
+                for field in (offerUsed?.specificFields)! {
+                    if (field.input == InputType.check) {
+                        let tmpAttribute = Attribute(_label: field.label, _fieldName: field.fieldId, _value: "", isSpecificField: true)
+                        listAttributesForCheckbox.append(tmpAttribute)
+                    }
+                }
                 for view in subViews {
                     var attributeFieldName = ""
                     var attributeLabel = ""
@@ -75,6 +92,17 @@ class SpecificFormViewController: UIViewController, UIPickerViewDelegate, UIScro
                         attributeLabel = pickerField.label
                         attributeValue = pickerField.pickerData[pickerField.selectedRow(inComponent: 0)].value
                     }
+                    if let switchButton = view as? CustomUISwitch {
+                        // on récupère l'attribut pour ce bouton là et on ajoute la valeur si on a coché le bouton
+                        if (switchButton.isOn) {
+                            let buttonFieldName = switchButton.fieldName
+                            for attributeInTable in listAttributesForCheckbox {
+                                if (buttonFieldName == attributeInTable.fieldName) {
+                                    attributeInTable.value += switchButton.value + ", "
+                                }
+                            }
+                        }
+                    }
                     if let segmentedControlField = view as? CustomSegmentedControl {
                         attributeFieldName = segmentedControlField.fieldName
                         attributeLabel = segmentedControlField.label
@@ -94,6 +122,21 @@ class SpecificFormViewController: UIViewController, UIPickerViewDelegate, UIScro
                         }
                     }
                 }
+                // add checkbox attributes
+                for attribute in listAttributesForCheckbox {
+                    // We verify if the attribute already exists or not
+                    if (attribute.value != "") {
+                        let endIndex = attribute.value.index(attribute.value.endIndex, offsetBy: -2)
+                        attribute.value = attribute.value.substring(to: endIndex)
+                    }
+                    let indexOfAttribute = self.person?.getAttributeIndex(fieldName: attribute.fieldName)
+                    if (indexOfAttribute! > -1) {
+                        self.person?.attributes[indexOfAttribute!].value = attribute.value
+                    }
+                    else {
+                        self.person?.addAttributeToPerson(_attribute: attribute)
+                    }
+                }
                 // Setup offer
                 self.person?.setupServiceOffer(offer: ServiceOffer(title: (self.choosenOffer?.title)!, offerDescription: (self.choosenOffer?.description)!, price: (self.choosenOffer?.price)!))
                 // Pass person to the parent
@@ -109,6 +152,23 @@ class SpecificFormViewController: UIViewController, UIPickerViewDelegate, UIScro
         // get data from UI for the Person Object
         // Test if all requiredField are completed
         let subViews = self.containerView.subviews
+        // pour les checkbox on doit préparer les attributs
+        var cpt = 0
+        var offerUsed: Offer? = nil
+        for offer in (self.jsonModel?.offers)! {
+            if (cpt == self.indexOfSelectedOffer) {
+                offerUsed = offer
+                self.choosenOffer = offerUsed
+            }
+            cpt += 1
+        }
+        var listAttributesForCheckbox = Array<Attribute>()
+        for field in (offerUsed?.specificFields)! {
+            if (field.input == InputType.check) {
+                let tmpAttribute = Attribute(_label: field.label, _fieldName: field.fieldId, _value: "", isSpecificField: true)
+                listAttributesForCheckbox.append(tmpAttribute)
+            }
+        }
         for view in subViews {
             var attributeFieldName = ""
             var attributeLabel = ""
@@ -129,6 +189,17 @@ class SpecificFormViewController: UIViewController, UIPickerViewDelegate, UIScro
                 attributeFieldName = pickerField.fieldName
                 attributeLabel = pickerField.label
                 attributeValue = pickerField.pickerData[pickerField.selectedRow(inComponent: 0)].value
+            }
+            if let switchButton = view as? CustomUISwitch {
+                // on récupère l'attribut pour ce bouton là et on ajoute la valeur si on a coché le bouton
+                if (switchButton.isOn) {
+                    let buttonFieldName = switchButton.fieldName
+                    for attributeInTable in listAttributesForCheckbox {
+                        if (buttonFieldName == attributeInTable.fieldName) {
+                            attributeInTable.value += switchButton.value + ", "
+                        }
+                    }
+                }
             }
             if let segmentedControlField = view as? CustomSegmentedControl {
                 attributeFieldName = segmentedControlField.fieldName
@@ -152,6 +223,21 @@ class SpecificFormViewController: UIViewController, UIPickerViewDelegate, UIScro
         }
         // Setup offer
         self.person?.setupServiceOffer(offer: ServiceOffer(title: (self.choosenOffer?.title)!, offerDescription: (self.choosenOffer?.description)!, price: (self.choosenOffer?.price)!))
+        // add checkbox attributes
+        for attribute in listAttributesForCheckbox {
+            // We verify if the attribute already exists or not
+            if (attribute.value != "") {
+                let endIndex = attribute.value.index(attribute.value.endIndex, offsetBy: -2)
+                attribute.value = attribute.value.substring(to: endIndex)
+            }
+            let indexOfAttribute = self.person?.getAttributeIndex(fieldName: attribute.fieldName)
+            if (indexOfAttribute! > -1) {
+                self.person?.attributes[indexOfAttribute!].value = attribute.value
+            }
+            else {
+                self.person?.addAttributeToPerson(_attribute: attribute)
+            }
+        }
         // Go to next Screen
         // Redirect To Next Step
         // Check if there is option
@@ -262,7 +348,35 @@ class SpecificFormViewController: UIViewController, UIPickerViewDelegate, UIScro
                     
                     self.containerView.addSubview(txtField)
                     pX += 60
-                } else if(field.input == InputType.select){
+                }else if(field.input == InputType.check){
+                    for choice in (field.params?.choices)! {
+                        // switch button
+                        let switchButton = CustomUISwitch(frame: CGRect(x: 10, y: CGFloat(pX), width: 350, height: 20))
+                        switchButton.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
+                        switchButton.fieldName = field.fieldId
+                        switchButton.label = field.label
+                        switchButton.value = choice.label
+                        // check if the button was already checked or not
+                        for attribute in (self.person?.attributes)! {
+                            if (attribute.fieldName == field.fieldId) {
+                                let valueOfAttributeInArray = attribute.value.components(separatedBy: ", ")
+                                for value in valueOfAttributeInArray {
+                                    if (value == choice.label) {
+                                        switchButton.isOn = true
+                                    }
+                                }
+                            }
+                        }
+                        self.containerView.addSubview(switchButton)
+                        // title of the choice
+                        let choiceTitle = UILabel(frame: CGRect(x: 60, y: CGFloat(pX) + 5 , width: 350, height: 20))
+                        choiceTitle.numberOfLines = 0
+                        choiceTitle.text = choice.label
+                        self.containerView.addSubview(choiceTitle)
+                        pX += 30
+                    }
+                    pX += 20
+                }else if(field.input == InputType.select){
                     // Prepare data for the picker
                     var pickerData : [(value: String, key: String)] = []
                     var cpt = 0

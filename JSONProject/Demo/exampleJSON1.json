@@ -110,6 +110,28 @@
                                 "fieldId":"phone",
                                 "label":"Numéro de téléphone",
                                 "input":"string"
+                                },
+                                {
+                                "fieldId":"language",
+                                "fieldType":"other",
+                                "label":"Langues",
+                                "input":"check",
+                                "params":{
+                                "choices":[
+                                           {
+                                           "value":"english",
+                                           "label":"Anglais"
+                                           },
+                                           {
+                                           "value":"french",
+                                           "label":"Francais"
+                                           },
+                                           {
+                                           "value":"spanish",
+                                           "label":"Espagnol"
+                                           }
+                                           ]
+                                }
                                 }
                                 ],
               "features":[
