@@ -314,12 +314,54 @@ class PaymentViewController: UIViewController, UIPickerViewDelegate, UIScrollVie
             // Ajout recapMessage
             let recapMessage: UILabel = UILabel(frame: CGRect(x: 20, y: 70, width: 350.00, height: 20.00));
             recapMessage.numberOfLines = 0
-            recapMessage.text = "Recap :"
+            recapMessage.text = "Recapitulatif abonnement :"
             self.containerView.addSubview(recapMessage)
             self.pX = 110
             
             //TODO Display recap of offer choosen and option
+            // prepare total price
+            var totalPrice = 0
+            // affichage offre choisi
+            let offerMessage: UILabel = UILabel(frame: CGRect(x: 20, y: CGFloat(self.pX), width: 350.00, height: 20.00));
+            offerMessage.numberOfLines = 0
+            offerMessage.text = "Offre choisie :"
+            self.containerView.addSubview(offerMessage)
+            self.pX += 20
+            let offerChoosen: UILabel = UILabel(frame: CGRect(x: 20, y: CGFloat(self.pX), width: 350.00, height: 20.00));
+            offerChoosen.numberOfLines = 0
+            offerChoosen.text = " • " + (self.person?.serviceOffer?.title)! + "(" + String((self.person?.serviceOffer?.price)!) + "€)"
+            totalPrice += (self.person?.serviceOffer?.price)!
+            self.pX += 20
+            self.containerView.addSubview(offerChoosen)
+            // affichage option s'il y en a
+            let numberOfOptions = (self.person?.serviceOptions.count)!
+            if (numberOfOptions > 0) {
+                self.pX += 20
+                let optionLabel: UILabel = UILabel(frame: CGRect(x: 20, y: CGFloat(self.pX), width: 350.00, height: 20.00));
+                optionLabel.numberOfLines = 0
+                optionLabel.text = "Option" + (numberOfOptions > 1 ? "s " : " ") + "choisie" + (numberOfOptions > 1 ? "s" : "")
+                self.pX += 20
+                self.containerView.addSubview(optionLabel)
+                // Parcours des options
+                for option in (self.person?.serviceOptions)! {
+                    let optionChoosen: UILabel = UILabel(frame: CGRect(x: 20, y: CGFloat(self.pX), width: 350.00, height: 20.00));
+                    optionChoosen.numberOfLines = 0
+                    optionChoosen.text = " • " + option.title + "(" + String(option.price) + "€)"
+                    totalPrice += option.price
+                    self.pX += 20
+                    self.containerView.addSubview(optionChoosen)
+                }
+
+            }
+            // affichage total price
+            self.pX += 10
+            let totalPriceLabel: UILabel = UILabel(frame: CGRect(x: 20, y: CGFloat(self.pX), width: 350.00, height: 20.00));
+            totalPriceLabel.numberOfLines = 0
+            totalPriceLabel.text = "Prix total à payer : " + String(totalPrice) + "€"
+            self.pX += 20
+            self.containerView.addSubview(totalPriceLabel)
             
+            self.pX += 20
             // Ajout paymentMessage
             let paymentMessage: UILabel = UILabel(frame: CGRect(x: 20, y: CGFloat(self.pX), width: 350.00, height: 20.00));
             paymentMessage.numberOfLines = 0
@@ -396,15 +438,6 @@ class PaymentViewController: UIViewController, UIPickerViewDelegate, UIScrollVie
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
     }
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
     
 }
 

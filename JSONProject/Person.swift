@@ -97,7 +97,7 @@ class Person: Object {
             }
             cpt += 1
         }
-        for index in tableOfIndex {
+        for index in tableOfIndex.sorted(by: >) {
             self.attributes.remove(at: index)
         }
     }
