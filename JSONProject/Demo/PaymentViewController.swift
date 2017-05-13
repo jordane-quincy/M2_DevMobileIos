@@ -75,39 +75,59 @@ class PaymentViewController: UIViewController, UIPickerViewDelegate, UIScrollVie
         if (self.selectedPaymentWay == "Paypal") {
             tag = 3
         }
+        var champManquant: Bool = false
         for view in self.containerView.subviews {
             if (view.tag == tag) {
                 if let textField = view as? CustomTextField {
+                    if(textField.required == true && textField.text == ""){
+                        print("Champ requis non rempli")
+                        champManquant = true
+                    }
                     let paymentAttribute = PaymentAttribute(_label: textField.label, _fieldName: textField.fieldName, _value: textField.text!)
                     paymentWay.addPaymentAttribute(paymentAttribute: paymentAttribute)
                 }
             }
         }
-        self.person?.setupPaymentWay(paymentWay: paymentWay)
-        self.person?.changeIsSavePerson()
-        // Save the person in realm database
-        realmServices.createPerson(person: self.person!)
-        realmServices.addSubscriberToService(title: (self.jsonModel?.title)!, subscriber: self.person!)
-        // Go Back to home view
-        /*let selectOfferView = self.customNavigationController?.viewControllers[1] as! SelectOfferViewController
-        self.customNavigationController?.viewControllers = []
-        self.customNavigationController?.pushViewController(selectOfferView.customParent!, animated: true)
-        self.customNavigationController?.setNavigationBarHidden(true, animated: true)*/
-        //self.customNavigationController?.viewControllers = []
-        self.customNavigationController?.popToRootViewController(animated: true)
+        
+        // test if they are empty required field
+        if(champManquant){
+            let alert = UIAlertController(title: "", message: "Veuillez remplir tous les champs requis (champs avec une étoile)", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Fermer", style: UIAlertActionStyle.default, handler: { action in
+                switch action.style{
+                case .default:
+                    print("default")
+                    
+                case .cancel:
+                    print("cancel")
+                    
+                case .destructive:
+                    print("destructive")
+                }
+            }))
+            self.present(alert, animated: true, completion: nil)
+        } else {
+            self.person?.setupPaymentWay(paymentWay: paymentWay)
+            self.person?.changeIsSavePerson()
+            // Save the person in realm database
+            realmServices.createPerson(person: self.person!)
+            realmServices.addSubscriberToService(title: (self.jsonModel?.title)!, subscriber: self.person!)
+            // Go Back to home view
+            self.customNavigationController?.popToRootViewController(animated: true)
+        }
     }
     
     
     func createFormCreditAccount() {
         // Ajout iban
         let ibanLabel = UILabel(frame: CGRect(x: 20, y: CGFloat(self.pX), width: 350, height: 20))
-        ibanLabel.text = "IBAN"
+        ibanLabel.text = "IBAN*"
         ibanLabel.tag = 1
         self.pX += 20
         self.containerView.addSubview(ibanLabel)
         
         // Ajout ibanField
         let ibanTextField = CustomTextField(frame: CGRect(x: 20, y: CGFloat(self.pX), width: 350, height: 40))
+        ibanTextField.required = true
         ibanTextField.fieldName = "iban"
         ibanTextField.placeholder = "Completer"
         ibanTextField.label = "IBAN"
@@ -117,13 +137,14 @@ class PaymentViewController: UIViewController, UIPickerViewDelegate, UIScrollVie
         
         // Ajout bic
         let bicLabel = UILabel(frame: CGRect(x: 20, y: CGFloat(self.pX), width: 350, height: 20))
-        bicLabel.text = "BIC"
+        bicLabel.text = "BIC*"
         bicLabel.tag = 1
         self.pX += 20
         self.containerView.addSubview(bicLabel)
         
         // Ajout bicField
         let bicTextField = CustomTextField(frame: CGRect(x: 20, y: CGFloat(self.pX), width: 350, height: 40))
+        bicTextField.required = true
         bicTextField.fieldName = "bic"
         bicTextField.placeholder = "Completer"
         bicTextField.label = "BIC"
@@ -144,7 +165,7 @@ class PaymentViewController: UIViewController, UIPickerViewDelegate, UIScrollVie
     func createFormCreditCard() {
         // Ajout cardNumber
         let cardNumberLabel = UILabel(frame: CGRect(x: 20, y: CGFloat(self.pX), width: 350, height: 20))
-        cardNumberLabel.text = "Numéro de carte"
+        cardNumberLabel.text = "Numéro de carte*"
         cardNumberLabel.tag = 2
         self.pX += 20
         self.containerView.addSubview(cardNumberLabel)
@@ -152,6 +173,7 @@ class PaymentViewController: UIViewController, UIPickerViewDelegate, UIScrollVie
         // Ajout ibanField
         let cardNumberTextField = CustomTextField(frame: CGRect(x: 20, y: CGFloat(self.pX), width: 350, height: 40))
         cardNumberTextField.fieldName = "cardNumber"
+        cardNumberTextField.required = true
         cardNumberTextField.placeholder = "Completer"
         cardNumberTextField.label = "Numéro de carte"
         cardNumberTextField.tag = 2
@@ -160,13 +182,14 @@ class PaymentViewController: UIViewController, UIPickerViewDelegate, UIScrollVie
         
         // Ajout iban
         let expirtationDateLabel = UILabel(frame: CGRect(x: 20, y: CGFloat(self.pX), width: 350, height: 20))
-        expirtationDateLabel.text = "Date d'expiration"
+        expirtationDateLabel.text = "Date d'expiration*"
         expirtationDateLabel.tag = 2
         self.pX += 20
         self.containerView.addSubview(expirtationDateLabel)
         
         // Ajout expirtation date
         let expirtationDateTextField = CustomTextField(frame: CGRect(x: 20, y: CGFloat(self.pX), width: 350, height: 40))
+        expirtationDateTextField.required = true
         expirtationDateTextField.fieldName = "expirationDate"
         expirtationDateTextField.placeholder = "Completer"
         expirtationDateTextField.label = "Date d'expiration"
@@ -176,13 +199,14 @@ class PaymentViewController: UIViewController, UIPickerViewDelegate, UIScrollVie
         
         // Ajout crypto
         let cryptoLabel = UILabel(frame: CGRect(x: 20, y: CGFloat(self.pX), width: 350, height: 20))
-        cryptoLabel.text = "Cryptogramme"
+        cryptoLabel.text = "Cryptogramme*"
         cryptoLabel.tag = 2
         self.pX += 20
         self.containerView.addSubview(cryptoLabel)
         
         // Ajout ibanField
         let cryptoTextField = CustomTextField(frame: CGRect(x: 20, y: CGFloat(self.pX), width: 350, height: 40))
+        cryptoTextField.required = true
         cryptoTextField.fieldName = "crypto"
         cryptoTextField.placeholder = "Completer"
         cryptoTextField.label = "Cryptogramme"
@@ -192,13 +216,14 @@ class PaymentViewController: UIViewController, UIPickerViewDelegate, UIScrollVie
         
         // Ajout owner
         let ownerLabel = UILabel(frame: CGRect(x: 20, y: CGFloat(self.pX), width: 350, height: 20))
-        ownerLabel.text = "Propriétaire"
+        ownerLabel.text = "Propriétaire*"
         ownerLabel.tag = 2
         self.pX += 20
         self.containerView.addSubview(ownerLabel)
         
         // Ajout ibanField
         let ownerTextField = CustomTextField(frame: CGRect(x: 20, y: CGFloat(self.pX), width: 350, height: 40))
+        ownerTextField.required = true
         ownerTextField.fieldName = "owner"
         ownerTextField.placeholder = "Completer"
         ownerTextField.label = "Propriétaire"
@@ -218,13 +243,14 @@ class PaymentViewController: UIViewController, UIPickerViewDelegate, UIScrollVie
     func createFormPaypal() {
         // Ajout label
         let paypalLabel = UILabel(frame: CGRect(x: 20, y: CGFloat(self.pX), width: 350, height: 20))
-        paypalLabel.text = "Numéro de compte paypal"
+        paypalLabel.text = "Numéro de compte paypal*"
         paypalLabel.tag = 3
         self.pX += 20
         self.containerView.addSubview(paypalLabel)
         
         // Ajout textField
         let paypalTextField = CustomTextField(frame: CGRect(x: 20, y: CGFloat(self.pX), width: 350, height: 40))
+        paypalTextField.required = true
         paypalTextField.fieldName = "paypalAccountNumber"
         paypalTextField.placeholder = "Completer"
         paypalTextField.label = "Numéro de compte paypal"
