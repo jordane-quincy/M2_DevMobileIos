@@ -149,6 +149,7 @@ class SpecificFormViewController: UIViewController, UIPickerViewDelegate, UIScro
     }
     
     func next(_ sender: UIButton) {
+        var champManquant: Bool = false
         // get data from UI for the Person Object
         // Test if all requiredField are completed
         let subViews = self.containerView.subviews
@@ -179,6 +180,7 @@ class SpecificFormViewController: UIViewController, UIPickerViewDelegate, UIScro
                 attributeValue = textField.text ?? ""
                 if(textField.required == true && attributeValue == ""){
                     print("Champ requis non rempli")
+                    champManquant = true
                 }
             }
             if let datePickerField = view as? CustomDatePicker {
@@ -233,6 +235,16 @@ class SpecificFormViewController: UIViewController, UIPickerViewDelegate, UIScro
                 let endIndex = attribute.value.index(attribute.value.endIndex, offsetBy: -2)
                 attribute.value = attribute.value.substring(to: endIndex)
             }
+            else {
+                // empty field check if it is required or not
+                for field in (offerUsed?.specificFields)! {
+                    if (field.input == InputType.check && attribute.fieldName == field.fieldId) {
+                        if (field.required != nil && field.required!) {
+                            champManquant = true
+                        }
+                    }
+                }
+            }
             let indexOfAttribute = self.person?.getAttributeIndex(fieldName: attribute.fieldName)
             if (indexOfAttribute! > -1) {
                 self.person?.attributes[indexOfAttribute!].value = attribute.value
@@ -241,40 +253,52 @@ class SpecificFormViewController: UIViewController, UIPickerViewDelegate, UIScro
                 self.person?.addAttributeToPerson(_attribute: attribute)
             }
         }
-        // Go to next Screen
-        // Redirect To Next Step
-        // Check if there is option
-        if ((self.choosenOffer?.features.count)! > 0) {
-            // Go to select offer view
-            let selectOptionView = SelectOptionViewController(nibName: "SelectOptionViewController", bundle: nil)
-            
-            if (self.person != nil) {
-                selectOptionView.setupPerson(person: self.person!)
+        // test if they are empty required field
+        if(champManquant){
+            let alert = UIAlertController(title: "", message: "Veuillez remplir tous les champs requis (champs avec une étoile)", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Fermer", style: UIAlertActionStyle.default, handler: { action in
+                switch action.style{
+                case .default:
+                    print("default")
+                    
+                case .cancel:
+                    print("cancel")
+                    
+                case .destructive:
+                    print("destructive")
+                }
+            }))
+            self.present(alert, animated: true, completion: nil)
+        }else {
+            // Go to next Screen
+            // Redirect To Next Step
+            // Check if there is option
+            if ((self.choosenOffer?.features.count)! > 0) {
+                // Go to select offer view
+                let selectOptionView = SelectOptionViewController(nibName: "SelectOptionViewController", bundle: nil)
+                
+                if (self.person != nil) {
+                    selectOptionView.setupPerson(person: self.person!)
+                }
+                selectOptionView.setupNavigationController(navigationController: self.customNavigationController!)
+                selectOptionView.setupCustomParent(customParent: self)
+                selectOptionView.setupChoosenOffer(choosenOffer: self.choosenOffer!)
+                selectOptionView.createViewFromJson(json: self.jsonModel)
+                self.customNavigationController?.pushViewController(selectOptionView, animated: true)
             }
-            selectOptionView.setupNavigationController(navigationController: self.customNavigationController!)
-            selectOptionView.setupCustomParent(customParent: self)
-            selectOptionView.setupChoosenOffer(choosenOffer: self.choosenOffer!)
-            selectOptionView.createViewFromJson(json: self.jsonModel)
-            self.customNavigationController?.pushViewController(selectOptionView, animated: true)
-        }
-        else {
-            // Go to recap/payment view
-            let paymentView = PaymentViewController(nibName: "PaymentViewController", bundle: nil)
-            
-            if (self.person != nil) {
-                paymentView.setupPerson(person: self.person!)
+            else {
+                // Go to recap/payment view
+                let paymentView = PaymentViewController(nibName: "PaymentViewController", bundle: nil)
+                
+                if (self.person != nil) {
+                    paymentView.setupPerson(person: self.person!)
+                }
+                paymentView.setupNavigationController(navigationController: self.customNavigationController!)
+                paymentView.setupCustomParent1(customParent: self)
+                paymentView.createViewFromJson(json: self.jsonModel)
+                self.customNavigationController?.pushViewController(paymentView, animated: true)
             }
-            paymentView.setupNavigationController(navigationController: self.customNavigationController!)
-            paymentView.setupCustomParent1(customParent: self)
-            paymentView.createViewFromJson(json: self.jsonModel)
-            self.customNavigationController?.pushViewController(paymentView, animated: true)
         }
-        
-        
-
-        // Save the person in realm database
-        //realmServices.createPerson(person: self.person!)
-        //realmServices.addSubscriberToService(title: (self.jsonModel?.title)!, subscriber: self.person!)
     }
     
     
@@ -312,6 +336,12 @@ class SpecificFormViewController: UIViewController, UIPickerViewDelegate, UIScro
             for field in (offerUsed?.specificFields)! {
                 let title: UILabel = UILabel(frame: CGRect(x: 20, y: CGFloat(pX), width: 350.00, height: 30.00));
                 title.text = field.label
+                if (field.input == InputType.check) {
+                    title.text = field.label + " :"
+                }
+                if (field.required != nil && (field.required)!) {
+                    title.text =  title.text! + (field.required! ? "*" : "")
+                }
                 self.containerView.addSubview(title)
                 pX += 30
                 if(field.input == InputType.date){

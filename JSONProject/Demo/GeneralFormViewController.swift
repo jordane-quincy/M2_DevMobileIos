@@ -240,12 +240,9 @@ class GeneralFormViewController: UIViewController, UIPickerViewDelegate, UIScrol
             }
         }
         
-        // Go to next Screen
-        // Redirect To Next Step
-        let specificFormView = SpecificFormViewController(nibName: "SpecificFormViewController", bundle: nil)
-        
+        // test if they are empty required field
         if(champManquant){
-            let alert = UIAlertController(title: "", message: "Veuillez remplir tous les champs", preferredStyle: UIAlertControllerStyle.alert)
+            let alert = UIAlertController(title: "", message: "Veuillez remplir tous les champs requis (champs avec une étoile)", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "Fermer", style: UIAlertActionStyle.default, handler: { action in
                 switch action.style{
                 case .default:
@@ -273,13 +270,6 @@ class GeneralFormViewController: UIViewController, UIPickerViewDelegate, UIScrol
             specificFormView.createViewFromJson(json: self.jsonModel)
             self.customNavigationController?.pushViewController(specificFormView, animated: true)
         }
-        
-        
-        
-        
-        // Save the person in realm database
-        //realmServices.createPerson(person: self.person!)
-        //realmServices.addSubscriberToService(title: (self.jsonModel?.title)!, subscriber: self.person!)
     }
     
     
@@ -309,6 +299,9 @@ class GeneralFormViewController: UIViewController, UIPickerViewDelegate, UIScrol
                 title.text = field.label
                 if (field.input == InputType.check) {
                     title.text = field.label + " :"
+                }
+                if (field.required != nil && (field.required)!) {
+                    title.text =  title.text! + (field.required! ? "*" : "")
                 }
                 self.containerView.addSubview(title)
                 pX += 30

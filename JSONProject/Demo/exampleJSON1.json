@@ -106,12 +106,14 @@
               "price":2,
               "specificFields":[
                                 {
+                                "required": true,
                                 "fieldType":"phone",
                                 "fieldId":"phone",
                                 "label":"Numéro de téléphone",
                                 "input":"string"
                                 },
                                 {
+                                "required": true,
                                 "fieldId":"language",
                                 "fieldType":"other",
                                 "label":"Langues",
