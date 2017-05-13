@@ -96,11 +96,6 @@ class SelectOptionViewController: UIViewController, UIPickerViewDelegate, UIScro
         paymentView.setupCustomParent2(customParent: self)
         paymentView.createViewFromJson(json: self.jsonModel)
         self.customNavigationController?.pushViewController(paymentView, animated: true)
-        
-        
-        // Save the person in realm database
-        //realmServices.createPerson(person: self.person!)
-        //realmServices.addSubscriberToService(title: (self.jsonModel?.title)!, subscriber: self.person!)
     }
     
     

@@ -421,7 +421,6 @@ class PaymentViewController: UIViewController, UIPickerViewDelegate, UIScrollVie
                 }
                 cpt += 1
             }
-            items.append("Paypal")
             let segmentedControl: CustomSegmentedControl = CustomSegmentedControl(items: items);
             segmentedControl.label = "Moyen de paiment"
             segmentedControl.frame = CGRect(x: 20, y: CGFloat(self.pX), width: 350.00, height: 30.00);

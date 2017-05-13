@@ -30,46 +30,51 @@ class Offer: Hashable, CustomStringConvertible {
         }
         
         // Extract and validate SpecificField
-        guard let specificFieldsJsonArray = jsonContent["specificFields"] as? [[String: Any]] else {
-            throw SerializationError.missing("specificFields")
-        }
-        print("specificFieldsJsonArray : \(specificFieldsJsonArray)")//FIXME: pour debug uniquement
         var specificFields: Set<CommonField> = []
-        for specificFieldJsonElement in specificFieldsJsonArray {
-            print("specificFieldJsonElement : \(specificFieldJsonElement)")//FIXME: pour debug uniquement
-            
-            do {
-                guard let specificField = try CommonField(jsonContent: specificFieldJsonElement) else {
-                    throw SerializationError.invalid("specificFields", specificFieldJsonElement)
-                }
-                specificFields.insert(specificField)
-                
-            } catch let serializationError {
-                print(serializationError)
+        if (jsonContent["specificFields"] != nil) {
+            guard let specificFieldsJsonArray = jsonContent["specificFields"] as? [[String: Any]] else {
+                throw SerializationError.missing("specificFields")
             }
+            print("specificFieldsJsonArray : \(specificFieldsJsonArray)")//FIXME: pour debug uniquement
             
+            for specificFieldJsonElement in specificFieldsJsonArray {
+                print("specificFieldJsonElement : \(specificFieldJsonElement)")//FIXME: pour debug uniquement
+                
+                do {
+                    guard let specificField = try CommonField(jsonContent: specificFieldJsonElement) else {
+                        throw SerializationError.invalid("specificFields", specificFieldJsonElement)
+                    }
+                    specificFields.insert(specificField)
+                    
+                } catch let serializationError {
+                    print(serializationError)
+                }
+                
+            }
         }
         
+        
         // Extract and validate SpecificField
-        guard let featuresJsonArray = jsonContent["features"] as? [[String: Any]] else {
-            throw SerializationError.missing("features")
-        }
-        //print("featuresJsonArray : \(featuresJsonArray)")//FIXME: pour debug uniquement
         var features: Set<Feature> = []
-        for featureJsonElement in featuresJsonArray {
-            //print("featureJsonElement : \(featureJsonElement)")//FIXME: pour debug uniquement
-            
-            do {
-                guard let feature = try Feature(jsonContent: featureJsonElement) else {
-                    throw SerializationError.invalid("features", featureJsonElement)
-                }
-                features.insert(feature)
-                
-            } catch let serializationError {
-                print(serializationError)
+        if (jsonContent["features"] != nil) {
+            guard let featuresJsonArray = jsonContent["features"] as? [[String: Any]] else {
+                throw SerializationError.missing("features")
             }
-            
+            //print("featuresJsonArray : \(featuresJsonArray)")//FIXME: pour debug uniquement
+            for featureJsonElement in featuresJsonArray {
+                //print("featureJsonElement : \(featureJsonElement)")//FIXME: pour debug uniquement
+                do {
+                    guard let feature = try Feature(jsonContent: featureJsonElement) else {
+                        throw SerializationError.invalid("features", featureJsonElement)
+                    }
+                    features.insert(feature)
+                    
+                } catch let serializationError {
+                    print(serializationError)
+                }
+            }
         }
+        
         
         //assignation
         self.title = title

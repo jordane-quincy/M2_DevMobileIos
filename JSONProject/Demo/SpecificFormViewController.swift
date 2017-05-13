@@ -333,156 +333,168 @@ class SpecificFormViewController: UIViewController, UIPickerViewDelegate, UIScro
                 cpt += 1
             }
             
-            for field in (offerUsed?.specificFields)! {
-                let title: UILabel = UILabel(frame: CGRect(x: 20, y: CGFloat(pX), width: 350.00, height: 30.00));
-                title.text = field.label
-                if (field.input == InputType.check) {
-                    title.text = field.label + " :"
-                }
-                if (field.required != nil && (field.required)!) {
-                    title.text =  title.text! + (field.required! ? "*" : "")
-                }
-                self.containerView.addSubview(title)
-                pX += 30
-                if(field.input == InputType.date){
-                    let datepicker: CustomDatePicker = CustomDatePicker(frame: CGRect(x: 20, y: CGFloat(pX), width: 350.00, height: 100.00));
-                    datepicker.fieldName = field.fieldId
-                    datepicker.label = field.label
-                    
-                    // test if we already have the value
-                    let attributeValue = self.person?.getAttributeValue(fieldName: field.fieldId)
-                    if (attributeValue != nil) {
-                        // On a déjà une valeur pour ce champ on le remplidonc directement
-                        let dateFormatter = DateFormatter()
-                        dateFormatter.dateFormat = "dd/MM/yyyy"
-                        datepicker.date = dateFormatter.date(from: attributeValue!)!
+            if ((offerUsed?.specificFields.count)! < 1) {
+                pX -= 50
+                let messageNoSpecificFields: UILabel = UILabel(frame: CGRect(x: 20, y: CGFloat(pX), width: 350.00, height: 100.00));
+                messageNoSpecificFields.numberOfLines = 0
+                messageNoSpecificFields.text = "Pas de champs specifiques pour cette offre"
+                self.containerView.addSubview(messageNoSpecificFields)
+                pX += 40
+            }
+            else {
+                for field in (offerUsed?.specificFields)! {
+                    let title: UILabel = UILabel(frame: CGRect(x: 20, y: CGFloat(pX), width: 350.00, height: 30.00));
+                    title.text = field.label
+                    if (field.input == InputType.check) {
+                        title.text = field.label + " :"
                     }
-                    else {
-                        datepicker.date = Date()
+                    if (field.required != nil && (field.required)!) {
+                        title.text =  title.text! + (field.required! ? "*" : "")
                     }
-                    
-                    datepicker.datePickerMode = UIDatePickerMode.date
-                    self.containerView.addSubview(datepicker)
-                    pX += 100
-                } else if(field.input == InputType.text || field.input == InputType.string){
-                    let txtField: CustomTextField = CustomTextField(frame: CGRect(x: 20, y: CGFloat(pX), width: 350.00, height: 30.00));
-                    txtField.fieldName = field.fieldId
-                    txtField.label = field.label
-                    
-                    // test if we already have the value
-                    let attributeValue = self.person?.getAttributeValue(fieldName: field.fieldId)
-                    if (attributeValue != nil) {
-                        // On a déjà une valeur pour ce champ on le remplidonc directement
-                        txtField.text = attributeValue
-                    }
-                    else {
-                        txtField.placeholder = field.params?.placeholder ?? "Completer"
-                    }
-                    
-                    if(field.required == true){
-                        txtField.required = true
-                    }
-                    
-                    self.containerView.addSubview(txtField)
-                    pX += 60
-                }else if(field.input == InputType.check){
-                    for choice in (field.params?.choices)! {
-                        // switch button
-                        let switchButton = CustomUISwitch(frame: CGRect(x: 10, y: CGFloat(pX), width: 350, height: 20))
-                        switchButton.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
-                        switchButton.fieldName = field.fieldId
-                        switchButton.label = field.label
-                        switchButton.value = choice.label
-                        // check if the button was already checked or not
-                        for attribute in (self.person?.attributes)! {
-                            if (attribute.fieldName == field.fieldId) {
-                                let valueOfAttributeInArray = attribute.value.components(separatedBy: ", ")
-                                for value in valueOfAttributeInArray {
-                                    if (value == choice.label) {
-                                        switchButton.isOn = true
+                    self.containerView.addSubview(title)
+                    pX += 30
+                    if(field.input == InputType.date){
+                        let datepicker: CustomDatePicker = CustomDatePicker(frame: CGRect(x: 20, y: CGFloat(pX), width: 350.00, height: 100.00));
+                        datepicker.fieldName = field.fieldId
+                        datepicker.label = field.label
+                        
+                        // test if we already have the value
+                        let attributeValue = self.person?.getAttributeValue(fieldName: field.fieldId)
+                        if (attributeValue != nil) {
+                            // On a déjà une valeur pour ce champ on le remplidonc directement
+                            let dateFormatter = DateFormatter()
+                            dateFormatter.dateFormat = "dd/MM/yyyy"
+                            datepicker.date = dateFormatter.date(from: attributeValue!)!
+                        }
+                        else {
+                            datepicker.date = Date()
+                        }
+                        
+                        datepicker.datePickerMode = UIDatePickerMode.date
+                        self.containerView.addSubview(datepicker)
+                        pX += 100
+                    } else if(field.input == InputType.text || field.input == InputType.string){
+                        let txtField: CustomTextField = CustomTextField(frame: CGRect(x: 20, y: CGFloat(pX), width: 350.00, height: 30.00));
+                        txtField.fieldName = field.fieldId
+                        txtField.label = field.label
+                        
+                        // test if we already have the value
+                        let attributeValue = self.person?.getAttributeValue(fieldName: field.fieldId)
+                        if (attributeValue != nil) {
+                            // On a déjà une valeur pour ce champ on le remplidonc directement
+                            txtField.text = attributeValue
+                        }
+                        else {
+                            txtField.placeholder = field.params?.placeholder ?? "Completer"
+                        }
+                        
+                        if(field.required == true){
+                            txtField.required = true
+                        }
+                        
+                        self.containerView.addSubview(txtField)
+                        pX += 60
+                    }else if(field.input == InputType.check){
+                        for choice in (field.params?.choices)! {
+                            // switch button
+                            let switchButton = CustomUISwitch(frame: CGRect(x: 10, y: CGFloat(pX), width: 350, height: 20))
+                            switchButton.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
+                            switchButton.fieldName = field.fieldId
+                            switchButton.label = field.label
+                            switchButton.value = choice.label
+                            // check if the button was already checked or not
+                            for attribute in (self.person?.attributes)! {
+                                if (attribute.fieldName == field.fieldId) {
+                                    let valueOfAttributeInArray = attribute.value.components(separatedBy: ", ")
+                                    for value in valueOfAttributeInArray {
+                                        if (value == choice.label) {
+                                            switchButton.isOn = true
+                                        }
                                     }
                                 }
                             }
+                            self.containerView.addSubview(switchButton)
+                            // title of the choice
+                            let choiceTitle = UILabel(frame: CGRect(x: 60, y: CGFloat(pX) + 5 , width: 350, height: 20))
+                            choiceTitle.numberOfLines = 0
+                            choiceTitle.text = choice.label
+                            self.containerView.addSubview(choiceTitle)
+                            pX += 30
                         }
-                        self.containerView.addSubview(switchButton)
-                        // title of the choice
-                        let choiceTitle = UILabel(frame: CGRect(x: 60, y: CGFloat(pX) + 5 , width: 350, height: 20))
-                        choiceTitle.numberOfLines = 0
-                        choiceTitle.text = choice.label
-                        self.containerView.addSubview(choiceTitle)
+                        pX += 20
+                    }else if(field.input == InputType.select){
+                        // Prepare data for the picker
+                        var pickerData : [(value: String, key: String)] = []
+                        var cpt = 0
+                        let attributeValue = self.person?.getAttributeValue(fieldName: field.fieldId)
+                        var alreadySelectedIndex = -1
+                        var defaultSelectedIndex = -1
+                        for choice in (field.params?.choices)! {
+                            pickerData.append((choice.label, choice.value))
+                            if (attributeValue != nil && attributeValue == choice.label) {
+                                alreadySelectedIndex = cpt
+                            }
+                            if (choice.selected) {
+                                defaultSelectedIndex = cpt
+                            }
+                            cpt += 1
+                        }
+                        // Create the dateSource object
+                        let dataSource = CustomPickerViewDataSource()
+                        // Set data to the dataSource object
+                        dataSource.pickerData = pickerData
+                        // Create the picker
+                        let picker: CustomPickerView = CustomPickerView(frame: CGRect(x: 20, y: CGFloat(pX), width: 350.00, height: 100.00));
+                        picker.fieldName = field.fieldId
+                        picker.label = field.label
+                        picker.pickerData = pickerData
+                        // Set up picker with dataSource object  and pickerViewDelegate (self)
+                        picker.delegate = self
+                        picker.dataSource = dataSource
+                        // test if we already have the value
+                        if (alreadySelectedIndex > -1) {
+                            // On a déjà une valeur pour ce champ on le remplidonc directement
+                            picker.selectRow(alreadySelectedIndex, inComponent: 0, animated: false)
+                        }
+                        else {
+                            // if we have a selected choice by default, select it
+                            picker.selectRow(defaultSelectedIndex, inComponent: 0, animated: false)
+                        }
+                        
+                        self.containerView.addSubview(picker)
+                        pX += 100
+                    } else if(field.input == InputType.radio){
+                        var items : [String] = []
+                        var cpt = 0
+                        let attributeValue = self.person?.getAttributeValue(fieldName: field.fieldId)
+                        var alreadySelectedIndex = -1
+                        for choice in (field.params?.choices)! {
+                            items.append(choice.label)
+                            if (attributeValue != nil && choice.label == attributeValue) {
+                                // On a déjà cette valeur
+                                alreadySelectedIndex = cpt
+                            }
+                            cpt += 1
+                        }
+                        let segmentedControl: CustomSegmentedControl = CustomSegmentedControl(items: items);
+                        segmentedControl.fieldName = field.fieldId
+                        segmentedControl.label = field.label
+                        segmentedControl.frame = CGRect(x: 20, y: CGFloat(pX), width: 350.00, height: 30.00);
+                        // test if we already have the value
+                        if (alreadySelectedIndex > -1) {
+                            // On a déjà une valeur pour ce champ on le remplidonc directement
+                            segmentedControl.selectedSegmentIndex = alreadySelectedIndex
+                        }
+                        else {
+                            segmentedControl.selectedSegmentIndex = 0
+                        }
+                        self.containerView.addSubview(segmentedControl)
                         pX += 30
                     }
-                    pX += 20
-                }else if(field.input == InputType.select){
-                    // Prepare data for the picker
-                    var pickerData : [(value: String, key: String)] = []
-                    var cpt = 0
-                    let attributeValue = self.person?.getAttributeValue(fieldName: field.fieldId)
-                    var alreadySelectedIndex = -1
-                    var defaultSelectedIndex = -1
-                    for choice in (field.params?.choices)! {
-                        pickerData.append((choice.label, choice.value))
-                        if (attributeValue != nil && attributeValue == choice.label) {
-                            alreadySelectedIndex = cpt
-                        }
-                        if (choice.selected) {
-                            defaultSelectedIndex = cpt
-                        }
-                        cpt += 1
-                    }
-                    // Create the dateSource object
-                    let dataSource = CustomPickerViewDataSource()
-                    // Set data to the dataSource object
-                    dataSource.pickerData = pickerData
-                    // Create the picker
-                    let picker: CustomPickerView = CustomPickerView(frame: CGRect(x: 20, y: CGFloat(pX), width: 350.00, height: 100.00));
-                    picker.fieldName = field.fieldId
-                    picker.label = field.label
-                    picker.pickerData = pickerData
-                    // Set up picker with dataSource object  and pickerViewDelegate (self)
-                    picker.delegate = self
-                    picker.dataSource = dataSource
-                    // test if we already have the value
-                    if (alreadySelectedIndex > -1) {
-                        // On a déjà une valeur pour ce champ on le remplidonc directement
-                        picker.selectRow(alreadySelectedIndex, inComponent: 0, animated: false)
-                    }
-                    else {
-                        // if we have a selected choice by default, select it
-                        picker.selectRow(defaultSelectedIndex, inComponent: 0, animated: false)
-                    }
-                    
-                    self.containerView.addSubview(picker)
-                    pX += 100
-                } else if(field.input == InputType.radio){
-                    var items : [String] = []
-                    var cpt = 0
-                    let attributeValue = self.person?.getAttributeValue(fieldName: field.fieldId)
-                    var alreadySelectedIndex = -1
-                    for choice in (field.params?.choices)! {
-                        items.append(choice.label)
-                        if (attributeValue != nil && choice.label == attributeValue) {
-                            // On a déjà cette valeur
-                            alreadySelectedIndex = cpt
-                        }
-                        cpt += 1
-                    }
-                    let segmentedControl: CustomSegmentedControl = CustomSegmentedControl(items: items);
-                    segmentedControl.fieldName = field.fieldId
-                    segmentedControl.label = field.label
-                    segmentedControl.frame = CGRect(x: 20, y: CGFloat(pX), width: 350.00, height: 30.00);
-                    // test if we already have the value
-                    if (alreadySelectedIndex > -1) {
-                        // On a déjà une valeur pour ce champ on le remplidonc directement
-                        segmentedControl.selectedSegmentIndex = alreadySelectedIndex
-                    }
-                    else {
-                        segmentedControl.selectedSegmentIndex = 0
-                    }
-                    self.containerView.addSubview(segmentedControl)
-                    pX += 30
                 }
+
             }
+            
             pX += 30
             // Ajout du bouton
             let nextButton = UIButton(frame: CGRect(x: 20, y: CGFloat(pX), width: 350.00, height: 30.00))
