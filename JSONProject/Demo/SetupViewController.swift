@@ -156,6 +156,24 @@ class SetupViewController: UIViewController, UIDocumentMenuDelegate, UIDocumentP
                 realmServices.resetlastUsedService()
                 let jsonModelInString = String(data: data!, encoding: .utf8)
                 let businessService = BusinessService(_title: (jsonModel?.title)!, _serviceDescription: (jsonModel?.description)!, icon: jsonModel?.icon ?? "", jsonModelInString: jsonModelInString!, isLastUsed: true)
+                
+                // on ajoute les options au service pour l'export
+                for offer in (jsonModel?.offers)! {
+                    for option in offer.features {
+                        // verify if the option is not already set
+                        var optionNotSet = true
+                        for _option in businessService.listOfOptions {
+                            if (_option.label == option.title) {
+                                optionNotSet = false
+                            }
+                        }
+                        if (optionNotSet) {
+                            let optionLabel = OptionLabel(label: option.title)
+                            businessService.listOfOptions.append(optionLabel)
+                        }
+                    }
+                }
+                
                 // On vérifie si le service n'existe pas déjà en database
                 if (realmServices.serviceFree(title: businessService.title)) {
                     realmServices.createBusinessService(businessService: businessService)

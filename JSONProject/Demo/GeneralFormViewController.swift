@@ -25,6 +25,8 @@ class GeneralFormViewController: UIViewController, UIPickerViewDelegate, UIScrol
         // set up title of view
         self.title = "Form 1"
     }
+    
+    // For displaying scrollView
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
@@ -57,6 +59,14 @@ class GeneralFormViewController: UIViewController, UIPickerViewDelegate, UIScrol
             }
             if (self.person != nil && !(self.person?.isSaved)!) {
                 let subViews = self.containerView.subviews
+                // pour les checkbox on doit préparer les attributs
+                var listAttributesForCheckbox = Array<Attribute>()
+                for field in (self.jsonModel?.commonFields)! {
+                    if (field.input == InputType.check) {
+                        let tmpAttribute = Attribute(_label: field.label, _fieldName: field.fieldId, _value: "", isSpecificField: false)
+                        listAttributesForCheckbox.append(tmpAttribute)
+                    }
+                }
                 for view in subViews {
                     var attributeFieldName = ""
                     var attributeLabel = ""
@@ -78,6 +88,17 @@ class GeneralFormViewController: UIViewController, UIPickerViewDelegate, UIScrol
                         attributeLabel = pickerField.label
                         attributeValue = pickerField.pickerData[pickerField.selectedRow(inComponent: 0)].value
                     }
+                    if let switchButton = view as? CustomUISwitch {
+                        // on récupère l'attribut pour ce bouton là et on ajoute la valeur si on a coché le bouton
+                        if (switchButton.isOn) {
+                            let buttonFieldName = switchButton.fieldName
+                            for attributeInTable in listAttributesForCheckbox {
+                                if (buttonFieldName == attributeInTable.fieldName) {
+                                    attributeInTable.value += switchButton.value + ", "
+                                }
+                            }
+                        }
+                    }
                     if let segmentedControlField = view as? CustomSegmentedControl {
                         attributeFieldName = segmentedControlField.fieldName
                         attributeLabel = segmentedControlField.label
@@ -95,6 +116,21 @@ class GeneralFormViewController: UIViewController, UIPickerViewDelegate, UIScrol
                             let attribute = Attribute(_label: attributeLabel, _fieldName: attributeFieldName, _value: attributeValue, isSpecificField: false)
                             self.person?.addAttributeToPerson(_attribute: attribute)
                         }
+                    }
+                }
+                // add checkbox attributes
+                for attribute in listAttributesForCheckbox {
+                    // We verify if the attribute already exists or not
+                    if (attribute.value != "") {
+                        let endIndex = attribute.value.index(attribute.value.endIndex, offsetBy: -2)
+                        attribute.value = attribute.value.substring(to: endIndex)
+                    }
+                    let indexOfAttribute = self.person?.getAttributeIndex(fieldName: attribute.fieldName)
+                    if (indexOfAttribute! > -1) {
+                        self.person?.attributes[indexOfAttribute!].value = attribute.value
+                    }
+                    else {
+                        self.person?.addAttributeToPerson(_attribute: attribute)
                     }
                 }
                 // Pass person to the parent
@@ -120,6 +156,17 @@ class GeneralFormViewController: UIViewController, UIPickerViewDelegate, UIScrol
             self.person?.id = (self.person?.incrementID())!
         }
         
+
+        // pour les checkbox on doit préparer les attributs
+        var listAttributesForCheckbox = Array<Attribute>()
+        for field in (self.jsonModel?.commonFields)! {
+            if (field.input == InputType.check) {
+                let tmpAttribute = Attribute(_label: field.label, _fieldName: field.fieldId, _value: "", isSpecificField: false)
+                listAttributesForCheckbox.append(tmpAttribute)
+            }
+        }
+        
+
         for view in subViews {
             var attributeFieldName = ""
             var attributeLabel = ""
@@ -145,6 +192,17 @@ class GeneralFormViewController: UIViewController, UIPickerViewDelegate, UIScrol
                 attributeLabel = pickerField.label
                 attributeValue = pickerField.pickerData[pickerField.selectedRow(inComponent: 0)].value
             }
+            if let switchButton = view as? CustomUISwitch {
+                // on récupère l'attribut pour ce bouton là et on ajoute la valeur si on a coché le bouton
+                if (switchButton.isOn) {
+                    let buttonFieldName = switchButton.fieldName
+                    for attributeInTable in listAttributesForCheckbox {
+                        if (buttonFieldName == attributeInTable.fieldName) {
+                            attributeInTable.value += switchButton.value + ", "
+                        }
+                    }
+                }
+            }
             if let segmentedControlField = view as? CustomSegmentedControl {
                 attributeFieldName = segmentedControlField.fieldName
                 attributeLabel = segmentedControlField.label
@@ -164,8 +222,27 @@ class GeneralFormViewController: UIViewController, UIPickerViewDelegate, UIScrol
                     self.person?.addAttributeToPerson(_attribute: attribute)
                 }
             }
-            
         }
+
+        // add checkbox attributes
+        for attribute in listAttributesForCheckbox {
+            // We verify if the attribute already exists or not
+            if (attribute.value != "") {
+                let endIndex = attribute.value.index(attribute.value.endIndex, offsetBy: -2)
+                attribute.value = attribute.value.substring(to: endIndex)
+            }
+            let indexOfAttribute = self.person?.getAttributeIndex(fieldName: attribute.fieldName)
+            if (indexOfAttribute! > -1) {
+                self.person?.attributes[indexOfAttribute!].value = attribute.value
+            }
+            else {
+                self.person?.addAttributeToPerson(_attribute: attribute)
+            }
+        }
+        
+        // Go to next Screen
+        // Redirect To Next Step
+        let specificFormView = SpecificFormViewController(nibName: "SpecificFormViewController", bundle: nil)
         
         if(champManquant){
             let alert = UIAlertController(title: "", message: "Veuillez remplir tous les champs", preferredStyle: UIAlertControllerStyle.alert)
@@ -219,6 +296,7 @@ class GeneralFormViewController: UIViewController, UIPickerViewDelegate, UIScrol
             self.containerView = UIView()
             self.scrollView.addSubview(self.containerView)
             
+            
             // Ajout message
             let message: UILabel = UILabel(frame: CGRect(x: 20, y: 50, width: 350.00, height: 100.00));
             message.numberOfLines = 0
@@ -229,6 +307,9 @@ class GeneralFormViewController: UIViewController, UIPickerViewDelegate, UIScrol
             for field in (json?.commonFields)! {
                 let title: UILabel = UILabel(frame: CGRect(x: 20, y: CGFloat(pX), width: 350.00, height: 30.00));
                 title.text = field.label
+                if (field.input == InputType.check) {
+                    title.text = field.label + " :"
+                }
                 self.containerView.addSubview(title)
                 pX += 30
                 if(field.input == InputType.date){
@@ -272,16 +353,50 @@ class GeneralFormViewController: UIViewController, UIPickerViewDelegate, UIScrol
                     
                     self.containerView.addSubview(txtField)
                     pX += 60
-                } else if(field.input == InputType.select){
+                }else if(field.input == InputType.check){
+                    for choice in (field.params?.choices)! {
+                        // switch button
+                        let switchButton = CustomUISwitch(frame: CGRect(x: 10, y: CGFloat(pX), width: 350, height: 20))
+                        switchButton.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
+                        switchButton.fieldName = field.fieldId
+                        switchButton.label = field.label
+                        switchButton.value = choice.label
+                        // check if the button was already checked or not
+                        if (self.person != nil) {
+                            for attribute in (self.person?.attributes)! {
+                                if (attribute.fieldName == field.fieldId) {
+                                    let valueOfAttributeInArray = attribute.value.components(separatedBy: ", ")
+                                    for value in valueOfAttributeInArray {
+                                        if (value == choice.label) {
+                                            switchButton.isOn = true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        self.containerView.addSubview(switchButton)
+                        // title of the choice
+                        let choiceTitle = UILabel(frame: CGRect(x: 60, y: CGFloat(pX) + 5 , width: 350, height: 20))
+                        choiceTitle.numberOfLines = 0
+                        choiceTitle.text = choice.label
+                        self.containerView.addSubview(choiceTitle)
+                        pX += 30
+                    }
+                   pX += 20
+                }else if(field.input == InputType.select){
                     // Prepare data for the picker
                     var pickerData : [(value: String, key: String)] = []
                     var cpt = 0
                     let attributeValue = self.person?.getAttributeValue(fieldName: field.fieldId)
                     var alreadySelectedIndex = -1
+                    var defaultSelectedIndex = -1
                     for choice in (field.params?.choices)! {
                         pickerData.append((choice.label, choice.value))
                         if (attributeValue != nil && attributeValue == choice.label) {
                             alreadySelectedIndex = cpt
+                        }
+                        if (choice.selected) {
+                            defaultSelectedIndex = cpt
                         }
                         cpt += 1
                     }
@@ -301,6 +416,10 @@ class GeneralFormViewController: UIViewController, UIPickerViewDelegate, UIScrol
                     if (alreadySelectedIndex > -1) {
                         // On a déjà une valeur pour ce champ on le remplidonc directement
                         picker.selectRow(alreadySelectedIndex, inComponent: 0, animated: false)
+                    }
+                    else {
+                        // if we have a selected choice by default, select it
+                        picker.selectRow(defaultSelectedIndex, inComponent: 0, animated: false)
                     }
                     
                     self.containerView.addSubview(picker)

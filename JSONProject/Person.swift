@@ -10,12 +10,13 @@ import Foundation
 import RealmSwift
 
 class Person: Object {
+    
     dynamic var id: Int = 0
     var attributes: List<Attribute> = List<Attribute>()
     var serviceOptions: List<ServiceOption> = List<ServiceOption>()
     let owner = LinkingObjects(fromType: BusinessService.self, property: "subscribers")
-    var serviceOffer: ServiceOffer? = nil
-    var paymentWay: PaymentWay? = nil
+    dynamic var serviceOffer: ServiceOffer? = nil
+    dynamic var paymentWay: PaymentWay? = nil
     
     var isSaved = false
     
@@ -38,7 +39,7 @@ class Person: Object {
         self.serviceOffer = offer
     }
     
-    public func setupPaymenttWay(paymentWay: PaymentWay) {
+    public func setupPaymentWay(paymentWay: PaymentWay) {
         self.paymentWay = paymentWay
     }
     
@@ -96,8 +97,31 @@ class Person: Object {
             }
             cpt += 1
         }
-        for index in tableOfIndex {
+        for index in tableOfIndex.sorted(by: >) {
             self.attributes.remove(at: index)
         }
     }
+    
+    public func getDefaultFirstAndLastName(index: Int) -> String {
+        var result = ""
+        var firstName = ""
+        var lastName = ""
+        for attribute in self.attributes {
+            if (attribute.fieldName == "firstName") {
+                firstName = attribute.value
+            }
+            if (attribute.fieldName == "lastName") {
+                lastName = attribute.value
+            }
+        }
+        if (firstName != "" || lastName != "") {
+            result = firstName + " " + lastName
+        }
+        else {
+            result = "Affilié " + String(index + 1)
+        }
+        return result
+    }
+    
+    
 }

@@ -12,7 +12,7 @@ enum FieldType: String {
     case name, date, phone, email, other
 }
 enum InputType: String {
-    case text, radio, date, select, string
+    case text, radio, date, select, string, check
 }
 class Field: Hashable, CustomStringConvertible {
     let fieldType: FieldType

@@ -59,14 +59,14 @@ class ViewController: UIViewController, UIDocumentMenuDelegate, UIDocumentPicker
 //        }
         
         
-        let person = PersonTest(name: "jordane", mail: "john@doe.com");
+        //let person = PersonTest(name: "jordane", mail: "john@doe.com");
         
-        print("person : \(person)");
+        //print("person : \(person)");
         
-        let json = person.toJson();
-        print(json);
+        //let json = person.toJson();
+        //print(json);
         
-        person.toJsonFile(pathJsonFile: "testOutput.json");
+        //person.toJsonFile(pathJsonFile: "testOutput.json");
     }
     
     @available(iOS 8.0, *)

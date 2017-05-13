@@ -15,30 +15,105 @@ class ExportServices {
         let businessService = realmServices.getBusinessService(_title: _businessServiceTitle)
         
         var result = "{"
-        result = result + "\n\t\"serviceName\" : \"\(businessService.title)\",\n\t\"serviceDescription\" : \"\(businessService.serviceDescription)\",\n\t\"icon\" : \"\(businessService.icon)\",\n\t\"subscribers\" : ["
-        for subscriber in businessService.subscribers {
+        
+        if (businessService.title == ""){
+            result = result + "\n\t\"serviceName\" : \"Non Renseigné\","
+        } else {
+            result = result + "\n\t\"serviceName\" : \"\(businessService.title)\","
+        }
+        
+        if (businessService.serviceDescription == ""){
+            result = result + "\n\t\"serviceDescription\" : \"Non Renseigné\","
+        } else {
+            result = result + "\n\t\"serviceDescription\" : \"\(businessService.serviceDescription)\","
+        }
+        
+        if (businessService.icon == ""){
+            result = result + "\n\t\"icon\" : \"Non rensiegné\","
+        } else {
+            result = result + "\n\t\"icon\" : \"\(businessService.icon)\","
+        }
+        
+        result = result + "\n\t\"subscribers\" : ["
+        
+        for (index, subscriber) in businessService.subscribers.enumerated() {
             
-            result = result + "\n\t\t{\n\t\t\t\"serviceOffer\" : {\n\t\t\t\t\"title\" : \"\(subscriber.serviceOffer?.title)\",\n\t\t\t\t\"serviceDescription\" : \"\(subscriber.serviceOffer?.offerDescription)\",\n\t\t\t\t\"price\" : \(subscriber.serviceOffer?.price)\n\t\t\t},\n\t\t\t\"serviceOption(s)\" : ["
+            result = result + "\n\t\t{"
             
-            for option in subscriber.serviceOptions {
-                result = result + "\n\t\t\t\t{\n\t\t\t\t\t\"title\" : \"\(option.title)\",\n\t\t\t\t\t\"optionDescritpion\" : \"\(option.optionDescription)\",\n\t\t\t\t\t\"price\" : \(option.price)\n\t\t\t\t},"
+            if (subscriber.serviceOffer == nil) {
+                result = result + "\n\t\t\t\"serviceOffer\" : \"Non Renseigné\","
+            } else{
+                result = result + "\n\t\t\t\"serviceOffer\" : {"
+                
+                if (subscriber.serviceOffer?.title == ""){
+                    result = result + "\n\t\t\t\t\"title\" : \"Non Renseigné\","
+                } else {
+                    result = result + "\n\t\t\t\t\"title\" : \"\((subscriber.serviceOffer?.title)!)\","
+                }
+                
+                if (subscriber.serviceOffer?.offerDescription == ""){
+                    result = result + "\n\t\t\t\t\"offerDescription\" : \"Non Renseigné\","
+                } else {
+                    result = result + "\n\t\t\t\t\"offerDescription\" : \"\((subscriber.serviceOffer?.offerDescription)!)\","
+                }
+                
+                //price égal à zero si non reseigné (valeur par défaut)
+                let offerPrice = String((subscriber.serviceOffer?.price)!)
+                result = result + "\n\t\t\t\t\"price\" : \(offerPrice)\n\t\t\t},"
             }
-            result = result.substring(to: result.index(before: result.endIndex))
+            
+            result = result + "\n\t\t\t\"serviceOption(s)\" : ["
+            
+            for (indexOption, option) in subscriber.serviceOptions.enumerated() {
+                
+                result = result + "\n\t\t\t\t{"
+                
+                if (option.title == ""){
+                    result = result + "\n\t\t\t\t\t\"title\" : \"Non Renseigné)\","
+                } else {
+                    result = result + "\n\t\t\t\t\t\"title\" : \"\(option.title)\","
+                }
+                
+                if (option.optionDescription == ""){
+                    result = result + "\n\t\t\t\t\t\"optionDescritpion\" : \"Non Renseigné\","
+                } else {
+                    result = result + "\n\t\t\t\t\t\"optionDescritpion\" : \"\(option.optionDescription)\","
+                }
+                
+                //price égal à zero si non reseigné (valeur par défaut)
+                result = result + "\n\t\t\t\t\t\"price\" : \(option.price)"
+                
+                result = result + "\n\t\t\t\t}" + (indexOption < (subscriber.serviceOptions.count - 1) ? "," : "")
+            }
             result = result + "\n\t\t\t],"
             
             for attribute in subscriber.attributes {
-                result = result + "\n\t\t\t\"\(attribute.fieldName)\" : \"\(attribute.value)\","
+                if (attribute.value == ""){
+                    result = result + "\n\t\t\t\"\(attribute.fieldName)\" : \"Non Renseigné\","
+                } else {
+                    result = result + "\n\t\t\t\"\(attribute.fieldName)\" : \"\(attribute.value)\","
+                }
             }
             
-            result = result + "\n\t\t\t\"paymentWay\" : {\n\t\t\t\t \"label\" : \"\(subscriber.paymentWay?.label)\","
-            for attribute in (subscriber.paymentWay?.paymentAttributes)! {
-                result = result + "\n\t\t\t\t\"\(attribute.fieldName)\" : \"\(attribute.value)\","
+            result = result + "\n\t\t\t\"paymentWay\" : {"
+            
+            if (subscriber.paymentWay?.label == ""){
+                result = result + "\n\t\t\t\t\"label\" : \"Non Renseigné\","
+            } else {
+                result = result + "\n\t\t\t\t\"label\" : \"\((subscriber.paymentWay?.label)!)\","
             }
             
-            result = result.substring(to: result.index(before: result.endIndex))
-            result = result + "\n\t\t\t},"
+            for (indexAttribute, attribute) in (subscriber.paymentWay?.paymentAttributes)!.enumerated() {
+                if (attribute.value == ""){
+                    result = result + "\n\t\t\t\t\"\(attribute.fieldName)\" : \"Non Renseigné\"" + (indexAttribute < ((subscriber.paymentWay?.paymentAttributes.count)! - 1) ? "," : "")
+                } else {
+                    result = result + "\n\t\t\t\t\"\(attribute.fieldName)\" : \"\(attribute.value)\"" + (indexAttribute < ((subscriber.paymentWay?.paymentAttributes.count)! - 1) ? "," : "")
+                }
+            
+            }
+            result = result + "\n\t\t\t}"
+            result = result + "\n\t\t}" + (index < (businessService.subscribers.count - 1) ? "," : "")
         }
-        result = result.substring(to: result.index(before: result.endIndex))
         result = result + "\n\t]"
         result = result + "\n}"
         return result
@@ -48,23 +123,49 @@ class ExportServices {
         let realmServices = RealmServices()
         let businessService = realmServices.getBusinessService(_title: _businessServiceTitle) as BusinessService
         
-        var header = "sep=,\nserviceName,serviceDescription,brand,"
+        
+//        var header = "sep=|\nserviceName|serviceDescription|icon|"
+
+        var header = "serviceName|"
         var result = ""
         
         
         for attribute in (businessService.subscribers.first?.attributes)! {
-            header = header + "\(attribute.fieldName),"
+            header += "\(attribute.fieldName)|"
         }
-        header = header.substring(to: header.index(before: header.endIndex))
-        header = header + "\n"
+        
+        for option in businessService.listOfOptions {
+            header += "\(option.label)|"
+        }
+        
+        
+        header += "paymentWay\n"
         
         for subscriber in businessService.subscribers {
-            result = result + "\(businessService.title),\(businessService.serviceDescription),\(businessService.icon),"
+            result = result + "\(businessService.title)|"
             for attribute in subscriber.attributes {
-                result = result + "\(attribute.value),"
+                if (attribute.value != "") {
+                    result = result + "\(attribute.value)|"
+                }
+                else {
+                    result = result + "Non Renseigné|"
+                }
             }
-            result = result.substring(to: result.index(before: result.endIndex))
-            result = result + "\n"
+            
+            var find = false
+            for option in businessService.listOfOptions {
+                for optionSubcriber in subscriber.serviceOptions {
+                    if (optionSubcriber.title == option.label){
+                        find = true
+                    }
+                }
+                if (find) {
+                    result += "subscribed|"
+                } else {
+                    result += "not subscribed|"
+                }
+            }
+            result += "\((subscriber.paymentWay?.label)!)\n"
         }
         
         result = header + result

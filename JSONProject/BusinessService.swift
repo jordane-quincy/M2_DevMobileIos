@@ -17,6 +17,7 @@ class BusinessService: Object {
     dynamic var icon: String = ""
     dynamic var jsonModelInString: String = ""
     dynamic var isLastUsed: Bool = false
+    var listOfOptions: List<OptionLabel> = List<OptionLabel>()
     
     override class func primaryKey() -> String? {
         return "title"
@@ -24,8 +25,8 @@ class BusinessService: Object {
     
     convenience public init(_title: String, _serviceDescription: String, icon: String, jsonModelInString: String, isLastUsed: Bool) {
         self.init();
-        title = _title
-        serviceDescription = _serviceDescription
+        self.title = _title
+        self.serviceDescription = _serviceDescription
         self.icon = icon
         self.jsonModelInString = jsonModelInString
         self.isLastUsed = isLastUsed

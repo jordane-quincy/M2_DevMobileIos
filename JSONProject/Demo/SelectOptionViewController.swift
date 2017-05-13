@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class SelectOptionViewController: UIViewController, UIPickerViewDelegate, UIScrollViewDelegate  {
     
@@ -66,6 +67,8 @@ class SelectOptionViewController: UIViewController, UIPickerViewDelegate, UIScro
         // get data from UI for the Person Object
         // Test if all requiredField are completed
         let subViews = self.containerView.subviews
+        // reset options
+        self.person?.serviceOptions = List<ServiceOption>()
         for view in subViews {
             if let optionSwitchButton = view as? UISwitch {
                 if (optionSwitchButton.isOn) {
@@ -77,10 +80,7 @@ class SelectOptionViewController: UIViewController, UIPickerViewDelegate, UIScro
                         }
                         cpt += 1
                     }
-                    // Check if the option is not in the serviceOption of the person
-                    if (self.person?.optionNotAlreadyTaken(serviceOption: serviceOptionChoosen!))! {
-                        self.person?.addServiceOptionToPerson(serviceOption: serviceOptionChoosen!)
-                    }
+                    self.person?.addServiceOptionToPerson(serviceOption: serviceOptionChoosen!)
                 }
             }
         }

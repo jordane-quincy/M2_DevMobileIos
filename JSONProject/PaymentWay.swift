@@ -12,6 +12,7 @@ import RealmSwift
 class PaymentWay: Object {
     
     dynamic var label: String = ""
+    
     var paymentAttributes: List<PaymentAttribute> = List<PaymentAttribute>()
     
     let owner = LinkingObjects(fromType: Person.self, property: "paymentWay")

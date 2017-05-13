@@ -20,9 +20,17 @@ class ResultatViewController: UITableViewController, UIDocumentMenuDelegate, UID
     
     var exportServices = ExportServices()
     
+    var fileServices = FileServices()
+    
     var path : URL? = nil
     
     var isImportingFile = false
+    
+    var customNavigationController: UINavigationController? = nil
+    
+    public func setupNavigationController(navigationController: UINavigationController){
+        self.customNavigationController = navigationController
+    }
     
     @available(iOS 8.0, *)
     public func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt urlDocument: URL) {
@@ -132,18 +140,39 @@ class ResultatViewController: UITableViewController, UIDocumentMenuDelegate, UID
     }
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt: IndexPath) -> [UITableViewRowAction]? {
-        let export = UITableViewRowAction(style: .normal, title: "Export to Drive") { action, index in
-            print("share button tapped")
-            print(self.exportServices.getSubscribersJSON(_businessServiceTitle: self.services[editActionsForRowAt.row].title))
+        let export = UITableViewRowAction(style: .normal, title: "Exporter") { action, index in
+            print("export button tapped")
+            
+            let businessTitle = self.services[editActionsForRowAt.row].title
+            
+            let alert = UIAlertController(title: "Exporter", message: "Selectionner un type de fichier", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "JSON", style: UIAlertActionStyle.default, handler: { action in
+                let fileString = self.exportServices.getSubscribersJSON(_businessServiceTitle: businessTitle)
+                
+                _ = self.fileServices.createJSONFileFromString(JSONStringified: fileString, businessServiceTitle: businessTitle, viewController: self)
+                
+                self.fileServices.createAndMoveFileiCloud(file: "file", fileStringified: fileString, viewController: self)
+            }))
+            alert.addAction(UIAlertAction(title: "CSV", style: UIAlertActionStyle.default, handler: { action in
+                let fileString = self.exportServices.getSubscribersCSV(_businessServiceTitle: businessTitle)
+                
+                _ = self.fileServices.createCSVFileFromString(CSVStringified: fileString, businessServiceTitle: businessTitle, viewController: self)
+                
+                self.fileServices.createAndMoveFileiCloud(file: "file", fileStringified: fileString, viewController: self)
+            }))
+            self.present(alert, animated: true, completion: nil)
+            
+            alert.addAction(UIAlertAction(title: "Annuler", style: UIAlertActionStyle.cancel, handler: { (UIAlertAction) in
+                print("Export cancel")
+            }))
+            
+            
+            
+            
         }
         export.backgroundColor = .blue
         
-        let more = UITableViewRowAction(style: .normal, title: "More") { action, index in
-            print("more button tapped")
-        }
-        more.backgroundColor = .orange
-        
-        let delete = UITableViewRowAction(style: .normal, title: "Delete") { action, index in
+        let delete = UITableViewRowAction(style: .normal, title: "Supprimer") { action, index in
             print("delete button tapped")
             print(self.services[editActionsForRowAt.row])
             // Delete BusinessService from DataBase
@@ -155,7 +184,7 @@ class ResultatViewController: UITableViewController, UIDocumentMenuDelegate, UID
         }
         delete.backgroundColor = .red
         
-        return [delete, more, export]
+        return [delete, export]
     }
 
     
@@ -170,13 +199,15 @@ class ResultatViewController: UITableViewController, UIDocumentMenuDelegate, UID
         return cell
     }
     
-    
+    // method after tap on cell
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        print("tap on cell \(indexPath.row)")
-        //let viewController = storyboard?.instantiateViewController(withIdentifier: "SubscribersTableView") as! SubscribersTableViewController
-        //viewController.toPrint = services[indexPath.row].title
-        //navigationController?.pushViewController(viewController, animated: true)
+        // go to person tableview
+        let resultatPersonTableView = ResultatPersonTableView(nibName: "ResultatPersonTableView", bundle: nil)
+        resultatPersonTableView.setupNavigationController(navigationController: self.customNavigationController!)
+        // setup affiliates
+        resultatPersonTableView.setupAffiliates(affiliates: Array(self.services[indexPath.row].subscribers))
+        self.customNavigationController?.pushViewController(resultatPersonTableView, animated: true)
+        self.customNavigationController?.setNavigationBarHidden(false, animated: true)
     }
     
     

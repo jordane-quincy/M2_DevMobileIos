@@ -11,7 +11,7 @@ import Foundation
 class Choice: Hashable, CustomStringConvertible {
     let value: String
     let label: String
-    let selected: Bool?
+    var selected: Bool = false
     
     init?(jsonContent: [String: Any]) throws {
         guard let value = jsonContent["value"] as? String else {
@@ -25,7 +25,7 @@ class Choice: Hashable, CustomStringConvertible {
         //assignation
         self.value = value
         self.label = label
-        self.selected = selected
+        self.selected = selected ?? false
     }
     
     //Hashable
@@ -71,7 +71,7 @@ class Params: CustomStringConvertible {
             
             self.choices = nil
             
-        case .radio, .select:
+        case .radio, .select, .check:
             // Extract and validate choices
             guard let choicesJsonArray = jsonContent["choices"] as? [[String: Any]] else {
                 throw SerializationError.missing("choices")
