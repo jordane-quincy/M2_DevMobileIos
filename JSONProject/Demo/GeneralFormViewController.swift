@@ -109,6 +109,9 @@ class GeneralFormViewController: UIViewController, UIPickerViewDelegate, UIScrol
     }
     
     func next(_ sender: UIButton) {
+        
+        var champManquant: Bool = false
+        
         // get data from UI for the Person Object
         // Test if all requiredField are completed
         let subViews = self.containerView.subviews
@@ -116,6 +119,7 @@ class GeneralFormViewController: UIViewController, UIPickerViewDelegate, UIScrol
             self.person = Person()
             self.person?.id = (self.person?.incrementID())!
         }
+        
         for view in subViews {
             var attributeFieldName = ""
             var attributeLabel = ""
@@ -124,6 +128,10 @@ class GeneralFormViewController: UIViewController, UIPickerViewDelegate, UIScrol
                 attributeFieldName = textField.fieldName
                 attributeLabel = textField.label
                 attributeValue = textField.text ?? ""
+                if(textField.required == true && attributeValue == ""){
+                    print("Champ requis non rempli")
+                    champManquant = true
+                }
             }
             if let datePickerField = view as? CustomDatePicker {
                 attributeFieldName = datePickerField.fieldName
@@ -158,18 +166,38 @@ class GeneralFormViewController: UIViewController, UIPickerViewDelegate, UIScrol
             }
             
         }
-        // Go to next Screen
-        // Redirect To Next Step
-        let specificFormView = SpecificFormViewController(nibName: "SpecificFormViewController", bundle: nil)
         
-        if (self.person != nil) {
-            specificFormView.setupPerson(person: self.person!)
+        if(champManquant){
+            let alert = UIAlertController(title: "", message: "Veuillez remplir tous les champs", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Fermer", style: UIAlertActionStyle.default, handler: { action in
+                switch action.style{
+                case .default:
+                    print("default")
+                    
+                case .cancel:
+                    print("cancel")
+                    
+                case .destructive:
+                    print("destructive")
+                }
+            }))
+            self.present(alert, animated: true, completion: nil)
+        } else {
+            // Go to next Screen
+            // Redirect To Next Step
+            let specificFormView = SpecificFormViewController(nibName: "SpecificFormViewController", bundle: nil)
+            
+            if (self.person != nil) {
+                specificFormView.setupPerson(person: self.person!)
+            }
+            specificFormView.setupNavigationController(navigationController: self.customNavigationController!)
+            specificFormView.setIndexOfSelectedOffer(index: indexOfSelectedOffer)
+            specificFormView.setupCustomParent(customParent: self)
+            specificFormView.createViewFromJson(json: self.jsonModel)
+            self.customNavigationController?.pushViewController(specificFormView, animated: true)
         }
-        specificFormView.setupNavigationController(navigationController: self.customNavigationController!)
-        specificFormView.setIndexOfSelectedOffer(index: indexOfSelectedOffer)
-        specificFormView.setupCustomParent(customParent: self)
-        specificFormView.createViewFromJson(json: self.jsonModel)
-        self.customNavigationController?.pushViewController(specificFormView, animated: true)
+        
+        
         
         
         // Save the person in realm database
@@ -236,6 +264,10 @@ class GeneralFormViewController: UIViewController, UIPickerViewDelegate, UIScrol
                     }
                     else {
                         txtField.placeholder = field.params?.placeholder ?? "Completer"
+                    }
+                    
+                    if(field.required == true){
+                        txtField.required = true
                     }
                     
                     self.containerView.addSubview(txtField)

@@ -1,3 +1,20 @@
+2.5.1 Release notes (2017-04-05)
+=============================================================
+
+### API Breaking Changes
+
+* None.
+
+### Enhancements
+
+* None.
+
+### Bugfixes
+
+* Fix CocoaPods installation with static libraries and multiple platforms.
+* Fix uncaught "Bad version number" exceptions on the notification worker thread
+  followed by deadlocks when Realms refresh.
+
 2.5.0 Release notes (2017-03-28)
 =============================================================
 

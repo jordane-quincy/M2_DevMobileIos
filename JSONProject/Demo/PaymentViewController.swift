@@ -83,7 +83,7 @@ class PaymentViewController: UIViewController, UIPickerViewDelegate, UIScrollVie
                 }
             }
         }
-        self.person?.setupPaymnetWay(paymentWay: paymentWay)
+        self.person?.setupPaymenttWay(paymentWay: paymentWay)
         self.person?.changeIsSavePerson()
         // Save the person in realm database
         realmServices.createPerson(person: self.person!)
@@ -319,6 +319,8 @@ class PaymentViewController: UIViewController, UIPickerViewDelegate, UIScrollVie
             self.pX = 110
             
             //TODO Display recap of offer choosen and option
+            
+            //Afficher depuis l'objet person (serviceoffer) le titre de l'option, le prix et prix total
             
             // Ajout paymentMessage
             let paymentMessage: UILabel = UILabel(frame: CGRect(x: 20, y: CGFloat(self.pX), width: 350.00, height: 20.00));

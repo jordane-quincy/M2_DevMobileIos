@@ -88,6 +88,12 @@ class AccueilViewController: UIViewController, UIScrollViewDelegate  {
             title.text = "Bonjour bienvenue sur le service : " + (json?.title)!
             self.containerView.addSubview(title)
             
+            // Ajout de l'image du service
+            /*let dataDecoded : Data = Data(base64Encoded: (json?.icon)!, options: .ignoreUnknownCharacters)!
+            let decodedimage = UIImage(data: dataDecoded)
+            let imageView = UIImageView(image: decodedimage!)
+            imageView.frame = CGRect(x: 20, y: 50, width: 100, height: 100)
+            self.containerView.addSubview(imageView)*/
             
             // Ajout description du service
             let description: UILabel = UILabel(frame: CGRect(x: 20, y: 50, width: 400.00, height: 100.00));

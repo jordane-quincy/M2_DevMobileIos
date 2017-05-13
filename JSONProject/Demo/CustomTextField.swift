@@ -12,4 +12,5 @@ import UIKit
 class CustomTextField: UITextField {
     var fieldName: String = ""
     var label: String = ""
+    var required: Bool = false
 }

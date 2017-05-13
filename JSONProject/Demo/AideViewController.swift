@@ -13,6 +13,8 @@ class AideViewController: UIViewController {
     
     var controllerArray = [UIViewController]()
     
+    @IBOutlet weak var champMdp: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -50,6 +52,17 @@ class AideViewController: UIViewController {
     }
 
     
+    @IBAction func EnabledBarItemMdp(_ sender: Any) {
+        
+        if(champMdp.text == "1234"){
+            self.addTabBarItemResultat()
+            // Automatically switch to the import view
+            DispatchQueue.main.async() {
+                self.tabBarController?.selectedIndex = 2
+            }
+        }
+        
+    }
     func addTabBarItemResultat(){
         
         self.tabBarController?.tabBar.items?[1].isEnabled = true

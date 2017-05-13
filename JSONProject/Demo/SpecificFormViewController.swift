@@ -117,6 +117,9 @@ class SpecificFormViewController: UIViewController, UIPickerViewDelegate, UIScro
                 attributeFieldName = textField.fieldName
                 attributeLabel = textField.label
                 attributeValue = textField.text ?? ""
+                if(textField.required == true && attributeValue == ""){
+                    print("Champ requis non rempli")
+                }
             }
             if let datePickerField = view as? CustomDatePicker {
                 attributeFieldName = datePickerField.fieldName
@@ -258,6 +261,10 @@ class SpecificFormViewController: UIViewController, UIPickerViewDelegate, UIScro
                     }
                     else {
                         txtField.placeholder = field.params?.placeholder ?? "Completer"
+                    }
+                    
+                    if(field.required == true){
+                        txtField.required = true
                     }
                     
                     self.containerView.addSubview(txtField)
