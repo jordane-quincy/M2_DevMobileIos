@@ -10,7 +10,7 @@
                      "input": "text",
                      "params": {
                      "minLength": 2,
-                     "maxLenght": 25,
+                     "maxLength": 25,
                      "placeholder": "Entrez votre prénom"
                      }
                      },
@@ -87,7 +87,7 @@
                                   "fieldType": "phone",
                                   "fieldId": "phone",
                                   "label": "Numéro de téléphone",
-                                  "input": "string"
+                                  "input": "text"
                                   }
                                   ],
                "features": [
@@ -112,7 +112,7 @@
                                   "fieldType": "email",
                                   "fieldId": "email",
                                   "label": "Email",
-                                  "input": "string"
+                                  "input": "text"
                                   }
                                   ],
                "features": [

@@ -373,7 +373,7 @@ class SpecificFormViewController: UIViewController, UIPickerViewDelegate, UIScro
                         datepicker.datePickerMode = UIDatePickerMode.date
                         self.containerView.addSubview(datepicker)
                         pX += 100
-                    } else if(field.input == InputType.text || field.input == InputType.string){
+                    } else if(field.input == InputType.text || field.input == InputType.number){
                         let txtField: CustomTextField = CustomTextField(frame: CGRect(x: 20, y: CGFloat(pX), width: 350.00, height: 30.00));
                         txtField.fieldName = field.fieldId
                         txtField.label = field.label

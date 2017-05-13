@@ -11,7 +11,7 @@
                     "input":"text",
                     "params":{
                     "minLength":2,
-                    "maxLenght":25,
+                    "maxLength":25,
                     "placeholder":"Entrez votre prénom"
                     }
                     },
@@ -23,7 +23,7 @@
                     "input":"text",
                     "params":{
                     "minLength":2,
-                    "maxLenght":25,
+                    "maxLength":25,
                     "placeholder":"Entrez votre nom"
                     }
                     },
@@ -111,7 +111,7 @@
                                 "fieldType":"phone",
                                 "fieldId":"phone",
                                 "label":"Numéro de téléphone",
-                                "input":"string"
+                                "input":"text"
                                 },
                                 {
                                 "required": true,

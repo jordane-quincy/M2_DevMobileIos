@@ -5,7 +5,7 @@
   "commonFields" : [
     {
       "required" : true,
-      "fieldType" : "surname",
+      "fieldType" : "name",
       "fieldId" : "clientSurname",
       "label" : "Nom",
       "input" : "text",
@@ -94,7 +94,7 @@
       "specificFields" : [
         {
           "required" : false,
-          "fieldType" : "number",
+          "fieldType" : "name",
           "fieldId" : "numberOfMinorChildren",
           "label" : "Nombre d'enfants mineurs",
           "input" : "number"
