@@ -13,6 +13,7 @@ import SystemConfiguration
 class AideViewController: UIViewController {
     
     var controllerArray = [UIViewController]()
+    var customNavigationController: UINavigationController? = nil
     
     @IBOutlet weak var champMdp: UITextField!
     
@@ -27,6 +28,10 @@ class AideViewController: UIViewController {
         swipeRight.direction = UISwipeGestureRecognizerDirection.left
         self.view.addGestureRecognizer(swipeLeft)
         // Do any additional setup after loading the view.
+    }
+    
+    public func setupNavigationController(navigationController: UINavigationController){
+        self.customNavigationController = navigationController
     }
     
     // swipe function
@@ -87,30 +92,12 @@ class AideViewController: UIViewController {
     
     
     @IBAction func displaySystemInfo(_ sender: UIButton) {
-         var sys = System()
-         let cpuUsage = sys.usageCPU()
-         print("\tSYSTEM:          \(Int(cpuUsage.system))%")
-         print("\tUSER:            \(Int(cpuUsage.user))%")
-         print("\tIDLE:            \(Int(cpuUsage.idle))%")
-         print("\tNICE:            \(Int(cpuUsage.nice))%")
-         
-         
-         print("\n-- MEMORY --")
-         print("\tPHYSICAL SIZE:   \(System.physicalMemory())GB")
-         
-         let memoryUsage = System.memoryUsage()
-         func memoryUnit(_ value: Double) -> String {
-         if value < 1.0 { return String(Int(value * 1000.0))    + "MB" }
-         else           { return NSString(format:"%.2f", value) as String + "GB" }
-         }
-         
-         print("\tFREE:            \(memoryUnit(memoryUsage.free))")
-         print("\tWIRED:           \(memoryUnit(memoryUsage.wired))")
-         print("\tACTIVE:          \(memoryUnit(memoryUsage.active))")
-         print("\tINACTIVE:        \(memoryUnit(memoryUsage.inactive))")
-         print("\tCOMPRESSED:      \(memoryUnit(memoryUsage.compressed))")
+        // GO to System View
+        let systemView = InfoSystemViewController(nibName: "InfoSystemViewController", bundle: nil)
+        systemView.setupNavigationController(navigationController: self.customNavigationController!)
         
-
+        self.customNavigationController?.pushViewController(systemView, animated: true)
+        self.customNavigationController?.setNavigationBarHidden(false, animated: true)
     }
 
     

@@ -111,9 +111,6 @@ class AccueilViewController: UIViewController, UIScrollViewDelegate  {
     
     func goToSelectOfferView(_ sender: UIButton) {
         // Redirect To Next Step
-        //let navigationController = UINavigationController(rootViewController: self)
-        
-        // TODO verifier que la vue n'existe pas deja
         let selectOfferView = SelectOfferViewController(nibName: "SelectOfferViewController", bundle: nil)
         selectOfferView.setupNavigationController(navigationController: self.customNavigationController!)
         selectOfferView.setupCustomParent(customParent: self)
