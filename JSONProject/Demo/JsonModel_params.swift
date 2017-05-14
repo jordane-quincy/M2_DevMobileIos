@@ -54,19 +54,22 @@ class Params: CustomStringConvertible {
         
         switch inputType {
         case .text:
-            guard let minLength = jsonContent["minLength"] as? Int else {
-                throw SerializationError.missing("minLength")
+            var minLength: Int? = nil
+            if (jsonContent["minLength"] != nil) {
+                minLength = jsonContent["minLength"] as? Int
             }
-            guard let maxLenght = jsonContent["maxLenght"] as? Int else {
-                throw SerializationError.missing("maxLenght")
+            var maxLength: Int? = nil
+            if (jsonContent["maxLength"] != nil) {
+                maxLength = jsonContent["maxLength"] as? Int
             }
-            guard let placeholder = jsonContent["placeholder"] as? String else {
-                throw SerializationError.missing("placeholder")
+            var placeholder = ""
+            if (jsonContent["placeholder"] != nil) {
+                placeholder = (jsonContent["placeholder"] as? String)!
             }
             
             //assignation
             self.minLength = minLength
-            self.maxLenght = maxLenght
+            self.maxLenght = maxLength
             self.placeholder = placeholder
             
             self.choices = nil

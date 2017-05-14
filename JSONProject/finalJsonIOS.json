@@ -1,0 +1,179 @@
+{
+    "title":"Free2",
+    "description":"Abonnez-vous chez nous yaura de la 4g partout",
+    "icon" : "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",
+    "commonFields":[
+                    {
+                    "required":true,
+                    "fieldType":"name",
+                    "fieldId":"firstName",
+                    "label":"Prénom",
+                    "input":"text",
+                    "params":{
+                    "minLength":2,
+                    "maxLength":25,
+                    "placeholder":"Entrez votre prénom"
+                    }
+                    },
+                    {
+                    "required":true,
+                    "fieldType":"name",
+                    "fieldId":"lastName",
+                    "label":"Name",
+                    "input":"text",
+                    "params":{
+                    "minLength":2,
+                    "maxLength":25,
+                    "placeholder":"Entrez votre nom"
+                    }
+                    },
+                    {
+                    "required":true,
+                    "fieldType":"other",
+                    "fieldId":"sexe",
+                    "label":"Sexe",
+                    "input":"radio",
+                    "params":{
+                    "choices":[
+                               {
+                               "value":"M",
+                               "label":"Homme"
+                               },
+                               {
+                               "value":"F",
+                               "label":"Femme"
+                               }
+                               ]
+                    }
+                    },
+                    {
+                    "required":true,
+                    "fieldType":"date",
+                    "fieldId":"birthDate",
+                    "label":"Date de naissance",
+                    "input":"date"
+                    },
+                    {
+                    "fieldId":"hobbies",
+                    "fieldType":"other",
+                    "label":"Loisirs",
+                    "input":"check",
+                    "params":{
+                    "choices":[
+                               {
+                               "value":"sport",
+                               "label":"Sport"
+                               },
+                               {
+                               "value":"reading",
+                               "label":"Lecture"
+                               },
+                               {
+                               "value":"videoGames",
+                               "label":"Jeux video"
+                               }
+                               ]
+                    }
+                    },
+                    {
+                    "required":true,
+                    "fieldType":"other",
+                    "fieldId":"country",
+                    "label":"Pays",
+                    "input":"select",
+                    "params":{
+                    "choices":[
+                               {
+                               "value":"FRA",
+                               "label":"France"
+                               },
+                               {
+                               "value":"BEL",
+                               "label":"Belgique",
+                               "selected":true
+                               }
+                               ]
+                    }
+                    }
+                    ],
+    "paymentWays":[
+                   "creditCard",
+                   "bankTransfer"
+                   ],
+    "offers":[
+              {
+              "title":"Abonnoment petit",
+              "description":"Offre de merde sms illimité mais que 2h d'appel et 500Mo",
+              "price":2,
+              "specificFields":[
+                                {
+                                "required": true,
+                                "fieldType":"phone",
+                                "fieldId":"phone",
+                                "label":"Numéro de téléphone",
+                                "input":"text"
+                                },
+                                {
+                                "required": true,
+                                "fieldId":"language",
+                                "fieldType":"other",
+                                "label":"Langues",
+                                "input":"check",
+                                "params":{
+                                "choices":[
+                                           {
+                                           "value":"english",
+                                           "label":"Anglais"
+                                           },
+                                           {
+                                           "value":"french",
+                                           "label":"Francais"
+                                           },
+                                           {
+                                           "value":"spanish",
+                                           "label":"Espagnol"
+                                           }
+                                           ]
+                                }
+                                }
+                                ],
+              "features":[
+                          {
+                          "price":2,
+                          "title":"+2 Go",
+                          "description":"Profitez de 2 Go en plus pour seulement 2€ par mois"
+                          },
+                          {
+                          "price":5,
+                          "title":"Deezer",
+                          "description":"Offrez-vous un abonnement Deezer pour seulement 5€/mois au lieu de 9,99€"
+                          }
+                          ]
+              },
+              {
+              "title":"Abonnoment grand",
+              "description":"Offre tout illimité et 50Go",
+              "price":20,
+              "specificFields":[
+                                {
+                                "fieldType":"email",
+                                "fieldId":"email",
+                                "label":"Email",
+                                "input":"text"
+                                }
+                                ],
+              "features":[
+                          {
+                          "price":2,
+                          "title":"+2 Go",
+                          "description":"Profitez de 2 Go en plus pour seulement 2€ par mois"
+                          },
+                          {
+                          "price":5,
+                          "title":"Deezer",
+                          "description":"Offrez-vous un abonnement Deezer pour seulement 5€/mois au lieu de 9,99€"
+                          }
+                          ]
+              }
+              ]
+}
