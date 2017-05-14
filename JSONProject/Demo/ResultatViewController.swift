@@ -119,7 +119,35 @@ class ResultatViewController: UITableViewController, UIDocumentMenuDelegate, UID
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 49, 0);
-       // self.refreshServicesArray()
+        
+        // setup swipe
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
+        swipeRight.direction = UISwipeGestureRecognizerDirection.right
+        self.view.addGestureRecognizer(swipeRight)
+        
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
+        swipeRight.direction = UISwipeGestureRecognizerDirection.left
+        self.view.addGestureRecognizer(swipeLeft)
+    }
+    
+    // swipe function
+    func respondToSwipeGesture(gesture: UIGestureRecognizer) {
+        if let swipeGesture = gesture as? UISwipeGestureRecognizer {
+            switch swipeGesture.direction {
+            case UISwipeGestureRecognizerDirection.right:
+                // GO TO THE LEFT Pannel
+                DispatchQueue.main.async() {
+                    self.tabBarController?.selectedIndex = 0
+                }
+            case UISwipeGestureRecognizerDirection.left:
+                // GO TO THE RIGHT Pannel
+                DispatchQueue.main.async() {
+                    self.tabBarController?.selectedIndex = 2
+                }
+            default:
+                break
+            }
+        }
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {

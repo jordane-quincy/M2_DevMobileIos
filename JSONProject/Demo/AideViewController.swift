@@ -18,9 +18,42 @@ class AideViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // setup swipe
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
+        swipeRight.direction = UISwipeGestureRecognizerDirection.right
+        self.view.addGestureRecognizer(swipeRight)
         
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
+        swipeRight.direction = UISwipeGestureRecognizerDirection.left
+        self.view.addGestureRecognizer(swipeLeft)
         // Do any additional setup after loading the view.
     }
+    
+    // swipe function
+    func respondToSwipeGesture(gesture: UIGestureRecognizer) {
+        if let swipeGesture = gesture as? UISwipeGestureRecognizer {
+            switch swipeGesture.direction {
+            case UISwipeGestureRecognizerDirection.right:
+                // GO TO THE LEFT Pannel
+                DispatchQueue.main.async() {
+                    if (self.tabBarController?.tabBar.items?[2].isEnabled)! {
+                        self.tabBarController?.selectedIndex = 2
+                    }
+                    else {
+                        self.tabBarController?.selectedIndex = 0
+                    }
+                }
+            case UISwipeGestureRecognizerDirection.left:
+                // GO TO THE RIGHT Pannel
+                DispatchQueue.main.async() {
+                    self.tabBarController?.selectedIndex = 0
+                }
+            default:
+                break
+            }
+        }
+    }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

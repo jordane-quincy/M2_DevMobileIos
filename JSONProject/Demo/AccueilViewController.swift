@@ -54,10 +54,6 @@ class AccueilViewController: UIViewController, UIScrollViewDelegate  {
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
         swipeRight.direction = UISwipeGestureRecognizerDirection.left
         self.view.addGestureRecognizer(swipeLeft)
-        
-        let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
-        swipeDown.direction = UISwipeGestureRecognizerDirection.down
-        self.view.addGestureRecognizer(swipeDown)
     }
     
     // swipe function
@@ -66,14 +62,19 @@ class AccueilViewController: UIViewController, UIScrollViewDelegate  {
             switch swipeGesture.direction {
             case UISwipeGestureRecognizerDirection.right:
                 // GO TO THE LEFT Pannel
-                print("Swiped right")
-            case UISwipeGestureRecognizerDirection.down:
-                print("Swiped down")
+                DispatchQueue.main.async() {
+                    self.tabBarController?.selectedIndex = 3
+                }
             case UISwipeGestureRecognizerDirection.left:
-                print("Swiped left")
                 // GO TO THE RIGHT Pannel
-            case UISwipeGestureRecognizerDirection.up:
-                print("Swiped up")
+                DispatchQueue.main.async() {
+                    if (self.tabBarController?.tabBar.items?[1].isEnabled)! {
+                        self.tabBarController?.selectedIndex = 1
+                    }
+                    else {
+                        self.tabBarController?.selectedIndex = 3
+                    }
+                }
             default:
                 break
             }

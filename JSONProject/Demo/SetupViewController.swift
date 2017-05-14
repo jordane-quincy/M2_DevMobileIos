@@ -36,6 +36,16 @@ class SetupViewController: UIViewController, UIDocumentMenuDelegate, UIDocumentP
         self.containerView = UIView()
         self.scrollView.addSubview(self.containerView)
 
+        // setup swipe
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
+        swipeRight.direction = UISwipeGestureRecognizerDirection.right
+        self.view.addGestureRecognizer(swipeRight)
+        
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
+        swipeRight.direction = UISwipeGestureRecognizerDirection.left
+        self.view.addGestureRecognizer(swipeLeft)
+
+        
         // Import json
         let importLabel = UILabel(frame: CGRect(x: 20, y: CGFloat(self.pX), width: 350, height: 30.00))
         self.pX += 40
@@ -54,6 +64,26 @@ class SetupViewController: UIViewController, UIDocumentMenuDelegate, UIDocumentP
         self.containerView.addSubview(selectServiceLabel)
         self.pX += 40
         addSelectService()
+    }
+    
+    // swipe function
+    func respondToSwipeGesture(gesture: UIGestureRecognizer) {
+        if let swipeGesture = gesture as? UISwipeGestureRecognizer {
+            switch swipeGesture.direction {
+            case UISwipeGestureRecognizerDirection.right:
+                // GO TO THE LEFT Pannel
+                DispatchQueue.main.async() {
+                    self.tabBarController?.selectedIndex = 1
+                }
+            case UISwipeGestureRecognizerDirection.left:
+                // GO TO THE RIGHT Pannel
+                DispatchQueue.main.async() {
+                    self.tabBarController?.selectedIndex = 3
+                }
+            default:
+                break
+            }
+        }
     }
     
     public func addSelectService() {
