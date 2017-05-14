@@ -144,38 +144,43 @@ class AccueilViewController: UIViewController, UIScrollViewDelegate  {
             title.text = "Inscription au service : " + (json?.title)!
             self.containerView.addSubview(title)
             
+            var imageHeight = 0.00
             // Ajout de l'image du service
-            /*let dataDecoded : Data = Data(base64Encoded: (json?.icon)!, options: .ignoreUnknownCharacters)!
-            let decodedimage = UIImage(data: dataDecoded)
-            let imageView = UIImageView(image: decodedimage!)
-            imageView.frame = CGRect(x: 20, y: 50, width: 100, height: 100)
-            self.containerView.addSubview(imageView)*/
+            if (json?.icon != nil && json?.icon != "") {
+                let dataDecoded : Data = Data(base64Encoded: (json?.icon)!, options: .ignoreUnknownCharacters)!
+                let decodedimage = UIImage(data: dataDecoded)
+                let imageView = UIImageView(image: decodedimage!)
+                imageView.frame = CGRect(x: 20, y: 60, width: 200, height: 100)
+                imageHeight = 100.00
+                self.containerView.addSubview(imageView)
+            }
+            
             
             // Ajout description du service
             var descriptionToLong = false
             if ((json?.description.characters.count)! > 135) {
                 descriptionToLong = true
             }
-            let description: UILabel = UILabel(frame: CGRect(x: 20, y: 50, width: 400.00, height: descriptionToLong ? 100 + 20 : 100.00));
+            let description: UILabel = UILabel(frame: CGRect(x: 20, y: 70 + imageHeight, width: 400.00, height: descriptionToLong ? 100 + 20 : 100.00));
             description.numberOfLines = 0
             description.text = "Voici la description de ce service : \n" + (json?.description)!
             self.containerView.addSubview(description)
 
             // Start message
-            let startMessage: UILabel = UILabel(frame: CGRect(x: 20, y: descriptionToLong ? 130 + 20 : 130, width: 350.00, height: 100.00))
+            let startMessage: UILabel = UILabel(frame: CGRect(x: 20, y: descriptionToLong ? 150 + 20 + imageHeight : 150 + imageHeight, width: 350.00, height: 100.00))
             startMessage.numberOfLines = 0
             startMessage.text = "Pour vous inscrire à ce service cliquez sur \"Commencer\""
             self.containerView.addSubview(startMessage)
 
             // Ajout du bouton commencer
-            let statButton = UIButton(frame: CGRect(x: 20, y: descriptionToLong ? 230 + 20 : 230, width: 350.00, height: 30.00))
+            let statButton = UIButton(frame: CGRect(x: 20, y: descriptionToLong ? 250 + 20 + imageHeight : 250 + imageHeight, width: 350.00, height: 30.00))
             statButton.setTitle("Commencer !", for: .normal)
             statButton.addTarget(self, action: #selector(self.goToSelectOfferView(_:)), for: .touchUpInside)
             statButton.backgroundColor = UIColor.blue
             self.containerView.addSubview(statButton)
             
             // Set size fo scrollView
-            self.scrollView.contentSize = CGSize(width: 375, height: descriptionToLong ? 250 + 20 : 250)
+            self.scrollView.contentSize = CGSize(width: 375, height: descriptionToLong ? 270 + 20 + imageHeight : 270 + imageHeight)
         }
         
     }
