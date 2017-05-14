@@ -119,14 +119,14 @@ class PaymentViewController: UIViewController, UIPickerViewDelegate, UIScrollVie
     
     func createFormCreditAccount() {
         // Ajout iban
-        let ibanLabel = UILabel(frame: CGRect(x: 20, y: CGFloat(self.pX), width: 350, height: 20))
+        let ibanLabel = UILabel(frame: CGRect(x: 20, y: CGFloat(self.pX), width: 335, height: 20))
         ibanLabel.text = "IBAN*"
         ibanLabel.tag = 1
         self.pX += 20
         self.containerView.addSubview(ibanLabel)
         
         // Ajout ibanField
-        let ibanTextField = CustomTextField(frame: CGRect(x: 20, y: CGFloat(self.pX), width: 350, height: 40))
+        let ibanTextField = CustomTextField(frame: CGRect(x: 20, y: CGFloat(self.pX), width: 335, height: 40))
         ibanTextField.required = true
         ibanTextField.fieldName = "iban"
         ibanTextField.placeholder = "Completer"
@@ -136,14 +136,14 @@ class PaymentViewController: UIViewController, UIPickerViewDelegate, UIScrollVie
         self.containerView.addSubview(ibanTextField)
         
         // Ajout bic
-        let bicLabel = UILabel(frame: CGRect(x: 20, y: CGFloat(self.pX), width: 350, height: 20))
+        let bicLabel = UILabel(frame: CGRect(x: 20, y: CGFloat(self.pX), width: 335, height: 20))
         bicLabel.text = "BIC*"
         bicLabel.tag = 1
         self.pX += 20
         self.containerView.addSubview(bicLabel)
         
         // Ajout bicField
-        let bicTextField = CustomTextField(frame: CGRect(x: 20, y: CGFloat(self.pX), width: 350, height: 40))
+        let bicTextField = CustomTextField(frame: CGRect(x: 20, y: CGFloat(self.pX), width: 335, height: 40))
         bicTextField.required = true
         bicTextField.fieldName = "bic"
         bicTextField.placeholder = "Completer"
@@ -153,7 +153,7 @@ class PaymentViewController: UIViewController, UIPickerViewDelegate, UIScrollVie
         self.containerView.addSubview(bicTextField)
         
         // Add Validation button
-        let validationButton = UIButton(frame: CGRect(x: 40, y: CGFloat(pX), width: 350.00, height: 30.00))
+        let validationButton = UIButton(frame: CGRect(x: 25, y: CGFloat(pX), width: 335, height: 30.00))
         validationButton.setTitle("Valider l'inscription", for: .normal)
         validationButton.addTarget(self, action: #selector(self.validSubscription(_:)), for: .touchUpInside)
         validationButton.tag = 1
@@ -167,14 +167,14 @@ class PaymentViewController: UIViewController, UIPickerViewDelegate, UIScrollVie
     
     func createFormCreditCard() {
         // Ajout cardNumber
-        let cardNumberLabel = UILabel(frame: CGRect(x: 20, y: CGFloat(self.pX), width: 350, height: 20))
+        let cardNumberLabel = UILabel(frame: CGRect(x: 20, y: CGFloat(self.pX), width: 335, height: 20))
         cardNumberLabel.text = "Numéro de carte*"
         cardNumberLabel.tag = 2
         self.pX += 20
         self.containerView.addSubview(cardNumberLabel)
         
         // Ajout ibanField
-        let cardNumberTextField = CustomTextField(frame: CGRect(x: 20, y: CGFloat(self.pX), width: 350, height: 40))
+        let cardNumberTextField = CustomTextField(frame: CGRect(x: 20, y: CGFloat(self.pX), width: 335, height: 40))
         cardNumberTextField.fieldName = "cardNumber"
         cardNumberTextField.required = true
         cardNumberTextField.placeholder = "Completer"
@@ -184,14 +184,14 @@ class PaymentViewController: UIViewController, UIPickerViewDelegate, UIScrollVie
         self.containerView.addSubview(cardNumberTextField)
         
         // Ajout iban
-        let expirtationDateLabel = UILabel(frame: CGRect(x: 20, y: CGFloat(self.pX), width: 350, height: 20))
+        let expirtationDateLabel = UILabel(frame: CGRect(x: 20, y: CGFloat(self.pX), width: 335, height: 20))
         expirtationDateLabel.text = "Date d'expiration*"
         expirtationDateLabel.tag = 2
         self.pX += 20
         self.containerView.addSubview(expirtationDateLabel)
         
         // Ajout expirtation date
-        let expirtationDateTextField = CustomTextField(frame: CGRect(x: 20, y: CGFloat(self.pX), width: 350, height: 40))
+        let expirtationDateTextField = CustomTextField(frame: CGRect(x: 20, y: CGFloat(self.pX), width: 335, height: 40))
         expirtationDateTextField.required = true
         expirtationDateTextField.fieldName = "expirationDate"
         expirtationDateTextField.placeholder = "Completer"
@@ -201,14 +201,14 @@ class PaymentViewController: UIViewController, UIPickerViewDelegate, UIScrollVie
         self.containerView.addSubview(expirtationDateTextField)
         
         // Ajout crypto
-        let cryptoLabel = UILabel(frame: CGRect(x: 20, y: CGFloat(self.pX), width: 350, height: 20))
+        let cryptoLabel = UILabel(frame: CGRect(x: 20, y: CGFloat(self.pX), width: 335, height: 20))
         cryptoLabel.text = "Cryptogramme*"
         cryptoLabel.tag = 2
         self.pX += 20
         self.containerView.addSubview(cryptoLabel)
         
         // Ajout ibanField
-        let cryptoTextField = CustomTextField(frame: CGRect(x: 20, y: CGFloat(self.pX), width: 350, height: 40))
+        let cryptoTextField = CustomTextField(frame: CGRect(x: 20, y: CGFloat(self.pX), width: 335, height: 40))
         cryptoTextField.required = true
         cryptoTextField.fieldName = "crypto"
         cryptoTextField.placeholder = "Completer"
@@ -218,14 +218,14 @@ class PaymentViewController: UIViewController, UIPickerViewDelegate, UIScrollVie
         self.containerView.addSubview(cryptoTextField)
         
         // Ajout owner
-        let ownerLabel = UILabel(frame: CGRect(x: 20, y: CGFloat(self.pX), width: 350, height: 20))
+        let ownerLabel = UILabel(frame: CGRect(x: 20, y: CGFloat(self.pX), width: 335, height: 20))
         ownerLabel.text = "Propriétaire*"
         ownerLabel.tag = 2
         self.pX += 20
         self.containerView.addSubview(ownerLabel)
         
         // Ajout ibanField
-        let ownerTextField = CustomTextField(frame: CGRect(x: 20, y: CGFloat(self.pX), width: 350, height: 40))
+        let ownerTextField = CustomTextField(frame: CGRect(x: 20, y: CGFloat(self.pX), width: 335, height: 40))
         ownerTextField.required = true
         ownerTextField.fieldName = "owner"
         ownerTextField.placeholder = "Completer"
@@ -234,7 +234,7 @@ class PaymentViewController: UIViewController, UIPickerViewDelegate, UIScrollVie
         self.pX += 60
         self.containerView.addSubview(ownerTextField)
         // Add Validation button
-        let validationButton = UIButton(frame: CGRect(x: 40, y: CGFloat(pX), width: 350.00, height: 30.00))
+        let validationButton = UIButton(frame: CGRect(x: 25, y: CGFloat(pX), width: 335, height: 30.00))
         validationButton.setTitle("Valider l'inscription", for: .normal)
         validationButton.addTarget(self, action: #selector(self.validSubscription(_:)), for: .touchUpInside)
         validationButton.tag = 2
@@ -249,14 +249,14 @@ class PaymentViewController: UIViewController, UIPickerViewDelegate, UIScrollVie
     
     func createFormPaypal() {
         // Ajout label
-        let paypalLabel = UILabel(frame: CGRect(x: 20, y: CGFloat(self.pX), width: 350, height: 20))
+        let paypalLabel = UILabel(frame: CGRect(x: 20, y: CGFloat(self.pX), width: 335, height: 20))
         paypalLabel.text = "Numéro de compte paypal*"
         paypalLabel.tag = 3
         self.pX += 20
         self.containerView.addSubview(paypalLabel)
         
         // Ajout textField
-        let paypalTextField = CustomTextField(frame: CGRect(x: 20, y: CGFloat(self.pX), width: 350, height: 40))
+        let paypalTextField = CustomTextField(frame: CGRect(x: 20, y: CGFloat(self.pX), width: 335, height: 40))
         paypalTextField.required = true
         paypalTextField.fieldName = "paypalAccountNumber"
         paypalTextField.placeholder = "Completer"
@@ -266,7 +266,7 @@ class PaymentViewController: UIViewController, UIPickerViewDelegate, UIScrollVie
         self.containerView.addSubview(paypalTextField)
         
         // Add Validation button
-        let validationButton = UIButton(frame: CGRect(x: 40, y: CGFloat(pX), width: 350.00, height: 30.00))
+        let validationButton = UIButton(frame: CGRect(x: 25, y: CGFloat(pX), width: 335, height: 30.00))
         validationButton.setTitle("Valider l'inscription", for: .normal)
         validationButton.addTarget(self, action: #selector(self.validSubscription(_:)), for: .touchUpInside)
         validationButton.tag = 3
@@ -315,21 +315,21 @@ class PaymentViewController: UIViewController, UIPickerViewDelegate, UIScrollVie
             self.removeViewWithTag(tag: tagToRemove)
             // Create new form of the new paymentWay
             self.createFormCreditAccount()
-            self.scrollView.contentSize = CGSize(width: 375, height: self.pX + 100)
+            self.scrollView.contentSize = CGSize(width: 350, height: self.pX + 100)
         }
         else if (paymentWay == "Carte Bancaire") {
             // Remove actual form of paymentWay
             self.removeViewWithTag(tag: tagToRemove)
             // Create new form of the new paymentWay
             self.createFormCreditCard()
-            self.scrollView.contentSize = CGSize(width: 375, height: self.pX + 100)
+            self.scrollView.contentSize = CGSize(width: 350, height: self.pX + 100)
         }
         else if (paymentWay == "Paypal") {
             // Remove actual form of paymentWay
             self.removeViewWithTag(tag: tagToRemove)
             // Create new form of the new paymentWay
             self.createFormPaypal()
-            self.scrollView.contentSize = CGSize(width: 375, height: self.pX + 100)
+            self.scrollView.contentSize = CGSize(width: 350, height: self.pX + 100)
         }
         
     }
@@ -349,7 +349,7 @@ class PaymentViewController: UIViewController, UIPickerViewDelegate, UIScrollVie
             self.scrollView.addSubview(self.containerView)
             
             // Ajout recapMessage
-            let recapMessage: UILabel = UILabel(frame: CGRect(x: 20, y: 70, width: 350.00, height: 20.00));
+            let recapMessage: UILabel = UILabel(frame: CGRect(x: 20, y: 70, width: 335, height: 20.00));
             recapMessage.numberOfLines = 0
             recapMessage.text = "Recapitulatif abonnement :"
             self.containerView.addSubview(recapMessage)
@@ -359,12 +359,12 @@ class PaymentViewController: UIViewController, UIPickerViewDelegate, UIScrollVie
             // prepare total price
             var totalPrice = 0
             // affichage offre choisi
-            let offerMessage: UILabel = UILabel(frame: CGRect(x: 20, y: CGFloat(self.pX), width: 350.00, height: 20.00));
+            let offerMessage: UILabel = UILabel(frame: CGRect(x: 20, y: CGFloat(self.pX), width: 335, height: 20.00));
             offerMessage.numberOfLines = 0
             offerMessage.text = "Offre choisie :"
             self.containerView.addSubview(offerMessage)
             self.pX += 20
-            let offerChoosen: UILabel = UILabel(frame: CGRect(x: 20, y: CGFloat(self.pX), width: 350.00, height: 20.00));
+            let offerChoosen: UILabel = UILabel(frame: CGRect(x: 20, y: CGFloat(self.pX), width: 335, height: 20.00));
             offerChoosen.numberOfLines = 0
             offerChoosen.text = " • " + (self.person?.serviceOffer?.title)! + "(" + String((self.person?.serviceOffer?.price)!) + "€)"
             totalPrice += (self.person?.serviceOffer?.price)!
@@ -374,14 +374,14 @@ class PaymentViewController: UIViewController, UIPickerViewDelegate, UIScrollVie
             let numberOfOptions = (self.person?.serviceOptions.count)!
             if (numberOfOptions > 0) {
                 self.pX += 20
-                let optionLabel: UILabel = UILabel(frame: CGRect(x: 20, y: CGFloat(self.pX), width: 350.00, height: 20.00));
+                let optionLabel: UILabel = UILabel(frame: CGRect(x: 20, y: CGFloat(self.pX), width: 335, height: 20.00));
                 optionLabel.numberOfLines = 0
                 optionLabel.text = "Option" + (numberOfOptions > 1 ? "s " : " ") + "choisie" + (numberOfOptions > 1 ? "s" : "")
                 self.pX += 20
                 self.containerView.addSubview(optionLabel)
                 // Parcours des options
                 for option in (self.person?.serviceOptions)! {
-                    let optionChoosen: UILabel = UILabel(frame: CGRect(x: 20, y: CGFloat(self.pX), width: 350.00, height: 20.00));
+                    let optionChoosen: UILabel = UILabel(frame: CGRect(x: 20, y: CGFloat(self.pX), width: 335, height: 20.00));
                     optionChoosen.numberOfLines = 0
                     optionChoosen.text = " • " + option.title + "(" + String(option.price) + "€)"
                     totalPrice += option.price
@@ -392,7 +392,7 @@ class PaymentViewController: UIViewController, UIPickerViewDelegate, UIScrollVie
             }
             // affichage total price
             self.pX += 10
-            let totalPriceLabel: UILabel = UILabel(frame: CGRect(x: 20, y: CGFloat(self.pX), width: 350.00, height: 20.00));
+            let totalPriceLabel: UILabel = UILabel(frame: CGRect(x: 20, y: CGFloat(self.pX), width: 335, height: 20.00));
             totalPriceLabel.numberOfLines = 0
             totalPriceLabel.text = "Prix total à payer : " + String(totalPrice) + "€"
             self.pX += 20
@@ -402,7 +402,7 @@ class PaymentViewController: UIViewController, UIPickerViewDelegate, UIScrollVie
             //Afficher depuis l'objet person (serviceoffer) le titre de l'option, le prix et prix total
             
             // Ajout paymentMessage
-            let paymentMessage: UILabel = UILabel(frame: CGRect(x: 20, y: CGFloat(self.pX), width: 350.00, height: 20.00));
+            let paymentMessage: UILabel = UILabel(frame: CGRect(x: 20, y: CGFloat(self.pX), width: 335, height: 20.00));
             paymentMessage.numberOfLines = 0
             paymentMessage.text = "Paiement :"
             self.containerView.addSubview(paymentMessage)
@@ -434,7 +434,7 @@ class PaymentViewController: UIViewController, UIPickerViewDelegate, UIScrollVie
             }
             let segmentedControl: CustomSegmentedControl = CustomSegmentedControl(items: items);
             segmentedControl.label = "Moyen de paiment"
-            segmentedControl.frame = CGRect(x: 20, y: CGFloat(self.pX), width: 350.00, height: 30.00);
+            segmentedControl.frame = CGRect(x: 20, y: CGFloat(self.pX), width: 335, height: 30.00);
             segmentedControl.selectedSegmentIndex = 0
             segmentedControl.addTarget(self, action: #selector(self.changePaymentWay(_:)), for: .valueChanged)
             
@@ -451,7 +451,7 @@ class PaymentViewController: UIViewController, UIPickerViewDelegate, UIScrollVie
                 self.createFormPaypal()
             }
             
-            self.scrollView.contentSize = CGSize(width: 375, height: self.pX + 100)
+            self.scrollView.contentSize = CGSize(width: 350, height: self.pX + 100)
         }
         //self.view.frame.size.height = 10000
     }

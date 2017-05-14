@@ -288,14 +288,14 @@ class GeneralFormViewController: UIViewController, UIPickerViewDelegate, UIScrol
             
             
             // Ajout message
-            let message: UILabel = UILabel(frame: CGRect(x: 20, y: 50, width: 350.00, height: 100.00));
+            let message: UILabel = UILabel(frame: CGRect(x: 20, y: 50, width: 335, height: 100.00));
             message.numberOfLines = 0
             message.text = "Informations générales :"
             self.containerView.addSubview(message)
             
             var pX = 150
             for field in (json?.commonFields)! {
-                let title: UILabel = UILabel(frame: CGRect(x: 20, y: CGFloat(pX), width: 350.00, height: 30.00));
+                let title: UILabel = UILabel(frame: CGRect(x: 20, y: CGFloat(pX), width: 335, height: 30.00));
                 title.text = field.label
                 if (field.input == InputType.check) {
                     title.text = field.label + " :"
@@ -306,7 +306,7 @@ class GeneralFormViewController: UIViewController, UIPickerViewDelegate, UIScrol
                 self.containerView.addSubview(title)
                 pX += 30
                 if(field.input == InputType.date){
-                    let datepicker: CustomDatePicker = CustomDatePicker(frame: CGRect(x: 20, y: CGFloat(pX), width: 350.00, height: 100.00));
+                    let datepicker: CustomDatePicker = CustomDatePicker(frame: CGRect(x: 20, y: CGFloat(pX), width: 335, height: 100.00));
                     datepicker.fieldName = field.fieldId
                     datepicker.label = field.label
                     
@@ -326,7 +326,7 @@ class GeneralFormViewController: UIViewController, UIPickerViewDelegate, UIScrol
                     self.containerView.addSubview(datepicker)
                     pX += 100
                 } else if(field.input == InputType.text || field.input == InputType.number){
-                    let txtField: CustomTextField = CustomTextField(frame: CGRect(x: 20, y: CGFloat(pX), width: 350.00, height: 30.00));
+                    let txtField: CustomTextField = CustomTextField(frame: CGRect(x: 20, y: CGFloat(pX), width: 335, height: 30.00));
                     txtField.fieldName = field.fieldId
                     txtField.label = field.label
                     
@@ -349,7 +349,7 @@ class GeneralFormViewController: UIViewController, UIPickerViewDelegate, UIScrol
                 }else if(field.input == InputType.check){
                     for choice in (field.params?.choices)! {
                         // switch button
-                        let switchButton = CustomUISwitch(frame: CGRect(x: 10, y: CGFloat(pX), width: 350, height: 20))
+                        let switchButton = CustomUISwitch(frame: CGRect(x: 10, y: CGFloat(pX), width: 335, height: 20))
                         switchButton.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
                         switchButton.fieldName = field.fieldId
                         switchButton.label = field.label
@@ -369,7 +369,7 @@ class GeneralFormViewController: UIViewController, UIPickerViewDelegate, UIScrol
                         }
                         self.containerView.addSubview(switchButton)
                         // title of the choice
-                        let choiceTitle = UILabel(frame: CGRect(x: 60, y: CGFloat(pX) + 5 , width: 350, height: 20))
+                        let choiceTitle = UILabel(frame: CGRect(x: 60, y: CGFloat(pX) + 5 , width: 335, height: 20))
                         choiceTitle.numberOfLines = 0
                         choiceTitle.text = choice.label
                         self.containerView.addSubview(choiceTitle)
@@ -398,7 +398,7 @@ class GeneralFormViewController: UIViewController, UIPickerViewDelegate, UIScrol
                     // Set data to the dataSource object
                     dataSource.pickerData = pickerData
                     // Create the picker
-                    let picker: CustomPickerView = CustomPickerView(frame: CGRect(x: 20, y: CGFloat(pX), width: 350.00, height: 100.00));
+                    let picker: CustomPickerView = CustomPickerView(frame: CGRect(x: 20, y: CGFloat(pX), width: 335, height: 100.00));
                     picker.fieldName = field.fieldId
                     picker.label = field.label
                     picker.pickerData = pickerData
@@ -433,7 +433,7 @@ class GeneralFormViewController: UIViewController, UIPickerViewDelegate, UIScrol
                     let segmentedControl: CustomSegmentedControl = CustomSegmentedControl(items: items);
                     segmentedControl.fieldName = field.fieldId
                     segmentedControl.label = field.label
-                    segmentedControl.frame = CGRect(x: 20, y: CGFloat(pX), width: 350.00, height: 30.00);
+                    segmentedControl.frame = CGRect(x: 20, y: CGFloat(pX), width: 335, height: 30.00);
                     // test if we already have the value
                     if (alreadySelectedIndex > -1) {
                         // On a déjà une valeur pour ce champ on le remplidonc directement
@@ -448,7 +448,7 @@ class GeneralFormViewController: UIViewController, UIPickerViewDelegate, UIScrol
             }
             pX += 30
             // Ajout du bouton
-            let nextButton = UIButton(frame: CGRect(x: 180, y: CGFloat(pX), width: 350.00, height: 30.00))
+            let nextButton = UIButton(frame: CGRect(x: 140, y: CGFloat(pX), width: 335, height: 30.00))
             nextButton.setTitle("Suivant >", for: .normal)
             nextButton.addTarget(self, action: #selector(self.next(_:)), for: .touchUpInside)
             nextButton.setTitleColor(UIView().tintColor, for: .normal)
@@ -456,7 +456,7 @@ class GeneralFormViewController: UIViewController, UIPickerViewDelegate, UIScrol
 
             
             self.containerView.addSubview(nextButton)
-            self.scrollView.contentSize = CGSize(width: 375, height: pX + 100)
+            self.scrollView.contentSize = CGSize(width: 350, height: pX + 100)
         }
         //self.view.frame.size.height = 10000
     }

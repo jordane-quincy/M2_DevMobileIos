@@ -53,7 +53,7 @@ class ResultatPersonDetails: UIViewController, UIScrollViewDelegate {
             
             for (index, attribute) in ((self.affiliate?.attributes)!).enumerated() {
                 if (attribute.value != ""){
-                    let label: UILabel = UILabel(frame: CGRect(x: 20, y: posY, width: 350.00, height: 30.00));
+                    let label: UILabel = UILabel(frame: CGRect(x: 20, y: posY, width: 335, height: 30.00));
                     //Pour les attributs, affichage "label : value"
                     label.text = attribute.label + " : " + attribute.value
                     self.containerView.addSubview(label)
@@ -66,7 +66,7 @@ class ResultatPersonDetails: UIViewController, UIScrollViewDelegate {
                 
                 if (self.affiliate?.serviceOffer?.title != ""){
                     // Ajout label serviceOffer.title
-                    let title: UILabel = UILabel(frame: CGRect(x: 20, y: posY, width: 350.00, height: 30.00));
+                    let title: UILabel = UILabel(frame: CGRect(x: 20, y: posY, width: 335, height: 30.00));
                     title.text = "Service souscrit : " + (self.affiliate?.serviceOffer?.title)!
                     self.containerView.addSubview(title)
                     
@@ -75,7 +75,7 @@ class ResultatPersonDetails: UIViewController, UIScrollViewDelegate {
                 
                 if (self.affiliate?.serviceOffer?.offerDescription != ""){
                     // Ajout description du service
-                    let description: UILabel = UILabel(frame: CGRect(x: 20, y: posY, width: 400.00, height: 100.00));
+                    let description: UILabel = UILabel(frame: CGRect(x: 20, y: posY, width: 335, height: 100.00));
                     description.numberOfLines = 0
                     description.text = "Description : \n" + (self.affiliate?.serviceOffer?.offerDescription)!
                     self.containerView.addSubview(description)
@@ -84,7 +84,7 @@ class ResultatPersonDetails: UIViewController, UIScrollViewDelegate {
                 }
                 
                 //Ajout du prix de l'offre
-                let price: UILabel = UILabel(frame: CGRect(x: 20, y: posY, width: 350.00, height: 30.00));
+                let price: UILabel = UILabel(frame: CGRect(x: 20, y: posY, width: 335, height: 30.00));
                 price.text = "Prix de l'offre : " + String((self.affiliate?.serviceOffer?.price)!) + "€"
                 self.containerView.addSubview(price)
                 
@@ -93,7 +93,7 @@ class ResultatPersonDetails: UIViewController, UIScrollViewDelegate {
             
             let numberOfOption = (self.affiliate?.serviceOptions.count)!
             if (numberOfOption > 0) {
-                let messageOption: UILabel = UILabel(frame: CGRect(x: 20, y: posY, width: 350.00, height: 30.00));
+                let messageOption: UILabel = UILabel(frame: CGRect(x: 20, y: posY, width: 335, height: 30.00));
                 messageOption.text = "Option" + (numberOfOption > 1 ? "s " : " ") + "souscrite" + (numberOfOption > 1 ? "s :" : " :")
                 self.containerView.addSubview(messageOption)
                 posY += 30
@@ -103,7 +103,7 @@ class ResultatPersonDetails: UIViewController, UIScrollViewDelegate {
                 
                 if (option.title != ""){
                     // Ajout label option.title
-                    let title: UILabel = UILabel(frame: CGRect(x: 50, y: posY, width: 350.00, height: 30.00));
+                    let title: UILabel = UILabel(frame: CGRect(x: 50, y: posY, width: 305, height: 30.00));
                     title.text = "• Option : " + (option.title)
                     self.containerView.addSubview(title)
                     posY += 20
@@ -111,7 +111,7 @@ class ResultatPersonDetails: UIViewController, UIScrollViewDelegate {
                 
                 if (option.optionDescription != ""){
                     // Ajout description de l'option
-                    let description: UILabel = UILabel(frame: CGRect(x: 65, y: posY, width: 355.00, height: 100.00));
+                    let description: UILabel = UILabel(frame: CGRect(x: 65, y: posY, width: 305, height: 100.00));
                     description.numberOfLines = 0
                     description.text = "Description : \n" + (option.optionDescription)
                     self.containerView.addSubview(description)
@@ -120,7 +120,7 @@ class ResultatPersonDetails: UIViewController, UIScrollViewDelegate {
                 }
                 
                 //Ajout du prix de l'option
-                let price: UILabel = UILabel(frame: CGRect(x: 65, y: posY, width: 350.00, height: 30.00));
+                let price: UILabel = UILabel(frame: CGRect(x: 65, y: posY, width: 335, height: 30.00));
                 price.text = "Prix de l'option : " + String(option.price) + "€"
                 self.containerView.addSubview(price)
                 
@@ -130,7 +130,7 @@ class ResultatPersonDetails: UIViewController, UIScrollViewDelegate {
             
             if (self.affiliate?.paymentWay?.label != ""){
                 // Ajout label
-                let label: UILabel = UILabel(frame: CGRect(x: 20, y: posY, width: 350.00, height: 30.00));
+                let label: UILabel = UILabel(frame: CGRect(x: 20, y: posY, width: 335, height: 30.00));
                 label.text = "Moyen de paiement : " + (self.affiliate?.paymentWay?.label)!
                 self.containerView.addSubview(label)
                 
@@ -139,7 +139,7 @@ class ResultatPersonDetails: UIViewController, UIScrollViewDelegate {
             
             for attribute in (self.affiliate?.paymentWay?.paymentAttributes)! {
                 if (attribute.value != ""){
-                    let label: UILabel = UILabel(frame: CGRect(x: 20, y: posY, width: 350.00, height: 30.00));
+                    let label: UILabel = UILabel(frame: CGRect(x: 20, y: posY, width: 335, height: 30.00));
                     //Pour les attributs, affichage "label : value"
                     label.text = attribute.label + " : " + attribute.value
                     self.containerView.addSubview(label)
@@ -149,7 +149,7 @@ class ResultatPersonDetails: UIViewController, UIScrollViewDelegate {
                 
             }
             // Set size fo scrollView
-            self.scrollView.contentSize = CGSize(width: 375, height: posY + 50)
+            self.scrollView.contentSize = CGSize(width: 350, height: posY + 50)
         }
     
     }

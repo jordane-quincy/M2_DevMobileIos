@@ -113,7 +113,7 @@ class SelectOptionViewController: UIViewController, UIPickerViewDelegate, UIScro
             self.scrollView.addSubview(self.containerView)
             
             // Ajout message
-            let message: UILabel = UILabel(frame: CGRect(x: 20, y: 50, width: 350.00, height: 100.00));
+            let message: UILabel = UILabel(frame: CGRect(x: 20, y: 50, width: 335, height: 100.00));
             message.numberOfLines = 0
             message.text = "Vous pouvez choisir des options :"
             self.containerView.addSubview(message)
@@ -122,25 +122,25 @@ class SelectOptionViewController: UIViewController, UIPickerViewDelegate, UIScro
             var cpt = 1
             for offer in (self.choosenOffer?.features)! {
                 // Ajout bouton switch
-                let switchButton = UISwitch(frame: CGRect(x: 10, y: CGFloat(pX), width: 350, height: 20))
+                let switchButton = UISwitch(frame: CGRect(x: 10, y: CGFloat(pX), width: 335, height: 20))
                 switchButton.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
                 switchButton.tag = cpt - 1
                 self.containerView.addSubview(switchButton)
                 // Display title
-                let optionTitle = UILabel(frame: CGRect(x: 60, y: CGFloat(pX) + 5 , width: 350, height: 20))
+                let optionTitle = UILabel(frame: CGRect(x: 60, y: CGFloat(pX) + 5 , width: 335, height: 20))
                 optionTitle.numberOfLines = 0
                 optionTitle.text = "Option " + String(cpt) + " : " + offer.title
                 self.containerView.addSubview(optionTitle)
                 pX += 30
                 // Display description
-                let optionDesc = UILabel(frame: CGRect(x: 20, y: CGFloat(pX), width: 350, height: 70))
+                let optionDesc = UILabel(frame: CGRect(x: 20, y: CGFloat(pX), width: 335, height: 70))
                 optionDesc.numberOfLines = 0
                 optionDesc.lineBreakMode = .byWordWrapping
                 optionDesc.text = "Description de l'offre : \n" + offer.description
                 self.containerView.addSubview(optionDesc)
                 pX += 80
                 // Display price
-                let optionPrice = UILabel(frame: CGRect(x: 20, y: CGFloat(pX), width: 350, height: 20))
+                let optionPrice = UILabel(frame: CGRect(x: 20, y: CGFloat(pX), width: 335, height: 20))
                 optionPrice.text = "Prix : " + String(offer.price)
                 self.containerView.addSubview(optionPrice)
                 pX += 50
@@ -148,7 +148,7 @@ class SelectOptionViewController: UIViewController, UIPickerViewDelegate, UIScro
             }
             pX += 30
             // Ajout du bouton
-            let nextButton = UIButton(frame: CGRect(x: 180, y: CGFloat(pX), width: 350.00, height: 30.00))
+            let nextButton = UIButton(frame: CGRect(x: 140, y: CGFloat(pX), width: 335, height: 30.00))
             nextButton.setTitle("Paiement >", for: .normal)
             nextButton.addTarget(self, action: #selector(self.next(_:)), for: .touchUpInside)
             nextButton.setTitleColor(UIView().tintColor, for: .normal)

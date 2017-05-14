@@ -47,11 +47,11 @@ class SetupViewController: UIViewController, UIDocumentMenuDelegate, UIDocumentP
 
         
         // Import json
-        let importLabel = UILabel(frame: CGRect(x: 20, y: CGFloat(self.pX), width: 350, height: 30.00))
+        let importLabel = UILabel(frame: CGRect(x: 20, y: CGFloat(self.pX), width: 335, height: 30.00))
         self.pX += 40
         importLabel.text = "Importer un service : "
         self.containerView.addSubview(importLabel)
-        let importButton = UIButton(frame: CGRect(x: 20, y: CGFloat(self.pX), width: 350, height: 30.00))
+        let importButton = UIButton(frame: CGRect(x: 20, y: CGFloat(self.pX), width: 335, height: 30.00))
         self.pX += 40
         importButton.setTitle("Selectionner le fichier", for: .normal)
         importButton.backgroundColor = UIColor.blue
@@ -59,7 +59,7 @@ class SetupViewController: UIViewController, UIDocumentMenuDelegate, UIDocumentP
         self.containerView.addSubview(importButton)
         
         // Select service already created
-        let selectServiceLabel = UILabel(frame: CGRect(x: 20, y: CGFloat(self.pX), width: 350, height: 30.00))
+        let selectServiceLabel = UILabel(frame: CGRect(x: 20, y: CGFloat(self.pX), width: 335, height: 30.00))
         selectServiceLabel.text = "Charger un service existant :"
         self.containerView.addSubview(selectServiceLabel)
         self.pX += 40
@@ -91,7 +91,7 @@ class SetupViewController: UIViewController, UIDocumentMenuDelegate, UIDocumentP
         let realmServices = RealmServices()
         let allServices = realmServices.getBusinessServicesArray()
         if (allServices.count == 0) {
-            let message = UILabel(frame: CGRect(x: 20, y: CGFloat(self.pX), width: 350, height: 30.00))
+            let message = UILabel(frame: CGRect(x: 20, y: CGFloat(self.pX), width: 335, height: 30.00))
             message.tag = 1
             message.text = "Aucun service en base"
             self.pX += 40
@@ -99,7 +99,7 @@ class SetupViewController: UIViewController, UIDocumentMenuDelegate, UIDocumentP
         }
         for businessService in allServices {
             // TODO display all services as button
-            let buttonService = UIButton(frame: CGRect(x: 20, y: CGFloat(self.pX), width: 350, height: 30.00))
+            let buttonService = UIButton(frame: CGRect(x: 20, y: CGFloat(self.pX), width: 335, height: 30.00))
             self.pX += 40
             buttonService.setTitle(businessService.title, for: .normal)
             buttonService.tag = 1
