@@ -41,28 +41,60 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m6Z-SD-zuV">
-                    <rect key="frame" x="116" y="468" width="142" height="30"/>
+                    <rect key="frame" x="116" y="378" width="142" height="30"/>
                     <state key="normal" title="Information Système"/>
                     <connections>
                         <action selector="displaySystemInfo:" destination="-1" eventType="touchUpInside" id="tnq-QU-QLl"/>
                     </connections>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Morgan Basset, Jordan Canonne, JB" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5jY-oz-EKh">
+                    <rect key="frame" x="28" y="508" width="278" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Duriez, Jordane Quincy, Maxime" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6VG-rg-z9e">
+                    <rect key="frame" x="28" y="530" width="247" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Grassart, Samir Moutawakil" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ui-zf-9UR">
+                    <rect key="frame" x="28" y="552" width="209" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Développeurs :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oxr-Gb-gem">
+                    <rect key="frame" x="28" y="489" width="115" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="gbT-Ta-7f5" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="117" id="2Rz-2l-e4V"/>
                 <constraint firstAttribute="trailing" secondItem="MSq-QH-53z" secondAttribute="trailing" constant="164" id="7ap-Kb-ZeF"/>
+                <constraint firstItem="0ui-zf-9UR" firstAttribute="top" secondItem="5jY-oz-EKh" secondAttribute="bottom" constant="14" id="CbH-DR-33e"/>
                 <constraint firstItem="gbT-Ta-7f5" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="74" id="EXU-p7-vPo"/>
-                <constraint firstItem="m6Z-SD-zuV" firstAttribute="top" secondItem="NS3-3m-XcY" secondAttribute="bottom" constant="164" id="FvM-if-F22"/>
                 <constraint firstItem="MSq-QH-53z" firstAttribute="top" secondItem="gbT-Ta-7f5" secondAttribute="bottom" constant="44" id="JVf-mT-NEg"/>
                 <constraint firstItem="NS3-3m-XcY" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="274" id="NTY-hb-8LF"/>
+                <constraint firstItem="5jY-oz-EKh" firstAttribute="top" secondItem="Oxr-Gb-gem" secondAttribute="bottom" constant="8" id="QLm-ci-b1p"/>
                 <constraint firstItem="m6Z-SD-zuV" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="116" id="SKW-Zm-rrI"/>
                 <constraint firstItem="NS3-3m-XcY" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="141" id="TmI-st-BbK"/>
                 <constraint firstItem="MSq-QH-53z" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="164" id="XOt-0G-wdv"/>
+                <constraint firstItem="0ui-zf-9UR" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="28" id="YMU-Xk-tFs"/>
+                <constraint firstItem="m6Z-SD-zuV" firstAttribute="top" secondItem="NS3-3m-XcY" secondAttribute="bottom" constant="74" id="Ycc-70-tmn"/>
                 <constraint firstAttribute="bottom" secondItem="NS3-3m-XcY" secondAttribute="bottom" constant="363" id="a6I-K2-XKq"/>
+                <constraint firstItem="Oxr-Gb-gem" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="28" id="a9K-UM-0eh"/>
+                <constraint firstItem="Oxr-Gb-gem" firstAttribute="top" secondItem="m6Z-SD-zuV" secondAttribute="bottom" constant="81" id="aat-9Q-56h"/>
                 <constraint firstAttribute="trailing" secondItem="m6Z-SD-zuV" secondAttribute="trailing" constant="117" id="gBx-zg-PQ6"/>
+                <constraint firstItem="6VG-rg-z9e" firstAttribute="top" secondItem="Oxr-Gb-gem" secondAttribute="bottom" constant="26" id="kN9-t5-Gd7"/>
                 <constraint firstAttribute="trailing" secondItem="gbT-Ta-7f5" secondAttribute="trailing" constant="118" id="oGp-wV-i3K"/>
+                <constraint firstItem="6VG-rg-z9e" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="28" id="pZt-7P-jqf"/>
                 <constraint firstAttribute="trailing" secondItem="NS3-3m-XcY" secondAttribute="trailing" constant="142" id="qxm-c3-CC8"/>
+                <constraint firstItem="5jY-oz-EKh" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="28" id="zcM-VN-xoy"/>
             </constraints>
             <point key="canvasLocation" x="34.5" y="54.5"/>
         </view>
