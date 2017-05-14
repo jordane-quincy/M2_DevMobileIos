@@ -110,7 +110,7 @@ class SelectOfferViewController: UIViewController, UIPickerViewDelegate, UIScrol
             var pX = 120
             var cpt = 1
             for offer in (json?.offers)! {
-                let offerButton = UIButton(frame: CGRect(x: 20, y: CGFloat(pX), width: 350.00, height: 130.00))
+                let offerButton = UIButton(frame: CGRect(x: 20, y: CGFloat(pX), width: 350.00, height: 150.00))
 
                 // enable button with multiple lines
                 offerButton.titleLabel?.lineBreakMode = .byWordWrapping
@@ -127,11 +127,14 @@ class SelectOfferViewController: UIViewController, UIPickerViewDelegate, UIScrol
                 offerButton.setTitle(title , for: .normal)
                 offerButton.backgroundColor = UIColor.blue
                 offerButton.tag = cpt - 1
+                offerButton.titleLabel?.numberOfLines = 0
+                offerButton.contentHorizontalAlignment = .center
+                offerButton.contentVerticalAlignment = .center
                 // Setup action on the button
                 offerButton.addTarget(self, action: #selector(self.goToGeneralFormView(_:)), for: .touchUpInside)
                 self.containerView.addSubview(offerButton)
                 cpt += 1
-                pX += 160
+                pX += 180
             }
             self.scrollView.contentSize = CGSize(width: 375, height: pX + 100)
         }

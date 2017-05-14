@@ -45,6 +45,39 @@ class AccueilViewController: UIViewController, UIScrollViewDelegate  {
                 print(serializationError)
             }
         }
+        
+        // setup swipe 
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
+        swipeRight.direction = UISwipeGestureRecognizerDirection.right
+        self.view.addGestureRecognizer(swipeRight)
+        
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
+        swipeRight.direction = UISwipeGestureRecognizerDirection.left
+        self.view.addGestureRecognizer(swipeLeft)
+        
+        let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
+        swipeDown.direction = UISwipeGestureRecognizerDirection.down
+        self.view.addGestureRecognizer(swipeDown)
+    }
+    
+    // swipe function
+    func respondToSwipeGesture(gesture: UIGestureRecognizer) {
+        if let swipeGesture = gesture as? UISwipeGestureRecognizer {
+            switch swipeGesture.direction {
+            case UISwipeGestureRecognizerDirection.right:
+                // GO TO THE LEFT Pannel
+                print("Swiped right")
+            case UISwipeGestureRecognizerDirection.down:
+                print("Swiped down")
+            case UISwipeGestureRecognizerDirection.left:
+                print("Swiped left")
+                // GO TO THE RIGHT Pannel
+            case UISwipeGestureRecognizerDirection.up:
+                print("Swiped up")
+            default:
+                break
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -107,7 +140,7 @@ class AccueilViewController: UIViewController, UIScrollViewDelegate  {
 
             // Ajout titre service
             let title: UILabel = UILabel(frame: CGRect(x: 20, y: 20, width: 350.00, height: 30.00));
-            title.text = "Bonjour bienvenue sur le service : " + (json?.title)!
+            title.text = "Inscription au service : " + (json?.title)!
             self.containerView.addSubview(title)
             
             // Ajout de l'image du service
@@ -118,26 +151,30 @@ class AccueilViewController: UIViewController, UIScrollViewDelegate  {
             self.containerView.addSubview(imageView)*/
             
             // Ajout description du service
-            let description: UILabel = UILabel(frame: CGRect(x: 20, y: 50, width: 400.00, height: 100.00));
+            var descriptionToLong = false
+            if ((json?.description.characters.count)! > 135) {
+                descriptionToLong = true
+            }
+            let description: UILabel = UILabel(frame: CGRect(x: 20, y: 50, width: 400.00, height: descriptionToLong ? 100 + 20 : 100.00));
             description.numberOfLines = 0
             description.text = "Voici la description de ce service : \n" + (json?.description)!
             self.containerView.addSubview(description)
 
             // Start message
-            let startMessage: UILabel = UILabel(frame: CGRect(x: 20, y: 130, width: 350.00, height: 100.00))
+            let startMessage: UILabel = UILabel(frame: CGRect(x: 20, y: descriptionToLong ? 130 + 20 : 130, width: 350.00, height: 100.00))
             startMessage.numberOfLines = 0
             startMessage.text = "Pour vous inscrire à ce service cliquez sur \"Commencer\""
             self.containerView.addSubview(startMessage)
 
             // Ajout du bouton commencer
-            let statButton = UIButton(frame: CGRect(x: 20, y: 230, width: 350.00, height: 30.00))
+            let statButton = UIButton(frame: CGRect(x: 20, y: descriptionToLong ? 230 + 20 : 230, width: 350.00, height: 30.00))
             statButton.setTitle("Commencer !", for: .normal)
             statButton.addTarget(self, action: #selector(self.goToSelectOfferView(_:)), for: .touchUpInside)
             statButton.backgroundColor = UIColor.blue
             self.containerView.addSubview(statButton)
             
             // Set size fo scrollView
-            self.scrollView.contentSize = CGSize(width: 375, height: 250)
+            self.scrollView.contentSize = CGSize(width: 375, height: descriptionToLong ? 250 + 20 : 250)
         }
         
     }
