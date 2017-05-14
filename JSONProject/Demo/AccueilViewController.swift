@@ -9,7 +9,6 @@
 import UIKit
 
 class AccueilViewController: UIViewController, UIScrollViewDelegate  {
-
     
     var scrollView = UIScrollView()
     var containerView = UIView()
@@ -173,10 +172,11 @@ class AccueilViewController: UIViewController, UIScrollViewDelegate  {
             self.containerView.addSubview(startMessage)
 
             // Ajout du bouton commencer
-            let statButton = UIButton(frame: CGRect(x: 20, y: descriptionToLong ? 250 + 20 + imageHeight : 250 + imageHeight, width: 350.00, height: 30.00))
-            statButton.setTitle("Commencer !", for: .normal)
+            let statButton = UIButton(frame: CGRect(x: 160, y: descriptionToLong ? 250 + 20 + imageHeight : 250 + imageHeight, width: 350.00, height: 30.00))
+            statButton.setTitle("Commencer >", for: .normal)
             statButton.addTarget(self, action: #selector(self.goToSelectOfferView(_:)), for: .touchUpInside)
-            statButton.backgroundColor = UIColor.blue
+            statButton.setTitleColor(UIView().tintColor, for: .normal)
+            statButton.backgroundColor = UIColor.clear
             self.containerView.addSubview(statButton)
             
             // Set size fo scrollView

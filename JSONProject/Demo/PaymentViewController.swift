@@ -153,11 +153,14 @@ class PaymentViewController: UIViewController, UIPickerViewDelegate, UIScrollVie
         self.containerView.addSubview(bicTextField)
         
         // Add Validation button
-        let validationButton = UIButton(frame: CGRect(x: 20, y: CGFloat(pX), width: 350.00, height: 30.00))
+        let validationButton = UIButton(frame: CGRect(x: 40, y: CGFloat(pX), width: 350.00, height: 30.00))
         validationButton.setTitle("Valider l'inscription", for: .normal)
         validationButton.addTarget(self, action: #selector(self.validSubscription(_:)), for: .touchUpInside)
         validationButton.tag = 1
-        validationButton.backgroundColor = UIColor.blue
+        validationButton.setTitleColor(UIView().tintColor, for: .normal)
+        validationButton.backgroundColor = UIColor.clear
+        validationButton.titleLabel?.textAlignment = .center
+        validationButton.titleLabel?.numberOfLines = 0
         self.pX += 40
         self.containerView.addSubview(validationButton)
     }
@@ -231,11 +234,15 @@ class PaymentViewController: UIViewController, UIPickerViewDelegate, UIScrollVie
         self.pX += 60
         self.containerView.addSubview(ownerTextField)
         // Add Validation button
-        let validationButton = UIButton(frame: CGRect(x: 20, y: CGFloat(pX), width: 350.00, height: 30.00))
+        let validationButton = UIButton(frame: CGRect(x: 40, y: CGFloat(pX), width: 350.00, height: 30.00))
         validationButton.setTitle("Valider l'inscription", for: .normal)
         validationButton.addTarget(self, action: #selector(self.validSubscription(_:)), for: .touchUpInside)
         validationButton.tag = 2
-        validationButton.backgroundColor = UIColor.blue
+        validationButton.setTitleColor(UIView().tintColor, for: .normal)
+        validationButton.backgroundColor = UIColor.clear
+        validationButton.titleLabel?.textAlignment = .center
+        validationButton.titleLabel?.numberOfLines = 0
+
         self.pX += 40
         self.containerView.addSubview(validationButton)
     }
@@ -259,11 +266,15 @@ class PaymentViewController: UIViewController, UIPickerViewDelegate, UIScrollVie
         self.containerView.addSubview(paypalTextField)
         
         // Add Validation button
-        let validationButton = UIButton(frame: CGRect(x: 20, y: CGFloat(pX), width: 350.00, height: 30.00))
+        let validationButton = UIButton(frame: CGRect(x: 40, y: CGFloat(pX), width: 350.00, height: 30.00))
         validationButton.setTitle("Valider l'inscription", for: .normal)
         validationButton.addTarget(self, action: #selector(self.validSubscription(_:)), for: .touchUpInside)
         validationButton.tag = 3
-        validationButton.backgroundColor = UIColor.blue
+        validationButton.setTitleColor(UIView().tintColor, for: .normal)
+        validationButton.backgroundColor = UIColor.clear
+        validationButton.titleLabel?.textAlignment = .center
+        validationButton.titleLabel?.numberOfLines = 0
+
         self.pX += 40
         self.containerView.addSubview(validationButton)
         self.containerView.addSubview(validationButton)

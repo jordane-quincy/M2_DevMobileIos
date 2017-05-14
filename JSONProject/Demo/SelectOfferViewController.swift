@@ -130,6 +130,8 @@ class SelectOfferViewController: UIViewController, UIPickerViewDelegate, UIScrol
                 offerButton.titleLabel?.numberOfLines = 0
                 offerButton.contentHorizontalAlignment = .center
                 offerButton.contentVerticalAlignment = .center
+                offerButton.layer.borderWidth = 2
+                offerButton.layer.cornerRadius = 18
                 // Setup action on the button
                 offerButton.addTarget(self, action: #selector(self.goToGeneralFormView(_:)), for: .touchUpInside)
                 self.containerView.addSubview(offerButton)

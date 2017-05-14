@@ -148,10 +148,11 @@ class SelectOptionViewController: UIViewController, UIPickerViewDelegate, UIScro
             }
             pX += 30
             // Ajout du bouton
-            let nextButton = UIButton(frame: CGRect(x: 20, y: CGFloat(pX), width: 350.00, height: 30.00))
-            nextButton.setTitle("Paiement", for: .normal)
+            let nextButton = UIButton(frame: CGRect(x: 180, y: CGFloat(pX), width: 350.00, height: 30.00))
+            nextButton.setTitle("Paiement >", for: .normal)
             nextButton.addTarget(self, action: #selector(self.next(_:)), for: .touchUpInside)
-            nextButton.backgroundColor = UIColor.blue
+            nextButton.setTitleColor(UIView().tintColor, for: .normal)
+            nextButton.backgroundColor = UIColor.clear
             
             self.containerView.addSubview(nextButton)
             self.scrollView.contentSize = CGSize(width: 375, height: pX + 100)
