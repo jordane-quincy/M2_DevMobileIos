@@ -69,28 +69,24 @@ class AideViewController: UIViewController {
     }
     
     @IBAction func AfficherMenuAdmin(_ sender: Any) {
+        let authenticationContext = LAContext()
         
-        self.addTabBarItemResultat()
-        // Automatically switch to the import view
-        DispatchQueue.main.async() {
-            self.tabBarController?.selectedIndex = 2
-        }
-        
-        
-        
-        /*let authenticationContext = LAContext()
-        
+        // Not working on emulator
         authenticationContext.evaluatePolicy(
             .deviceOwnerAuthenticationWithBiometrics,
             localizedReason: "Veuillez-vous identifier",
             reply: { (success, error) -> Void in
                 if(success) {
                     self.addTabBarItemResultat()
+                    // Automatically switch to the import view
+                    DispatchQueue.main.async() {
+                        self.tabBarController?.selectedIndex = 2
+                    }
                     print("success")
                 } else {
                     print("erreur")
                 }
-        })*/
+        })
     }
     
     

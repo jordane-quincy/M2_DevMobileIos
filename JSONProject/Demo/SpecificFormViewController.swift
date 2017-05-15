@@ -25,7 +25,17 @@ class SpecificFormViewController: UIViewController, UIPickerViewDelegate, UIScro
         super.viewDidLoad()
         // set up title of view
         self.title = "Spécifique"
+        // Setup Sortie de champs quand on clique à coté
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(GeneralFormViewController.dismissKeyboard))
+        self.view.addGestureRecognizer(tap)
     }
+    
+    //Calls this function when the tap is recognized.
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
