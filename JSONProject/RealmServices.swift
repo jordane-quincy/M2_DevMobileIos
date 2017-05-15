@@ -78,6 +78,7 @@ class RealmServices {
         resetService(title: _title)
         let businessServcice = self.realm.object(ofType: BusinessService.self, forPrimaryKey: _title as AnyObject)
         try! self.realm.write {
+            self.realm.delete((businessServcice?.listOfOptions)!)
             self.realm.delete(businessServcice!)
         }
     }
