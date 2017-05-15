@@ -128,7 +128,8 @@ class SelectOfferViewController: UIViewController, UIPickerViewDelegate, UIScrol
                 offerButton.backgroundColor = UIColor.blue
                 offerButton.tag = cpt - 1
                 offerButton.titleLabel?.numberOfLines = 0
-                offerButton.contentHorizontalAlignment = .center
+                offerButton.contentHorizontalAlignment = .left
+                offerButton.titleEdgeInsets = UIEdgeInsets(top: 0.0, left: 10.0, bottom: 0.0, right: 0.0)
                 offerButton.contentVerticalAlignment = .center
                 offerButton.layer.borderWidth = 2
                 offerButton.layer.cornerRadius = 18

@@ -14,10 +14,9 @@
 		4297F5FA1EABC37D004204CD /* FileServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4297F5F61EABC37D004204CD /* FileServices.swift */; };
 		4297F5FD1EABC386004204CD /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4297F5FB1EABC386004204CD /* Person.swift */; };
 		4297F5FE1EABC386004204CD /* Attribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4297F5FC1EABC386004204CD /* Attribute.swift */; };
-		4297F6041EABC412004204CD /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4297F6001EABC405004204CD /* Realm.framework */; };
-		4297F6051EABC412004204CD /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4297F6001EABC405004204CD /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		4297F6061EABC412004204CD /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4297F6011EABC405004204CD /* RealmSwift.framework */; };
-		4297F6071EABC412004204CD /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4297F6011EABC405004204CD /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4298A08B1EC8BEF200AE70BF /* finalJsonIOS.json in Resources */ = {isa = PBXBuildFile; fileRef = 4298A08A1EC8BEF200AE70BF /* finalJsonIOS.json */; };
+		4298A08E1EC8C2E400AE70BF /* InfoSystemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4298A08C1EC8C2E400AE70BF /* InfoSystemViewController.swift */; };
+		4298A08F1EC8C2E400AE70BF /* InfoSystemViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4298A08D1EC8C2E400AE70BF /* InfoSystemViewController.xib */; };
 		42AD2D2D1EABE8F200F2C00A /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AD2D2C1EABE8F200F2C00A /* DateUtils.swift */; };
 		42AFEF1E1E7EA003001587DA /* JsonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AFEF1D1E7EA003001587DA /* JsonModel.swift */; };
 		42AFEF201E87C617001587DA /* JsonModel_params.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AFEF1F1E87C617001587DA /* JsonModel_params.swift */; };
@@ -47,12 +46,20 @@
 		42B57DEB1EB47377009EB0F1 /* ServiceOffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B57DEA1EB47377009EB0F1 /* ServiceOffer.swift */; };
 		42B57DEE1EB47A31009EB0F1 /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B57DEC1EB47A31009EB0F1 /* PaymentViewController.swift */; };
 		42B57DEF1EB47A31009EB0F1 /* PaymentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42B57DED1EB47A31009EB0F1 /* PaymentViewController.xib */; };
+		42D95A9B1EC74E9300D3DB97 /* service.json in Resources */ = {isa = PBXBuildFile; fileRef = 42D95A9A1EC74E9300D3DB97 /* service.json */; };
+		42D95A9D1EC7512200D3DB97 /* test.json in Resources */ = {isa = PBXBuildFile; fileRef = 42D95A9C1EC7512200D3DB97 /* test.json */; };
 		42E64DFA1EC3A2BA002BB4B5 /* ResultatPersonTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E64DF81EC3A2BA002BB4B5 /* ResultatPersonTableView.swift */; };
 		42E64DFB1EC3A2BA002BB4B5 /* ResultatPersonTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42E64DF91EC3A2BA002BB4B5 /* ResultatPersonTableView.xib */; };
 		42E64DFE1EC3AA30002BB4B5 /* ResultatPersonDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E64DFC1EC3AA30002BB4B5 /* ResultatPersonDetails.swift */; };
 		42E64DFF1EC3AA30002BB4B5 /* ResultatPersonDetails.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42E64DFD1EC3AA30002BB4B5 /* ResultatPersonDetails.xib */; };
 		42E64E021EC43E41002BB4B5 /* previousJSON.json in Resources */ = {isa = PBXBuildFile; fileRef = 42E64E011EC43E41002BB4B5 /* previousJSON.json */; };
 		42E64E041EC47A15002BB4B5 /* CustomUISwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E64E031EC47A15002BB4B5 /* CustomUISwitch.swift */; };
+		42E64E061EC5BC33002BB4B5 /* OptionLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E64E051EC5BC33002BB4B5 /* OptionLabel.swift */; };
+		42E64E081EC5F851002BB4B5 /* System.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E64E071EC5F851002BB4B5 /* System.swift */; };
+		42E64E0D1EC73CAB002BB4B5 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42E64E091EC73C9C002BB4B5 /* Realm.framework */; };
+		42E64E0E1EC73CAB002BB4B5 /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 42E64E091EC73C9C002BB4B5 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		42E64E0F1EC73CAB002BB4B5 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42E64E0A1EC73C9C002BB4B5 /* RealmSwift.framework */; };
+		42E64E101EC73CAB002BB4B5 /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 42E64E0A1EC73C9C002BB4B5 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		906274861EAE3A6900E09E57 /* SetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906274821EAE3A6900E09E57 /* SetupViewController.swift */; };
 		906274871EAE3A6900E09E57 /* SetupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 906274831EAE3A6900E09E57 /* SetupViewController.xib */; };
 		9062748C1EAE3A7100E09E57 /* AccueilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906274881EAE3A7100E09E57 /* AccueilViewController.swift */; };
@@ -96,8 +103,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				4297F6071EABC412004204CD /* RealmSwift.framework in Embed Frameworks */,
-				4297F6051EABC412004204CD /* Realm.framework in Embed Frameworks */,
+				42E64E101EC73CAB002BB4B5 /* RealmSwift.framework in Embed Frameworks */,
+				42E64E0E1EC73CAB002BB4B5 /* Realm.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -112,8 +119,9 @@
 		4297F5F61EABC37D004204CD /* FileServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileServices.swift; sourceTree = "<group>"; };
 		4297F5FB1EABC386004204CD /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		4297F5FC1EABC386004204CD /* Attribute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Attribute.swift; sourceTree = "<group>"; };
-		4297F6001EABC405004204CD /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
-		4297F6011EABC405004204CD /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
+		4298A08A1EC8BEF200AE70BF /* finalJsonIOS.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = finalJsonIOS.json; sourceTree = "<group>"; };
+		4298A08C1EC8C2E400AE70BF /* InfoSystemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoSystemViewController.swift; sourceTree = "<group>"; };
+		4298A08D1EC8C2E400AE70BF /* InfoSystemViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfoSystemViewController.xib; sourceTree = "<group>"; };
 		42AD2D2C1EABE8F200F2C00A /* DateUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateUtils.swift; sourceTree = "<group>"; };
 		42AFEF1D1E7EA003001587DA /* JsonModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonModel.swift; sourceTree = "<group>"; };
 		42AFEF1F1E87C617001587DA /* JsonModel_params.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonModel_params.swift; sourceTree = "<group>"; };
@@ -143,12 +151,18 @@
 		42B57DEA1EB47377009EB0F1 /* ServiceOffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceOffer.swift; sourceTree = "<group>"; };
 		42B57DEC1EB47A31009EB0F1 /* PaymentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
 		42B57DED1EB47A31009EB0F1 /* PaymentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PaymentViewController.xib; sourceTree = "<group>"; };
+		42D95A9A1EC74E9300D3DB97 /* service.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = service.json; sourceTree = "<group>"; };
+		42D95A9C1EC7512200D3DB97 /* test.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = test.json; sourceTree = "<group>"; };
 		42E64DF81EC3A2BA002BB4B5 /* ResultatPersonTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultatPersonTableView.swift; sourceTree = "<group>"; };
 		42E64DF91EC3A2BA002BB4B5 /* ResultatPersonTableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResultatPersonTableView.xib; sourceTree = "<group>"; };
 		42E64DFC1EC3AA30002BB4B5 /* ResultatPersonDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultatPersonDetails.swift; sourceTree = "<group>"; };
 		42E64DFD1EC3AA30002BB4B5 /* ResultatPersonDetails.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResultatPersonDetails.xib; sourceTree = "<group>"; };
 		42E64E011EC43E41002BB4B5 /* previousJSON.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = previousJSON.json; sourceTree = "<group>"; };
 		42E64E031EC47A15002BB4B5 /* CustomUISwitch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomUISwitch.swift; sourceTree = "<group>"; };
+		42E64E051EC5BC33002BB4B5 /* OptionLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionLabel.swift; sourceTree = "<group>"; };
+		42E64E071EC5F851002BB4B5 /* System.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = System.swift; sourceTree = "<group>"; };
+		42E64E091EC73C9C002BB4B5 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Demo/Realm.framework; sourceTree = "<group>"; };
+		42E64E0A1EC73C9C002BB4B5 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Demo/RealmSwift.framework; sourceTree = "<group>"; };
 		906274821EAE3A6900E09E57 /* SetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupViewController.swift; sourceTree = "<group>"; };
 		906274831EAE3A6900E09E57 /* SetupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SetupViewController.xib; sourceTree = "<group>"; };
 		906274881EAE3A7100E09E57 /* AccueilViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccueilViewController.swift; sourceTree = "<group>"; };
@@ -180,8 +194,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4297F6041EABC412004204CD /* Realm.framework in Frameworks */,
-				4297F6061EABC412004204CD /* RealmSwift.framework in Frameworks */,
+				42E64E0F1EC73CAB002BB4B5 /* RealmSwift.framework in Frameworks */,
+				42E64E0D1EC73CAB002BB4B5 /* Realm.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -220,6 +234,7 @@
 				4297F5FB1EABC386004204CD /* Person.swift */,
 				4297F5FC1EABC386004204CD /* Attribute.swift */,
 				42B57DE81EB3C20C009EB0F1 /* ServiceOption.swift */,
+				42E64E051EC5BC33002BB4B5 /* OptionLabel.swift */,
 				42B57DEA1EB47377009EB0F1 /* ServiceOffer.swift */,
 				42B4DFFE1EB494B8001AC2FD /* PaymentWay.swift */,
 				42B4E0001EB4951E001AC2FD /* PaymentAttribute.swift */,
@@ -285,6 +300,9 @@
 				B51EFB811E65673200C3CC90 /* testFile.json */,
 				B51EFB831E6569A800C3CC90 /* exampleJSON1.json */,
 				42E64E011EC43E41002BB4B5 /* previousJSON.json */,
+				42D95A9A1EC74E9300D3DB97 /* service.json */,
+				42D95A9C1EC7512200D3DB97 /* test.json */,
+				4298A08A1EC8BEF200AE70BF /* finalJsonIOS.json */,
 			);
 			name = "JSON files";
 			sourceTree = "<group>";
@@ -301,8 +319,8 @@
 		B52CE2061E3756B900EC68E5 = {
 			isa = PBXGroup;
 			children = (
-				4297F6001EABC405004204CD /* Realm.framework */,
-				4297F6011EABC405004204CD /* RealmSwift.framework */,
+				42E64E091EC73C9C002BB4B5 /* Realm.framework */,
+				42E64E0A1EC73C9C002BB4B5 /* RealmSwift.framework */,
 				4297F5F21EABC361004204CD /* Entities */,
 				4297F5F11EABC358004204CD /* Services */,
 				B51EFB851E6586E000C3CC90 /* Utils */,
@@ -333,10 +351,13 @@
 				42E64DEB1EC39E41002BB4B5 /* Resultat */,
 				9062748A1EAE3A7100E09E57 /* AideViewController.swift */,
 				9062748B1EAE3A7100E09E57 /* AideViewController.xib */,
+				4298A08C1EC8C2E400AE70BF /* InfoSystemViewController.swift */,
+				4298A08D1EC8C2E400AE70BF /* InfoSystemViewController.xib */,
 				906274821EAE3A6900E09E57 /* SetupViewController.swift */,
 				906274831EAE3A6900E09E57 /* SetupViewController.xib */,
 				B5326A101E76C5A500B57076 /* Demo.entitlements */,
 				B52CE2121E3756B900EC68E5 /* AppDelegate.swift */,
+				42E64E071EC5F851002BB4B5 /* System.swift */,
 				B52CE2141E3756B900EC68E5 /* ViewController.swift */,
 				B52CE2161E3756B900EC68E5 /* Main.storyboard */,
 				B52CE2191E3756B900EC68E5 /* Assets.xcassets */,
@@ -383,7 +404,7 @@
 				B52CE20C1E3756B900EC68E5 /* Frameworks */,
 				B52CE20D1E3756B900EC68E5 /* Resources */,
 				B5BC80E81E65F35A006AF92F /* Embed Frameworks */,
-				4297F5FF1EABC3C2004204CD /* ShellScript */,
+				42E64E111EC73CBF002BB4B5 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -494,8 +515,10 @@
 				B51EFB821E65673200C3CC90 /* testFile.json in Resources */,
 				B52CE21A1E3756B900EC68E5 /* Assets.xcassets in Resources */,
 				42E64E021EC43E41002BB4B5 /* previousJSON.json in Resources */,
+				4298A08F1EC8C2E400AE70BF /* InfoSystemViewController.xib in Resources */,
 				42B57DE21EB380D8009EB0F1 /* SpecificFormViewController.xib in Resources */,
 				906274871EAE3A6900E09E57 /* SetupViewController.xib in Resources */,
+				4298A08B1EC8BEF200AE70BF /* finalJsonIOS.json in Resources */,
 				42B57DC41EB0ADF0009EB0F1 /* ResultatViewController.xib in Resources */,
 				42B57DDA1EB30EFB009EB0F1 /* GeneralFormViewController.xib in Resources */,
 				42B57DEF1EB47A31009EB0F1 /* PaymentViewController.xib in Resources */,
@@ -503,8 +526,10 @@
 				42E64DFB1EC3A2BA002BB4B5 /* ResultatPersonTableView.xib in Resources */,
 				42B57DE71EB3A61A009EB0F1 /* SelectOptionViewController.xib in Resources */,
 				42B57DC81EB0AFDB009EB0F1 /* CustomCell.xib in Resources */,
+				42D95A9B1EC74E9300D3DB97 /* service.json in Resources */,
 				42E64DFF1EC3AA30002BB4B5 /* ResultatPersonDetails.xib in Resources */,
 				9062748F1EAE3A7100E09E57 /* AideViewController.xib in Resources */,
+				42D95A9D1EC7512200D3DB97 /* test.json in Resources */,
 				B52CE2181E3756B900EC68E5 /* Main.storyboard in Resources */,
 				9062748D1EAE3A7100E09E57 /* AccueilViewController.xib in Resources */,
 			);
@@ -527,7 +552,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		4297F5FF1EABC3C2004204CD /* ShellScript */ = {
+		42E64E111EC73CBF002BB4B5 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -567,12 +592,15 @@
 				42AFEF261E880004001587DA /* JsonModel_features.swift in Sources */,
 				42B57DC31EB0ADF0009EB0F1 /* ResultatViewController.swift in Sources */,
 				9062748C1EAE3A7100E09E57 /* AccueilViewController.swift in Sources */,
+				42E64E081EC5F851002BB4B5 /* System.swift in Sources */,
 				42E64DFA1EC3A2BA002BB4B5 /* ResultatPersonTableView.swift in Sources */,
 				42B57DE61EB3A61A009EB0F1 /* SelectOptionViewController.swift in Sources */,
+				4298A08E1EC8C2E400AE70BF /* InfoSystemViewController.swift in Sources */,
 				42B57DC71EB0AFDB009EB0F1 /* CustomCell.swift in Sources */,
 				B51EFB871E65874600C3CC90 /* JSONUtils.swift in Sources */,
 				42AFEF1E1E7EA003001587DA /* JsonModel.swift in Sources */,
 				42B4E0011EB4951E001AC2FD /* PaymentAttribute.swift in Sources */,
+				42E64E061EC5BC33002BB4B5 /* OptionLabel.swift in Sources */,
 				42AFEF201E87C617001587DA /* JsonModel_params.swift in Sources */,
 				42AD2D2D1EABE8F200F2C00A /* DateUtils.swift in Sources */,
 				42B57DE91EB3C20C009EB0F1 /* ServiceOption.swift in Sources */,
@@ -743,9 +771,10 @@
 					"$(inherited)",
 					RealmSwift.framework,
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Demo",
 				);
 				INFOPLIST_FILE = Demo/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks RealmSwift.framework";
 				PRODUCT_BUNDLE_IDENTIFIER = demoFA;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -766,9 +795,10 @@
 					"$(inherited)",
 					RealmSwift.framework,
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Demo",
 				);
 				INFOPLIST_FILE = Demo/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks RealmSwift.framework";
 				PRODUCT_BUNDLE_IDENTIFIER = demoFA;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

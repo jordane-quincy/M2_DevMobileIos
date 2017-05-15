@@ -15,6 +15,8 @@ class AideViewController: UIViewController {
     var controllerArray = [UIViewController]()
     var customNavigationController: UINavigationController? = nil
     
+    @IBOutlet weak var deconnectButton: UIButton!
+    
     @IBOutlet weak var champMdp: UITextField!
     
     override func viewDidLoad() {
@@ -27,7 +29,8 @@ class AideViewController: UIViewController {
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
         swipeRight.direction = UISwipeGestureRecognizerDirection.left
         self.view.addGestureRecognizer(swipeLeft)
-        // Do any additional setup after loading the view.
+        
+        self.deconnectButton.isHidden = true
     }
     
     public func setupNavigationController(navigationController: UINavigationController){
@@ -113,9 +116,15 @@ class AideViewController: UIViewController {
         
     }
     func addTabBarItemResultat(){
-        
+        self.deconnectButton.isHidden = false
         self.tabBarController?.tabBar.items?[1].isEnabled = true
         self.tabBarController?.tabBar.items?[2].isEnabled = true
     }
     
+    @IBAction func logOut(_ sender: UIButton) {
+        print("deconnexion")
+        self.tabBarController?.tabBar.items?[1].isEnabled = false
+        self.tabBarController?.tabBar.items?[2].isEnabled = false
+        self.deconnectButton.isHidden = true
+    }
 }

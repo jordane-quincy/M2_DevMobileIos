@@ -23,7 +23,7 @@ class GeneralFormViewController: UIViewController, UIPickerViewDelegate, UIScrol
     override func viewDidLoad() {
         super.viewDidLoad()
         // set up title of view
-        self.title = "Form 1"
+        self.title = "Général"
     }
     
     // For displaying scrollView
@@ -285,8 +285,6 @@ class GeneralFormViewController: UIViewController, UIPickerViewDelegate, UIScrol
             self.view.addSubview(self.scrollView)
             self.containerView = UIView()
             self.scrollView.addSubview(self.containerView)
-            
-            
             // Ajout message
             let message: UILabel = UILabel(frame: CGRect(x: 20, y: 50, width: 335, height: 100.00));
             message.numberOfLines = 0

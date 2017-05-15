@@ -24,7 +24,7 @@ class SpecificFormViewController: UIViewController, UIPickerViewDelegate, UIScro
     override func viewDidLoad() {
         super.viewDidLoad()
         // set up title of view
-        self.title = "Form 2"
+        self.title = "Spécifique"
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
